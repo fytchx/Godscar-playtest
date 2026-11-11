@@ -139,7 +139,7 @@ const tabs=[
   {id:"build",name:"Build",icon:"✦"},
   {id:"forge",name:"Forge",icon:"⚒"}
 ];
-let active="fight", forgeTab="Upgrade", bagTab="All", bagSelection=null;
+let active="fight", forgeTab="Upgrade", bagTab="All", bagSelection=null, buildSpecReset=false;
 const nav=document.getElementById("nav"), screen=document.getElementById("screen");
 function toast(message){
   const t=document.getElementById("toast"); t.textContent=message; t.classList.add("show");
@@ -274,18 +274,32 @@ function bag(){
  '<div class="tabs">'+["All","Equipment","Materials"].map(t=>'<button class="'+(bagTab===t?"active":"")+'" onclick="bagTab=\''+t+'\';render()">'+t+'</button>').join("")+'</div>'+
  '<div class="grid-items">'+(entryButtons||'<p class="notice">'+(bagTab==="Materials"?"No materials collected yet.":"No items in your bag yet. Drops appear here while you fight.")+'</p>')+'</div>'+detail;
 }
-function build(){
- return `${title("Build","Paladin · Oathkeeper",'<span class="pill">PRESET 1</span>')}
- <div class="card"><div class="card-head"><div><div class="eyebrow">ACTIVE CLASS</div><h2 style="font:700 19px Georgia;margin-top:3px">Paladin</h2></div><button class="action secondary" onclick="toast('Class selection opened')">CHANGE</button></div><div class="tabs"><button class="active">Oathkeeper</button><button onclick="toast('Bulwark specialization selected')">Bulwark</button><button onclick="toast('Sunwarden specialization selected')">Sunwarden</button></div><div class="sub">A frontline fighter who turns holy power into reliable automatic attacks.</div></div>
- <div class="card"><div class="card-head"><h2>Automatic abilities</h2><span class="sub">3 active</span></div><div class="skill-list">
-  <div class="skill"><div class="skill-icon">✦</div><div><b>Judgment</b><p>Holy strike · damages the current target</p></div><span class="level">LV 8</span></div>
-  <div class="skill"><div class="skill-icon" style="color:#8bd0de;background:#1d3037">❄</div><div><b>Frost Sigil</b><p>Cold burst · slows enemies briefly</p></div><span class="level">LV 6</span></div>
-  <div class="skill"><div class="skill-icon" style="color:#e79561;background:#382721">✹</div><div><b>Ember Volley</b><p>Fire bolts · bonus against weakened foes</p></div><span class="level">LV 5</span></div>
- </div></div>
- <div class="card"><div class="card-head"><h2>Skill path</h2><span class="sub">Next point at level 19</span></div><div class="tree"><div class="node">✦</div><div class="connector"></div><div class="node">⚔</div><div class="connector"></div><div class="node">✹</div><div class="connector"></div><div class="node lock">✧</div></div><div class="sub">Oath → Verdict → Ashen Flame → locked</div></div>
- <div class="card"><div class="card-head"><h2>Loadout presets</h2><button class="action secondary" onclick="toast('Preset saved')">SAVE</button></div><div class="tabs"><button class="active">1 · Oathkeeper</button><button onclick="toast('Preset 2 selected')">2 · Farming</button><button onclick="toast('Preset 3 selected')">3 · Boss</button></div></div>
- <p class="notice">Build screen is a visual reconstruction. Names, values, and skill controls are examples.</p>`;
+function buildAction(type,args){
+ const error=SIM.doAction(game,{type,...args});
+ toast(error||"Build updated.");
+ render();
 }
+function build(){
+ const g=game,C=SIM.CLASSES[g.hero.cls],av=SIM.availableSpells(g),offAv=av.filter(k=>SIM.SPELLS[k].kind==="off"),utilAv=av.filter(k=>SIM.SPELLS[k].kind==="util");
+ const offRows=g.bar.off.map((k,i)=>{
+  const used=g.bar.off.filter((x,j)=>x&&j!==i);
+  return '<div class="skill"><div class="skill-icon">⚔</div><div><label class="eyebrow">OFFENSIVE '+(i+1)+'</label><select onchange="buildAction(\'barOff\',{i:'+i+',k:this.value||null})"><option value="">Empty</option>'+offAv.filter(x=>!used.includes(x)).map(x=>'<option value="'+x+'" '+(x===k?'selected':'')+'>'+SIM.SPELLS[x].name+'</option>').join("")+'</select>'+ (k?'<p>'+SIM.SPELLS[k].text+' · '+SIM.fmt(SIM.SPELLS[k].cd,1)+'s cooldown</p>':'')+'</div><span class="level">'+(k?"ACTIVE":"EMPTY")+'</span></div>';
+ }).join("");
+ const utilRows=g.bar.util.map((u,i)=>{
+  const used=g.bar.util.filter((x,j)=>x&&j!==i).map(x=>x.k);
+  return '<div class="skill"><div class="skill-icon">✧</div><div><label class="eyebrow">UTILITY '+(i+1)+'</label><select onchange="buildAction(\'barUtil\',{i:'+i+',k:this.value||null})"><option value="">Empty</option>'+utilAv.filter(x=>!used.includes(x)).map(x=>'<option value="'+x+'" '+(u&&u.k===x?'selected':'')+'>'+SIM.SPELLS[x].name+'</option>').join("")+'</select>'+(u?'<select style="margin-top:5px" aria-label="Cast condition" onchange="buildAction(\'barCond\',{i:'+i+',cond:this.value})">'+Object.entries(SIM.CONDS).map(([cond,name])=>'<option value="'+cond+'" '+(u.cond===cond?'selected':'')+'>'+name+'</option>').join("")+'</select><p>'+SIM.SPELLS[u.k].text+'</p>':'')+'</div><span class="level">'+(u?"ACTIVE":"EMPTY")+'</span></div>';
+ }).join("");
+ const spec=g.hero.level<SIM.SPEC_LEVEL?'<p class="sub">Specialization unlocks at level '+SIM.SPEC_LEVEL+'.</p>':g.hero.spec==null?'<p class="sub">Choose your specialization. Your first choice is free.</p><div class="tabs">'+C.specs.map((s,i)=>'<button onclick="buildAction(\'spec\',{i:'+i+'})">'+s.name+'</button>').join("")+'</div>':(()=>{const s=C.specs[g.hero.spec];return '<div class="item-card"><div class="item-art">✦</div><div><b>'+s.name+'</b><small>'+s.text+'</small></div><button class="action secondary" onclick="buildSpecReset=true;render()">CHANGE</button></div>'+(window.buildSpecReset?'<div class="tabs">'+C.specs.map((sp,i)=>'<button onclick="buildSpecReset=false;buildAction(\'spec\',{i:'+i+'})" '+(g.hero.spec===i?'disabled':'')+'>'+sp.name+'</button>').join("")+'<button onclick="buildSpecReset=false;render()">CANCEL</button></div>':'')})();
+ const allocated=SIM.PASSIVE_KEYS.reduce((sum,k)=>sum+(g.hero.passives[k]||0),0);
+ const passives=SIM.PASSIVE_KEYS.map(k=>'<div class="skill"><div class="skill-icon">✧</div><div><b>'+SIM.PASSIVES[k].name+' <span class="level">· '+(g.hero.passives[k]||0)+'</span></b><p>'+SIM.PASSIVES[k].text+' per point</p></div><button class="action secondary" onclick="buildAction(\'passive\',{k:\''+k+'\'})" '+(!g.hero.points?'disabled':'')+'>+</button></div>').join("");
+ return title("Build",C.name+(C.evo&&g.hero.evo?" · "+C.evo.name:"")+" · Level "+g.hero.level,'<span class="pill">'+(g.hero.points||0)+' POINTS</span>')+
+ '<div class="card"><div class="card-head"><div><div class="eyebrow">ACTIVE CLASS</div><h2 style="font:700 19px Georgia;margin-top:3px">'+C.name+'</h2></div><span class="pill">LEVEL '+g.hero.level+'</span></div><div class="item-card"><div class="item-art">⚔</div><div><b>'+C.primary.name+' · Primary</b><small>'+C.primary.text+'</small></div></div>'+(C.evo&&g.hero.evo?'<div class="sub">'+C.evo.name+' · '+C.evo.text+'</div>':'')+'<div class="sub">'+C.blurb+'</div></div>'+
+ '<div class="card"><div class="card-head"><h2>Specialization</h2><span class="sub">'+(g.hero.spec==null?"UNSELECTED":'SELECTED')+'</span></div>'+spec+'</div>'+
+ '<div class="card"><div class="card-head"><h2>Automatic abilities</h2><span class="sub">'+av.length+' available</span></div><div class="skill-list">'+(offRows+utilRows||'<p class="sub">Your class spell '+SIM.SPELLS[C.spell].name+' unlocks at level '+SIM.CLASS_SPELL_LEVEL+'.</p>')+'</div></div>'+
+ '<div class="card"><div class="card-head"><h2>Passives</h2><span class="sub">'+(g.hero.points||0)+' unspent · '+allocated+' assigned</span></div><div class="skill-list">'+passives+'</div>'+(allocated?'<button class="action secondary" style="margin-top:9px" onclick="buildAction(\'passiveReset\',{})">RESET POINTS</button>':'')+'</div>'+
+ '<div class="card"><div class="card-head"><h2>Current attributes</h2><span class="sub">LIVE SIM TOTALS</span></div><div class="pair">'+["STR","DEX","INT"].map(k=>'<div class="stat"><small>'+k+'</small><b>'+SIM.fmt(g.stats.attr[k])+'</b></div>').join("")+'</div><div class="sub">Armor '+SIM.fmt(g.stats.armor)+' · Life '+SIM.fmt(g.stats.life)+' · Attack speed '+(1/g.stats.interval).toFixed(2)+'/s</div></div>';
+}
+
 function forge(){
  return `${title("Forge","Crafting · Upgrade · Salvage",'<span class="pill">FORGE 02</span>')}
  <div class="tabs">${["Upgrade","Craft","Salvage"].map(t=>`<button class="${forgeTab===t?"active":""}" onclick="forgeTab='${t}';render()">${t}</button>`).join("")}</div>
