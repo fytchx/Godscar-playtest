@@ -108,7 +108,8 @@ h2{font:700 13px/1.2 system-ui;margin:0}
 .toast{position:fixed;z-index:20;left:50%;bottom:86px;transform:translate(-50%,15px);opacity:0;pointer-events:none;padding:9px 13px;border-radius:10px;background:#e1c77f;color:#171410;font-size:11px;font-weight:800;transition:.2s}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 @media(min-width:700px){body{padding:24px 0}.app{min-height:calc(100vh - 48px);border-radius:18px;overflow:hidden}.bottom-nav{bottom:24px;border-radius:0 0 18px 18px}}
-.float-layer{position:absolute;inset:0;pointer-events:none;z-index:3;overflow:hidden}.float-damage{position:absolute;left:50%;top:43%;color:#ffe3a0;font:800 15px Georgia,serif;text-shadow:0 2px 4px #000;animation:float-up .95s ease-out forwards;white-space:nowrap}@keyframes float-up{to{opacity:0;transform:translateY(-44px)}}.status-chips{display:flex;gap:5px;flex-wrap:wrap;margin:8px 1px}.status-chip{border:1px solid #34404a;border-radius:99px;padding:3px 7px;background:#111820;color:#c5d0d4;font-size:9px}.status-chip.active{border-color:#80683b;color:#f1d98f}.hunt-card{padding:10px 12px}.death-reason{margin:0 0 9px;padding:7px 9px;border-left:2px solid var(--red);background:#261719;color:#f0b8ad;font-size:10px}.cast.locked{opacity:.62}</style>
+.float-layer{position:absolute;inset:0;pointer-events:none;z-index:3;overflow:hidden}.float-damage{position:absolute;left:50%;top:43%;color:#ffe3a0;font:800 15px Georgia,serif;text-shadow:0 2px 4px #000;animation:float-up .95s ease-out forwards;white-space:nowrap}@keyframes float-up{to{opacity:0;transform:translateY(-44px)}}.status-chips{display:flex;gap:5px;flex-wrap:wrap;margin:8px 1px}.status-chip{border:1px solid #34404a;border-radius:99px;padding:3px 7px;background:#111820;color:#c5d0d4;font-size:9px}.status-chip.active{border-color:#80683b;color:#f1d98f}.hunt-card{padding:10px 12px}.death-reason{margin:0 0 9px;padding:7px 9px;border-left:2px solid var(--red);background:#261719;color:#f0b8ad;font-size:10px}.cast.locked{opacity:.62}.slot.selected{border-color:#9d8046;background:#24231e}.slot small{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+</style>
 </head>
 <body>
 <div class="app">
@@ -186,29 +187,42 @@ function arena(){
   </div>
   <p class="notice">Visual reconstruction from the recorded UI direction. Combat values are illustrative.</p>`;
 }
-const slots=[
- ["♜","Helmet"],["⛨","Pauldrons"],["▰","Chest"],["◈","Gloves"],["◇","Belt"],["▥","Leggings"],
- ["⌑","Boots"],["◉","Ring I"],["◉","Ring II"],["✥","Amulet"],["⚔","Main hand"],["⬟","Off hand"]
-];
+const gearIcons={weapon:"⚔",offhand:"⬟",helm:"♜",chest:"▰",gloves:"◈",belt:"◇",legs:"▥",boots:"⌑",ring1:"◉",ring2:"◉",amulet:"✥"};
+const gearLabels={ring1:"Ring I",ring2:"Ring II"};
+const slots=SIM.EQUIP.map(k=>[gearIcons[k]||"◇",gearLabels[k]||SIM.SLOT_NAMES[k],k]);
+let gearSel="weapon";
+function selectGearSlot(key){gearSel=key;render()}
+function gearAction(type,id){
+ const error=SIM.doAction(game,{type,id});
+ toast(error|| (type==="upgrade"?"Item upgraded.":"Item unequipped."));
+ render();
+}
 function gear(){
- return `${title("Gear","Equipment · 12 / 12 equipped",'<span class="pill">OATHKEEPER</span>')}
- <div class="gear-layout">
-  <div class="gear-portrait"><svg width="105" height="130" viewBox="0 0 100 130" aria-label="Paladin portrait">
-   <path d="M33 20 50 7 68 20 73 41 65 53 75 64 84 114 65 121 50 94 36 121 16 114 26 64 36 53 27 41z" fill="#4f5a52" stroke="#b6a979" stroke-width="2"/>
-   <path d="M33 21 50 9 66 22 63 36 37 36z" fill="#8b8a71" stroke="#d0bc7b" stroke-width="2"/>
-   <path d="M36 51 50 45 65 52 69 76 50 87 31 76z" fill="#333d3b" stroke="#b1a77e" stroke-width="2"/>
-   <path d="M29 57 9 79 17 87 35 70zm37 0 21 15-5 10-22-13z" fill="#596158" stroke="#c2b480" stroke-width="2"/>
-   <path d="M51 49 51 81" stroke="#d6bd72" stroke-width="3"/>
-  </svg></div>
-  <div>
-   <div class="card" style="margin:0 0 7px"><div class="eyebrow">ARMOR</div><b style="font:700 19px Georgia">1,284</b><small style="display:block;color:var(--green)">+8% this set</small></div>
-   <div class="card" style="margin:0 0 7px"><div class="eyebrow">STRENGTH</div><b style="font:700 19px Georgia">146</b><small style="display:block;color:var(--green)">+12</small></div>
-   <div class="card" style="margin:0"><div class="eyebrow">VITALITY</div><b style="font:700 19px Georgia">212</b><small style="display:block;color:var(--green)">+18</small></div>
-  </div>
- </div>
- <div class="card" style="margin-top:9px"><div class="card-head"><h2>Equipment slots</h2><span class="sub">Select a slot to inspect</span></div><div class="equipment-grid">${slots.map((s,i)=>`<button class="slot" onclick="toast('${s[1]} slot selected')"><span class="slot-icon">${s[0]}</span><label>${s[1]}</label><small>${i===10?"Ashen Oath":i===11?"Bulwark":i%3===0?"Guard":"Vigor"}</small></button>`).join("")}</div></div>
- <div class="card"><div class="card-head"><h2>Loadout · Oathkeeper</h2><button class="action secondary" onclick="toast('Loadout selector opened')">MANAGE</button></div><div class="sub">4-piece Guard set bonus active</div></div>
- <p class="notice">Equipment art and numbers are illustrative. The reference screen used the same equipment-first layout.</p>`;
+ const g=game,C=SIM.CLASSES[g.hero.cls],S=g.stats,used=SIM.EQUIP.filter(k=>g.equip[k]).length,it=g.equip[gearSel];
+ const tiles=slots.map(([icon,label,key])=>{
+   const item=g.equip[key];
+   return '<button class="slot '+(gearSel===key?'selected':'')+'" onclick="selectGearSlot(\''+key+'\')"><span class="slot-icon">'+icon+'</span><label>'+label+'</label><small>'+(item?item.name:'Empty')+'</small></button>';
+ }).join("");
+ const lines=[];
+ if(it){
+   if(it.slot==="weapon"&&SIM.WEAPONS[it.base])lines.push(SIM.WEAPONS[it.base].name+" · "+SIM.fmt(it.dmg)+" base damage");
+   if(it.def)lines.push(SIM.fmt(it.def)+" base armor");
+   lines.push("Item level "+SIM.effIlvl(g,it)+" · "+SIM.RARITY_NAMES[it.rarity]+(it.plus?" · +"+it.plus:""));
+   for(const [key,value] of it.affixes||[])if(SIM.AFFIXES[key])lines.push(SIM.AFFIXES[key].label(value));
+   for(const key of it.augments||[])if(SIM.AUGMENTS[key])lines.push(SIM.AUGMENTS[key].name+" · "+SIM.AUGMENTS[key].text);
+   if(it.enchant){const en=SIM.ENCHANTS[it.enchant[0]];if(en)lines.push(en.label(it.enchant[1]))}
+ }
+ const cost=it?SIM.upgradeCost(it):0;
+ const activeSets=Object.entries(S.sets||{}).map(([key,n])=>SIM.SETS[key]?SIM.SETS[key].name+" · "+n+" piece"+(n===1?"":"s"):null).filter(Boolean);
+ return title("Gear","Equipment · "+used+" / "+SIM.EQUIP.length+" equipped",'<span class="pill">'+C.name.toUpperCase()+'</span>')+
+ '<div class="gear-layout"><div class="gear-portrait"><svg width="105" height="130" viewBox="0 0 100 130" aria-label="'+C.name+' portrait"><path d="M33 20 50 7 68 20 73 41 65 53 75 64 84 114 65 121 50 94 36 121 16 114 26 64 36 53 27 41z" fill="#4f5a52" stroke="#b6a979" stroke-width="2"/><path d="M33 21 50 9 66 22 63 36 37 36z" fill="#8b8a71" stroke="#d0bc7b" stroke-width="2"/><path d="M36 51 50 45 65 52 69 76 50 87 31 76z" fill="#333d3b" stroke="#b1a77e" stroke-width="2"/><path d="M29 57 9 79 17 87 35 70zm37 0 21 15-5 10-22-13z" fill="#596158" stroke="#c2b480" stroke-width="2"/><path d="M51 49 51 81" stroke="#d6bd72" stroke-width="3"/></svg></div><div>'+
+ '<div class="card" style="margin:0 0 7px"><div class="eyebrow">ARMOR</div><b style="font:700 19px Georgia">'+SIM.fmt(S.armor)+'</b><small style="display:block;color:var(--muted)">Including equipped gear</small></div>'+
+ '<div class="card" style="margin:0 0 7px"><div class="eyebrow">STRENGTH</div><b style="font:700 19px Georgia">'+SIM.fmt(S.attr.STR)+'</b><small style="display:block;color:var(--muted)">Current total</small></div>'+
+ '<div class="card" style="margin:0"><div class="eyebrow">LIFE</div><b style="font:700 19px Georgia">'+SIM.fmt(S.life)+'</b><small style="display:block;color:var(--muted)">Current maximum</small></div></div></div>'+
+ '<div class="card" style="margin-top:9px"><div class="card-head"><h2>Equipment slots</h2><span class="sub">'+used+' equipped · tap to inspect</span></div><div class="equipment-grid">'+tiles+'</div></div>'+
+ '<div class="card"><div class="card-head"><h2>'+SIM.SLOT_NAMES[gearSel]+' · '+(it?it.name:"Empty")+'</h2><span class="pill">'+(it?SIM.RARITY_NAMES[it.rarity].toUpperCase():"NO ITEM")+'</span></div>'+
+ (it?'<div class="sub">'+lines.join('<br>')+'</div><div class="row" style="display:flex;gap:7px;margin-top:10px">'+(it.plus<10?'<button class="action secondary" onclick="gearAction(\'upgrade\',\''+it.id+'\')" '+(g.mats.shards<cost?'disabled':'')+'>UPGRADE · '+cost+' SHARDS</button>':'<span class="sub">Fully upgraded</span>')+(gearSel!=="weapon"?'<button class="action secondary" onclick="gearAction(\'unequip\',\''+it.id+'\')">UNEQUIP</button>':'')+'</div>':'<div class="sub">No item equipped in this slot. Equip items from Bag.</div>')+
+ '<div class="sub" style="margin-top:9px">'+(activeSets.length?activeSets.join(' · '):"No equipment set bonuses active.")+'</div></div>';
 }
 const items=[
  ["⚔","Ashen Oath","Legendary sword","var(--gold)"],["⬟","Bulwark","Epic shield","var(--purple)"],["♜","Warden Helm","Rare helmet","var(--blue)"],["✥","Dawn Pendant","Rare amulet","var(--blue)"],
