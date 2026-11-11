@@ -86,7 +86,7 @@ h2{font:700 13px/1.2 system-ui;margin:0}
 .rarity{color:#d4b866!important}
 .grid-items{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
 .bag-item{aspect-ratio:1;border:1px solid #3c4650;border-radius:10px;background:linear-gradient(145deg,#202a34,#12171d);display:grid;place-items:center;font-size:21px;position:relative}
-.bag-item:after{content:"";position:absolute;bottom:5px;left:5px;right:5px;height:2px;background:var(--rarity,#8b9aa8);border-radius:2px}
+.bag-item.selected{border-color:#d1ad63;background:#25241e}.bag-item:after{content:"";position:absolute;bottom:5px;left:5px;right:5px;height:2px;background:var(--rarity,#8b9aa8);border-radius:2px}
 .skill-list{display:grid;gap:8px}
 .skill{display:grid;grid-template-columns:34px 1fr auto;gap:9px;align-items:center;padding:9px;border:1px solid #34404b;border-radius:10px;background:#161d24}
 .skill-icon{width:34px;height:34px;border-radius:9px;background:#2a3027;display:grid;place-items:center;color:#dfc274;font-size:17px}
@@ -139,7 +139,7 @@ const tabs=[
   {id:"build",name:"Build",icon:"✦"},
   {id:"forge",name:"Forge",icon:"⚒"}
 ];
-let active="fight", forgeTab="Upgrade", bagTab="All";
+let active="fight", forgeTab="Upgrade", bagTab="All", bagSelection=null;
 const nav=document.getElementById("nav"), screen=document.getElementById("screen");
 function toast(message){
   const t=document.getElementById("toast"); t.textContent=message; t.classList.add("show");
@@ -229,14 +229,50 @@ const items=[
  ["◈","Iron Grips","Uncommon gloves","#84a394"],["◇","Guard Belt","Rare belt","var(--blue)"],["✦","Blight Shard","Crafting material","#7ebd84"],["✹","Ember Core","Crafting material","#d8845e"],
  ["▥","Legplates","Uncommon legs","#84a394"],["⌑","Road Boots","Rare boots","var(--blue)"],["◉","Old Signet","Common ring","#a1aab1"],["✧","Rune Dust","Crafting material","#b48aba"]
 ];
+function selectBagItem(id){bagSelection=id;render()}
+function bagAction(type,id){
+ const it=game.bag.find(x=>x.id===id),name=it?it.name:"item",error=SIM.doAction(game,{type,id});
+ toast(error||({equip:"Equipped "+name,lock:"Lock updated",salvage:"Salvaged "+name}[type]||"Updated."));
+ if(type==="salvage"||type==="equip")bagSelection=null;
+ render();
+}
+function bagItemIcon(it){
+ if(it.slot==="weapon")return "⚔";
+ if(it.slot==="offhand")return "⬟";
+ const map={helm:"♜",chest:"▰",gloves:"◈",belt:"◇",legs:"▥",boots:"⌑",ring:"◉",amulet:"✥"};
+ return map[it.slot]||"◇";
+}
 function bag(){
- const filtered=bagTab==="All"?items:items.filter(i=>bagTab==="Equipment"?i[2].includes("sword")||i[2].includes("shield")||i[2].includes("helmet")||i[2].includes("amulet")||i[2].includes("gloves")||i[2].includes("belt")||i[2].includes("legs")||i[2].includes("boots")||i[2].includes("ring"):i[2].includes("material"));
- return `${title("Bag","Inventory · 46 / 80 slots",'<span class="pill">SORT: RARITY</span>')}
- <div class="card"><div class="card-head"><h2>Storage</h2><span class="sub">12,400 Gold</span></div><div class="pair"><div class="stat"><small>Equipment</small><b>28 / 80</b></div><div class="stat"><small>Materials</small><b>18 types</b></div></div></div>
- <div class="tabs">${["All","Equipment","Materials"].map(t=>`<button class="${bagTab===t?"active":""}" onclick="bagTab='${t}';render()">${t}</button>`).join("")}</div>
- <div class="grid-items">${filtered.map(i=>`<button class="bag-item" style="--rarity:${i[3]}" title="${i[1]}" onclick="toast('${i[1]} selected')">${i[0]}</button>`).join("")}</div>
- <div class="card" style="margin-top:11px"><div class="card-head"><h2>Selected item</h2><span class="pill">LEGENDARY</span></div><div class="item-card"><div class="item-art">⚔</div><div><b>Ashen Oath</b><small class="rarity">Main hand · Level 18</small></div></div><div class="pair"><div class="stat"><small>Attack</small><b>+248</b></div><div class="stat"><small>Affix</small><b>Fire damage</b></div></div></div>
- <p class="notice">Filters and item selection are clickable; item values are sample data.</p>`;
+ const g=game;
+ if(bagSelection&&!g.bag.some(x=>x.id===bagSelection))bagSelection=null;
+ const rarityColor={common:"#a1aab1",uncommon:"#84a394",rare:"var(--blue)",epic:"var(--purple)",legendary:"var(--gold)",ascended:"#e5a86b"};
+ const equipment=g.bag.slice().sort((a,b)=>(SIM.RANK[b.rarity]||0)-(SIM.RANK[a.rarity]||0)||b.ilvl-a.ilvl);
+ const mats=Object.entries(g.mats).filter(([,v])=>v>0).map(([key,value])=>({key,value,name:SIM.MAT_NAMES[key]||SIM.TYPE_NAMES[key]||key}));
+ const rows=bagTab==="Equipment"?equipment:bagTab==="Materials"?mats:equipment;
+ const selected=equipment.find(it=>it.id===bagSelection);
+ const material=bagSelection&&bagSelection.startsWith("mat:")?mats.find(x=>"mat:"+x.key===bagSelection):null;
+ const entryButtons=rows.map(row=>{
+   if(row.key)return '<button class="bag-item '+(bagSelection==="mat:"+row.key?"selected":"")+'" style="--rarity:#7ebd84" title="'+row.name+" · "+row.value+'" onclick="selectBagItem(\'mat:'+row.key+'\')">'+(row.key==="shards"?"✦":"◈")+'</button>';
+   return '<button class="bag-item '+(bagSelection===row.id?"selected":"")+'" style="--rarity:'+rarityColor[row.rarity]+'" title="'+row.name+'" onclick="selectBagItem(\''+row.id+'\')">'+bagItemIcon(row)+'</button>';
+ }).join("");
+ let detail='<div class="card" style="margin-top:11px"><div class="card-head"><h2>Selected item</h2><span class="pill">EMPTY</span></div><p class="sub">Choose an item to inspect it.</p></div>';
+ if(selected){
+   const facts=[SIM.SLOT_NAMES[selected.slot]||selected.slot,SIM.RARITY_NAMES[selected.rarity]||selected.rarity,"Item level "+SIM.effIlvl(g,selected)+(selected.plus?" · +"+selected.plus:"")];
+   if(selected.slot==="weapon"&&SIM.WEAPONS[selected.base])facts.push(SIM.WEAPONS[selected.base].name+" · "+SIM.fmt(selected.dmg)+" base damage");
+   if(selected.def)facts.push(SIM.fmt(selected.def)+" base armor");
+   if(selected.attr)facts.push("+"+SIM.fmt(selected.attr[1])+" "+selected.attr[0]);
+   for(const [k,v] of selected.affixes||[])if(SIM.AFFIXES[k])facts.push(SIM.AFFIXES[k].label(v));
+   for(const k of selected.augments||[])if(SIM.AUGMENTS[k])facts.push(SIM.AUGMENTS[k].name+" · "+SIM.AUGMENTS[k].text);
+   const value=SIM.salvageValue(selected),shards=SIM.salvageShards(selected);
+   detail='<div class="card" style="margin-top:11px"><div class="card-head"><h2>Selected item</h2><span class="pill">'+(SIM.RARITY_NAMES[selected.rarity]||selected.rarity).toUpperCase()+'</span></div><div class="item-card"><div class="item-art">'+bagItemIcon(selected)+'</div><div><b>'+selected.name+'</b><small>'+facts.slice(0,3).join(" · ")+'</small></div></div><div class="sub">'+facts.slice(3).join("<br>")+'</div><div class="row" style="display:flex;gap:7px;margin-top:9px"><button class="action secondary" onclick="bagAction(\'equip\',\''+selected.id+'\')">EQUIP</button><button class="action secondary" onclick="bagAction(\'lock\',\''+selected.id+'\')">'+(selected.locked?"UNLOCK":"LOCK")+'</button><button class="action secondary" '+(selected.locked?'disabled':'')+' onclick="bagAction(\'salvage\',\''+selected.id+'\')">SALVAGE · '+SIM.fmt(value)+'G'+(shards?" · "+shards+" SHARDS":"")+'</button></div></div>';
+ }else if(material){
+   detail='<div class="card" style="margin-top:11px"><div class="card-head"><h2>'+material.name+'</h2><span class="pill">MATERIAL</span></div><div class="item-card"><div class="item-art">✦</div><div><b>'+SIM.fmt(material.value)+'</b><small>Current amount</small></div></div></div>';
+ }
+ const count=Object.values(g.mats).filter(v=>v>0).length;
+ return title("Bag","Inventory · "+g.bag.length+" / "+SIM.BAG_CAP+" slots",'<span class="pill">SIM INVENTORY</span>')+
+ '<div class="card"><div class="card-head"><h2>Storage</h2><span class="sub">'+SIM.fmt(g.gold)+' Gold</span></div><div class="pair"><div class="stat"><small>Equipment</small><b>'+g.bag.length+' / '+SIM.BAG_CAP+'</b></div><div class="stat"><small>Materials</small><b>'+count+' types</b></div></div></div>'+
+ '<div class="tabs">'+["All","Equipment","Materials"].map(t=>'<button class="'+(bagTab===t?"active":"")+'" onclick="bagTab=\''+t+'\';render()">'+t+'</button>').join("")+'</div>'+
+ '<div class="grid-items">'+(entryButtons||'<p class="notice">'+(bagTab==="Materials"?"No materials collected yet.":"No items in your bag yet. Drops appear here while you fight.")+'</p>')+'</div>'+detail;
 }
 function build(){
  return `${title("Build","Paladin · Oathkeeper",'<span class="pill">PRESET 1</span>')}
