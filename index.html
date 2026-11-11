@@ -108,7 +108,7 @@ h2{font:700 13px/1.2 system-ui;margin:0}
 .toast{position:fixed;z-index:20;left:50%;bottom:86px;transform:translate(-50%,15px);opacity:0;pointer-events:none;padding:9px 13px;border-radius:10px;background:#e1c77f;color:#171410;font-size:11px;font-weight:800;transition:.2s}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 @media(min-width:700px){body{padding:24px 0}.app{min-height:calc(100vh - 48px);border-radius:18px;overflow:hidden}.bottom-nav{bottom:24px;border-radius:0 0 18px 18px}}
-</style>
+.float-layer{position:absolute;inset:0;pointer-events:none;z-index:3;overflow:hidden}.float-damage{position:absolute;left:50%;top:43%;color:#ffe3a0;font:800 15px Georgia,serif;text-shadow:0 2px 4px #000;animation:float-up .95s ease-out forwards;white-space:nowrap}@keyframes float-up{to{opacity:0;transform:translateY(-44px)}}.status-chips{display:flex;gap:5px;flex-wrap:wrap;margin:8px 1px}.status-chip{border:1px solid #34404a;border-radius:99px;padding:3px 7px;background:#111820;color:#c5d0d4;font-size:9px}.status-chip.active{border-color:#80683b;color:#f1d98f}.hunt-card{padding:10px 12px}.death-reason{margin:0 0 9px;padding:7px 9px;border-left:2px solid var(--red);background:#261719;color:#f0b8ad;font-size:10px}.cast.locked{opacity:.62}</style>
 </head>
 <body>
 <div class="app">
@@ -129,7 +129,8 @@ h2{font:700 13px/1.2 system-ui;margin:0}
 </div>
 <div class="toast" id="toast"></div>
 
-<script>
+<script>window.module={exports:{}};</script><script src="./sim.js"></script><script>
+const SIM=window.module.exports;
 const tabs=[
   {id:"fight",name:"Fight",icon:"⚔"},
   {id:"gear",name:"Gear",icon:"♜"},
@@ -170,19 +171,14 @@ function arena(){
     </svg>
    </div>
    <div class="arena-bottom">
-    <div class="hp-block"><div style="display:flex;justify-content:space-between;font-size:9px"><b>BLIGHTED HUSK</b><span style="color:#d4c28d">LV 12</span></div><div class="meter"><i style="width:61%"></i></div><small style="color:#9ca6ae;font-size:8px">6,100 / 10,000 HP</small></div>
-    <div style="text-align:right"><div class="eyebrow">LIVE DPS</div><div class="dps">8.4K</div></div>
+    <div class="hp-block"><div style="display:flex;justify-content:space-between;font-size:9px"><b>HUNT TARGET</b><span style="color:#d4c28d">LV 1</span></div><div class="meter"><i style="width:100%"></i></div><small style="color:#9ca6ae;font-size:8px">— / — HP</small></div>
+    <div style="text-align:right"><div class="eyebrow">LIVE DPS</div><div class="dps">0</div></div>
    </div>
   </div>
-  <div class="casts">
-   ${cast("Ember Volley","AUTO-CAST · FIRE","✹",72)}
-   ${cast("Frost Sigil","AUTO-CAST · COLD","❄",38,"frost")}
-   ${cast("Judgment","AUTO-CAST · HOLY","✦",16,"holy")}
-   ${cast("Weapon Strike","AUTO-ATTACK","⚔",61,"attack")}
-  </div>
+  <div class="casts"></div>
   <div class="card">
    <div class="card-head"><h2>Enemy details</h2><span class="pill">ELITE</span></div>
-   <div class="enemy-copy"><span>Regenerates slowly</span><span>Weak to Fire</span><span>Damage: Physical</span></div>
+   <div class="enemy-copy"><span></span></div>
   </div>
   <div class="pair">
    <div class="stat"><small>Experience</small><b>2,480 <span style="font-size:9px;color:var(--green)">+120</span></b></div>
@@ -258,6 +254,42 @@ function render(){
  screen.innerHTML=active==="fight"?arena():active==="gear"?gear():active==="bag"?bag():active==="build"?build():forge();
 }
 render();
+
+// Fight tab runtime data comes directly from the unchanged SIM_VERSION 7 core.
+const game=SIM.newGame("paladin",0,20261111),trail=[];
+let simTimer=null,lastFrame=performance.now(),xpGain=0,deathReason="";
+const baseRender=render;
+render=function(){baseRender();if(active==="fight")paintFight()};
+function setText(node,value){if(node)node.textContent=value}
+function setWidth(node,value){if(node)node.style.width=Math.max(0,Math.min(100,value))+"%"}
+function dpsNow(){while(trail.length&&trail[0].t<game.t-5)trail.shift();return trail.reduce((n,x)=>n+x.d,0)/(trail.length?Math.max(.5,Math.min(5,game.t-trail[0].t+.2)):1)}
+function popupDamage(n){const layer=document.querySelector(".arena .float-layer");if(!layer)return;const el=document.createElement("span");el.className="float-damage";el.textContent=SIM.fmt(n);layer.appendChild(el);setTimeout(()=>el.remove(),1000)}
+function paintFight(){
+ if(active!=="fight")return;
+ const root=document.querySelector("#screen .arena");if(!root)return;
+ if(!root.querySelector(".float-layer")){const f=document.createElement("div");f.className="float-layer";root.appendChild(f)}
+ let arenaTags=root.querySelectorAll(".arena-tag"),hpBlock=root.querySelector(".hp-block"),g=game,f=g.fight,M=SIM.mdef(g.target.key),m=f.mon,Z=SIM.ZONES[M.zone],C=SIM.CLASSES[g.hero.cls];
+ const ribbon=document.querySelector(".ribbon"),cells=ribbon?Array.from(ribbon.children):[];
+ if(cells.length>=3){cells[0].querySelector(".rib-label").textContent=C.name;cells[0].querySelector(".rib-value").textContent="Level "+g.hero.level;cells[1].querySelector(".rib-value").textContent=SIM.fmt(Math.max(0,f.hp||0))+" / "+SIM.fmt(g.stats.life);setWidth(cells[1].querySelector(".meter i"),100*Math.max(0,f.hp||0)/g.stats.life);cells[2].querySelector(".rib-label").textContent=Z.name+" · Stage "+g.target.level;cells[2].querySelector(".rib-value").textContent=SIM.fmt(g.gold)+" Gold";setWidth(cells[2].querySelector(".meter i"),100*g.hero.xp/SIM.xpToNext(g.hero.level))}
+ if(arenaTags[0])arenaTags[0].innerHTML=Z.name.toUpperCase()+"<br><span style='color:#e4ddd0;font-size:11px;letter-spacing:0'>STAGE "+g.target.level+"</span>";
+ if(arenaTags[1])arenaTags[1].innerHTML="<span style='font-size:8px'>BOSS SIGILS "+g.sigils+"</span><div class='meter'><i style='width:"+100*g.sigilProg/SIM.SIGIL_KILLS+"%'></i></div><span style='font-size:8px'>"+g.sigilProg+" / "+SIM.SIGIL_KILLS+"</span>";
+ if(hpBlock){const labels=hpBlock.querySelectorAll("b,span,small"),mtr=hpBlock.querySelector(".meter i"),max=m?m.max:M.hp*Math.pow(1.155,g.target.level-1)*Z.tough,hp=m?Math.max(0,m.hp):0;setText(labels[0],M.name.toUpperCase());setText(labels[1],"LV "+g.target.level);setText(labels[2],SIM.fmt(hp)+" / "+SIM.fmt(max)+" HP");setWidth(mtr,100*hp/max)}
+ const dpsEl=root.querySelector(".dps");setText(dpsEl,SIM.fmt(dpsNow()));
+ const skillbars=document.querySelector("#screen .casts");if(skillbars){const sk=C.spell,S=SIM.SPELLS[sk],unlocked=g.hero.level>=SIM.CLASS_SPELL_LEVEL,cd=f.cd[sk]||0,atk=100*(1-Math.max(0,f.pNext-g.t)/g.stats.interval),spellPct=unlocked?(cd<=g.t?100:100*(1-(cd-g.t)/S.cd)):0;
+ const rows=[{name:C.primary.name,label:"AUTO-ATTACK",icon:"⚔",pct:atk,klass:"attack",state:"ATTACK"},{name:S.name,label:unlocked?"AUTO-CAST · HOLY":"UNLOCKS AT LEVEL "+SIM.CLASS_SPELL_LEVEL,icon:"✦",pct:spellPct,klass:"holy",state:unlocked?(cd<=g.t?"READY":"COOLDOWN"):"LOCKED"}];
+ skillbars.innerHTML=rows.map(x=>'<div class="cast '+x.klass+(x.state==="LOCKED"?" locked":"")+'"><div class="cast-icon">'+x.icon+'</div><div><div class="cast-name">'+x.name+'</div><div class="cast-kind">'+x.label+'</div><div class="meter"><i style="width:'+Math.max(0,Math.min(100,x.pct))+'%"></i></div></div><b style="font-size:9px;color:#aeb8c0">'+(x.state==="LOCKED"?"LOCKED":SIM.fmt(x.pct)+"%")+"</b></div>").join("")}
+ let copy=document.querySelector("#screen .enemy-copy");const weak=Object.entries(M.res||{}).filter(([,v])=>v<0).map(([k])=>"Weak to "+SIM.TYPE_NAMES[k]),details=[M.regenPct?"Regenerates "+SIM.fmt(M.regenPct*100,1)+"% / sec":null,...weak,"Damage: "+SIM.TYPE_NAMES[M.dmgType]].filter(Boolean);if(copy)copy.innerHTML=details.map(x=>"<span>"+x+"</span>").join("");
+ let pill=document.querySelector("#screen .card .pill");if(pill)pill.textContent=M.blighted?"BLIGHTED":"HUNT";
+ let chips=document.querySelector("#screen .status-chips");if(!chips){chips=document.createElement("div");chips.className="status-chips";const c=document.querySelector("#screen .casts");c.parentNode.insertBefore(chips,c)}
+ let status=[];if(M.blighted)status.push(["Blighted",false]);if(M.regenPct)status.push(["Regenerates",false]);if(m&&m.burnUntil>g.t)status.push(["Burning",true]);if(m&&m.bleedUntil>g.t)status.push(["Bleeding",true]);if(m&&m.chillUntil>g.t)status.push(["Chilled ×"+m.chill,true]);if(m&&m.shockUntil>g.t)status.push(["Shocked",true]);if(f.shield>0)status.push(["Shield "+SIM.fmt(f.shield),true]);chips.innerHTML=status.map(([v,on])=>'<span class="status-chip '+(on?"active":"")+'">'+v+"</span>").join("");
+ let pairs=document.querySelectorAll("#screen .pair .stat");if(pairs.length){let xp=pairs[0],need=SIM.xpToNext(g.hero.level),meter=xp.querySelector(".meter i"),small=xp.querySelector("small:last-child");setText(xp.querySelector("b"),SIM.fmt(g.hero.xp)+" XP"+(xpGain?" (+"+SIM.fmt(xpGain)+")":""));setWidth(meter,100*g.hero.xp/need);setText(small,SIM.fmt(g.hero.xp)+" / "+SIM.fmt(need)+" to level "+(g.hero.level+1));setText(pairs[1].querySelector("b"),M.mat?(SIM.MAT_NAMES[M.mat]||M.mat):"Scar Shards")}
+ let hunt=document.querySelector("#screen .hunt-card");if(!hunt){hunt=document.createElement("div");hunt.className="card hunt-card";const enemyCard=document.querySelector("#screen .card");enemyCard.insertAdjacentElement("afterend",hunt)}
+ hunt.innerHTML="<div class='card-head'><h2>Current hunt</h2><span class='sub'>"+(g.life.kills||0)+" kills · "+(g.life.deaths||0)+" deaths</span></div><b>"+M.name+" · "+Z.name+" · Stage "+g.target.level+"</b><div class='sub'>"+M.note+"</div>";
+ let dr=document.querySelector("#screen .death-reason");if(!dr){dr=document.createElement("p");dr.className="death-reason";hunt.insertAdjacentElement("afterend",dr)}setText(dr,deathReason);dr.hidden=!deathReason;
+}
+function simTick(){const now=performance.now(),dt=Math.min(1.25,Math.max(0,(now-lastFrame)/1000));lastFrame=now;if(dt){const prev=game.fight.mon&&game.fight.mon.key,out=SIM.emptyOut();SIM.advance(game,game.t+dt,out,(message,kind)=>{if(kind==="death"){const M=SIM.mdef(game.target.key);deathReason="Slain by "+M.name+" · "+SIM.TYPE_NAMES[M.dmgType]+" damage."}});xpGain=out.xp||0;if(out.dmgDealt){trail.push({t:game.t,d:out.dmgDealt});popupDamage(out.dmgDealt)}if(out.deaths&&!deathReason){const M=SIM.mdef(prev||game.target.key);deathReason="Slain by "+M.name+" · "+SIM.TYPE_NAMES[M.dmgType]+" damage."}}paintFight()}
+simTimer=setInterval(simTick,180);paintFight();
+
 </script>
 </body>
 </html>
