@@ -139,7 +139,7 @@ const tabs=[
   {id:"build",name:"Build",icon:"✦"},
   {id:"forge",name:"Forge",icon:"⚒"}
 ];
-let active="fight", forgeTab="Upgrade", bagTab="All", bagSelection=null, buildSpecReset=false;
+let active="fight", forgeTab="Upgrade", bagTab="All", bagSelection=null, buildSpecReset=false, forgeSel="weapon", forgeCraftSlot="weapon", forgeRarity="common", forgeIlvl=1, forgeBase="", forgeSalvage=[];
 const nav=document.getElementById("nav"), screen=document.getElementById("screen");
 function toast(message){
   const t=document.getElementById("toast"); t.textContent=message; t.classList.add("show");
