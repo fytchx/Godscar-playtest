@@ -432,7 +432,7 @@ function drawZonePanel(){
  select.innerHTML=zoneNames.map(z=>'<option value="'+z+'" '+(z===browseName?'selected':'')+'>'+z+'</option>').join("");
  const rows=zones[browseName].map(e=>{
   const checked=selectedIds.includes(e.id),activeZone=activeEnemies()[0]?.zone;
-  return '<article class="enemy-option '+(checked?'chosen ':'')+(e.locked?'locked':'')+'"><div class="enemy-option-top"><div><div class="enemy-option-name">'+e.name+'</div><div class="enemy-option-meta">'+e.kind+'</div></div>'+(e.locked?'<span class="lock-mark">🔒 LOCKED</span>':'<label class="check-wrap"><input type="checkbox" '+(checked?'checked':'')+' onchange="toggleEnemy(\\''+e.id+'\\')"> '+(checked?'SELECTED':'SELECT')+'</label>')+'</div><div class="enemy-detail-line"><span class="type-chip">'+e.status+' · '+e.type+'</span><span class="weak-chip">Weak to '+e.weak.join(', ')+'</span></div><div class="enemy-detail-line">Potential drop: <strong>'+e.drop+'</strong>'+(activeZone&&activeZone!==browseName&&!checked?' · Select to move hunt here':'')+'</div></article>';
+  return '<article class="enemy-option '+(checked?'chosen ':'')+(e.locked?'locked':'')+'"><div class="enemy-option-top"><div><div class="enemy-option-name">'+e.name+'</div><div class="enemy-option-meta">'+e.kind+'</div></div>'+(e.locked?'<span class="lock-mark">🔒 LOCKED</span>':'<label class="check-wrap"><input type="checkbox" '+(checked?'checked':'')+' onchange="toggleEnemy(\''+e.id+'\')"> '+(checked?'SELECTED':'SELECT')+'</label>')+'</div><div class="enemy-detail-line"><span class="type-chip">'+e.status+' · '+e.type+'</span><span class="weak-chip">Weak to '+e.weak.join(', ')+'</span></div><div class="enemy-detail-line">Potential drop: <strong>'+e.drop+'</strong>'+(activeZone&&activeZone!==browseName&&!checked?' · Select to move hunt here':'')+'</div></article>';
  }).join("");
  document.getElementById("enemyOptions").innerHTML=rows;
 }
@@ -463,7 +463,7 @@ function renderFeed(){
  list.innerHTML=feedEvents.filter(e=>filters[e.type]).map(e=>'<div class="event '+e.type+'"><span class="event-icon">'+e.icon+'</span><span class="event-text">'+e.text+'</span><span class="event-time">'+e.time+'</span></div>').join("");
 }
 function drawFilterPanel(){
- document.getElementById("filterOptions").innerHTML=Object.keys(filterNames).map(k=>'<label class="filter-option">'+filterNames[k]+'<input type="checkbox" '+(filters[k]?'checked':'')+' onchange="filters[\\''+k+'\\']=this.checked;renderFeed()"></label>').join("");
+ document.getElementById("filterOptions").innerHTML=Object.keys(filterNames).map(k=>'<label class="filter-option">'+filterNames[k]+'<input type="checkbox" '+(filters[k]?'checked':'')+' onchange="filters[\''+k+'\']=this.checked;renderFeed()"></label>').join("");
 }
 function toggleDetails(){
  const box=document.getElementById("detailsCard"),button=document.getElementById("detailsButton");
