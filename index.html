@@ -2,380 +2,515 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Godscar — Full UI Preview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#10171b">
+<title>Godscar · Home</title>
 <style>
 :root{
-  color-scheme:dark; --bg:#0b0e12; --panel:#141a21; --panel2:#1a222c; --line:#303a46;
-  --text:#e7e2d7; --muted:#8d98a5; --gold:#d1ad63; --red:#c64b4d; --blue:#6c9db5;
-  --green:#71a77d; --purple:#ab85bb; --shadow:0 18px 50px #0008;
+  /* Replaceable visual tokens: keep layout and game-specific source colors independent. */
+  color-scheme:dark;
+  --page:#0d1317; --surface:#141d22; --surface-raised:#1a272d; --surface-soft:#111a1f;
+  --line:#304047; --line-soft:#27363d; --text:#e8ece9; --muted:#9ba9a9; --quiet:#6f8183;
+  --accent:#c9b98c; --accent-soft:#c9b98c33; --good:#91c3a4; --danger:#dd8e8b;
+  --physical:#b5ad95; --bleed:#bf5055; --fire:#ed884d; --holy:#f2d17e;
+  --frost:#84c8e8; --arcane:#be82ff; --shadow:#7650a3; --poison:#9de34d;
+  --radius:16px; --shadow:0 18px 52px #0008;
 }
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at 50% -20%,#29313a 0,#10151b 48%,#090c10 100%);font:14px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;color:var(--text);min-height:100vh}
-button{font:inherit;color:inherit;cursor:pointer}
-.app{width:min(100%,460px);min-height:100vh;margin:auto;background:linear-gradient(#11161c,#0d1116);border-inline:1px solid #252d36;box-shadow:var(--shadow);padding-bottom:90px;position:relative}
-header{padding:18px 18px 12px;display:flex;align-items:center;justify-content:space-between}
-.brand{font:700 18px/1 Georgia,serif;letter-spacing:.16em;color:#eee4cd}
-.brand small{display:block;color:var(--muted);font:600 9px/1.5 system-ui;letter-spacing:.22em;margin-top:5px}
-.head-actions{display:flex;gap:8px}
-.icon-btn{border:1px solid var(--line);background:#151b22;border-radius:10px;width:36px;height:36px;color:var(--gold)}
-.ribbon{margin:0 14px 14px;padding:10px 12px;border:1px solid var(--line);border-radius:13px;background:linear-gradient(110deg,#19212a,#12171e);display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-.rib-label,.eyebrow{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700}
-.rib-value{font-size:12px;font-weight:700;margin-top:2px}
-.meter{height:6px;background:#303943;border-radius:8px;overflow:hidden;margin-top:5px}
-.meter i{display:block;height:100%;border-radius:inherit;background:var(--red)}
-.meter.blue i{background:var(--blue)} .meter.gold i{background:var(--gold)}
-.content{padding:0 14px}
-.title-row{display:flex;justify-content:space-between;align-items:end;margin:8px 2px 12px}
-h1{font:700 20px/1.1 Georgia,serif;letter-spacing:.02em;margin:0}
-h2{font:700 13px/1.2 system-ui;margin:0}
-.sub{color:var(--muted);font-size:11px;margin-top:4px}
-.pill{border:1px solid #51482f;background:#211e17;color:var(--gold);font-size:9px;font-weight:800;letter-spacing:.1em;padding:5px 8px;border-radius:99px}
-.card{border:1px solid var(--line);background:linear-gradient(140deg,#18212a,#12171e);border-radius:14px;padding:12px;margin-bottom:10px}
-.card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
-.arena{aspect-ratio:1/1;border:1px solid #47515a;border-radius:15px;position:relative;overflow:hidden;background:
- radial-gradient(ellipse at 51% 52%,#27322e 0,#1b2423 32%,transparent 68%),
- linear-gradient(180deg,#26313a 0%,#192127 47%,#10151a 100%);box-shadow:inset 0 0 60px #0008}
-.arena:before{content:"";position:absolute;inset:0;background:
- radial-gradient(ellipse at 50% 100%,#a27e3c16 0 28%,transparent 58%),
- repeating-linear-gradient(168deg,transparent 0 32px,#d0c59d08 33px 34px);opacity:.9}
-.arena-top{position:absolute;left:12px;right:12px;top:11px;z-index:2;display:flex;justify-content:space-between;align-items:flex-start}
-.arena-tag{background:#0c1116bd;border:1px solid #69705b66;border-radius:8px;padding:6px 8px;font-size:9px;letter-spacing:.11em;color:#d5c28d}
-.inscription{width:115px}
-.inscription .meter{height:4px;background:#45483e}
-.inscription .meter i{background:linear-gradient(90deg,#d6b66a,#897145)}
-.enemy-wrap{position:absolute;inset:21% 14% 18%;display:grid;place-items:center}
-.enemy-glow{position:absolute;width:75%;height:68%;border-radius:50%;background:radial-gradient(ellipse,#b3443528,transparent 68%);filter:blur(5px)}
-.enemy{width:76%;height:100%;max-height:285px;position:relative;filter:drop-shadow(0 9px 12px #0009)}
-.arena-bottom{position:absolute;bottom:10px;left:12px;right:12px;display:flex;align-items:end;justify-content:space-between;z-index:2}
-.hp-block{width:54%;background:#0c1116d9;border:1px solid #48525a;border-radius:9px;padding:7px 9px}
-.hp-block .meter{height:7px}
-.dps{font:700 16px/1 Georgia,serif;color:#f0d38e;text-shadow:0 1px #000}
-.casts{display:grid;gap:6px;margin:10px 0}
-.cast{display:grid;grid-template-columns:22px 1fr auto;align-items:center;gap:8px;background:#151b21;border:1px solid #303943;border-radius:10px;padding:7px 9px}
-.cast-icon{width:20px;height:20px;border-radius:6px;display:grid;place-items:center;background:#382923;color:#e68a62;font-size:12px}
-.cast.frost .cast-icon{background:#1b3039;color:#8ccde1}
-.cast.holy .cast-icon{background:#3a3321;color:#ebd184}
-.cast.attack .cast-icon{background:#252a30;color:#aab4bc}
-.cast-name{font-size:11px;font-weight:700}
-.cast-kind{font-size:9px;color:var(--muted)}
-.cast .meter{height:4px;margin-top:4px;background:#303943}
-.cast .meter i{background:linear-gradient(90deg,#b95d48,#e79561)}
-.cast.frost .meter i{background:linear-gradient(90deg,#4c91aa,#8bd0de)}
-.cast.holy .meter i{background:linear-gradient(90deg,#a88945,#edd28b)}
-.cast.attack .meter i{background:#75818a}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.stat{padding:9px;border-radius:10px;background:#11171d;border:1px solid #2d3741}
-.stat b{display:block;font-size:14px}.stat small{color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.08em}
-.enemy-copy{font-size:11px;color:#bbc3c8;display:flex;gap:8px;flex-wrap:wrap}
-.enemy-copy span{border:1px solid #34404a;border-radius:99px;padding:4px 7px;background:#111820}
-.tabs{display:flex;gap:6px;overflow:auto;padding-bottom:2px;margin-bottom:11px;scrollbar-width:none}
-.tabs button{white-space:nowrap;border:1px solid var(--line);background:#12181f;border-radius:8px;padding:7px 10px;color:var(--muted);font-size:10px;font-weight:700}
-.tabs button.active{color:var(--gold);border-color:#78643b;background:#272319}
-.equipment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
-.slot{min-height:74px;border:1px solid #36414b;border-radius:11px;background:linear-gradient(145deg,#202a34,#151b22);padding:8px;display:flex;flex-direction:column;justify-content:space-between}
-.slot .slot-icon{font-size:22px;color:#c5b27f;line-height:1}
-.slot label{font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:#aeb7bf}
-.slot small{font-size:8px;color:#d6c18a}
-.gear-layout{display:grid;grid-template-columns:1fr 1.05fr;gap:8px}
-.gear-portrait{border:1px solid #46505b;border-radius:12px;min-height:154px;background:radial-gradient(ellipse at 50% 35%,#536052 0,#28302e 42%,#151b20 75%);display:grid;place-items:center;position:relative;overflow:hidden}
-.gear-portrait:after{content:attr(data-label);position:absolute;bottom:8px;color:#c9c3b3;font-size:8px;letter-spacing:.12em}
-.item-card{display:flex;align-items:center;gap:10px;padding:9px;border:1px solid #35404a;background:#161d24;border-radius:10px;margin-bottom:7px}
-.item-art{width:38px;height:38px;border-radius:9px;background:#28251d;border:1px solid #685a36;display:grid;place-items:center;color:#ddc47c;font-size:19px;flex:none}
-.item-card b{font-size:11px;display:block}.item-card small{font-size:9px;color:var(--muted)}
-.rarity{color:#d4b866!important}
-.grid-items{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
-.bag-item{aspect-ratio:1;border:1px solid #3c4650;border-radius:10px;background:linear-gradient(145deg,#202a34,#12171d);display:grid;place-items:center;font-size:21px;position:relative}
-.bag-item.selected{border-color:#d1ad63;background:#25241e}.bag-item:after{content:"";position:absolute;bottom:5px;left:5px;right:5px;height:2px;background:var(--rarity,#8b9aa8);border-radius:2px}
-.skill-list{display:grid;gap:8px}
-.skill{display:grid;grid-template-columns:34px 1fr auto;gap:9px;align-items:center;padding:9px;border:1px solid #34404b;border-radius:10px;background:#161d24}
-.skill-icon{width:34px;height:34px;border-radius:9px;background:#2a3027;display:grid;place-items:center;color:#dfc274;font-size:17px}
-.skill p{margin:2px 0 0;color:var(--muted);font-size:9px}
-.level{font-size:9px;color:var(--gold);font-weight:800}
-.tree{display:flex;align-items:center;justify-content:space-around;padding:10px 4px}
-.node{width:39px;height:39px;border-radius:50%;border:1px solid #5b5138;background:#28251d;display:grid;place-items:center;color:#dbc47f}
-.node.lock{border-color:#34404b;background:#171d24;color:#65717c}
-.connector{height:1px;background:#55492e;flex:1}
-.costs{display:flex;gap:8px}.cost{flex:1;border:1px solid #36404a;border-radius:9px;padding:8px;background:#11171d;text-align:center;font-size:10px;color:#d9c47d}
-.action{border:1px solid #80683b;background:linear-gradient(#4d4028,#302819);color:#f0d891;border-radius:9px;padding:9px 12px;font-size:10px;font-weight:800;letter-spacing:.08em}
-.action:active{transform:translateY(1px)}
-.action.secondary{background:#161d24;border-color:#394550;color:#c0c9cf}
-.notice{font-size:9px;color:#87929b;padding:3px 2px}
-.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,460px);padding:9px 8px calc(9px + env(safe-area-inset-bottom));background:#0d1218f2;border-top:1px solid #303943;display:grid;grid-template-columns:repeat(5,1fr);z-index:10;backdrop-filter:blur(12px)}
-.bottom-nav button{border:0;background:transparent;color:#84909c;display:grid;justify-items:center;gap:3px;padding:4px 0;font-size:9px;font-weight:700}
-.bottom-nav button.active{color:var(--gold)}
-.nav-icon{font-size:17px;line-height:1}
-.toast{position:fixed;z-index:20;left:50%;bottom:86px;transform:translate(-50%,15px);opacity:0;pointer-events:none;padding:9px 13px;border-radius:10px;background:#e1c77f;color:#171410;font-size:11px;font-weight:800;transition:.2s}
+html{background:var(--page);scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 50% -24%,#39494b 0,#172126 36%,var(--page) 76%);color:var(--text);font:14px/1.42 system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+button,select,input{font:inherit;color:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.42;cursor:default}
+.app{width:min(100%,480px);min-height:100vh;margin:auto;padding:0 14px 104px;background:linear-gradient(180deg,#121b1fdd,#0f171bfa);border-inline:1px solid #29383e;box-shadow:var(--shadow);position:relative}
+header{min-height:69px;padding:12px 2px 13px;display:grid;grid-template-columns:1fr 42px;align-items:center;gap:10px;position:relative}
+.identity{display:flex;align-items:center;gap:10px;min-width:0}
+.class-mark{width:37px;height:37px;flex:none;color:var(--accent);filter:drop-shadow(0 3px 7px #c8b98b24)}
+.identity-copy{min-width:0}
+.name-line{display:flex;align-items:baseline;gap:7px;min-width:0}
+.player-name{font:700 17px/1 Georgia,serif;letter-spacing:.02em}
+.level-tag{color:var(--accent);font-size:10px;font-weight:800;letter-spacing:.09em;white-space:nowrap}
+.class-name{margin-top:4px;color:var(--muted);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.settings-button{width:38px;height:38px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(145deg,#202d31,#151f23);display:grid;place-items:center;color:var(--accent)}
+.settings-button svg{width:18px;height:18px}
+.xp-rail{position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:9px;overflow:hidden;background:#344247}
+.xp-rail i{display:block;width:37%;height:100%;background:linear-gradient(90deg,#8b9e8c,var(--accent));box-shadow:0 0 8px #e1d3a070}
+.healthline{padding:7px 0 4px;display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center}
+.health-title{font-size:9px;color:var(--muted);letter-spacing:.12em;font-weight:800}
+.health-value{font-size:10px;font-variant-numeric:tabular-nums;color:#d6e0d9}
+.health-track{height:7px;border:1px solid #40524c;background:#202e2c;border-radius:9px;overflow:hidden}
+.health-track i{display:block;width:86%;height:100%;background:linear-gradient(90deg,#579579,#a6d2a2);border-radius:inherit}
+.zone-line{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 1px 8px}
+.zone-button{border:0;padding:2px 0;background:transparent;display:flex;align-items:center;gap:7px;text-align:left}
+.zone-button .zone-label{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.13em;font-weight:800}
+.zone-button strong{font:700 15px/1.1 Georgia,serif;letter-spacing:.01em}
+.chevron{width:13px;height:13px;color:var(--accent);margin-left:2px;transition:transform .2s}
+.zone-button:hover .chevron{transform:translateY(2px)}
+.rotation-pill{flex:none;border:1px solid #3c4c4d;background:#172226;border-radius:99px;padding:5px 9px;color:#cad4d0;font-size:9px;font-weight:800;letter-spacing:.08em;font-variant-numeric:tabular-nums}
+.arena{
+  --source-color:var(--holy); position:relative;isolation:isolate;overflow:hidden;
+  width:100%;aspect-ratio:10 / 11;border:1px solid #526365;border-radius:19px;
+  background:radial-gradient(ellipse at 50% 46%,#435653 0,#283b3b 37%,#1b2b30 70%,#152127 100%);
+  box-shadow:inset 0 0 55px #081114aa,0 10px 28px #0005;
+}
+.arena:before{content:"";position:absolute;inset:0;z-index:-1;background:
+ radial-gradient(ellipse at 18% 88%,#b2a67820 0 9%,transparent 25%),
+ radial-gradient(ellipse at 84% 78%,#7a988b26 0 12%,transparent 29%),
+ linear-gradient(177deg,#9eb6a313,transparent 37%,#070f1190 100%),
+ repeating-linear-gradient(168deg,transparent 0 37px,#d8ded208 38px 39px);
+}
+.biome-slot{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.biome-label{position:absolute;right:10px;top:10px;border:1px solid #9aab9e55;border-radius:8px;background:#0d17198f;padding:5px 7px;color:#c4d0c6;font-size:7px;letter-spacing:.15em;font-weight:800}
+.scene-vignette{position:absolute;inset:0;background:linear-gradient(90deg,#08111344,transparent 24%,transparent 76%,#08111355),linear-gradient(0deg,#09111490,transparent 33%,#09111435)}
+.cast-stack{position:absolute;z-index:4;top:10px;left:9px;width:min(55%,218px);display:grid;gap:3px}
+.cast-row{--type:var(--fire);position:relative;display:grid;grid-template-columns:19px minmax(0,1fr);grid-template-rows:16px 2px;align-items:center;column-gap:6px;padding:2px 7px 3px 3px;overflow:hidden;border-radius:5px;background:linear-gradient(90deg,#0b1417bf 0,#0b14178b 75%,transparent);mask-image:linear-gradient(90deg,#000 0 83%,#0009 95%,transparent 100%)}
+.cast-row .skill-icon{grid-column:1;grid-row:1;display:grid;place-items:center;font-size:12px;color:var(--type)}
+.cast-row strong{grid-column:2;grid-row:1;font-size:9px;line-height:1;color:#e4e9e6;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 4px #000}
+.cast-track{grid-column:1 / -1;grid-row:2;height:2px;background:linear-gradient(90deg,#c0d0c633,#c0d0c60b 78%,transparent);overflow:hidden;border-radius:99px}
+.cast-track i{display:block;width:var(--progress,68%);height:100%;background:linear-gradient(90deg,var(--type),color-mix(in srgb,var(--type),white 32%));mask-image:linear-gradient(90deg,#000 45%,#0009 73%,transparent 100%);filter:drop-shadow(0 0 3px color-mix(in srgb,var(--type),transparent 50%));animation:cast-cycle var(--cast-time,3s) linear infinite;animation-delay:var(--offset,0s)}
+@keyframes cast-cycle{from{width:0}to{width:100%}}
+.cast-row.physical{--type:var(--physical)} .cast-row.fire{--type:var(--fire)} .cast-row.holy{--type:var(--holy)} .cast-row.frost{--type:var(--frost)} .cast-row.arcane{--type:var(--arcane)} .cast-row.shadow{--type:var(--shadow)} .cast-row.poison{--type:var(--poison)} .cast-row.bleed{--type:var(--bleed)}
+.attack-row{opacity:.72;padding-top:3px;border-top:1px solid #cad2cf20;margin-top:2px}
+.attack-row .skill-icon{font-size:10px;color:var(--physical)}
+.attack-row strong{font-size:8px;color:#c5ccc8;font-weight:500}
+.attack-row .cast-track{height:1px;background:linear-gradient(90deg,#b7ad9655,transparent)}
+.attack-row .cast-track i{background:linear-gradient(90deg,#a79d85,#d2c6a477)}
+.effect-row{position:absolute;right:8px;top:12px;z-index:4;display:grid;gap:4px;justify-items:end;max-width:40%}
+.effect-chip{--type:var(--fire);display:flex;align-items:center;gap:4px;padding:3px 6px;border:1px solid color-mix(in srgb,var(--type),transparent 58%);border-radius:99px;background:#0e1719a8;color:color-mix(in srgb,var(--type),white 20%);font-size:8px;font-weight:750;box-shadow:0 2px 7px #0003;white-space:nowrap}
+.effect-chip.fire{--type:var(--fire)} .effect-chip.frost{--type:var(--frost)} .effect-chip.poison{--type:var(--poison)} .effect-chip.bleed{--type:var(--bleed)} .effect-chip.holy{--type:var(--holy)} .effect-chip.shadow{--type:var(--shadow)}
+.enemy-art-slot{--source-color:var(--holy);position:absolute;z-index:2;left:50%;top:47%;transform:translate(-50%,-50%);width:36%;height:48%;min-height:145px;max-height:220px;border:1px dashed #c6d1c477;border-radius:15px;background:linear-gradient(180deg,#d0d5c814,#10191b18);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#d0d8d2;transition:box-shadow .15s,border-color .15s}
+.enemy-emblem{width:50px;height:75px;display:grid;place-items:center;position:relative;color:#ccd3c8aa}
+.enemy-emblem:before{content:"";position:absolute;width:38px;height:65px;border:1px solid #d0d6ca49;border-radius:46% 46% 32% 32%;background:linear-gradient(160deg,#d9dec818,#82998d12 55%,transparent);clip-path:polygon(50% 0,90% 16%,82% 68%,50% 100%,18% 68%,10% 16%)}
+.enemy-emblem svg{width:31px;height:42px;opacity:.65}
+.art-label{text-align:center;color:#bdc8c0;font-size:7px;line-height:1.35;letter-spacing:.15em;font-weight:800;text-shadow:0 1px 5px #000}
+.enemy-glow{position:absolute;z-index:1;left:50%;top:49%;width:60%;height:36%;transform:translate(-50%,-50%);background:radial-gradient(ellipse,#b8c5aa2a,transparent 68%);filter:blur(10px);pointer-events:none}
+.enemy-art-slot.hit{animation:impact .2s ease-out;border-color:var(--source-color);box-shadow:0 0 21px color-mix(in srgb,var(--source-color),transparent 48%),inset 0 0 23px color-mix(in srgb,var(--source-color),transparent 74%)}
+@keyframes impact{0%{filter:brightness(1.8);transform:translate(-50%,-50%) scale(1.03)}100%{filter:brightness(1);transform:translate(-50%,-50%) scale(1)}}
+.float-layer{position:absolute;inset:15% 18% 31%;z-index:5;pointer-events:none}
+.float-damage{--type:var(--fire);position:absolute;left:var(--x,58%);top:var(--y,46%);font:800 15px/1 Georgia,serif;color:var(--type);text-shadow:0 2px 4px #000,0 0 12px color-mix(in srgb,var(--type),transparent 45%);animation:float-up 1.15s ease-out forwards;white-space:nowrap}
+.float-damage.crit{font-size:21px;letter-spacing:.04em;-webkit-text-stroke:.25px #fff6}
+.float-damage.physical{--type:var(--physical)} .float-damage.fire{--type:var(--fire)} .float-damage.holy{--type:var(--holy)} .float-damage.frost{--type:var(--frost)} .float-damage.arcane{--type:var(--arcane)} .float-damage.shadow{--type:var(--shadow)} .float-damage.poison{--type:var(--poison)} .float-damage.bleed{--type:var(--bleed)}
+@keyframes float-up{0%{opacity:0;transform:translateY(11px) scale(.82)}15%{opacity:1;transform:translateY(0) scale(1)}78%{opacity:1}100%{opacity:0;transform:translateY(-29px) scale(1.06)}}
+.arena-bottom{position:absolute;z-index:5;left:10px;right:10px;bottom:10px;display:flex;align-items:end;gap:7px}
+.enemy-summary{min-width:0;flex:1;padding:7px 9px 6px;border:1px solid #82918c44;border-radius:11px;background:linear-gradient(90deg,#0b1415d9,#111a1bbf);box-shadow:0 4px 12px #0003}
+.enemy-summary-head{display:flex;align-items:baseline;justify-content:space-between;gap:5px}
+.enemy-summary strong{font:700 14px/1.1 Georgia,serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.enemy-kind{font-size:7px;color:#bac5bd;letter-spacing:.09em;white-space:nowrap}
+.enemy-health-numbers{display:flex;justify-content:space-between;gap:4px;margin-top:5px;color:#bfcac4;font-size:9px;font-variant-numeric:tabular-nums}
+.enemy-health-track{height:6px;margin-top:3px;border:1px solid #596660;background:#26302d;border-radius:9px;overflow:hidden}
+.enemy-health-track i{display:block;width:64%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#8d684c,#c7a16d);transition:width .3s}
+.dps-badge{flex:none;width:68px;padding:7px 7px 6px;border:1px solid #76827a66;border-radius:11px;background:linear-gradient(150deg,#1b2929ee,#111a1bee);text-align:right;box-shadow:0 4px 12px #0004}
+.dps-badge span{display:block;color:#aebbb5;font-size:7px;letter-spacing:.13em;font-weight:800}
+.dps-badge strong{font:700 15px/1.2 Georgia,serif;color:#e8d8a9;font-variant-numeric:tabular-nums}
+.feed-card,.details-card{margin-top:10px;border:1px solid var(--line-soft);border-radius:15px;background:linear-gradient(145deg,#182328,#121b1f);overflow:hidden}
+.feed-head{padding:10px 11px 8px;display:flex;align-items:center;gap:7px}
+.feed-head h2,.details-head h2{margin:0;font:700 14px/1 Georgia,serif}
+.feed-head .spacer{flex:1}
+.feed-live{display:flex;align-items:center;gap:5px;color:var(--good);font-size:8px;letter-spacing:.12em;font-weight:800}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--good);box-shadow:0 0 8px var(--good)}
+.icon-button{width:30px;height:30px;border:1px solid var(--line);border-radius:9px;background:#111b1f;display:grid;place-items:center;color:#bdc9c3}
+.icon-button svg{width:14px;height:14px}
+.feed-list{height:142px;overflow:auto;overscroll-behavior:contain;border-top:1px solid #28373c;scrollbar-width:thin;scrollbar-color:#45565a transparent}
+.event{--type:var(--accent);min-height:34px;padding:6px 10px;display:grid;grid-template-columns:18px minmax(0,1fr) auto;align-items:center;gap:7px;border-bottom:1px solid #26343a;font-size:10px}
+.event:last-child{border-bottom:0}
+.event-icon{width:18px;height:18px;border-radius:6px;display:grid;place-items:center;color:var(--type);background:color-mix(in srgb,var(--type),transparent 89%);font-size:10px}
+.event-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#d5deda}
+.event-text strong{color:var(--type);font-weight:750}
+.event-time{color:var(--quiet);font-size:8px;font-variant-numeric:tabular-nums}
+.event.item{--type:var(--holy)} .event.material{--type:var(--poison)} .event.kill{--type:var(--accent)} .event.level{--type:var(--holy)} .event.death{--type:var(--bleed)} .event.damage{--type:var(--physical)} .event.effect{--type:var(--frost)}
+.feed-foot{padding:8px 10px;display:flex;justify-content:center;border-top:1px solid #28373c}
+.details-button{border:1px solid #46575b;border-radius:9px;padding:7px 14px;background:#1a282d;color:#d6dfda;font-size:9px;font-weight:800;letter-spacing:.08em}
+.details-card[hidden]{display:none}
+.details-head{display:flex;align-items:center;gap:7px;padding:11px}
+.details-head .spacer{flex:1}
+.session-label{color:var(--muted);font-size:8px;letter-spacing:.1em}
+.metric-grid{padding:0 10px 10px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.metric{padding:9px 10px;border:1px solid #2d3d42;border-radius:11px;background:#101a1e}
+.metric small{display:block;color:var(--muted);font-size:8px;text-transform:uppercase;letter-spacing:.1em}
+.metric strong{display:block;margin-top:4px;font:700 16px/1 Georgia,serif;color:#e5e8dd}
+.metric em{font-style:normal;color:var(--quiet);font-size:8px}
+.damage-breakdown{border-top:1px solid #2b3a3e;padding:10px 11px 11px}
+.damage-breakdown h3{margin:0 0 8px;font:700 12px Georgia,serif}
+.damage-row{--type:var(--physical);display:grid;grid-template-columns:69px minmax(0,1fr) 62px;align-items:center;gap:8px;margin:7px 0;font-size:9px}
+.damage-row.physical{--type:var(--physical)} .damage-row.fire{--type:var(--fire)} .damage-row.holy{--type:var(--holy)} .damage-row.frost{--type:var(--frost)} .damage-row.arcane{--type:var(--arcane)} .damage-row.shadow{--type:var(--shadow)} .damage-row.poison{--type:var(--poison)} .damage-row.bleed{--type:var(--bleed)}
+.damage-name{color:var(--type);font-weight:750}
+.damage-meter{height:5px;border-radius:9px;background:#2b393d;overflow:hidden}
+.damage-meter i{display:block;width:var(--share);height:100%;background:linear-gradient(90deg,var(--type),color-mix(in srgb,var(--type),white 20%));border-radius:inherit}
+.damage-total{text-align:right;color:#d8dfdb;font-variant-numeric:tabular-nums}
+.reset-row{padding:9px 11px 11px;border-top:1px solid #2b3a3e;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.reset-row span{color:var(--muted);font-size:9px}
+.reset-button{border:1px solid #684646;border-radius:9px;padding:7px 10px;background:#281b1d;color:#e6b5ad;font-size:9px;font-weight:800}
+.bottom-nav{position:fixed;z-index:20;left:50%;bottom:0;transform:translateX(-50%);width:min(100%,480px);padding:7px 7px calc(7px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(5,1fr);gap:3px;border-top:1px solid #35464b;background:#10191eef;backdrop-filter:blur(18px)}
+.nav-button{border:0;border-radius:10px;padding:4px 2px 3px;background:transparent;color:#7f9091;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:45px}
+.nav-button.active{color:var(--accent);background:#c9b98c12}
+.nav-button svg{width:18px;height:18px}
+.nav-button span{font-size:8px;font-weight:750;letter-spacing:.02em}
+.scrim{position:fixed;z-index:40;inset:0;padding:20px 15px;display:none;align-items:center;justify-content:center;background:#030809b8;backdrop-filter:blur(5px)}
+.scrim.open{display:flex}
+.panel{width:min(100%,410px);max-height:min(86vh,760px);overflow:hidden;border:1px solid #536266;border-radius:19px;background:linear-gradient(145deg,#1b292e,#111a1e);box-shadow:0 28px 85px #000b}
+.panel-head{padding:14px 15px 11px;display:flex;align-items:center;gap:9px;border-bottom:1px solid #34454a}
+.panel-head-copy{min-width:0;flex:1}
+.panel-head small{display:block;color:var(--muted);font-size:8px;letter-spacing:.14em;font-weight:800;text-transform:uppercase}
+.panel-head h2{margin:3px 0 0;font:700 18px Georgia,serif}
+.close-button{width:31px;height:31px;border:1px solid #405258;border-radius:10px;background:#152126;color:#dce4df;font-size:17px;line-height:1}
+.panel-body{max-height:calc(min(86vh,760px) - 66px);overflow:auto;padding:12px 13px 14px}
+.zone-select-label{display:block;margin:0 0 5px 2px;color:var(--muted);font-size:8px;letter-spacing:.12em;font-weight:800;text-transform:uppercase}
+select,.text-input{width:100%;border:1px solid #43555a;border-radius:10px;padding:9px 10px;background:#111b20;color:#e3e9e5}
+.panel-help{margin:9px 2px 11px;color:#a4b1ad;font-size:9px;line-height:1.5}
+.enemy-options{display:grid;gap:7px}
+.enemy-option{padding:9px;border:1px solid #34464b;border-radius:12px;background:#142025}
+.enemy-option.chosen{border-color:#9c8b5a;background:linear-gradient(120deg,#292b24,#172126)}
+.enemy-option.locked{opacity:.65}
+.enemy-option-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center}
+.enemy-option-name{font:700 13px Georgia,serif}
+.enemy-option-meta{margin-top:4px;color:#b2bfba;font-size:8px}
+.enemy-detail-line{margin-top:5px;color:#a8b4b0;font-size:8px;line-height:1.45}
+.type-chip,.weak-chip{display:inline-block;padding:2px 5px;border-radius:99px;margin:1px 3px 1px 0;background:#26373a;color:#d1d9d3;border:1px solid #425356;font-size:7px;font-weight:750}
+.weak-chip{color:#e5d7aa;border-color:#756b49;background:#2b2a22}
+.check-wrap{display:flex;align-items:center;gap:5px;color:#d7e0da;font-size:8px;font-weight:800}
+.check-wrap input{accent-color:#d7c58f;width:15px;height:15px}
+.lock-mark{display:inline-flex;align-items:center;gap:4px;color:#c0aaa0;font-size:8px;font-weight:800}
+.recap-panel{text-align:left}
+.recap-intro{padding:17px 17px 12px}
+.recap-intro .eyebrow{color:var(--accent);font-size:8px;font-weight:800;letter-spacing:.17em}
+.recap-intro h2{margin:5px 0 4px;font:700 22px Georgia,serif}
+.recap-intro p{margin:0;color:#aab8b2;font-size:10px}
+.recap-stats{padding:0 14px 12px;display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+.recap-stat{border:1px solid #36474b;border-radius:11px;background:#121d21;padding:8px 9px}
+.recap-stat small{display:block;color:#9eaeaa;font-size:8px;letter-spacing:.08em;text-transform:uppercase}
+.recap-stat strong{display:block;margin-top:3px;font:700 15px Georgia,serif}
+.recap-section{padding:11px 14px;border-top:1px solid #34454a}
+.recap-section-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px}
+.recap-section h3{margin:0;font:700 12px Georgia,serif}
+.loot-list{display:grid;gap:5px}
+.loot-item{width:100%;display:grid;grid-template-columns:28px minmax(0,1fr) auto;align-items:center;gap:8px;text-align:left;border:1px solid #33454a;border-radius:10px;padding:6px 8px;background:#121d21}
+.loot-icon{width:27px;height:27px;border-radius:8px;display:grid;place-items:center;background:#263235;border:1px solid #465452;color:#d9c992;font-size:14px}
+.loot-item strong{display:block;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.loot-item small{display:block;color:#92a29e;font-size:8px}
+.rarity-common{color:#c1c9c4}.rarity-rare{color:#79b8e5}.rarity-epic{color:#c08af1}.rarity-legendary{color:#e3bc6e}
+.view-loot{border:0;background:transparent;color:#d6c591;font-size:8px;font-weight:800;letter-spacing:.08em}
+.recap-footer{padding:10px 14px 14px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;border-top:1px solid #34454a}
+.recap-footer label{display:flex;align-items:center;gap:6px;color:#aebbb6;font-size:8px}
+.recap-footer input{accent-color:#d2c08c}
+.primary-button{border:1px solid #95845a;border-radius:10px;padding:8px 14px;background:linear-gradient(135deg,#524e3d,#2c3028);color:#f0e2bd;font-size:9px;font-weight:850;letter-spacing:.08em}
+.item-preview{display:flex;align-items:center;gap:10px;margin-bottom:11px}.item-preview .loot-icon{width:44px;height:44px;flex:none}.item-preview p{margin:4px 0 0;color:#aab8b2;font-size:9px}
+.settings-note{padding:12px;border:1px dashed #58696a;border-radius:12px;color:#b1bdb7;font-size:10px;background:#111a1d}
+.settings-toggle{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 2px}
+.settings-toggle label{font-size:10px;font-weight:700}
+.settings-toggle input{accent-color:#d7c58f;width:16px;height:16px}
+.filter-options{display:grid;gap:2px}
+.filter-option{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 2px;border-bottom:1px solid #2b3c40;color:#dde5df;font-size:10px}
+.filter-option:last-child{border:0}
+.filter-option input{accent-color:#d7c58f;width:16px;height:16px}
+.confirm-copy{padding:15px;color:#c2ccc6;font-size:11px}
+.confirm-actions{display:flex;justify-content:flex-end;gap:7px;padding:0 14px 14px}
+.secondary-button{border:1px solid #46575b;border-radius:9px;padding:8px 11px;background:#162126;color:#d9e0dc;font-size:9px;font-weight:800}
+.toast{position:fixed;z-index:70;left:50%;bottom:calc(74px + env(safe-area-inset-bottom));transform:translate(-50%,12px);opacity:0;pointer-events:none;transition:.22s;border:1px solid #65726b;border-radius:10px;background:#1b2729;color:#e4e8df;padding:8px 12px;font-size:10px;box-shadow:0 8px 26px #0008;white-space:nowrap}
 .toast.show{opacity:1;transform:translate(-50%,0)}
-@media(min-width:700px){body{padding:24px 0}.app{min-height:calc(100vh - 48px);border-radius:18px;overflow:hidden}.bottom-nav{bottom:24px;border-radius:0 0 18px 18px}}
-.float-layer{position:absolute;inset:0;pointer-events:none;z-index:3;overflow:hidden}.float-damage{position:absolute;left:50%;top:43%;color:#ffe3a0;font:800 15px Georgia,serif;text-shadow:0 2px 4px #000;animation:float-up .95s ease-out forwards;white-space:nowrap}@keyframes float-up{to{opacity:0;transform:translateY(-44px)}}.status-chips{display:flex;gap:5px;flex-wrap:wrap;margin:8px 1px}.status-chip{border:1px solid #34404a;border-radius:99px;padding:3px 7px;background:#111820;color:#c5d0d4;font-size:9px}.status-chip.active{border-color:#80683b;color:#f1d98f}.hunt-card{padding:10px 12px}.death-reason{margin:0 0 9px;padding:7px 9px;border-left:2px solid var(--red);background:#261719;color:#f0b8ad;font-size:10px}.cast.locked{opacity:.62}.slot.selected{border-color:#9d8046;background:#24231e}.slot small{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(min-width:600px){body{padding:14px 0}.app{border-radius:20px;overflow:hidden;min-height:calc(100vh - 28px);padding-bottom:100px}.bottom-nav{bottom:14px;border-radius:0 0 19px 19px}}
+@media(max-width:350px){.app{padding-left:10px;padding-right:10px}.cast-stack{width:55%}.enemy-summary strong{font-size:12px}.dps-badge{width:62px}.effect-chip{font-size:7px}.arena-bottom{left:7px;right:7px;gap:5px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
 <div class="app">
   <header>
-    <div class="brand">GODSCAR<small>ASHEN ROAD · UI SHOWCASE</small></div>
-    <div class="head-actions">
-      <button class="icon-btn" aria-label="Settings" onclick="toast('Settings panel is a visual placeholder')">⚙</button>
+    <div class="identity">
+      <svg class="class-mark" viewBox="0 0 48 48" aria-label="Paladin emblem" role="img">
+        <path d="M24 3 40 9v12c0 10.2-6.1 18.2-16 24C14.1 39.2 8 31.2 8 21V9l16-6Z" fill="#c9b98c16" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M24 10v25M17 17h14M19 35l5 4 5-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="24" cy="17" r="2" fill="currentColor"/>
+      </svg>
+      <div class="identity-copy">
+        <div class="name-line"><span class="player-name">Player</span><span class="level-tag">LV 1</span></div>
+        <div class="class-name">Paladin</div>
+      </div>
     </div>
+    <button class="settings-button" type="button" aria-label="Settings" onclick="openPanel('settingsPanel')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="m19.3 13.7 1.1.9-1.7 2.9-1.4-.5a7.9 7.9 0 0 1-1.6.9l-.3 1.5h-3.3l-.3-1.5a7.9 7.9 0 0 1-1.6-.9l-1.4.5-1.7-2.9 1.1-.9a7.8 7.8 0 0 1 0-1.8l-1.1-.9 1.7-2.9 1.4.5a7.9 7.9 0 0 1 1.6-.9l.3-1.5h3.3l.3 1.5a7.9 7.9 0 0 1 1.6.9l1.4-.5 1.7 2.9-1.1.9a7.8 7.8 0 0 1 0 1.8Z"/></svg>
+    </button>
+    <div class="xp-rail" aria-label="Experience progress"><i></i></div>
   </header>
-  <section class="ribbon">
-    <div><div class="rib-label">Veyra · Paladin</div><div class="rib-value">Level 18 <span style="color:var(--gold)">✦ 42</span></div></div>
-    <div><div class="rib-label">Health</div><div class="rib-value">4,320 / 4,500</div><div class="meter"><i style="width:96%"></i></div></div>
-    <div><div class="rib-label">Fallfields · Stage 12</div><div class="rib-value">12.4K Gold</div><div class="meter gold"><i style="width:68%"></i></div></div>
+  <section class="healthline" aria-label="Player health">
+    <span class="health-title">HEALTH</span>
+    <div class="health-track"><i></i></div>
+    <span class="health-value">121 / 121</span>
   </section>
-
-  <main class="content" id="screen"></main>
-  <nav class="bottom-nav" id="nav"></nav>
+  <section class="zone-line">
+    <button class="zone-button" type="button" onclick="openZonePanel()" aria-label="Open zone and enemy selection">
+      <span><span class="zone-label">Current Zone</span><br><strong id="zoneTitle">Gallowsfen · The Sunken Road</strong></span>
+      <svg class="chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3.5 6 4.5 4.5L12.5 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="rotation-pill" id="rotationPill">1 OF 3</div>
+  </section>
+  <main>
+    <section class="arena" aria-label="Automatic combat square">
+      <div class="biome-slot" aria-label="Biome background art placeholder">
+        <span class="biome-label">BIOME BACKGROUND ART</span>
+        <span class="scene-vignette"></span>
+      </div>
+      <div class="cast-stack" aria-label="Automatic combat abilities">
+        <div class="cast-row fire" style="--cast-time:2.8s;--offset:-1.2s"><span class="skill-icon">✹</span><strong>Ember Brand</strong><span class="cast-track"><i style="--progress:68%"></i></span></div>
+        <div class="cast-row frost" style="--cast-time:3.6s;--offset:-2.0s"><span class="skill-icon">❄</span><strong>Rime Lash</strong><span class="cast-track"><i style="--progress:41%"></i></span></div>
+        <div class="cast-row holy" style="--cast-time:3.2s;--offset:-.7s"><span class="skill-icon">✦</span><strong>Radiant Verdict</strong><span class="cast-track"><i style="--progress:82%"></i></span></div>
+        <div class="cast-row poison" style="--cast-time:4s;--offset:-2.5s"><span class="skill-icon">✧</span><strong>Venom Thread</strong><span class="cast-track"><i style="--progress:24%"></i></span></div>
+        <div class="cast-row arcane" style="--cast-time:4.5s;--offset:-1.7s"><span class="skill-icon">◈</span><strong>Starfall Sigil</strong><span class="cast-track"><i style="--progress:56%"></i></span></div>
+        <div class="cast-row attack-row physical" style="--cast-time:1.9s;--offset:-.9s"><span class="skill-icon">⚔</span><strong>Mace Strike</strong><span class="cast-track"><i style="--progress:48%"></i></span></div>
+      </div>
+      <div class="effect-row" aria-label="Active effects">
+        <span class="effect-chip fire"><span>✹</span>Burning</span>
+        <span class="effect-chip frost"><span>❄</span>Chilled</span>
+      </div>
+      <div class="enemy-glow"></div>
+      <div class="enemy-art-slot" id="enemyArt" aria-label="Full-body enemy art placeholder">
+        <div class="enemy-emblem"><svg viewBox="0 0 32 42" fill="none" aria-hidden="true"><path d="M16 2 5 8l2 17 9 14 9-14 2-17L16 2Z" stroke="currentColor" stroke-width="1.2"/><path d="M10 13h4m4 0h4M12 24l4 3 4-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <span class="art-label">FULL-BODY<br>ENEMY ART</span>
+      </div>
+      <div class="float-layer" id="floatLayer" aria-hidden="true"></div>
+      <div class="arena-bottom">
+        <div class="enemy-summary">
+          <div class="enemy-summary-head"><strong id="enemyName">Gravejaw Stalker</strong><span class="enemy-kind" id="enemyKind">BLIGHTED · BEAST</span></div>
+          <div class="enemy-health-numbers"><span>ENEMY HEALTH</span><span id="enemyHealth">6,420 / 10,000</span></div>
+          <div class="enemy-health-track"><i id="enemyHealthFill"></i></div>
+        </div>
+        <div class="dps-badge"><span>LIVE DPS</span><strong id="dps">1.2k</strong></div>
+      </div>
+    </section>
+    <section class="feed-card" aria-label="Live event feed">
+      <div class="feed-head">
+        <h2>Activity</h2><span class="feed-live"><i class="live-dot"></i>LIVE</span><span class="spacer"></span>
+        <button class="icon-button" type="button" aria-label="Feed options" onclick="openPanel('filterPanel')">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M3 5h14M5.5 10h9M8 15h4"/><circle cx="6.5" cy="5" r="1.5" fill="#111b1f"/><circle cx="12" cy="10" r="1.5" fill="#111b1f"/></svg>
+        </button>
+      </div>
+      <div class="feed-list" id="feedList" aria-live="polite"></div>
+      <div class="feed-foot"><button class="details-button" id="detailsButton" type="button" onclick="toggleDetails()">SESSION DETAILS <span id="detailsChevron">⌄</span></button></div>
+    </section>
+    <section class="details-card" id="detailsCard" hidden>
+      <div class="details-head"><div><h2>Session details</h2><div class="session-label">TRACKING SINCE SESSION START</div></div><span class="spacer"></span><span class="session-label" id="sessionTime">00:42:18</span></div>
+      <div class="metric-grid">
+        <div class="metric"><small>XP / hour</small><strong>48.6k</strong><em>+12.4k this session</em></div>
+        <div class="metric"><small>Kills</small><strong id="killMetric">164</strong><em>Enemies defeated</em></div>
+        <div class="metric"><small>Materials</small><strong>38</strong><em>Items collected</em></div>
+        <div class="metric"><small>Currency</small><strong>2.4k</strong><em>Gold earned</em></div>
+        <div class="metric" style="grid-column:1/-1"><small>Total damage</small><strong>8.74m</strong><em>Across this session</em></div>
+      </div>
+      <div class="damage-breakdown">
+        <h3>Damage by source</h3>
+        <div class="damage-row physical"><span class="damage-name">Physical</span><span class="damage-meter"><i style="--share:46%"></i></span><span class="damage-total">4.02m · 46%</span></div>
+        <div class="damage-row fire"><span class="damage-name">Fire</span><span class="damage-meter"><i style="--share:22%"></i></span><span class="damage-total">1.92m · 22%</span></div>
+        <div class="damage-row holy"><span class="damage-name">Holy</span><span class="damage-meter"><i style="--share:14%"></i></span><span class="damage-total">1.22m · 14%</span></div>
+        <div class="damage-row frost"><span class="damage-name">Frost</span><span class="damage-meter"><i style="--share:8%"></i></span><span class="damage-total">699k · 8%</span></div>
+        <div class="damage-row poison"><span class="damage-name">Poison</span><span class="damage-meter"><i style="--share:6%"></i></span><span class="damage-total">524k · 6%</span></div>
+        <div class="damage-row bleed"><span class="damage-name">Bleed</span><span class="damage-meter"><i style="--share:4%"></i></span><span class="damage-total">350k · 4%</span></div>
+      </div>
+      <div class="reset-row"><span>Start a new session count.</span><button class="reset-button" type="button" onclick="openPanel('resetPanel')">RESET SESSION</button></div>
+    </section>
+  </main>
 </div>
-<div class="toast" id="toast"></div>
+<nav class="bottom-nav" aria-label="Main navigation">
+  <button class="nav-button active" type="button" aria-current="page" onclick="showToast('You are already home.')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1V10Z"/></svg><span>Home</span>
+  </button>
+  <button class="nav-button" type="button" onclick="showToast('Character screen will be built separately.')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M4 21c.5-4.2 3.2-6.5 8-6.5s7.5 2.3 8 6.5"/></svg><span>Character</span></button>
+  <button class="nav-button" type="button" onclick="showToast('Stash screen will be built separately.')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h16v12H4zM3 4h18v4H3zM9 12h6"/></svg><span>Stash</span></button>
+  <button class="nav-button" type="button" onclick="showToast('Forge screen will be built separately.')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 4 6 6M6 20l8-8m-1-9a6 6 0 0 0 7 7l-4 4-5-5-4 4a4 4 0 1 1-5-5l4-4a6 6 0 0 0 7 7"/></svg><span>Forge</span></button>
+  <button class="nav-button" type="button" onclick="showToast('Navigation screen is to be designed.')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.8 8.2-2.7 5.1-4.9 2.5 2.5-4.9 5.1-2.7Z"/></svg><span>Navigation</span></button>
+</nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script>var module={exports:{}};</script><script src="./sim.js"></script><script>
-const SIM=module.exports;
-const tabs=[
-  {id:"fight",name:"Fight",icon:"⚔"},
-  {id:"gear",name:"Gear",icon:"♜"},
-  {id:"bag",name:"Bag",icon:"▣"},
-  {id:"build",name:"Build",icon:"✦"},
-  {id:"forge",name:"Forge",icon:"⚒"}
+<div class="scrim" id="zonePanel" role="dialog" aria-modal="true" aria-labelledby="zonePanelTitle" onclick="outsideClose(event,'zonePanel')">
+  <div class="panel">
+    <div class="panel-head"><div class="panel-head-copy"><small>HUNT SETTINGS</small><h2 id="zonePanelTitle">Zone &amp; enemies</h2></div><button class="close-button" aria-label="Close" onclick="closePanel('zonePanel')">×</button></div>
+    <div class="panel-body">
+      <label class="zone-select-label" for="zoneSelect">Browse a zone</label>
+      <select id="zoneSelect" onchange="browseZone(this.value)"></select>
+      <p class="panel-help">Changing zones here does not interrupt your current hunt. Select an enemy in another zone to move the rotation there. Choose up to four enemies from one zone.</p>
+      <div class="enemy-options" id="enemyOptions"></div>
+    </div>
+  </div>
+</div>
+
+<div class="scrim" id="settingsPanel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" onclick="outsideClose(event,'settingsPanel')">
+  <div class="panel">
+    <div class="panel-head"><div class="panel-head-copy"><small>GAME OPTIONS</small><h2 id="settingsTitle">Settings</h2></div><button class="close-button" aria-label="Close" onclick="closePanel('settingsPanel')">×</button></div>
+    <div class="panel-body">
+      <div class="settings-toggle"><label for="recapSetting">Show launch recap</label><input id="recapSetting" type="checkbox" checked onchange="setRecapSetting(this.checked)"></div>
+      <div class="settings-note"><strong>Appearance</strong><br>Theme controls will be added later. The visual system is built to be restyled.</div>
+    </div>
+  </div>
+</div>
+
+<div class="scrim" id="filterPanel" role="dialog" aria-modal="true" aria-labelledby="filterTitle" onclick="outsideClose(event,'filterPanel')">
+  <div class="panel">
+    <div class="panel-head"><div class="panel-head-copy"><small>ACTIVITY FEED</small><h2 id="filterTitle">Feed options</h2></div><button class="close-button" aria-label="Close" onclick="closePanel('filterPanel')">×</button></div>
+    <div class="panel-body"><div class="filter-options" id="filterOptions"></div></div>
+  </div>
+</div>
+
+<div class="scrim" id="resetPanel" role="dialog" aria-modal="true" aria-labelledby="resetTitle" onclick="outsideClose(event,'resetPanel')">
+  <div class="panel">
+    <div class="panel-head"><div class="panel-head-copy"><small>SESSION TRACKING</small><h2 id="resetTitle">Start a new count?</h2></div><button class="close-button" aria-label="Close" onclick="closePanel('resetPanel')">×</button></div>
+    <div class="confirm-copy">This clears the current session totals and starts counting from zero.</div>
+    <div class="confirm-actions"><button class="secondary-button" onclick="closePanel('resetPanel')">Cancel</button><button class="reset-button" onclick="confirmReset()">RESET TOTALS</button></div>
+  </div>
+</div>
+
+<div class="scrim" id="recapPanel" role="dialog" aria-modal="true" aria-labelledby="recapTitle" onclick="outsideClose(event,'recapPanel')">
+  <div class="panel recap-panel">
+    <div class="recap-intro"><span class="eyebrow">SESSION RECAP</span><h2 id="recapTitle">Welcome back, Player</h2><p>Here’s what happened while you were away.</p></div>
+    <div class="recap-stats">
+      <div class="recap-stat"><small>Experience</small><strong>+42.8k XP · +1 level</strong></div>
+      <div class="recap-stat"><small>Enemies defeated</small><strong>164</strong></div>
+      <div class="recap-stat"><small>Materials</small><strong>38 collected</strong></div>
+      <div class="recap-stat"><small>Currency</small><strong>+2.4k Gold</strong></div>
+    </div>
+    <div class="recap-section">
+      <div class="recap-section-head"><h3>Notable loot · top 3</h3><button class="view-loot" onclick="showToast('Stash screen will be built separately.')">VIEW ALL LOOT</button></div>
+      <div class="loot-list">
+        <button class="loot-item" onclick="openLootDetails('Dawnbreaker','Legendary · Mace','✦')"><span class="loot-icon">⚒</span><span><strong class="rarity-legendary">Dawnbreaker</strong><small>Legendary · Mace · Gearscore #1</small></span><span class="level-tag">1</span></button>
+        <button class="loot-item" onclick="openLootDetails('Gallowsguard','Epic · Chest Armor','⬡')"><span class="loot-icon">⬡</span><span><strong class="rarity-epic">Gallowsguard</strong><small>Epic · Chest Armor · Gearscore #2</small></span><span class="level-tag">2</span></button>
+        <button class="loot-item" onclick="openLootDetails('Witchglass Signet','Rare · Ring','◉')"><span class="loot-icon">◉</span><span><strong class="rarity-rare">Witchglass Signet</strong><small>Rare · Ring · Gearscore #3</small></span><span class="level-tag">3</span></button>
+      </div>
+    </div>
+    <div class="recap-section"><h3>Notable events</h3><div class="panel-help">Paladin reached level 2 · 1 death · rare crafting material found</div></div>
+    <div class="recap-footer"><label><input id="recapDisable" type="checkbox" onchange="setRecapSetting(!this.checked)">Don’t show this on launch</label><button class="primary-button" onclick="closePanel('recapPanel')">CLOSE</button></div>
+  </div>
+</div>
+
+<div class="scrim" id="itemPanel" role="dialog" aria-modal="true" aria-labelledby="itemTitle" onclick="outsideClose(event,'itemPanel')">
+  <div class="panel">
+    <div class="panel-head"><div class="panel-head-copy"><small>ITEM DETAILS · STASH PREVIEW</small><h2 id="itemTitle">Dawnbreaker</h2></div><button class="close-button" aria-label="Close" onclick="closePanel('itemPanel')">×</button></div>
+    <div class="panel-body"><div class="item-preview"><div class="loot-icon" id="itemIcon">⚒</div><div><strong id="itemRarity">Legendary · Mace</strong><p>Selected in your future Stash screen. Its item-detail window will open there.</p></div></div><button class="secondary-button" style="width:100%" onclick="closePanel('itemPanel');showToast('Stash screen will be built separately.')">OPEN IN STASH</button></div>
+  </div>
+</div>
+
+<script>
+const zones={
+  "Gallowsfen · The Sunken Road":[
+    {id:"gravejaw",name:"Gravejaw Stalker",kind:"BLIGHTED · BEAST",status:"Blighted",type:"Physical",weak:["Fire","Holy"],drop:"Grave Resin",locked:false},
+    {id:"mirehexer",name:"Mire Hexer",kind:"CORRUPTED · CASTER",status:"Cursed",type:"Shadow",weak:["Holy","Arcane"],drop:"Witchglass Dust",locked:false},
+    {id:"sallow",name:"Sallow Wretch",kind:"UNDEAD · COMMON",status:"Rotting",type:"Physical",weak:["Fire"],drop:"Pallid Thread",locked:false},
+    {id:"lantern",name:"Lantern Widow",kind:"BLIGHTED · ELITE",status:"Burning",type:"Fire",weak:["Frost"],drop:"Ashen Filament",locked:false},
+    {id:"deepbell",name:"Deep Bell Abomination",kind:"BOSS · LOCKED",status:"Resistant",type:"Holy",weak:["Bleed"],drop:"Bell Core",locked:true}
+  ],
+  "Ashen Hollow":[
+    {id:"cinderling",name:"Cinderling",kind:"ASHEN · BEAST",status:"Burning",type:"Fire",weak:["Frost","Physical"],drop:"Ember Shard",locked:false},
+    {id:"glassknight",name:"Glass Knight",kind:"HOLLOW · ELITE",status:"Armored",type:"Physical",weak:["Arcane","Holy"],drop:"Prism Core",locked:false},
+    {id:"hollowseer",name:"Hollow Seer",kind:"HOLLOW · CASTER",status:"Ward",type:"Arcane",weak:["Bleed"],drop:"Voidglass",locked:false},
+    {id:"ashmaw",name:"Ashmaw Brute",kind:"ASHEN · BEAST",status:"Enraged",type:"Physical",weak:["Poison"],drop:"Ashen Hide",locked:false},
+    {id:"kilnking",name:"The Kiln King",kind:"BOSS · LOCKED",status:"Molten",type:"Fire",weak:["Frost"],drop:"Kiln Heart",locked:true}
+  ],
+  "Mourning Wood":[
+    {id:"thornwight",name:"Thornwight",kind:"ROOTBOUND · BEAST",status:"Bleeding",type:"Bleed",weak:["Fire"],drop:"Blackroot",locked:false},
+    {id:"mothpriest",name:"Moth Priest",kind:"VEILED · CASTER",status:"Hexed",type:"Shadow",weak:["Holy"],drop:"Pale Pollen",locked:false},
+    {id:"bogwidow",name:"Bog Widow",kind:"VENOMED · BEAST",status:"Poisoned",type:"Poison",weak:["Fire","Physical"],drop:"Venom Sac",locked:false},
+    {id:"woodknell",name:"Woodknell",kind:"UNDEAD · ELITE",status:"Chilled",type:"Frost",weak:["Fire"],drop:"Knell Fragment",locked:false},
+    {id:"rootmother",name:"The Root Mother",kind:"BOSS · LOCKED",status:"Rooted",type:"Poison",weak:["Holy"],drop:"Heartwood Seal",locked:true}
+  ]
+};
+const zoneNames=Object.keys(zones);
+const enemies=Object.values(zones).flat();
+let selectedIds=["gravejaw","mirehexer","sallow"];
+let browseName=zoneNames[0],activeIndex=0,feedEvents=[],toastTimer=null,sessionStart=Date.now();
+const filters={kill:true,item:true,material:true,level:true,death:true,damage:true,effect:true};
+const filterNames={kill:"Enemy kills",item:"Items looted",material:"Materials and currency",level:"Level-ups",death:"Deaths",damage:"Incoming damage",effect:"Status effects"};
+let recapEnabled=true;
+function readPref(key,fallback){try{const v=localStorage.getItem(key);return v===null?fallback:v==="true"}catch(e){return fallback}}
+function writePref(key,value){try{localStorage.setItem(key,String(value))}catch(e){}}
+recapEnabled=readPref("godscar-show-recap",true);
+function activeEnemies(){return selectedIds.map(id=>enemies.find(e=>e.id===id)).filter(Boolean)}
+function currentEnemy(){const list=activeEnemies();return list[(activeIndex%Math.max(1,list.length))]||enemies[0]}
+function setText(id,value){const n=document.getElementById(id);if(n)n.textContent=value}
+function openPanel(id){const n=document.getElementById(id);if(n)n.classList.add("open");if(id==="zonePanel")drawZonePanel();if(id==="filterPanel")drawFilterPanel();if(id==="settingsPanel")document.getElementById("recapSetting").checked=recapEnabled}
+function closePanel(id){const n=document.getElementById(id);if(n)n.classList.remove("open")}
+function outsideClose(event,id){if(event.target===event.currentTarget)closePanel(id)}
+function showToast(message){const n=document.getElementById("toast");n.textContent=message;n.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>n.classList.remove("show"),1700)}
+function setRecapSetting(show){recapEnabled=show;writePref("godscar-show-recap",show);const c=document.getElementById("recapDisable");const s=document.getElementById("recapSetting");if(c)c.checked=!show;if(s)s.checked=show}
+function drawZonePanel(){
+ const select=document.getElementById("zoneSelect");
+ select.innerHTML=zoneNames.map(z=>'<option value="'+z+'" '+(z===browseName?'selected':'')+'>'+z+'</option>').join("");
+ const rows=zones[browseName].map(e=>{
+  const checked=selectedIds.includes(e.id),activeZone=activeEnemies()[0]?.zone;
+  return '<article class="enemy-option '+(checked?'chosen ':'')+(e.locked?'locked':'')+'"><div class="enemy-option-top"><div><div class="enemy-option-name">'+e.name+'</div><div class="enemy-option-meta">'+e.kind+'</div></div>'+(e.locked?'<span class="lock-mark">🔒 LOCKED</span>':'<label class="check-wrap"><input type="checkbox" '+(checked?'checked':'')+' onchange="toggleEnemy(\\''+e.id+'\\')"> '+(checked?'SELECTED':'SELECT')+'</label>')+'</div><div class="enemy-detail-line"><span class="type-chip">'+e.status+' · '+e.type+'</span><span class="weak-chip">Weak to '+e.weak.join(', ')+'</span></div><div class="enemy-detail-line">Potential drop: <strong>'+e.drop+'</strong>'+(activeZone&&activeZone!==browseName&&!checked?' · Select to move hunt here':'')+'</div></article>';
+ }).join("");
+ document.getElementById("enemyOptions").innerHTML=rows;
+}
+function browseZone(name){browseName=name;drawZonePanel()}
+function toggleEnemy(id){
+ const e=enemies.find(x=>x.id===id);if(!e||e.locked)return;
+ const current=activeEnemies(),currentZone=current[0]?.zone;
+ if(selectedIds.includes(id)){
+  if(selectedIds.length===1){showToast("Keep at least one enemy selected.");drawZonePanel();return}
+  selectedIds=selectedIds.filter(x=>x!==id);
+ }else if(currentZone!==e.zone){selectedIds=[id];activeIndex=0}
+ else if(selectedIds.length>=4){showToast("Choose up to four enemies.");drawZonePanel();return}
+ else selectedIds.push(id);
+ activeIndex=0;drawZonePanel();paintEnemy();
+}
+function openZonePanel(){browseName=activeEnemies()[0]?.zone||zoneNames[0];openPanel("zonePanel")}
+function paintEnemy(){
+ const e=currentEnemy(),list=activeEnemies();setText("zoneTitle",e.zone);setText("enemyName",e.name);setText("enemyKind",e.kind);setText("rotationPill",(activeIndex%Math.max(1,list.length)+1)+" OF "+list.length);
+ const hp=6420-Math.floor(Math.random()*260);setText("enemyHealth",hp.toLocaleString()+" / 10,000");const f=document.getElementById("enemyHealthFill");if(f)f.style.width=(hp/100)+"%";
+ const kind=document.querySelector(".effect-row");if(kind){const colorMap={Fire:"fire",Frost:"frost",Poison:"poison",Bleed:"bleed",Holy:"holy",Shadow:"shadow"};kind.innerHTML='<span class="effect-chip '+(colorMap[e.type]||"holy")+'"><span>✦</span>'+e.status+'</span><span class="effect-chip frost"><span>❄</span>'+e.type+'</span>'}
+}
+function addEvent(type,icon,text,colorClass,time){
+ const item={type,icon,text,colorClass:colorClass||"",time:time||"now"};
+ feedEvents.unshift(item);renderFeed();
+}
+function renderFeed(){
+ const list=document.getElementById("feedList");
+ list.innerHTML=feedEvents.filter(e=>filters[e.type]).map(e=>'<div class="event '+e.type+'"><span class="event-icon">'+e.icon+'</span><span class="event-text">'+e.text+'</span><span class="event-time">'+e.time+'</span></div>').join("");
+}
+function drawFilterPanel(){
+ document.getElementById("filterOptions").innerHTML=Object.keys(filterNames).map(k=>'<label class="filter-option">'+filterNames[k]+'<input type="checkbox" '+(filters[k]?'checked':'')+' onchange="filters[\\''+k+'\\']=this.checked;renderFeed()"></label>').join("");
+}
+function toggleDetails(){
+ const box=document.getElementById("detailsCard"),button=document.getElementById("detailsButton");
+ const show=box.hidden;box.hidden=!show;button.innerHTML=show?'HIDE DETAILS <span>⌃</span>':'SESSION DETAILS <span>⌄</span>';
+}
+function confirmReset(){
+ sessionStart=Date.now();setText("killMetric","0");setText("sessionTime","00:00:00");
+ document.querySelectorAll(".metric strong").forEach((n,i)=>{if(i!==1)n.textContent=i===4?"0":"0"});
+ feedEvents=[];addEvent("level","✦","New session started.","");closePanel("resetPanel");showToast("Session totals reset.");
+}
+function formatShort(n){return n>=1e9?(n/1e9).toFixed(1)+"b":n>=1e6?(n/1e6).toFixed(1)+"m":n>=1e3?(n/1e3).toFixed(1)+"k":String(n)}
+function openLootDetails(name,rarity,icon){
+ closePanel("recapPanel");setText("itemTitle",name);setText("itemRarity",rarity);setText("itemIcon",icon);openPanel("itemPanel")
+}
+function showRecap(){
+ document.getElementById("recapDisable").checked=!recapEnabled;
+ if(recapEnabled)openPanel("recapPanel")
+}
+function cycleFight(){
+ const defeated=currentEnemy();
+ activeIndex=(activeIndex+1)%Math.max(1,selectedIds.length);paintEnemy();
+ const e=defeated;setText("killMetric",String(164+activeIndex));
+ addEvent("kill","⚔","Defeated <strong>"+e.name+"</strong>.", "","now");
+ const types=["physical","fire","holy","frost","poison","bleed"];
+ const type=types[Math.floor(Math.random()*types.length)];
+ const layer=document.getElementById("floatLayer"),float=document.createElement("span");
+ float.className="float-damage "+type+(Math.random()<.14?" crit":"");
+ float.textContent=(float.classList.contains("crit")?"CRIT ":"")+"−"+formatShort(350+Math.floor(Math.random()*1900));
+ float.style.setProperty("--x",(31+Math.random()*45)+"%");
+ float.style.setProperty("--y",(40+Math.random()*26)+"%");
+ layer.appendChild(float);setTimeout(()=>float.remove(),1200);
+ const art=document.getElementById("enemyArt");art.style.setProperty("--source-color","var(--"+type+")");art.classList.remove("hit");void art.offsetWidth;art.classList.add("hit");
+ if(Math.random()<.35)addEvent("damage","✦","<strong>−"+(15+Math.floor(Math.random()*70))+"</strong> incoming damage.","physical");
+ if(Math.random()<.22)addEvent("effect","❄","<strong>Chilled</strong> effect applied.","frost");
+}
+zoneNames.forEach(z=>zones[z].forEach(e=>e.zone=z));
+feedEvents=[
+ {type:"damage",icon:"✦",text:"<strong>−42</strong> incoming damage.",time:"now"},
+ {type:"material",icon:"✧",text:"<strong>+2 Grave Resin</strong> collected.",time:"1m"},
+ {type:"kill",icon:"⚔",text:"Defeated <strong>Mire Hexer</strong>.",time:"1m"},
+ {type:"item",icon:"⚒",text:"Found <strong class=\"rarity-rare\">Witchglass Signet</strong>.",time:"2m"},
+ {type:"effect",icon:"❄",text:"<strong>Chilled</strong> effect applied.",time:"2m"},
+ {type:"level",icon:"✦",text:"Reached <strong>Level 2</strong>.",time:"4m"},
+ {type:"death",icon:"✕",text:"<strong>Player</strong> was defeated.",time:"6m"}
 ];
-let active="fight", forgeTab="Upgrade", bagTab="All", bagSelection=null, buildSpecReset=false, forgeSel="weapon", forgeCraftSlot="weapon", forgeRarity="common", forgeIlvl=1, forgeBase="", forgeSalvage=[];
-const nav=document.getElementById("nav"), screen=document.getElementById("screen");
-function toast(message){
-  const t=document.getElementById("toast"); t.textContent=message; t.classList.add("show");
-  clearTimeout(window.toastTimer); window.toastTimer=setTimeout(()=>t.classList.remove("show"),1600);
-}
-function title(name,sub,right=""){
-  return `<div class="title-row"><div><h1>${name}</h1><div class="sub">${sub}</div></div>${right}</div>`;
-}
-function cast(name,kind,icon,percent,klass=""){
-  return `<div class="cast ${klass}"><div class="cast-icon">${icon}</div><div><div class="cast-name">${name}</div><div class="cast-kind">${kind}</div><div class="meter"><i style="width:${percent}%"></i></div></div><b style="font-size:9px;color:#aeb8c0">${percent}%</b></div>`;
-}
-function arena(){
- return `<div class="arena">
-   <div class="arena-top">
-    <div class="arena-tag">THE FALLFIELDS<br><span style="color:#e4ddd0;font-size:11px;letter-spacing:0">STAGE 12</span></div>
-    <div class="arena-tag inscription"><span style="font-size:8px">ASHEN INSCRIPTION</span><div class="meter"><i style="width:63%"></i></div></div>
-   </div>
-   <div class="enemy-wrap"><div class="enemy-glow"></div>
-    <svg class="enemy" viewBox="0 0 220 300" role="img" aria-label="Blighted Husk enemy silhouette">
-     <defs><linearGradient id="armor" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#899081"/><stop offset=".48" stop-color="#454e48"/><stop offset="1" stop-color="#222b29"/></linearGradient></defs>
-     <ellipse cx="111" cy="278" rx="73" ry="12" fill="#050809" opacity=".65"/>
-     <path d="M84 52 64 26 99 37 113 17 132 39 162 27 146 64 162 82 154 101 167 128 151 143 166 184 144 204 157 256 121 260 108 217 92 262 58 254 77 203 57 180 70 145 55 126 70 97 57 81z" fill="#303a35" stroke="#9c9676" stroke-width="3"/>
-     <path d="M80 74 107 56 140 71 148 104 130 125 84 117z" fill="url(#armor)" stroke="#aaa17d" stroke-width="2"/>
-     <path d="M91 90 104 87 101 96 89 98zm31-1 14 3-10 8-8-3z" fill="#e9a75f"/>
-     <path d="M79 131 109 120 139 132 151 173 128 192 83 184 65 165z" fill="#48534a" stroke="#a39b7b" stroke-width="3"/>
-     <path d="M70 151 49 174 58 208 76 201 83 175zm71-4 25 18 15 33-18 9-24-34z" fill="#303934" stroke="#958d6f" stroke-width="3"/>
-     <path d="M87 183 111 194 104 237 91 264 62 260 73 220zm38 4 22-6 11 40 18 32-28 9-27-42z" fill="#343d37" stroke="#a39876" stroke-width="3"/>
-     <path d="M62 101 29 137 43 148 74 121zm79 5 34 25-9 14-35-21z" fill="none" stroke="#d0ad63" stroke-width="5" opacity=".75"/>
-     <path d="M92 133 112 143 132 132" fill="none" stroke="#d0ad63" stroke-width="2" opacity=".7"/>
-    </svg>
-   </div>
-   <div class="arena-bottom">
-    <div class="hp-block"><div style="display:flex;justify-content:space-between;font-size:9px"><b>HUNT TARGET</b><span style="color:#d4c28d">LV 1</span></div><div class="meter"><i style="width:100%"></i></div><small style="color:#9ca6ae;font-size:8px">— / — HP</small></div>
-    <div style="text-align:right"><div class="eyebrow">LIVE DPS</div><div class="dps">0</div></div>
-   </div>
-  </div>
-  <div class="casts"></div>
-  <div class="card">
-   <div class="card-head"><h2>Enemy details</h2><span class="pill">ELITE</span></div>
-   <div class="enemy-copy"><span></span></div>
-  </div>
-  <div class="pair">
-   <div class="stat"><small>Experience</small><b>2,480 <span style="font-size:9px;color:var(--green)">+120</span></b></div>
-   <div class="stat"><small>Next drop</small><b>Blight Shard</b></div>
-  </div>
-  <p class="notice">Visual reconstruction from the recorded UI direction. Combat values are illustrative.</p>`;
-}
-const gearIcons={weapon:"⚔",offhand:"⬟",helm:"♜",chest:"▰",gloves:"◈",belt:"◇",legs:"▥",boots:"⌑",ring1:"◉",ring2:"◉",amulet:"✥"};
-const gearLabels={ring1:"Ring I",ring2:"Ring II"};
-const slots=SIM.EQUIP.map(k=>[gearIcons[k]||"◇",gearLabels[k]||SIM.SLOT_NAMES[k],k]);
-let gearSel="weapon";
-function selectGearSlot(key){gearSel=key;render()}
-function gearAction(type,id){
- const error=SIM.doAction(game,{type,id});
- toast(error|| (type==="upgrade"?"Item upgraded.":"Item unequipped."));
- render();
-}
-function gear(){
- const g=game,C=SIM.CLASSES[g.hero.cls],S=g.stats,used=SIM.EQUIP.filter(k=>g.equip[k]).length,it=g.equip[gearSel];
- const tiles=slots.map(([icon,label,key])=>{
-   const item=g.equip[key];
-   return '<button class="slot '+(gearSel===key?'selected':'')+'" onclick="selectGearSlot(\''+key+'\')"><span class="slot-icon">'+icon+'</span><label>'+label+'</label><small>'+(item?item.name:'Empty')+'</small></button>';
- }).join("");
- const lines=[];
- if(it){
-   if(it.slot==="weapon"&&SIM.WEAPONS[it.base])lines.push(SIM.WEAPONS[it.base].name+" · "+SIM.fmt(it.dmg)+" base damage");
-   if(it.def)lines.push(SIM.fmt(it.def)+" base armor");
-   lines.push("Item level "+SIM.effIlvl(g,it)+" · "+SIM.RARITY_NAMES[it.rarity]+(it.plus?" · +"+it.plus:""));
-   for(const [key,value] of it.affixes||[])if(SIM.AFFIXES[key])lines.push(SIM.AFFIXES[key].label(value));
-   for(const key of it.augments||[])if(SIM.AUGMENTS[key])lines.push(SIM.AUGMENTS[key].name+" · "+SIM.AUGMENTS[key].text);
-   if(it.enchant){const en=SIM.ENCHANTS[it.enchant[0]];if(en)lines.push(en.label(it.enchant[1]))}
- }
- const cost=it?SIM.upgradeCost(it):0;
- const activeSets=Object.entries(S.sets||{}).map(([key,n])=>SIM.SETS[key]?SIM.SETS[key].name+" · "+n+" piece"+(n===1?"":"s"):null).filter(Boolean);
- return title("Gear","Equipment · "+used+" / "+SIM.EQUIP.length+" equipped",'<span class="pill">'+C.name.toUpperCase()+'</span>')+
- '<div class="gear-layout"><div class="gear-portrait" data-label="'+C.name.toUpperCase()+' · LV '+g.hero.level+'"><svg width="105" height="130" viewBox="0 0 100 130" aria-label="'+C.name+' portrait"><path d="M33 20 50 7 68 20 73 41 65 53 75 64 84 114 65 121 50 94 36 121 16 114 26 64 36 53 27 41z" fill="#4f5a52" stroke="#b6a979" stroke-width="2"/><path d="M33 21 50 9 66 22 63 36 37 36z" fill="#8b8a71" stroke="#d0bc7b" stroke-width="2"/><path d="M36 51 50 45 65 52 69 76 50 87 31 76z" fill="#333d3b" stroke="#b1a77e" stroke-width="2"/><path d="M29 57 9 79 17 87 35 70zm37 0 21 15-5 10-22-13z" fill="#596158" stroke="#c2b480" stroke-width="2"/><path d="M51 49 51 81" stroke="#d6bd72" stroke-width="3"/></svg></div><div>'+
- '<div class="card" style="margin:0 0 7px"><div class="eyebrow">ARMOR</div><b style="font:700 19px Georgia">'+SIM.fmt(S.armor)+'</b><small style="display:block;color:var(--muted)">Including equipped gear</small></div>'+
- '<div class="card" style="margin:0 0 7px"><div class="eyebrow">STRENGTH</div><b style="font:700 19px Georgia">'+SIM.fmt(S.attr.STR)+'</b><small style="display:block;color:var(--muted)">Current total</small></div>'+
- '<div class="card" style="margin:0"><div class="eyebrow">LIFE</div><b style="font:700 19px Georgia">'+SIM.fmt(S.life)+'</b><small style="display:block;color:var(--muted)">Current maximum</small></div></div></div>'+
- '<div class="card" style="margin-top:9px"><div class="card-head"><h2>Equipment slots</h2><span class="sub">'+used+' equipped · tap to inspect</span></div><div class="equipment-grid">'+tiles+'</div></div>'+
- '<div class="card"><div class="card-head"><h2>'+SIM.SLOT_NAMES[gearSel]+' · '+(it?it.name:"Empty")+'</h2><span class="pill">'+(it?SIM.RARITY_NAMES[it.rarity].toUpperCase():"NO ITEM")+'</span></div>'+
- (it?'<div class="sub">'+lines.join('<br>')+'</div><div class="row" style="display:flex;gap:7px;margin-top:10px">'+(it.plus<10?'<button class="action secondary" onclick="gearAction(\'upgrade\',\''+it.id+'\')" '+(g.mats.shards<cost?'disabled':'')+'>UPGRADE · '+cost+' SHARDS</button>':'<span class="sub">Fully upgraded</span>')+(gearSel!=="weapon"?'<button class="action secondary" onclick="gearAction(\'unequip\',\''+it.id+'\')">UNEQUIP</button>':'')+'</div>':'<div class="sub">No item equipped in this slot. Equip items from Bag.</div>')+
- '<div class="sub" style="margin-top:9px">'+(activeSets.length?activeSets.join(' · '):"No equipment set bonuses active.")+'</div></div>';
-}
-const items=[
- ["⚔","Ashen Oath","Legendary sword","var(--gold)"],["⬟","Bulwark","Epic shield","var(--purple)"],["♜","Warden Helm","Rare helmet","var(--blue)"],["✥","Dawn Pendant","Rare amulet","var(--blue)"],
- ["◈","Iron Grips","Uncommon gloves","#84a394"],["◇","Guard Belt","Rare belt","var(--blue)"],["✦","Blight Shard","Crafting material","#7ebd84"],["✹","Ember Core","Crafting material","#d8845e"],
- ["▥","Legplates","Uncommon legs","#84a394"],["⌑","Road Boots","Rare boots","var(--blue)"],["◉","Old Signet","Common ring","#a1aab1"],["✧","Rune Dust","Crafting material","#b48aba"]
-];
-function selectBagItem(id){bagSelection=id;render()}
-function bagAction(type,id){
- const it=game.bag.find(x=>x.id===id),name=it?it.name:"item",error=SIM.doAction(game,{type,id});
- toast(error||({equip:"Equipped "+name,lock:"Lock updated",salvage:"Salvaged "+name}[type]||"Updated."));
- if(type==="salvage"||type==="equip")bagSelection=null;
- render();
-}
-function bagItemIcon(it){
- if(it.slot==="weapon")return "⚔";
- if(it.slot==="offhand")return "⬟";
- const map={helm:"♜",chest:"▰",gloves:"◈",belt:"◇",legs:"▥",boots:"⌑",ring:"◉",amulet:"✥"};
- return map[it.slot]||"◇";
-}
-function bag(){
- const g=game;
- if(bagSelection&&!g.bag.some(x=>x.id===bagSelection))bagSelection=null;
- const rarityColor={common:"#a1aab1",uncommon:"#84a394",rare:"var(--blue)",epic:"var(--purple)",legendary:"var(--gold)",ascended:"#e5a86b"};
- const equipment=g.bag.slice().sort((a,b)=>(SIM.RANK[b.rarity]||0)-(SIM.RANK[a.rarity]||0)||b.ilvl-a.ilvl);
- const mats=Object.entries(g.mats).filter(([,v])=>v>0).map(([key,value])=>({key,value,name:SIM.MAT_NAMES[key]||SIM.TYPE_NAMES[key]||key}));
- const rows=bagTab==="Equipment"?equipment:bagTab==="Materials"?mats:equipment;
- const selected=equipment.find(it=>it.id===bagSelection);
- const material=bagSelection&&bagSelection.startsWith("mat:")?mats.find(x=>"mat:"+x.key===bagSelection):null;
- const entryButtons=rows.map(row=>{
-   if(row.key)return '<button class="bag-item '+(bagSelection==="mat:"+row.key?"selected":"")+'" style="--rarity:#7ebd84" title="'+row.name+" · "+row.value+'" onclick="selectBagItem(\'mat:'+row.key+'\')">'+(row.key==="shards"?"✦":"◈")+'</button>';
-   return '<button class="bag-item '+(bagSelection===row.id?"selected":"")+'" style="--rarity:'+rarityColor[row.rarity]+'" title="'+row.name+'" onclick="selectBagItem(\''+row.id+'\')">'+bagItemIcon(row)+'</button>';
- }).join("");
- let detail='<div class="card" style="margin-top:11px"><div class="card-head"><h2>Selected item</h2><span class="pill">EMPTY</span></div><p class="sub">Choose an item to inspect it.</p></div>';
- if(selected){
-   const facts=[SIM.SLOT_NAMES[selected.slot]||selected.slot,SIM.RARITY_NAMES[selected.rarity]||selected.rarity,"Item level "+SIM.effIlvl(g,selected)+(selected.plus?" · +"+selected.plus:"")];
-   if(selected.slot==="weapon"&&SIM.WEAPONS[selected.base])facts.push(SIM.WEAPONS[selected.base].name+" · "+SIM.fmt(selected.dmg)+" base damage");
-   if(selected.def)facts.push(SIM.fmt(selected.def)+" base armor");
-   if(selected.attr)facts.push("+"+SIM.fmt(selected.attr[1])+" "+selected.attr[0]);
-   for(const [k,v] of selected.affixes||[])if(SIM.AFFIXES[k])facts.push(SIM.AFFIXES[k].label(v));
-   for(const k of selected.augments||[])if(SIM.AUGMENTS[k])facts.push(SIM.AUGMENTS[k].name+" · "+SIM.AUGMENTS[k].text);
-   const value=SIM.salvageValue(selected),shards=SIM.salvageShards(selected);
-   detail='<div class="card" style="margin-top:11px"><div class="card-head"><h2>Selected item</h2><span class="pill">'+(SIM.RARITY_NAMES[selected.rarity]||selected.rarity).toUpperCase()+'</span></div><div class="item-card"><div class="item-art">'+bagItemIcon(selected)+'</div><div><b>'+selected.name+'</b><small>'+facts.slice(0,3).join(" · ")+'</small></div></div><div class="sub">'+facts.slice(3).join("<br>")+'</div><div class="row" style="display:flex;gap:7px;margin-top:9px"><button class="action secondary" onclick="bagAction(\'equip\',\''+selected.id+'\')">EQUIP</button><button class="action secondary" onclick="bagAction(\'lock\',\''+selected.id+'\')">'+(selected.locked?"UNLOCK":"LOCK")+'</button><button class="action secondary" '+(selected.locked?'disabled':'')+' onclick="bagAction(\'salvage\',\''+selected.id+'\')">SALVAGE · '+SIM.fmt(value)+'G'+(shards?" · "+shards+" SHARDS":"")+'</button></div></div>';
- }else if(material){
-   detail='<div class="card" style="margin-top:11px"><div class="card-head"><h2>'+material.name+'</h2><span class="pill">MATERIAL</span></div><div class="item-card"><div class="item-art">✦</div><div><b>'+SIM.fmt(material.value)+'</b><small>Current amount</small></div></div></div>';
- }
- const count=Object.values(g.mats).filter(v=>v>0).length;
- return title("Bag","Inventory · "+g.bag.length+" / "+SIM.BAG_CAP+" slots",'<span class="pill">SIM INVENTORY</span>')+
- '<div class="card"><div class="card-head"><h2>Storage</h2><span class="sub">'+SIM.fmt(g.gold)+' Gold</span></div><div class="pair"><div class="stat"><small>Equipment</small><b>'+g.bag.length+' / '+SIM.BAG_CAP+'</b></div><div class="stat"><small>Materials</small><b>'+count+' types</b></div></div></div>'+
- '<div class="tabs">'+["All","Equipment","Materials"].map(t=>'<button class="'+(bagTab===t?"active":"")+'" onclick="bagTab=\''+t+'\';render()">'+t+'</button>').join("")+'</div>'+
- '<div class="grid-items">'+(entryButtons||'<p class="notice">'+(bagTab==="Materials"?"No materials collected yet.":"No items in your bag yet. Drops appear here while you fight.")+'</p>')+'</div>'+detail;
-}
-function buildAction(type,args){
- const error=SIM.doAction(game,{type,...args});
- toast(error||"Build updated.");
- render();
-}
-function build(){
- const g=game,C=SIM.CLASSES[g.hero.cls],av=SIM.availableSpells(g),offAv=av.filter(k=>SIM.SPELLS[k].kind==="off"),utilAv=av.filter(k=>SIM.SPELLS[k].kind==="util");
- const offRows=g.bar.off.map((k,i)=>{
-  const used=g.bar.off.filter((x,j)=>x&&j!==i);
-  return '<div class="skill"><div class="skill-icon">⚔</div><div><label class="eyebrow">OFFENSIVE '+(i+1)+'</label><select onchange="buildAction(\'barOff\',{i:'+i+',k:this.value||null})"><option value="">Empty</option>'+offAv.filter(x=>!used.includes(x)).map(x=>'<option value="'+x+'" '+(x===k?'selected':'')+'>'+SIM.SPELLS[x].name+'</option>').join("")+'</select>'+ (k?'<p>'+SIM.SPELLS[k].text+' · '+SIM.fmt(SIM.SPELLS[k].cd,1)+'s cooldown</p>':'')+'</div><span class="level">'+(k?"ACTIVE":"EMPTY")+'</span></div>';
- }).join("");
- const utilRows=g.bar.util.map((u,i)=>{
-  const used=g.bar.util.filter((x,j)=>x&&j!==i).map(x=>x.k);
-  return '<div class="skill"><div class="skill-icon">✧</div><div><label class="eyebrow">UTILITY '+(i+1)+'</label><select onchange="buildAction(\'barUtil\',{i:'+i+',k:this.value||null})"><option value="">Empty</option>'+utilAv.filter(x=>!used.includes(x)).map(x=>'<option value="'+x+'" '+(u&&u.k===x?'selected':'')+'>'+SIM.SPELLS[x].name+'</option>').join("")+'</select>'+(u?'<select style="margin-top:5px" aria-label="Cast condition" onchange="buildAction(\'barCond\',{i:'+i+',cond:this.value})">'+Object.entries(SIM.CONDS).map(([cond,name])=>'<option value="'+cond+'" '+(u.cond===cond?'selected':'')+'>'+name+'</option>').join("")+'</select><p>'+SIM.SPELLS[u.k].text+'</p>':'')+'</div><span class="level">'+(u?"ACTIVE":"EMPTY")+'</span></div>';
- }).join("");
- const spec=g.hero.level<SIM.SPEC_LEVEL?'<p class="sub">Specialization unlocks at level '+SIM.SPEC_LEVEL+'.</p>':g.hero.spec==null?'<p class="sub">Choose your specialization. Your first choice is free.</p><div class="tabs">'+C.specs.map((s,i)=>'<button onclick="buildAction(\'spec\',{i:'+i+'})">'+s.name+'</button>').join("")+'</div>':(()=>{const s=C.specs[g.hero.spec];return '<div class="item-card"><div class="item-art">✦</div><div><b>'+s.name+'</b><small>'+s.text+'</small></div><button class="action secondary" onclick="buildSpecReset=true;render()">CHANGE</button></div>'+(buildSpecReset?'<div class="tabs">'+C.specs.map((sp,i)=>'<button onclick="buildSpecReset=false;buildAction(\'spec\',{i:'+i+'})" '+(g.hero.spec===i?'disabled':'')+'>'+sp.name+'</button>').join("")+'<button onclick="buildSpecReset=false;render()">CANCEL</button></div>':'')})();
- const allocated=SIM.PASSIVE_KEYS.reduce((sum,k)=>sum+(g.hero.passives[k]||0),0);
- const passives=SIM.PASSIVE_KEYS.map(k=>'<div class="skill"><div class="skill-icon">✧</div><div><b>'+SIM.PASSIVES[k].name+' <span class="level">· '+(g.hero.passives[k]||0)+'</span></b><p>'+SIM.PASSIVES[k].text+' per point</p></div><button class="action secondary" onclick="buildAction(\'passive\',{k:\''+k+'\'})" '+(!g.hero.points?'disabled':'')+'>+</button></div>').join("");
- return title("Build",C.name+(C.evo&&g.hero.evo?" · "+C.evo.name:"")+" · Level "+g.hero.level,'<span class="pill">'+(g.hero.points||0)+' POINTS</span>')+
- '<div class="card"><div class="card-head"><div><div class="eyebrow">ACTIVE CLASS</div><h2 style="font:700 19px Georgia;margin-top:3px">'+C.name+'</h2></div><span class="pill">LEVEL '+g.hero.level+'</span></div><div class="item-card"><div class="item-art">⚔</div><div><b>'+C.primary.name+' · Primary</b><small>'+C.primary.text+'</small></div></div>'+(C.evo&&g.hero.evo?'<div class="sub">'+C.evo.name+' · '+C.evo.text+'</div>':'')+'<div class="sub">'+C.blurb+'</div></div>'+
- '<div class="card"><div class="card-head"><h2>Specialization</h2><span class="sub">'+(g.hero.spec==null?"UNSELECTED":'SELECTED')+'</span></div>'+spec+'</div>'+
- '<div class="card"><div class="card-head"><h2>Automatic abilities</h2><span class="sub">'+av.length+' available</span></div>'+(av.length?"":'<p class="sub">Your class spell '+SIM.SPELLS[C.spell].name+' unlocks at level '+SIM.CLASS_SPELL_LEVEL+'.</p>')+'<div class="skill-list">'+offRows+utilRows+'</div></div>>'+
- '<div class="card"><div class="card-head"><h2>Passives</h2><span class="sub">'+(g.hero.points||0)+' unspent · '+allocated+' assigned</span></div><div class="skill-list">'+passives+'</div>'+(allocated?'<button class="action secondary" style="margin-top:9px" onclick="buildAction(\'passiveReset\',{})">RESET POINTS</button>':'')+'</div>'+
- '<div class="card"><div class="card-head"><h2>Current attributes</h2><span class="sub">LIVE SIM TOTALS</span></div><div class="pair">'+["STR","DEX","INT"].map(k=>'<div class="stat"><small>'+k+'</small><b>'+SIM.fmt(g.stats.attr[k])+'</b></div>').join("")+'</div><div class="sub">Armor '+SIM.fmt(g.stats.armor)+' · Life '+SIM.fmt(g.stats.life)+' · Attack speed '+(1/g.stats.interval).toFixed(2)+'/s</div></div>';
-}
-
-function forgeSet(key,value){if(key==="slot"){forgeCraftSlot=value;forgeBase="";}else if(key==="rarity")forgeRarity=value;else if(key==="ilvl")forgeIlvl=Number(value)||1;else if(key==="base")forgeBase=value;render()}
-function forgeRun(type,args){
- const error=SIM.doAction(game,{type,...args});
- toast(error||(type==="upgrade"?"Item upgraded.":type==="craft"?"Item crafted.":"Salvaged selected items."));
- render();
-}
-function forgeSalvageToggle(id){forgeSalvage=forgeSalvage.includes(id)?forgeSalvage.filter(x=>x!==id):forgeSalvage.concat(id);render()}
-function forgeSalvageMany(){
- let done=0,msg="";
- for(const id of forgeSalvage.slice()){msg=SIM.doAction(game,{type:"salvage",id});if(msg)break;done++}
- forgeSalvage=[];toast(msg||("Salvaged "+done+" item"+(done===1?"":"s")+"."));render()
-}
-function forge(){
- const g=game;
- if(forgeTab==="Upgrade"){
-  const equipped=SIM.EQUIP.filter(k=>g.equip[k]);
-  if(!g.equip[forgeSel]&&equipped.length)forgeSel=equipped[0];
-  const it=g.equip[forgeSel],cost=it?SIM.upgradeCost(it):0;
-  const itemOptions=equipped.map(k=>'<option value="'+k+'" '+(k===forgeSel?'selected':'')+'>'+SIM.SLOT_NAMES[k]+' · '+g.equip[k].name+'</option>').join("");
-  const details=it?'<div class="item-card"><div class="item-art">'+bagItemIcon(it)+'</div><div><b>'+it.name+'</b><small>'+(SIM.RARITY_NAMES[it.rarity]||it.rarity)+' · '+SIM.SLOT_NAMES[forgeSel]+' · '+SIM.effIlvl(g,it)+' item level · +'+(it.plus||0)+'</small></div></div><div class="pair"><div class="stat"><small>Upgrade rank</small><b>+'+(it.plus||0)+' / +10</b></div><div class="stat"><small>Scar Shards</small><b>'+SIM.fmt(g.mats.shards||0)+' / '+SIM.fmt(cost)+'</b></div></div><button class="action" style="width:100%;margin-top:10px" onclick="forgeRun(\'upgrade\',{id:\''+it.id+'\'})" '+((it.plus>=10||it.rarity==="ascended"||(g.mats.shards||0)<cost)?'disabled':'')+'>'+(it.rarity==="ascended"?"ASCENDED SLOTS SCALE WITH PROGRESS":it.plus>=10?"FULLY UPGRADED":"UPGRADE · "+cost+" SHARDS")+'</button>':'<p class="sub">Equip an item from your Bag to upgrade it here.</p>';
-  return title("Forge","Upgrade · live equipment and Scar Shards",'<span class="pill">'+SIM.fmt(g.mats.shards||0)+' SHARDS</span>')+'<div class="tabs">'+["Upgrade","Craft","Salvage"].map(t=>'<button class="'+(forgeTab===t?"active":"")+'" onclick="forgeTab=\''+t+'\';render()">'+t+'</button>').join("")+'</div><div class="card"><div class="card-head"><h2>Upgrade equipment</h2><span class="sub">'+equipped.length+' equipped</span></div>'+(equipped.length?'<label class="eyebrow">EQUIPPED ITEM</label><select onchange="forgeSel=this.value;render()">'+itemOptions+'</select>':'')+details+'</div><div class="card"><h2>Scar Shards</h2><div class="sub">Upgrades spend the simulation’s real shard cost. An item can be improved up to +10.</div></div>';
- }
- if(forgeTab==="Craft"){
-  const slot=forgeCraftSlot,baseOptions=slot==="weapon"?Object.entries(SIM.WEAPONS).map(([k,v])=>[k,v.name]):slot==="offhand"?Object.entries(SIM.OFFHANDS).map(([k,v])=>[k,v.name]):[];
-  if(baseOptions.length&&(!forgeBase||!baseOptions.some(([k])=>k===forgeBase)))forgeBase=baseOptions[0][0];
-  const unlocked=Math.max(...SIM.MONSTER_KEYS.map(k=>g.unlocked[k]||1)),maxLevel=unlocked+4;forgeIlvl=Math.min(Math.max(1,forgeIlvl),maxLevel);
-  const c=SIM.craftCost(forgeRarity,forgeIlvl),ess=SIM.TYPES.map(t=>'<div class="cost">'+SIM.TYPE_NAMES[t]+'<br>'+SIM.fmt(g.mats[t]||0)+' / '+c.essence+'</div>').join("");
-  const canPay=g.gold>=c.gold&&(g.mats.shards||0)>=c.shards&&SIM.TYPES.every(t=>(g.mats[t]||0)>=c.essence)&&g.bag.length<SIM.BAG_CAP;
-  const needsBow=slot==="offhand"&&forgeBase==="quiver"&&!(g.equip.weapon&&SIM.WEAPONS[g.equip.weapon.base]?.bow);
-  return title("Forge","Craft · costs use your real materials",'<span class="pill">'+SIM.fmt(g.gold)+' GOLD</span>')+'<div class="tabs">'+["Upgrade","Craft","Salvage"].map(t=>'<button class="'+(forgeTab===t?"active":"")+'" onclick="forgeTab=\''+t+'\';render()">'+t+'</button>').join("")+'</div><div class="card"><div class="card-head"><h2>Craft an item</h2><span class="pill">'+(SIM.RARITY_NAMES[forgeRarity]||forgeRarity).toUpperCase()+'</span></div><label class="eyebrow">SLOT</label><select onchange="forgeSet(\'slot\',this.value)">'+SIM.DROP_SLOTS.map(k=>'<option value="'+k+'" '+(k===slot?'selected':'')+'>'+SIM.SLOT_NAMES[k]+'</option>').join("")+'</select>'+(baseOptions.length?'<label class="eyebrow" style="display:block;margin-top:8px">BASE TYPE</label><select onchange="forgeSet(\'base\',this.value)">'+baseOptions.map(([k,n])=>'<option value="'+k+'" '+(k===forgeBase?'selected':'')+'>'+n+'</option>').join("")+'</select>':'')+'<div class="pair" style="margin-top:9px"><div><label class="eyebrow">RARITY</label><select onchange="forgeSet(\'rarity\',this.value)">'+SIM.RARITIES.filter(k=>k!=="ascended").map(k=>'<option value="'+k+'" '+(k===forgeRarity?'selected':'')+'>'+SIM.RARITY_NAMES[k]+'</option>').join("")+'</select></div><div><label class="eyebrow">ITEM LEVEL · MAX '+maxLevel+'</label><input type="number" min="1" max="'+maxLevel+'" value="'+forgeIlvl+'" onchange="forgeSet(\'ilvl\',this.value)"></div></div><div class="card" style="margin-top:9px"><div class="card-head"><h2>Required materials</h2><span class="sub">'+(canPay?"Ready":"Insufficient resources or bag full")+'</span></div><div class="pair"><div class="stat"><small>Gold</small><b>'+SIM.fmt(g.gold)+' / '+SIM.fmt(c.gold)+'</b></div><div class="stat"><small>Scar Shards</small><b>'+SIM.fmt(g.mats.shards||0)+' / '+SIM.fmt(c.shards)+'</b></div></div><div class="costs" style="margin-top:8px">'+ess+'</div></div><button class="action" style="width:100%" onclick="forgeRun(\'craft\',{slot:\''+slot+'\',rarity:\''+forgeRarity+'\',base:'+((slot==="weapon"||slot==="offhand")?("'"+forgeBase+"'"):"null")+',ilvl:'+forgeIlvl+'})" '+(!canPay||needsBow?'disabled':'')+'>CRAFT '+SIM.RARITY_NAMES[forgeRarity].toUpperCase()+' ITEM</button>'+(needsBow?'<p class="sub">A Quiver requires a bow equipped in the main hand.</p>':'')+'<p class="sub">The simulation rolls the crafted item’s actual base, affixes, and name.</p></div>';
- }
- const candidates=g.bag.filter(it=>!it.locked&&(SIM.RANK[it.rarity]||0)<4);
- return title("Forge","Salvage · unlock items in Bag before salvaging",'<span class="pill">'+candidates.length+' ELIGIBLE</span>')+'<div class="tabs">'+["Upgrade","Craft","Salvage"].map(t=>'<button class="'+(forgeTab===t?"active":"")+'" onclick="forgeTab=\''+t+'\';render()">'+t+'</button>').join("")+'</div><div class="card"><div class="card-head"><h2>Salvage equipment</h2><span class="sub">'+forgeSalvage.length+' selected</span></div>'+(candidates.length?candidates.map(it=>'<button class="item-card" style="width:100%;text-align:left;'+(forgeSalvage.includes(it.id)?'border-color:var(--gold)':'')+'" onclick="forgeSalvageToggle(\''+it.id+'\')"><div class="item-art">'+bagItemIcon(it)+'</div><div><b>'+it.name+'</b><small>'+(SIM.RARITY_NAMES[it.rarity]||it.rarity)+' · '+SIM.SLOT_NAMES[it.slot]+' · '+SIM.fmt(SIM.salvageValue(it))+' Gold'+(SIM.salvageShards(it)?' · '+SIM.salvageShards(it)+' Shards':'')+'</small></div><span class="level">'+(forgeSalvage.includes(it.id)?"SELECTED":"SELECT")+'</span></button>').join(""):'<p class="sub">No unlocked salvageable items in your Bag.</p>')+'<button class="action" style="width:100%;margin-top:5px" onclick="forgeSalvageMany()" '+(!forgeSalvage.length?'disabled':'')+'>SALVAGE '+forgeSalvage.length+' SELECTED</button><p class="sub">Locked items and Epic or better equipment are excluded by the simulation.</p></div>';
-}
-
-function render(){
- nav.innerHTML=tabs.map(t=>`<button class="${active===t.id?"active":""}" onclick="active='${t.id}';render()"><span class="nav-icon">${t.icon}</span>${t.name}</button>`).join("");
- screen.innerHTML=active==="fight"?arena():active==="gear"?gear():active==="bag"?bag():active==="build"?build():forge();
-}
-render();
-
-// Fight tab runtime data comes directly from the unchanged SIM_VERSION 7 core.
-const game=SIM.newGame("paladin",0,20261111),trail=[];
-let simTimer=null,lastFrame=performance.now(),xpGain=0,deathReason="";
-const baseRender=render;
-render=function(){baseRender();if(active==="fight")paintFight()};
-function setText(node,value){if(node)node.textContent=value}
-function setWidth(node,value){if(node)node.style.width=Math.max(0,Math.min(100,value))+"%"}
-function dpsNow(){while(trail.length&&trail[0].t<game.t-5)trail.shift();return trail.reduce((n,x)=>n+x.d,0)/(trail.length?Math.max(.5,Math.min(5,game.t-trail[0].t+.2)):1)}
-function popupDamage(n){const layer=document.querySelector(".arena .float-layer");if(!layer)return;const el=document.createElement("span");el.className="float-damage";el.textContent=SIM.fmt(n);layer.appendChild(el);setTimeout(()=>el.remove(),1000)}
-function paintFight(){
- if(active!=="fight")return;
- const root=document.querySelector("#screen .arena");if(!root)return;const sampleNotice=document.querySelector("#screen .notice");if(sampleNotice)sampleNotice.remove();
- if(!root.querySelector(".float-layer")){const f=document.createElement("div");f.className="float-layer";root.appendChild(f)}
- let arenaTags=root.querySelectorAll(".arena-tag"),hpBlock=root.querySelector(".hp-block"),g=game,f=g.fight,M=SIM.mdef(g.target.key),m=f.mon,Z=SIM.ZONES[M.zone],C=SIM.CLASSES[g.hero.cls];
- const ribbon=document.querySelector(".ribbon"),cells=ribbon?Array.from(ribbon.children):[];
- if(cells.length>=3){cells[0].querySelector(".rib-label").textContent=C.name;cells[0].querySelector(".rib-value").textContent="Level "+g.hero.level;cells[1].querySelector(".rib-value").textContent=SIM.fmt(Math.max(0,f.hp||0))+" / "+SIM.fmt(g.stats.life);setWidth(cells[1].querySelector(".meter i"),100*Math.max(0,f.hp||0)/g.stats.life);cells[2].querySelector(".rib-label").textContent=Z.name+" · Stage "+g.target.level;cells[2].querySelector(".rib-value").textContent=SIM.fmt(g.gold)+" Gold";setWidth(cells[2].querySelector(".meter i"),100*g.hero.xp/SIM.xpToNext(g.hero.level))}
- if(arenaTags[0])arenaTags[0].innerHTML=Z.name.toUpperCase()+"<br><span style='color:#e4ddd0;font-size:11px;letter-spacing:0'>STAGE "+g.target.level+"</span>";
- if(arenaTags[1])arenaTags[1].innerHTML="<span style='font-size:8px'>BOSS SIGILS "+g.sigils+"</span><div class='meter'><i style='width:"+100*g.sigilProg/SIM.SIGIL_KILLS+"%'></i></div><span style='font-size:8px'>"+g.sigilProg+" / "+SIM.SIGIL_KILLS+"</span>";
- if(hpBlock){const labels=hpBlock.querySelectorAll("b,span,small"),mtr=hpBlock.querySelector(".meter i"),max=m?m.max:M.hp*Math.pow(1.155,g.target.level-1)*Z.tough,hp=m?Math.max(0,m.hp):0;setText(labels[0],M.name.toUpperCase());setText(labels[1],"LV "+g.target.level);setText(labels[2],SIM.fmt(hp)+" / "+SIM.fmt(max)+" HP");setWidth(mtr,100*hp/max)}
- const dpsEl=root.querySelector(".dps");setText(dpsEl,SIM.fmt(dpsNow()));
- const skillbars=document.querySelector("#screen .casts");if(skillbars){const sk=C.spell,S=SIM.SPELLS[sk],unlocked=g.hero.level>=SIM.CLASS_SPELL_LEVEL,cd=f.cd[sk]||0,atk=100*(1-Math.max(0,f.pNext-g.t)/g.stats.interval),spellPct=unlocked?(cd<=g.t?100:100*(1-(cd-g.t)/S.cd)):0;
- const rows=[{name:C.primary.name,label:"AUTO-ATTACK",icon:"⚔",pct:atk,klass:"attack",state:"ATTACK"},{name:S.name,label:unlocked?"AUTO-CAST · HOLY":"UNLOCKS AT LEVEL "+SIM.CLASS_SPELL_LEVEL,icon:"✦",pct:spellPct,klass:"holy",state:unlocked?(cd<=g.t?"READY":"COOLDOWN"):"LOCKED"}];
- skillbars.innerHTML=rows.map(x=>'<div class="cast '+x.klass+(x.state==="LOCKED"?" locked":"")+'"><div class="cast-icon">'+x.icon+'</div><div><div class="cast-name">'+x.name+'</div><div class="cast-kind">'+x.label+'</div><div class="meter"><i style="width:'+Math.max(0,Math.min(100,x.pct))+'%"></i></div></div><b style="font-size:9px;color:#aeb8c0">'+(x.state==="LOCKED"?"LOCKED":SIM.fmt(x.pct)+"%")+"</b></div>").join("")}
- let copy=document.querySelector("#screen .enemy-copy");const weak=Object.entries(M.res||{}).filter(([,v])=>v<0).map(([k])=>"Weak to "+SIM.TYPE_NAMES[k]),details=[M.regenPct?"Regenerates "+SIM.fmt(M.regenPct*100,1)+"% / sec":null,...weak,"Damage: "+SIM.TYPE_NAMES[M.dmgType]].filter(Boolean);if(copy)copy.innerHTML=details.map(x=>"<span>"+x+"</span>").join("");
- let pill=document.querySelector("#screen .card .pill");if(pill)pill.textContent=M.blighted?"BLIGHTED":"HUNT";
- let chips=document.querySelector("#screen .status-chips");if(!chips){chips=document.createElement("div");chips.className="status-chips";const c=document.querySelector("#screen .casts");c.parentNode.insertBefore(chips,c)}
- let status=[];if(M.blighted)status.push(["Blighted",false]);if(M.regenPct)status.push(["Regenerates",false]);if(m&&m.burnUntil>g.t)status.push(["Burning",true]);if(m&&m.bleedUntil>g.t)status.push(["Bleeding",true]);if(m&&m.chillUntil>g.t)status.push(["Chilled ×"+m.chill,true]);if(m&&m.shockUntil>g.t)status.push(["Shocked",true]);if(f.shield>0)status.push(["Shield "+SIM.fmt(f.shield),true]);chips.innerHTML=status.map(([v,on])=>'<span class="status-chip '+(on?"active":"")+'">'+v+"</span>").join("");
- let pairs=document.querySelectorAll("#screen .pair .stat");if(pairs.length){let xp=pairs[0],need=SIM.xpToNext(g.hero.level),meter=xp.querySelector(".meter i"),small=xp.querySelector("small:last-child");setText(xp.querySelector("b"),SIM.fmt(g.hero.xp)+" XP"+(xpGain?" (+"+SIM.fmt(xpGain)+")":""));setWidth(meter,100*g.hero.xp/need);setText(small,SIM.fmt(g.hero.xp)+" / "+SIM.fmt(need)+" to level "+(g.hero.level+1));setText(pairs[1].querySelector("b"),M.mat?(SIM.MAT_NAMES[M.mat]||M.mat):"Scar Shards")}
- let hunt=document.querySelector("#screen .hunt-card");if(!hunt){hunt=document.createElement("div");hunt.className="card hunt-card";const enemyCard=document.querySelector("#screen .card");enemyCard.insertAdjacentElement("afterend",hunt)}
- hunt.innerHTML="<div class='card-head'><h2>Current hunt</h2><span class='sub'>"+(g.life.kills||0)+" kills · "+(g.life.deaths||0)+" deaths</span></div><b>"+M.name+" · "+Z.name+" · Stage "+g.target.level+"</b><div class='sub'>"+M.note+"</div>";
- let dr=document.querySelector("#screen .death-reason");if(!dr){dr=document.createElement("p");dr.className="death-reason";hunt.insertAdjacentElement("afterend",dr)}setText(dr,deathReason);dr.hidden=!deathReason;
-}
-function simTick(){const now=performance.now(),dt=Math.min(1.25,Math.max(0,(now-lastFrame)/1000));lastFrame=now;if(dt){const prev=game.fight.mon&&game.fight.mon.key,out=SIM.emptyOut();SIM.advance(game,game.t+dt,out,(message,kind)=>{if(kind==="death"){const M=SIM.mdef(game.target.key);deathReason="Slain by "+M.name+" · "+SIM.TYPE_NAMES[M.dmgType]+" damage."}});xpGain=out.xp||0;if(out.dmgDealt){trail.push({t:game.t,d:out.dmgDealt});popupDamage(out.dmgDealt)}if(out.deaths&&!deathReason){const M=SIM.mdef(prev||game.target.key);deathReason="Slain by "+M.name+" · "+SIM.TYPE_NAMES[M.dmgType]+" damage."}}paintFight()}
-simTimer=setInterval(simTick,180);paintFight();
-
+renderFeed();paintEnemy();showRecap();
+setInterval(cycleFight,4200);
 </script>
 </body>
 </html>
