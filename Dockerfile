@@ -7,4 +7,5 @@ FROM nginx:alpine
 COPY index.html /usr/share/nginx/html/index.html
 COPY sim.js /usr/share/nginx/html/sim.js
 COPY --from=art /assets /usr/share/nginx/html/assets
+COPY assets/ui/ /usr/share/nginx/html/assets/ui/
 EXPOSE 80
