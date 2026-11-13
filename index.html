@@ -59,6 +59,12 @@ header{min-height:69px;padding:12px 2px 13px;display:grid;grid-template-columns:
  linear-gradient(177deg,#9eb6a313,transparent 37%,#070f1190 100%),
  repeating-linear-gradient(168deg,transparent 0 37px,#d8ded208 38px 39px);
 }
+.biome-slot.has-art{background-size:cover;background-position:center}
+.biome-slot.has-art .biome-label{display:none}
+.enemy-art-slot.has-art{width:52%;border:0;background:none;box-shadow:none}
+.enemy-art-slot.has-art .enemy-emblem,.enemy-art-slot.has-art .art-label{display:none}
+.enemy-image{display:none;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 8px 6px #0008)}
+.enemy-art-slot.has-art .enemy-image{display:block}
 .biome-slot{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
 .biome-label{position:absolute;right:10px;top:68px;border:1px solid #9aab9e55;border-radius:8px;background:#0d17198f;padding:5px 7px;color:#c4d0c6;font-size:7px;letter-spacing:.15em;font-weight:800}
 .scene-vignette{position:absolute;inset:0;background:linear-gradient(90deg,#08111344,transparent 24%,transparent 76%,#08111355),linear-gradient(0deg,#09111490,transparent 33%,#09111435)}
@@ -263,6 +269,7 @@ select,.text-input{width:100%;border:1px solid #43555a;border-radius:10px;paddin
       </div>
       <div class="enemy-glow"></div>
       <div class="enemy-art-slot" id="enemyArt" aria-label="Full-body enemy art placeholder">
+        <img class="enemy-image" id="enemyImage" alt="" decoding="async">
         <div class="enemy-emblem"><svg viewBox="0 0 32 42" fill="none" aria-hidden="true"><path d="M16 2 5 8l2 17 9 14 9-14 2-17L16 2Z" stroke="currentColor" stroke-width="1.2"/><path d="M10 13h4m4 0h4M12 24l4 3 4-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
         <span class="art-label">FULL-BODY<br>ENEMY ART</span>
       </div>
@@ -451,6 +458,15 @@ function toggleEnemy(id){
 function openZonePanel(){browseName=activeEnemies()[0]?.zone||zoneNames[0];openPanel("zonePanel")}
 function paintEnemy(){
  const e=currentEnemy(),list=activeEnemies();setText("zoneTitle",e.zone);setText("enemyName",e.name);setText("enemyKind",e.kind);setText("rotationPill",(activeIndex%Math.max(1,list.length)+1)+" OF "+list.length);
+ const art=document.getElementById("enemyArt"),image=document.getElementById("enemyImage");
+ const source=e.id==="gravejaw"?"assets/monsters/01_gallowfen/enemies/03_gravejaw_stalker.png":null;
+ art.classList.toggle("has-art",Boolean(source));
+ art.setAttribute("aria-label",source?e.name+" full-body illustration":"Full-body enemy art placeholder");
+ if(source){if(image.getAttribute("src")!==source)image.src=source;image.alt=e.name}else{image.removeAttribute("src");image.alt=""}
+ const biome=document.querySelector(".biome-slot"),hasBiome=e.zone===zoneNames[0];
+ biome.classList.toggle("has-art",hasBiome);
+ biome.style.backgroundImage=hasBiome?'url("assets/biomes/01_gallowfen_sunken_road.png")':"";
+ biome.setAttribute("aria-label",hasBiome?"Sunken Road biome illustration":"Biome background art placeholder");
  const hp=6420-Math.floor(Math.random()*260);setText("enemyHealth",hp.toLocaleString()+" / 10,000");const f=document.getElementById("enemyHealthFill");if(f)f.style.width=(hp/100)+"%";
  const kind=document.querySelector(".effect-row");if(kind){const colorMap={Fire:"fire",Frost:"frost",Poison:"poison",Bleed:"bleed",Holy:"holy",Shadow:"shadow"};kind.innerHTML='<span class="effect-chip '+(colorMap[e.type]||"holy")+'"><span>✦</span>'+e.status+'</span><span class="effect-chip frost"><span>❄</span>'+e.type+'</span>'}
 }
