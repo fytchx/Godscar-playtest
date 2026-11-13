@@ -8,7 +8,7 @@ Read this file and `docs/FIGHT-SCREEN-DIRECTION.md` before making changes. The o
 - Confirm the current repository and branch before editing. If you are on `main` or any other branch, stop and switch to `ui/fight-skeleton`.
 - The current visual baseline is the root `index.html` inherited from commit `1c3adf44f1d77cc9549f8cc9b024ec6276cd253e` (“Refine Fight art slot spacing”). Continue from the file on this branch; do not restore the old red UI or substitute a different version.
 - The owner’s approved screen direction is in `docs/FIGHT-SCREEN-DIRECTION.md`. It takes precedence over historical UI experiments and stale notes in other repositories.
-- The current Railway URL in the README is the existing deployed `main` build. This branch is not known to have a separate Railway deployment. Never imply a branch change is live until the deployment is verified against its exact commit.
+- The Railway review URL in the README is now connected to `ui/fight-skeleton` (switched November 13, 2026). Its first GS-UI-1.0 deployment succeeded at commit `4bbc93b25cd7aacd1bfb95505a559487fd440cd0`. Verify the latest Railway deployment SHA before saying any subsequent branch commit is live.
 
 ## Current phase: Fight presentation and art
 

@@ -38,7 +38,16 @@ Damage-source colors are distinct and restylable: physical is grayish/golden; bl
 - Repository: `fytchx/Godscar-playtest`
 - Working branch: `ui/fight-skeleton`
 - Baseline screen: root `index.html` from `1c3adf44f1d77cc9549f8cc9b024ec6276cd253e`
-- Existing review URL (currently deployed from `main`, not this branch): https://godscar-playtest-ui-godscarplaytest.up.railway.app/
+- Review URL (Railway Playtest UI service tracking `ui/fight-skeleton`): https://godscar-playtest-ui-godscarplaytest.up.railway.app/
+
+## GS-UI-1.0 visual kit integration (November 13, 2026)
+
+- Source: `fytchx/Godscar`, branch `work/godscar-ui-skeleton`, commit `ad17c6003bf5fcdd9e927ad42e7c251b2cb7858d`, archive `Godscar_UI_Reusable_Starter_Kit.zip`.
+- Applied to this repo's approved Fight skeleton, not to the old UI. Local deployable assets now live under `assets/ui/`: reusable CSS, 12 utility SVG icons, and two small ornaments. The reference-sheet PNGs are not production sprites.
+- Integrated into buttons, panels/dialogs, bottom navigation, header/XP and health bars, cast indicators, status chips, and activity feed. Existing mock combat, enemy picker, settings, recap and event handlers are preserved.
+- First code integration commit `d94760f`; package change `46e84ba`; phone-width 360/390/412/480 browser smoke tests PASS on `4bbc93b`, with 13/13 utility icons loading and no horizontal overflow or JS errors.
+- Railway service `Godscar Playtest UI` in environment `Godscarplaytest` was connected to this branch and deployed commit `4bbc93b` successfully. It now tracks future pushes to this branch.
+- **UI only:** no simulation import or live gameplay connection was approved; all combat/session content remains fake. All other tabs stay stubs.
 
 ## Guardrail for later bot/simulation work
 
