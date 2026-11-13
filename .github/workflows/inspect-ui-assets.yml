@@ -1,0 +1,22 @@
+name: Inspect uploaded Godscar UI archives
+
+on:
+  push:
+    branches:
+      - ui/fight-skeleton
+    paths:
+      - .github/workflows/inspect-ui-assets.yml
+  workflow_dispatch:
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: List asset contents
+        run: |
+          for pack in actualart1.zip actualart2.zip actualart3.zip; do
+            echo "========== $pack =========="
+            unzip -Z -1 "$pack" | head -250 || true
+            echo "Total entries: $(unzip -Z -1 "$pack" | wc -l)"
+          done
