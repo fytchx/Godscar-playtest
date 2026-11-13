@@ -1,4 +1,4 @@
-name: Inspect uploaded Godscar UI archives
+name: Inspect uploaded Godscar UI starter kit
 
 on:
   push:
@@ -13,10 +13,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: List asset contents
+      - name: Read reusable starter kit from pinned Godscar branch commit
         run: |
-          for pack in actualart1.zip actualart2.zip actualart3.zip; do
-            echo "========== $pack =========="
-            unzip -Z -1 "$pack" | head -250 || true
-            echo "Total entries: $(unzip -Z -1 "$pack" | wc -l)"
+          curl -fL --retry 3 "https://raw.githubusercontent.com/fytchx/Godscar/ad17c6003bf5fcdd9e927ad42e7c251b2cb7858d/Godscar_UI_Reusable_Starter_Kit.zip" -o /tmp/godscar-ui-kit.zip
+          echo "========== ARCHIVE CONTENTS =========="
+          unzip -Z -1 /tmp/godscar-ui-kit.zip
+          mkdir -p /tmp/gs-kit
+          unzip -q /tmp/godscar-ui-kit.zip -d /tmp/gs-kit
+          echo "========== TEXT FILE CONTENTS =========="
+          find /tmp/gs-kit -type f \( -name '*.md' -o -name '*.txt' -o -name '*.css' -o -name '*.json' \) -print | while read -r p; do
+            echo "========== $p =========="
+            head -c 18000 "$p"
+            echo ""
           done
+          echo "========== IMAGE DIMENSIONS =========="
+          find /tmp/gs-kit -type f \( -iname '*.png' -o -iname '*.webp' -o -iname '*.svg' \) -print | while read -r p; do file "$p"; done
