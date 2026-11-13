@@ -1,0 +1,38 @@
+name: Phone-width Fight UI smoke test
+
+on:
+  push:
+    branches:
+      - ui/fight-skeleton
+    paths:
+      - .github/workflows/ui-smoke.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mobile-browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ui/fight-skeleton
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser test driver
+        run: npm install --no-save --no-package-lock puppeteer-core
+      - name: Verify browser layout and interactive panels
+        run: |
+          python3 -m http.server 8080 >/tmp/godscar-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          sleep 2
+          node scripts/smoke_ui.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: godscar-gs-ui-phone-screenshots
+          path: screenshots/*.png
+          if-no-files-found: ignore
