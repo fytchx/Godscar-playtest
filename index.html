@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#10171b">
+<meta name="theme-color" content="#14110d">
 <title>Godscar · Home</title>
 <style>
 :root{
@@ -216,6 +216,238 @@ select,.text-input{width:100%;border:1px solid #43555a;border-radius:10px;paddin
 @media(min-width:600px){body{padding:14px 0}.app{border-radius:20px;overflow:hidden;min-height:calc(100vh - 28px);padding-bottom:100px}.bottom-nav{bottom:14px;border-radius:0 0 19px 19px}}
 @media(max-width:350px){.app{padding-left:10px;padding-right:10px}.cast-stack{width:55%}.enemy-summary strong{font-size:12px}.dps-badge{width:62px}.effect-chip{font-size:7px}.arena-bottom{left:7px;right:7px;gap:5px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* GODSCAR BRONZE / BASALT THEME
+   Fight-only presentation pass. CSS surfaces and framing, no game-data changes.
+   The underlying layout, source colors, art slots and interactivity stay intact. */
+:root {
+  --page:#0c0b09; --surface:#1a1815; --surface-raised:#27221c; --surface-soft:#141310;
+  --line:#67543a; --line-soft:#41382a; --text:#ede4d3; --muted:#b5a68e; --quiet:#827561;
+  --accent:#d1a76c; --accent-soft:#d1a76c28; --good:#a6c197; --danger:#d98f80;
+  --radius:9px; --shadow:0 18px 54px #000b;
+}
+html{background:#0c0b09}
+body{
+  background:
+    radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 0,transparent 78%),
+    repeating-linear-gradient(115deg,#fff1 0 1px,transparent 1px 78px),
+    #0c0b09;
+  color:var(--text);
+}
+.app{
+  background:
+    linear-gradient(90deg,#09090765,transparent 8%,transparent 92%,#09090765),
+    radial-gradient(ellipse 90% 360px at 50% -20%,#4b3c293c,transparent),
+    linear-gradient(180deg,#1c1915,#12120f 55%,#13110f);
+  border-inline:1px solid #4f3e29;
+  box-shadow:inset 1px 0 #ac88551e,inset -1px 0 #ac88551e,0 0 48px #000a;
+}
+header{
+  border-bottom:1px solid #4a3827;
+  background:linear-gradient(180deg,#cbaa7510,transparent 78%);
+}
+header:before{
+  content:"";position:absolute;left:0;right:0;bottom:3px;height:1px;
+  background:linear-gradient(90deg,transparent,#d0a66f50 22%,#d0a66f69 50%,#d0a66f50 78%,transparent);
+  pointer-events:none;
+}
+.class-mark{color:#d5b47d;filter:drop-shadow(0 0 8px #be8b4938)}
+.player-name{color:#f1e4cc;letter-spacing:.025em}
+.level-tag{color:#d5ae75}
+.class-name{color:#a69981}
+.settings-button,.icon-button,.close-button{
+  color:#d4b17c;border:1px solid #705b3b;border-radius:7px;
+  background:linear-gradient(145deg,#383022,#1a1814 72%);
+  box-shadow:inset 0 1px #dbb78320,inset 0 -2px #0008;
+}
+.settings-button:hover,.icon-button:hover,.close-button:hover{
+  border-color:#bc9458;background:linear-gradient(145deg,#493924,#211c16);
+}
+.xp-rail{height:3px;background:#2a241c;border-radius:0}
+.xp-rail i{background:linear-gradient(90deg,#7b5833,#e2bd7f);box-shadow:0 0 8px #bc8a4590}
+.healthline{padding-top:9px;padding-bottom:6px}
+.health-title{color:#9c9078}
+.health-value{color:#d7cdbb}
+.health-track{height:8px;background:#191b16;border:1px solid #665e42;box-shadow:inset 0 1px 3px #000c;border-radius:3px}
+.health-track i{background:linear-gradient(180deg,#b8ce91,#608a58 40%,#365f36);border-right:1px solid #d4ddb5;border-radius:1px}
+.zone-line{padding:12px 2px 10px}
+.zone-button .zone-label{color:#a59378}
+.zone-button strong{color:#ecddc1;text-shadow:0 1px 6px #0009}
+.chevron{color:#cdab78}
+.rotation-pill{
+  border:1px solid #665037;border-radius:4px;
+  color:#d8bf96;background:linear-gradient(135deg,#33291e,#1b1a17);
+  box-shadow:inset 0 1px #bea17820;letter-spacing:.12em;
+}
+.arena{
+  border:2px solid #6b5537;border-radius:8px;
+  background:radial-gradient(ellipse at 50% 43%,#4b5144,#292b29 45%,#151816);
+  box-shadow:
+    inset 0 0 0 1px #201a13,inset 0 0 48px #090a0bd0,
+    0 0 0 1px #251d15,0 10px 28px #000a;
+}
+.arena:after{
+  content:"";position:absolute;inset:3px;z-index:8;
+  border:1px solid #c7a16b45;border-radius:3px;
+  box-shadow:inset 0 0 0 1px #09080550;
+  pointer-events:none;
+}
+.arena:before{
+  background:radial-gradient(ellipse at 52% 58%,transparent 29%,#15100d7a 92%),
+    repeating-linear-gradient(168deg,transparent 0 48px,#e6c69006 49px 50px);
+}
+.scene-vignette{
+  background:linear-gradient(90deg,#100d0959,transparent 22%,transparent 78%,#100d0965),
+    linear-gradient(0deg,#0a0909a8,transparent 34%,#0a0a0b2d);
+}
+.biome-label{
+  background:#17130ed9;border:1px solid #8e764e94;color:#e0c7a3;
+  border-radius:3px;font-size:7px;
+}
+.cast-stack{top:12px;left:11px}
+.cast-row{
+  border-left:1px solid #ad895d6c;border-radius:2px;
+  background:linear-gradient(90deg,#17120edb,#16130ba4 65%,transparent);
+  padding-left:5px;
+}
+.cast-row strong{color:#f1e5d1;text-shadow:0 1px 3px #000}
+.cast-track{background:linear-gradient(90deg,#b9a48a4b,transparent)}
+.attack-row{border-top:1px solid #ad8e6a38;border-left-color:#776958}
+.attack-row strong{color:#ccbaa3}
+.effect-chip{
+  border-radius:4px;background:#15130ee0;
+  box-shadow:inset 0 1px #ffffff10,0 2px 6px #0008;
+}
+.enemy-art-slot:not(.has-art){
+  border-color:#bd9a6173;border-radius:7px;
+  background:linear-gradient(155deg,#ba965d15,#16130e5c 55%,#08090840);
+  color:#e0c5a0;
+}
+.enemy-art-slot:not(.has-art) .art-label{color:#d7bb93}
+.enemy-art-slot:not(.has-art) .enemy-emblem{color:#e3c697ae}
+.enemy-glow{background:radial-gradient(ellipse,#e7a86428,transparent 70%)}
+.enemy-summary,.dps-badge{
+  border:1px solid #8a6c45;border-radius:5px;
+  background:linear-gradient(180deg,#30271ee8,#131210f0);
+  box-shadow:inset 0 1px #ddba8028,0 4px 13px #0008;
+}
+.enemy-summary strong{color:#f6e7cc}
+.enemy-kind,.enemy-health-numbers{color:#c6b395}
+.enemy-health-track{height:7px;background:#181411;border:1px solid #5b4432;border-radius:2px}
+.enemy-health-track i{border-radius:0;background:linear-gradient(180deg,#e3ad71,#8e4f30)}
+.dps-badge span{color:#ba9f77}
+.dps-badge strong{color:#f0c488;text-shadow:0 0 10px #d69a4840}
+.feed-card,.details-card{
+  margin-top:11px;border:1px solid #6b5437;border-radius:7px;
+  background:linear-gradient(125deg,#2a241c 0,#181713 36%,#141311 100%);
+  box-shadow:inset 0 1px #ddb67a22,0 4px 16px #0005;
+}
+.feed-head,.details-head{border-bottom:1px solid #4d3c2a}
+.feed-head h2,.details-head h2,.damage-breakdown h3{color:#e8d4b0}
+.feed-live{color:#a7c493}
+.feed-list{border-top:1px solid #1e1b17;scrollbar-color:#7b6442 transparent}
+.event{border-bottom:1px solid #3e3428}
+.event-text{color:#d9cbb6}
+.event-time{color:#877964}
+.event-icon{border-radius:3px}
+.feed-foot,.damage-breakdown,.reset-row{border-color:#4b3c2a}
+.details-button,.secondary-button{
+  border:1px solid #78603f;border-radius:4px;
+  background:linear-gradient(180deg,#392f23,#221e18);color:#e4d1ae;
+  box-shadow:inset 0 1px #ecc58b25;
+}
+.details-button:hover,.secondary-button:hover{border-color:#bc935e;color:#fff0d2}
+.session-label,.metric small{color:#a99373}
+.metric{
+  border:1px solid #55432f;border-radius:4px;
+  background:linear-gradient(135deg,#252018,#151411);
+  box-shadow:inset 0 1px #deb97d16;
+}
+.metric strong{color:#f0dfc1}
+.metric em,.reset-row span{color:#96846d}
+.damage-meter{background:#3d3429;border-radius:2px}
+.damage-meter i{border-radius:0}
+.reset-button{border-radius:4px;background:#30201a;border:1px solid #925548;color:#e4ad9b}
+.bottom-nav{
+  border-top:1px solid #a07a48;
+  background:linear-gradient(180deg,#30271cf5,#14120ef8 43%,#100f0dfb);
+  box-shadow:0 -3px 20px #0009,inset 0 1px #dec08b2a;
+}
+.nav-button{
+  border:1px solid transparent;border-radius:5px;
+  color:#a29379;min-height:47px;
+}
+.nav-button.active{
+  color:#f0ca90;border-color:#705636;
+  background:linear-gradient(180deg,#6e513029,#30231645);
+  box-shadow:inset 0 1px #e0b67925;
+}
+.nav-button:hover{color:#f4d7a9;background:#b68a4320}
+.nav-button span{letter-spacing:.035em}
+.scrim{background:#080603cf;backdrop-filter:blur(5px)}
+.panel{
+  border:1px solid #a38151;border-radius:7px;
+  background:
+    radial-gradient(ellipse at 50% -15%,#8d66362a,transparent 60%),
+    linear-gradient(150deg,#30281e,#191713 38%,#14130f);
+  box-shadow:inset 0 0 0 1px #261d13,inset 0 2px #f0cb8640,0 28px 85px #000c;
+}
+.panel-head{border-bottom:1px solid #73593c;background:#b78c4a0b}
+.panel-head small,.zone-select-label{color:#b69c77}
+.panel-head h2,.recap-intro h2{color:#f1e1c5}
+.panel-help,.enemy-option-meta,.enemy-detail-line{color:#b7a992}
+select,.text-input{
+  border:1px solid #735e41;border-radius:4px;
+  background:#171510;color:#eee0c5;box-shadow:inset 0 1px 4px #0009;
+}
+.enemy-option,.recap-stat,.loot-item{
+  border:1px solid #594731;border-radius:5px;
+  background:linear-gradient(145deg,#28221a,#171510);
+}
+.enemy-option.chosen{
+  border-color:#c49a5d;background:linear-gradient(125deg,#4a382349,#201c16);
+  box-shadow:inset 3px 0 #c49a5d;
+}
+.enemy-option-name,.recap-section h3{color:#f0d8b5}
+.type-chip,.weak-chip{
+  border-radius:3px;background:#342d24;color:#d8c8ad;border:1px solid #67533c;
+}
+.weak-chip{color:#e7c58d;border-color:#8f6e43;background:#3c3020}
+.check-wrap input,.settings-toggle input,.filter-option input,.recap-footer input{accent-color:#c69a60}
+.recap-intro{border-bottom:1px solid #58442e;background:linear-gradient(180deg,#c99f6520,transparent)}
+.recap-intro .eyebrow{color:#e1bd86}
+.recap-intro p,.recap-stat small,.loot-item small,.item-preview p{color:#b8a88d}
+.recap-stat strong,.loot-item strong{color:#e8d7bd}
+.recap-section,.recap-footer{border-color:#5c4831}
+.loot-icon{
+  border-radius:4px;color:#dbb57c;border:1px solid #795e40;
+  background:linear-gradient(145deg,#4c3b27,#221d17);
+}
+.view-loot{color:#e2ba7a}
+.primary-button{
+  border-radius:4px;border:1px solid #d0a66b;
+  background:linear-gradient(180deg,#80613c,#47341f);
+  color:#fff0d1;box-shadow:inset 0 1px #f2d39e55;
+}
+.settings-note{
+  border:1px dashed #816a4a;border-radius:5px;
+  color:#c8b79b;background:#221d16;
+}
+.filter-option{border-color:#4b3d2c;color:#dfcfb6}
+.toast{
+  border-color:#a17b4c;border-radius:5px;
+  color:#f2ddba;background:#282116;box-shadow:0 8px 26px #000a;
+}
+button:focus-visible,select:focus-visible,input:focus-visible{
+  outline:2px solid #e6bd80;outline-offset:2px;
+}
+@media(min-width:600px){.app{border-radius:8px}.bottom-nav{border-radius:0 0 7px 7px}}
+@media(max-width:350px){
+ .arena{border-width:1px}
+ .cast-stack{left:7px;top:9px}
+ .enemy-summary,.dps-badge{padding:6px}
+}
+
 </style>
 </head>
 <body>
