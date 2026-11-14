@@ -343,3 +343,24 @@ body.gs-theme .gs-character__item-body {color:var(--gs-a-muted)}
   body.gs-theme * {scroll-behavior:auto}
   body.gs-theme :is(.gs-button,.nav-button,.gs-tab) {transition:none}
 }
+
+/* Arcana's raised, tappable location rows are clearer than an unframed title. */
+body.gs-theme .zone-line {
+  border:1px solid var(--gs-a-line);
+  border-radius:13px;
+  background:var(--gs-a-surface);
+  padding:9px 11px;
+  margin:10px 0 11px;
+  box-shadow:inset 0 1px 0 #ffffff08;
+}
+body.gs-theme .zone-button {flex:1;min-width:0}
+body.gs-theme .zone-button > span {min-width:0}
+body.gs-theme .zone-button strong {display:inline-block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body.gs-theme .feed-card.gs-feed-shell {margin-top:13px}
+body.gs-theme .details-card.gs-panel {margin-top:10px}
+body.gs-theme .gs-character__panel {padding-bottom:6px}
+@media(max-width:360px) {
+  body.gs-theme .zone-line {padding:8px 9px}
+  body.gs-theme .zone-button strong {font-size:13px}
+  body.gs-theme .rotation-pill {padding:6px;font-size:9px}
+}

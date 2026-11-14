@@ -1,15 +1,20 @@
-name: Phone-width Fight UI smoke test
+name: Godscar Arcana-inspired phone-width UI smoke
 
 on:
   push:
     branches:
-      - ui/fight-skeleton
+      - ui/arcana-inspired-reskin
     paths:
       - .github/workflows/ui-smoke.yml
       - index.html
+      - assets/ui/arcana-reskin.css
+      - assets/ui/arcana-preview-icons/**
       - assets/ui/character.css
       - assets/ui/character.js
       - scripts/smoke_ui.mjs
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -20,8 +25,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ui/fight-skeleton
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
