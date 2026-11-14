@@ -1,0 +1,345 @@
+/* GODSCAR / ARCANALINE visual exploration
+ * Based on Arcana's token/card/navigation patterns, not its layout or runtime.
+ * Source reference: fytchx/Arcana@main next/app.css, styles.css, src/theme.js.
+ * Proposal only. Existing Godscar fight/character DOM, fake data and events unchanged.
+ */
+:root {
+  color-scheme: dark;
+  --gs-a-bg:#0d1019;
+  --gs-a-deep:#090c14;
+  --gs-a-surface:#191e2b;
+  --gs-a-surface2:#202638;
+  --gs-a-raise:#252b3e;
+  --gs-a-line:#353d54;
+  --gs-a-line-soft:#2a3245;
+  --gs-a-text:#f0f1f8;
+  --gs-a-muted:#aab2c8;
+  --gs-a-faint:#7e89a4;
+  --gs-a-accent:#bba4ff;
+  --gs-a-accent-ink:#d8caff;
+  --gs-a-accent-soft:#bba4ff19;
+  --gs-a-on-accent:#181026;
+  --gs-a-focus:#d8caff;
+  --gs-a-radius:14px;
+  --gs-a-shadow:0 12px 34px #02040b8a;
+  /* Map the existing GS-UI-1.0 kit onto new semantic surfaces. */
+  --ui-bg:var(--gs-a-bg); --ui-surface:var(--gs-a-surface);
+  --ui-raised:var(--gs-a-surface2); --ui-recess:var(--gs-a-deep);
+  --ui-frame-dark:var(--gs-a-line); --ui-bronze:var(--gs-a-line);
+  --ui-highlight:var(--gs-a-accent); --ui-ivory:var(--gs-a-text);
+  --ui-muted:var(--gs-a-muted); --ui-active:var(--gs-a-accent);
+  --ui-danger:#e57d91; --ui-health:#78c69f; --ui-xp:var(--gs-a-accent);
+  /* Original damage source variables remain the source of truth. */
+  --page:var(--gs-a-bg); --surface:var(--gs-a-surface);
+  --surface-raised:var(--gs-a-surface2); --surface-soft:var(--gs-a-deep);
+  --line:var(--gs-a-line); --line-soft:var(--gs-a-line-soft);
+  --text:var(--gs-a-text); --muted:var(--gs-a-muted); --quiet:var(--gs-a-faint);
+  --accent:var(--gs-a-accent); --accent-soft:var(--gs-a-accent-soft);
+  --good:#78c69f; --danger:#e57d91; --radius:var(--gs-a-radius);
+}
+html {background:var(--gs-a-bg)}
+body.gs-theme {
+  color:var(--gs-a-text);
+  background:var(--gs-a-bg);
+  font:14px/1.45 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+body.gs-theme :focus-visible {outline:2px solid var(--gs-a-focus);outline-offset:2px}
+body.gs-theme .app {
+  background:linear-gradient(180deg,#111725 0%,#0d1019 46%,#0b0e16 100%);
+  border-inline:1px solid #293348;
+  box-shadow:0 0 55px #050710a8;
+}
+body.gs-theme header {
+  border-bottom:0;
+  padding-top:13px;
+}
+body.gs-theme .class-mark {
+  width:41px;height:41px;
+  padding:5px;
+  border:1px solid #68578d;
+  border-radius:12px;
+  background:var(--gs-a-accent-soft);
+  color:var(--gs-a-accent-ink);
+  filter:none;
+}
+body.gs-theme .player-name {font:800 17px/1.1 Inter,system-ui,sans-serif;letter-spacing:-.025em}
+body.gs-theme .class-name {font-size:10px;letter-spacing:.07em;color:var(--gs-a-muted)}
+body.gs-theme .level-tag {color:var(--gs-a-accent-ink)}
+body.gs-theme .settings-button.gs-button--icon {
+  border:1px solid var(--gs-a-line);
+  background:var(--gs-a-surface);
+  border-radius:12px;
+  box-shadow:none;
+}
+body.gs-theme .settings-button.gs-button--icon:hover,
+body.gs-theme .settings-button.gs-button--icon:focus-visible {border-color:var(--gs-a-accent)}
+body.gs-theme .xp-rail.gs-progress {
+  height:4px;background:#2c3348;border:0;border-radius:8px;overflow:hidden;
+}
+body.gs-theme .xp-rail.gs-progress i {
+  background:linear-gradient(90deg,#866de0,var(--gs-a-accent));
+  box-shadow:none;border-radius:8px;
+}
+body.gs-theme .healthline {padding:9px 0 4px}
+body.gs-theme .health-track.gs-progress {height:8px;border:0;background:#263344;border-radius:8px;clip-path:none;padding:1px}
+body.gs-theme .health-track.gs-progress i {background:linear-gradient(90deg,#3b9073,#89d6aa);border-radius:7px;clip-path:none}
+body.gs-theme .health-title,body.gs-theme .health-value {color:#b8c5d8}
+body.gs-theme .zone-line {padding:13px 2px 10px}
+body.gs-theme .zone-button .zone-label {color:var(--gs-a-faint);letter-spacing:.09em;font-size:10px}
+body.gs-theme .zone-button strong {font:750 15px/1.25 Inter,system-ui,sans-serif;letter-spacing:-.025em}
+body.gs-theme .zone-button .chevron {color:var(--gs-a-accent-ink)}
+body.gs-theme .rotation-pill {
+  background:var(--gs-a-accent-soft);border:1px solid #725c9969;
+  color:var(--gs-a-accent-ink);border-radius:9px;font-size:10px;
+  letter-spacing:.03em;padding:6px 9px;
+}
+/* Flatten the bronze 9-slice treatment into Arcana-style UI surfaces. */
+body.gs-theme :is(.gs-panel,.gs-button,.gs-tab,.gs-slot,.gs-tooltip,.gs-select,.gs-feed-shell) {
+  clip-path:none;
+  isolation:auto;
+}
+body.gs-theme :is(.gs-panel,.gs-button,.gs-tab,.gs-slot,.gs-tooltip,.gs-select,.gs-feed-shell)::before {content:none;display:none}
+body.gs-theme .gs-panel {
+  background:var(--gs-a-surface);border:1px solid var(--gs-a-line);
+  border-radius:16px;box-shadow:var(--gs-a-shadow);color:var(--gs-a-text);
+}
+body.gs-theme .gs-panel--recessed {background:#161b29}
+body.gs-theme .gs-panel--crest::after {display:none}
+body.gs-theme :is(.gs-heading,.gs-panel h2) {color:var(--gs-a-text)}
+body.gs-theme .gs-heading {font:750 17px/1.2 Inter,system-ui,sans-serif;letter-spacing:-.03em}
+body.gs-theme .gs-overline {color:var(--gs-a-accent-ink)}
+body.gs-theme .gs-button {
+  border:1px solid #575075;background:#27273d;border-radius:11px;
+  color:var(--gs-a-accent-ink);font:750 11px/1.2 Inter,system-ui,sans-serif;
+  letter-spacing:.025em;box-shadow:none;transition:background .15s,border-color .15s;
+}
+body.gs-theme .gs-button:is(:hover,:focus-visible):not(:disabled) {background:#33314d;border-color:var(--gs-a-accent);filter:none}
+body.gs-theme .gs-button:active:not(:disabled){filter:brightness(.93)}
+body.gs-theme .gs-button--active,
+body.gs-theme .gs-button[aria-pressed="true"] {
+  color:var(--gs-a-on-accent);border-color:var(--gs-a-accent);
+  background:var(--gs-a-accent);
+}
+body.gs-theme .gs-button--danger {border-color:#8d4d5b;background:#422533;color:#ffb3c1}
+body.gs-theme .gs-button--danger:hover:not(:disabled) {border-color:#e88898;background:#542c3c}
+body.gs-theme .gs-button:disabled {opacity:.48}
+body.gs-theme .gs-button--icon {background:var(--gs-a-surface);color:var(--gs-a-accent-ink);border:1px solid var(--gs-a-line)}
+body.gs-theme .gs-tabs {gap:4px;border-bottom-color:var(--gs-a-line)}
+body.gs-theme .gs-tab {
+  border:1px solid transparent;border-radius:11px 11px 0 0;
+  background:var(--gs-a-surface);color:var(--gs-a-muted);
+  font:750 11px/1.2 Inter,system-ui,sans-serif;
+}
+body.gs-theme .gs-tab[aria-selected="true"] {
+  color:var(--gs-a-accent-ink);background:var(--gs-a-surface2);
+  border-color:var(--gs-a-line);border-bottom:2px solid var(--gs-a-accent);
+}
+body.gs-theme .gs-slot {
+  border:1px solid #4d496b;border-radius:10px;
+  background:#28253c;color:var(--gs-a-accent-ink);
+}
+body.gs-theme .gs-slot[data-selected="true"] {border-color:var(--gs-a-accent);background:#3b345c;filter:none}
+body.gs-theme .gs-tooltip {background:var(--gs-a-surface);border:1px solid var(--gs-a-line);border-radius:12px}
+body.gs-theme .gs-select {border:1px solid var(--gs-a-line);border-radius:11px;background:#121725}
+body.gs-theme .gs-select select,body.gs-theme .gs-select select option {color:var(--gs-a-text)}
+body.gs-theme .gs-select select option {background:var(--gs-a-surface)}
+body.gs-theme .gs-select::after {border-color:var(--gs-a-accent)}
+body.gs-theme .gs-checkbox__mark {clip-path:none;border:1px solid #726c9a;border-radius:6px;background:#121726}
+body.gs-theme .gs-checkbox__mark::before {content:none}
+body.gs-theme .gs-checkbox input:checked+.gs-checkbox__mark {background:#61519c;border-color:var(--gs-a-accent)}
+body.gs-theme .gs-checkbox input:checked+.gs-checkbox__mark::after {border-color:#fff}
+body.gs-theme .gs-toggle__track {border-color:#4a546e;background:#171c2b}
+body.gs-theme .gs-toggle input:checked+.gs-toggle__track {background:#55457f;border-color:#ad90f1}
+body.gs-theme .gs-toggle input:checked+.gs-toggle__track::after {background:#e9dcff}
+body.gs-theme .gs-progress {border:1px solid #41495f;clip-path:none;border-radius:20px;background:#111523}
+body.gs-theme .gs-progress__fill {clip-path:none;border-radius:20px}
+body.gs-theme .gs-chip {border-radius:8px;background:#111725;border-color:#424a60;color:var(--gs-a-muted)}
+body.gs-theme .gs-chip--status {background:color-mix(in srgb,var(--source) 9%,#121722);border-color:color-mix(in srgb,var(--source) 35%,#454b63)}
+/* The fight arena keeps the content hierarchy, but loses heavy metal frames. */
+body.gs-theme .arena {
+  border-radius:17px;border:1px solid #485367;
+  background:radial-gradient(ellipse at 50% 34%,#33414d 0%,#24303d 42%,#111927 100%);
+  box-shadow:inset 0 0 55px #080b18ba,0 8px 26px #05061077;
+}
+body.gs-theme .arena::before {opacity:.72}
+body.gs-theme .cast-row {
+  border:0;border-radius:8px;background:linear-gradient(90deg,#111727df,#111727bb 72%,transparent);
+  mask-image:linear-gradient(90deg,#000 0 78%,transparent);
+}
+body.gs-theme .cast-row .skill-icon.gs-slot {background:#212538;border:1px solid #454a63;border-radius:6px;box-shadow:none}
+body.gs-theme .cast-row .cast-track {background:linear-gradient(90deg,#58617866,transparent);border:0;clip-path:none;border-radius:8px}
+body.gs-theme .cast-row .cast-track i {clip-path:none;border-radius:8px}
+body.gs-theme .cast-row strong {color:#e9ecf9;font-weight:650}
+body.gs-theme .effect-chip.gs-chip {border-radius:8px;background:#101726d9;padding:4px 7px}
+body.gs-theme .enemy-art-slot:not(.has-art) {
+  border:1px dashed #7885a48b;border-radius:13px;
+  background:#18203236;box-shadow:none;
+}
+body.gs-theme .biome-label {border-radius:7px;border-color:#7885a466;background:#101725a8;color:#c0c9dc}
+body.gs-theme .enemy-summary {
+  border-radius:12px;border:1px solid #5360788f;
+  background:#121a29eb;box-shadow:0 4px 13px #0007;
+}
+body.gs-theme .enemy-summary strong {font:750 14px/1.2 Inter,system-ui,sans-serif;letter-spacing:-.02em}
+body.gs-theme .enemy-health-track.gs-progress {height:8px;border:0;background:#353343;border-radius:8px;clip-path:none;padding:1px}
+body.gs-theme .enemy-health-track.gs-progress i {clip-path:none;border-radius:8px;background:linear-gradient(90deg,#a94c51,#eb9b76)}
+body.gs-theme .dps-badge {
+  border-radius:12px;border:1px solid #665889a3;
+  background:#171b2deb;box-shadow:none;
+}
+body.gs-theme .dps-badge strong {font:800 15px/1.2 Inter,system-ui,sans-serif;color:var(--gs-a-accent-ink)}
+body.gs-theme .dps-badge span {color:var(--gs-a-muted)}
+/* Session/activity is a normal Arcana card, not a separate fantasy plate. */
+body.gs-theme .feed-card.gs-feed-shell,
+body.gs-theme .details-card.gs-panel {
+  background:var(--gs-a-surface);border:1px solid var(--gs-a-line);
+  border-radius:15px;box-shadow:none;
+}
+body.gs-theme .feed-card.gs-feed-shell {padding:12px 13px 11px}
+body.gs-theme .feed-card.gs-feed-shell .feed-head {padding:0 0 9px;border-bottom:1px solid var(--gs-a-line-soft)}
+body.gs-theme .feed-head h2,body.gs-theme .details-head h2 {font:800 15px/1.15 Inter,system-ui,sans-serif;letter-spacing:-.025em}
+body.gs-theme .feed-live {font-size:10px;letter-spacing:.05em;color:#85d2aa}
+body.gs-theme .feed-live .live-dot {background:#85d2aa;box-shadow:none}
+body.gs-theme .feed-list {border-color:var(--gs-a-line-soft)}
+body.gs-theme .feed-list .event.gs-feed__row {border-color:#333b51;font-size:10px;min-height:37px}
+body.gs-theme .feed-list .event.gs-feed__row .event-icon {background:color-mix(in srgb,var(--type) 13%,#1d2231);border:1px solid color-mix(in srgb,var(--type) 35%,#364051);border-radius:7px}
+body.gs-theme .feed-list .event-time {color:var(--gs-a-faint)}
+body.gs-theme .feed-foot {border-color:var(--gs-a-line-soft)}
+body.gs-theme .details-button.gs-button {
+  border:1px solid #695796;background:#332b4d;color:#e2d6ff;
+  border-radius:9px;min-height:38px;padding:9px 13px;
+}
+body.gs-theme .details-card.gs-panel {padding:14px}
+body.gs-theme .metric {background:#121726;border-color:var(--gs-a-line-soft);border-radius:11px}
+body.gs-theme .metric strong {font:800 17px/1.1 Inter,system-ui,sans-serif;color:var(--gs-a-text)}
+body.gs-theme .damage-breakdown {border-color:var(--gs-a-line-soft)}
+body.gs-theme .damage-breakdown h3 {font:750 12px Inter,system-ui,sans-serif}
+/* Bottom navigation stays at five destinations, with Arcana's understated active state. */
+body.gs-theme .gs-navbar.bottom-nav {
+  background:#101522;border-top:1px solid #414960;box-shadow:0 -9px 25px #090b17b0;
+  padding:5px 5px max(5px,env(safe-area-inset-bottom));gap:3px;
+}
+body.gs-theme .nav-button.gs-nav-item {
+  border:1px solid transparent;border-radius:10px;
+  color:var(--gs-a-muted);background:transparent;font:650 10px/1.1 Inter,system-ui,sans-serif;
+  gap:4px;min-height:52px;
+}
+body.gs-theme .nav-button.gs-nav-item.active,
+body.gs-theme .nav-button.gs-nav-item[aria-current="page"] {
+  border:1px solid #695c9a7a;background:#bba4ff17;box-shadow:none;
+  color:var(--gs-a-accent-ink);
+}
+body.gs-theme .nav-button.gs-nav-item .gs-icon {opacity:.85;width:20px;height:20px}
+body.gs-theme .nav-button.gs-nav-item.active .gs-icon {opacity:1}
+/* Modals, settings, recap, enemy rotation. */
+body.gs-theme .scrim {background:#050710cf}
+body.gs-theme .panel.gs-panel.gs-dialog {border:1px solid #56617b;border-radius:17px;background:#161b29;box-shadow:0 26px 65px #000b}
+body.gs-theme .panel .panel-head {border-color:var(--gs-a-line-soft)}
+body.gs-theme .panel h2 {font-family:Inter,system-ui,sans-serif;font-weight:800;letter-spacing:-.04em}
+body.gs-theme .panel small,body.gs-theme .panel .eyebrow {color:var(--gs-a-accent-ink)}
+body.gs-theme .panel .panel-help {color:var(--gs-a-muted)}
+body.gs-theme .rotation-header strong {font:750 13px Inter,system-ui,sans-serif;color:var(--gs-a-text)}
+body.gs-theme .rotation-header span {border:1px solid #65568b;background:#2a253e;color:var(--gs-a-accent-ink);border-radius:8px}
+body.gs-theme .enemy-option {border-color:var(--gs-a-line);border-radius:10px;background:#1d2232}
+body.gs-theme .enemy-option .enemy-detail-line:last-child strong {color:var(--gs-a-accent-ink)}
+body.gs-theme .recap-stat,body.gs-theme .loot-item {border-color:var(--gs-a-line-soft);background:#1d2333;border-radius:10px}
+body.gs-theme .loot-item .level-tag {color:var(--gs-a-accent-ink)}
+body.gs-theme .settings-note {background:#1d2333;border-color:var(--gs-a-line-soft);border-radius:10px}
+body.gs-theme .toast {background:#24283b;color:var(--gs-a-text);border-color:#665d85}
+/* Character overlay: match the same surface system, not an unrelated bronze menu. */
+body.gs-theme .gs-character {
+  --char-bg:#111521;--char-border:#384259;--char-accent:var(--gs-a-accent);
+  --char-muted:var(--gs-a-muted);
+  background:linear-gradient(180deg,#181d2b,#0e1220 70%);border-inline:1px solid var(--gs-a-line);
+  color:var(--gs-a-text);box-shadow:0 0 0 200vmax #03040a9f,0 18px 58px #0009;
+}
+body.gs-theme .gs-character__header {
+  background:#171c29;border-bottom:1px solid var(--gs-a-line);
+  padding:13px 16px 11px;
+}
+body.gs-theme .gs-character__header h1 {font:800 23px/1.05 Inter,system-ui,sans-serif;letter-spacing:-.045em}
+body.gs-theme .gs-character__eyebrow {font-size:10px;color:var(--gs-a-accent-ink);letter-spacing:.08em}
+body.gs-theme .gs-character__close,
+body.gs-theme .gs-character__sheet-head button {
+  border-radius:11px;background:#24293a;border:1px solid var(--gs-a-line);
+}
+body.gs-theme .gs-character__tabs {background:#151a27;gap:5px;border-bottom:1px solid var(--gs-a-line);padding:8px 12px 0}
+body.gs-theme .gs-character__tabs button,
+body.gs-theme .gs-character__inventory-tabs button {
+  border-radius:11px 11px 0 0;border:1px solid transparent;
+  border-bottom:2px solid transparent;background:#1e2433;
+  color:var(--gs-a-muted);font:750 12px Inter,system-ui,sans-serif;
+}
+body.gs-theme .gs-character__tabs button.active,
+body.gs-theme .gs-character__inventory-tabs button.active {
+  color:var(--gs-a-accent-ink);background:#2a2840;
+  border-color:#51486f;border-bottom:2px solid var(--gs-a-accent);
+}
+body.gs-theme .gs-character__viewport {scrollbar-color:#555172 #171b29}
+body.gs-theme .gs-character__slot-visual {
+  border:1px solid #3e4760;border-radius:12px;
+  background:radial-gradient(ellipse at 50% 34%,#30364b 0,#1a1f2e 65%,#111522);
+  box-shadow:inset 0 1px 0 #ffffff0b,0 3px 8px #03050c70;
+}
+body.gs-theme .gs-character__slot[data-equipped="true"] .gs-character__slot-visual {border-color:#7867a8;box-shadow:inset 0 0 0 1px #bba4ff0e,0 0 11px #9782cb14}
+body.gs-theme .gs-character__slot[data-rarity="epic"] .gs-character__slot-visual {border-color:#b280f1}
+body.gs-theme .gs-character__slot[data-rarity="legendary"] .gs-character__slot-visual {border-color:#e3bc6e}
+body.gs-theme .gs-character__slot svg {color:#d4c5f5}
+body.gs-theme .gs-character__slot-label {color:var(--gs-a-muted)}
+body.gs-theme .gs-character__gearscore {
+  background:#29263a;border-color:#58516d;border-radius:10px;box-shadow:none;
+}
+body.gs-theme .gs-character__gearscore span {color:var(--gs-a-muted)}
+body.gs-theme .gs-character__gearscore strong {font:800 17px Inter,system-ui,sans-serif;color:var(--gs-a-accent-ink)}
+body.gs-theme .gs-character__stats {
+  border:1px solid var(--gs-a-line);border-radius:14px;
+  background:#1b2030;box-shadow:none;
+}
+body.gs-theme .gs-character__section-label {color:var(--gs-a-text)}
+body.gs-theme .gs-character__section-label span {color:var(--gs-a-faint)}
+body.gs-theme .gs-character__attribute {border:1px solid var(--gs-a-line-soft);background:#131827;border-radius:10px}
+body.gs-theme .gs-character__attribute strong {font:800 22px Inter,system-ui,sans-serif}
+body.gs-theme .gs-character__metrics {border-color:var(--gs-a-line-soft)}
+body.gs-theme .gs-character__metrics>div+div {border-color:var(--gs-a-line-soft)}
+body.gs-theme .gs-character__metrics strong {color:var(--gs-a-text)}
+body.gs-theme .gs-character__metrics span {color:var(--gs-a-muted)}
+body.gs-theme .gs-character__detail-trigger {
+  background:#302845;border:1px solid #695994;border-radius:10px;
+  color:var(--gs-a-accent-ink);
+}
+body.gs-theme .gs-character__detail-sheet {
+  background:#171c2a;border-color:#554f72;box-shadow:0 -18px 55px #020308ba;
+}
+body.gs-theme .gs-character__outside-dismiss {color:var(--gs-a-muted)}
+body.gs-theme .gs-character__outside-dismiss i {background:var(--gs-a-accent)}
+body.gs-theme .gs-character__sheet-head {border-color:var(--gs-a-line-soft)}
+body.gs-theme .gs-character__sheet-head h2 {font:800 22px Inter,system-ui,sans-serif;letter-spacing:-.045em}
+body.gs-theme .gs-character__detail-content h3 {color:var(--gs-a-accent-ink)}
+body.gs-theme .gs-character__detail-content dl div {border-color:var(--gs-a-line-soft)}
+body.gs-theme .gs-character__detail-content dt {color:var(--gs-a-muted)}
+body.gs-theme .gs-character__detail-content dd {color:var(--gs-a-text)}
+body.gs-theme .gs-character__detail-attributes span {background:#1b2130;border-color:var(--gs-a-line)}
+body.gs-theme .gs-character__inventory-heading strong {font:800 16px Inter,system-ui,sans-serif}
+body.gs-theme .gs-character__inventory-heading span {color:var(--gs-a-muted)}
+body.gs-theme .gs-character__item-icon {
+  border:1px solid #515777;border-radius:11px;
+  background:radial-gradient(circle at 50% 34%,#33364d,#171c2a 78%);
+}
+body.gs-theme .gs-character__item-icon svg {color:#d3c5ee}
+body.gs-theme .gs-character__item-name {color:var(--gs-a-text)}
+body.gs-theme .gs-character__material {background:#1d2333;border-color:var(--gs-a-line);border-radius:11px}
+body.gs-theme .gs-character__material-icon {color:var(--gs-a-accent-ink);border-color:#655b84;border-radius:8px}
+body.gs-theme .gs-character__skills-placeholder {border-color:#6e6090;background:#211e32;color:var(--gs-a-muted)}
+body.gs-theme .gs-character__skills-placeholder h2 {font:800 22px Inter,system-ui,sans-serif;color:var(--gs-a-text)}
+body.gs-theme .gs-character__item-dialog {background:#1b2030;border-color:#675a8c;border-radius:14px}
+body.gs-theme .gs-character__item-body {color:var(--gs-a-muted)}
+@media(max-width:360px) {
+  body.gs-theme .app {padding-inline:11px}
+  body.gs-theme .gs-character__tabs {padding-inline:8px}
+  body.gs-theme .gs-character__viewport {padding-inline:9px}
+}
+@media(prefers-reduced-motion:reduce) {
+  body.gs-theme * {scroll-behavior:auto}
+  body.gs-theme :is(.gs-button,.nav-button,.gs-tab) {transition:none}
+}
