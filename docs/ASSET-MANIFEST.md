@@ -138,3 +138,33 @@
 4. Correct file format, alpha/export bounds, filename/ID and no baked UI text.
 5. Effects readable with reduced animation and no excessive GPU work.
 6. User reviewed and approved before integration; gameplay/simulation still mocked.
+
+
+## GS-UI-2.0 premium art review (2026-11-14, isolated branch)
+
+**Review status only.** The owner approved a visual quality target and multi-batch production effort, not final assets or live integration. The approved Avenger hammer prototype defines the illustrated quality bar. Earlier flat specialization SVGs remain rejected.
+
+- Branch: `art/premium-hybrid-ui-production`. No merge or deployment.
+- 12 editable SVG chrome sources are committed under `assets/ui/premium-chrome/v2/`, using original manifest IDs. Status: **SOURCE-CREATED / VISUAL-REVIEW-PENDING**. Do not overwrite approved originals.
+- An attached offline review package also contains a separate premium CSS skin, mock Fight/Character HTML, 18 transparent concept-sheet-derived specialization art candidates and size comparisons. These standalone binaries and CSS/HTML are **not yet committed to GitHub**.
+- Avenger is from its independent 1024px art master. The other 17 specialization candidates are extracted from the original generated concept sheet, not new high-resolution independently rendered art masters. At this phase they can be reviewed at 40/64/128px only.
+- Six base classes retain approved Concept 2 art pending separate illustrated high-resolution replacements; six new class masters have NOT been produced.
+- A mock Fight/Character review page was checked headlessly at 360, 390, 412 and 480px with no horizontal overflow or JavaScript errors, a functional zone selection mock, and 11 equipment slots. This is a standalone visual study, not an integration into current root index.html.
+- No simulation, protected item mechanic, public deployment, publishing, or Railway source was changed.
+
+### Review branch SVG source additions
+
+| File | Intent | Status |
+| --- | --- | --- |
+| `GS-UI-CMP-001_panel-grand.svg` | Large panel | SOURCE / REVIEW |
+| `GS-UI-CMP-001_panel-standard.svg` | Standard panel | SOURCE / REVIEW |
+| `GS-UI-CMP-001_panel-compact.svg` | Compact panel | SOURCE / REVIEW |
+| `GS-UI-CMP-011_tooltip-frame.svg` | Tooltip | SOURCE / REVIEW |
+| `GS-UI-CMP-002_button-primary.svg` | Primary control | SOURCE / REVIEW |
+| `GS-UI-CMP-003_button-secondary.svg` | Secondary control | SOURCE / REVIEW |
+| `GS-UI-CMP-008_nav-tile.svg` | Nav tile | SOURCE / REVIEW |
+| `GS-UI-CMP-010_equipment-slot.svg` | Gear slot | SOURCE / REVIEW |
+| `GS-UI-CMP-005_enemy-bar-frame.svg` | Enemy HP | SOURCE / REVIEW |
+| `GS-UI-ORN-003_gilded-divider.svg` | Divider | SOURCE / REVIEW |
+| `GS-UI-ORN-004_corner-flourish.svg` | Corner | SOURCE / REVIEW |
+| `GS-UI-ORN-005_cardinal-crest.svg` | Crest | SOURCE / REVIEW |
