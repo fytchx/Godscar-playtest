@@ -28,3 +28,17 @@ A 490-entry individually exported visual-candidate library, supplied as a conver
 
 ## Next quality gate
 Review the downloadable gallery at 36–64 phone pixels, select the strongest elements, redraw or generate full independent transparent high-resolution items and specialization emblems (not upscaled poster cuts), ensure ability icons match their described mechanics, then assign approved `GS-*` IDs and integrate with a dedicated UI branch if owner authorizes.
+
+## Correction audit — Cropped art library v2 (November 14, 2026)
+
+**The original v1 extraction is superseded as a review gallery.** User correctly identified extensive broken crops. Inspection of the original five atlases identified the specific problem as incorrect grids, not cosmetic edge bleed.
+
+- **490 stable draft IDs retained**, **253 source crop boxes corrected** with original and new coordinates logged. The largest fixes are 98 alternate spell crops from the wrong 14×7 collage grid, 42 alternative equipment crops from the wrong panel origin, and crossed weapon-row, specialization and status crops.
+- **128 true transparent-source spell icons** remain the stronger candidates. Full-resolution PNG-sized canvases built from 30–100px poster crops **are not high-resolution original artwork**, and should not be approved for final game export solely because the crop is corrected.
+- **253** changed-box composite candidates are marked `REPAIRED_FRAMED_CONCEPT`, **102** composite crops are marked `FRAMED_CONCEPT_REVIEW` and **7** are biome thumbnail studies; these are not approval statuses. The 128 transparent-source icons are marked `TRANSPARENT_ATLAS_CANDIDATE`.
+- Produced corrected download artifacts in ChatGPT conversation: `Godscar_Art_Library_v2_FIXED_FULL.zip`, `Godscar_Art_Library_v2_FIXED_LIGHT.zip`, `Godscar_Art_Library_v2_TRANSPARENT_ICONS.zip`, `Godscar_Art_Library_v2_STANDALONE_GALLERY.html` and a before/after comparison. Archive integrity (ZIP CRC checks) passed.
+- The new manifest includes previous crop, corrected crop, correction type, true native pixel dimensions and actual alpha-source status. The full pack also includes native unscaled source crops and original atlases. The light pack contains WebP previews, not the source PNGs.
+- These binaries live in the conversation output, **not in GitHub**, and are not an approved production asset manifest. Do not replace existing premium specialization art, art IDs or website assets with them.
+- **Open task:** retouch or regenerate individual, transparent, large-source item/emblem paintings; check icon-to-ability thematic mapping; review at mobile scale before integrating.
+
+No simulation, GitHub main branch, deployed page or protected gameplay content changed as part of this correction.
