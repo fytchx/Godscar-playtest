@@ -1,10 +1,11 @@
-# Godscar Playtest — Fight Skeleton
+# Godscar — Current UI + Asset Design
+**Main is the current project baseline** for the Fight/Character skeleton, UI asset work, and design documentation. This is NOT the old Godot project or the former browser game.
 
-The primary UI direction is on branch **`ui/fight-skeleton`**. When you connect an AI or start work, select this branch first.
+Start with [docs/NEW-PROJECT-START-HERE.md](docs/NEW-PROJECT-START-HERE.md), then [AGENTS.md](AGENTS.md), [docs/FIGHT-SCREEN-DIRECTION.md](docs/FIGHT-SCREEN-DIRECTION.md), and [docs/ASSET-MANIFEST.md](docs/ASSET-MANIFEST.md).
 
-Start with [AGENTS.md](AGENTS.md), then read [docs/FIGHT-SCREEN-DIRECTION.md](docs/FIGHT-SCREEN-DIRECTION.md). Those files define the approved direction, current scope, and the version boundary for future bot/simulation work.
+- UI: root `index.html`, `assets/ui/`; **fake values only**.
+- Design: `docs/ITEM-SYSTEM-DIRECTION.md` and `docs/WORLD-PROGRESSION-DIRECTION.md`.
+- Disconnected simulation snapshot: `simulation/reference-sim-v8.js`, copied unchanged from `fytchx/Godscar@slice/paladin-defense` commit `b02482ded4e118b0b2422677c39463d37dcc9f2d`. Canonical test harness remains there; do not wire it to UI without explicit approval.
+- Existing Railway preview URL: https://godscar-playtest-ui-godscarplaytest.up.railway.app/ (verify service branch and deployed SHA before claiming main is live; it previously tracked `ui/fight-skeleton`).
 
-Review URL: https://godscar-playtest-ui-godscarplaytest.up.railway.app/. Railway's **Godscar Playtest UI** service now tracks `ui/fight-skeleton`, not `main`. The GS-UI-1.0 starter kit was integrated into this screen on November 13, 2026. First verified live UI commit: `4bbc93b25cd7aacd1bfb95505a559487fd440cd0` (Railway SUCCESS). For later updates, verify the deployed commit before claiming it is live. Fight data is still mocked and the game simulation is not connected.
-
-## Character menu (November 13, 2026)
-The owner approved a mock-only Character menu. Tap Character in bottom navigation to review Equipment (11 slots, Gearscore, compact attributes and detailed bottom sheet), Inventory (Items / Materials), and a future Skills placeholder. No character model, sim connection, or item actions. The existing Fight layout remains the baseline. See `docs/FIGHT-SCREEN-DIRECTION.md`.
+The previous actualart*.zip archives and outdated root sim.js were deliberately excluded from the current main tree to keep this project focused. They remain in Git history, not in the current working tree. No gameplay modifications, bot runs, or deployments are implied by this repository handoff.
