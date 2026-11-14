@@ -1,0 +1,104 @@
+/* GODSCAR / PREMIUM REVIEW SKIN 2.0
+ * Existing Fight/Character DOM and handlers remain authoritative. This is a layered
+ * visual skin, not gameplay code. Original GS-UI-1.0 is retained as fallback.
+ * Source: owner-approved dark antique-gold Fight reference. */
+:root{--gs2-ink:#efe0c7;--gs2-dim:#b4aea0;--gs2-gold:#cba06b;--gs2-gold-hi:#f6d9a4;--gs2-rim:#705132;--gs2-deep:#071116;--gs2-surface:#101d22;--gs2-frame:url("premium-chrome/v2/GS-UI-CMP-001_panel-standard.svg");--gs2-grand:url("premium-chrome/v2/GS-UI-CMP-001_panel-grand.svg");--gs2-compact:url("premium-chrome/v2/GS-UI-CMP-001_panel-compact.svg");--gs2-crest:url("premium-chrome/v2/GS-UI-ORN-005_cardinal-crest.svg")}
+html{background:#060e12!important}
+body.gs-theme{background:radial-gradient(ellipse 70% 28% at 50% -6%,#334448 0,transparent 74%),#071115!important;color:var(--gs2-ink);font-family:system-ui,Segoe UI,sans-serif}
+body.gs-theme .app{width:min(100%,480px);padding:0 13px 110px;background:linear-gradient(180deg,#111d23f2,#0c171bfa 42%,#071014);border-inline:1px solid #614b34;box-shadow:0 0 0 1px #0009,0 10px 60px #000c}
+.gs2-mast{position:relative;min-height:73px;display:flex;align-items:center;gap:12px;padding:15px 12px 12px 7px;border-bottom:1px solid #9471498c;background:linear-gradient(95deg,#091318ee 0%,#12252dcb 65%,#0b1519aa)}
+.gs2-mast:before{content:"";position:absolute;inset:5px 2px 6px;pointer-events:none;border:1px solid #b68b4a33;border-bottom:0;border-radius:18px 18px 0 0}
+.gs2-mast:after{content:"";position:absolute;left:50%;bottom:-9px;transform:translateX(-50%);width:48px;height:21px;background:var(--gs2-crest) center/contain no-repeat;z-index:2;pointer-events:none}
+.gs2-mast-mark{width:42px;height:42px;object-fit:contain;filter:drop-shadow(0 2px 6px #e4b77a33)}
+.gs2-mast-title{font:500 24px/1.05 Georgia,serif;letter-spacing:.01em;color:#f0d7b1;text-shadow:0 2px 4px #000c}
+.gs2-mast-kicker{font-size:9px;letter-spacing:.19em;color:#bf986c;margin-top:6px;font-weight:750}
+.gs2-mast-sigil{width:22px;height:22px;margin-left:auto;object-fit:contain;opacity:.75}
+body.gs-theme .app>header{min-height:94px;padding:17px 5px 15px;grid-template-columns:1fr 44px;border-bottom:1px solid #544b40;background:linear-gradient(95deg,#17272d44,transparent)}
+body.gs-theme .class-mark{width:61px;height:61px;filter:drop-shadow(0 3px 8px #0008)}
+body.gs-theme .identity{gap:11px}
+body.gs-theme .player-name{font:500 25px/1.05 Georgia,serif;color:#f5dec0;text-shadow:0 1px 3px #0009}
+body.gs-theme .level-tag{font:600 11px Georgia,serif;padding:4px 6px;letter-spacing:.1em;color:#f5d89d;border:1px solid #c69a6366;background:#1c2425;border-radius:3px}
+body.gs-theme .class-name{font:650 10px Georgia,serif;text-transform:uppercase;letter-spacing:.22em;color:#dbc19a;margin-top:8px}
+body.gs-theme .settings-button{height:42px;width:42px;border:1px solid #aa8655;border-radius:9px;background:linear-gradient(160deg,#2d3534,#10191d 70%);box-shadow:inset 0 1px #f9dcb138,inset 0 0 0 2px #0b1418,0 3px 10px #0009}
+body.gs-theme .xp-rail{height:3px;background:#3a403e;border:0;bottom:0}
+body.gs-theme .xp-rail i{height:100%;background:linear-gradient(90deg,#886c3d,#eac17d);width:37%;box-shadow:0 0 7px #b8874f9a}
+body.gs-theme .healthline{padding:14px 5px 16px;gap:10px;border-bottom:1px solid #5d513b4d}
+body.gs-theme .health-title{font:650 11px Georgia,serif;letter-spacing:.18em;color:#d7cbb6}
+body.gs-theme .health-value{font:12px Georgia,serif;color:#e1d5c0}
+body.gs-theme .health-track{height:14px;border:1px solid #8c775c;border-radius:99px;padding:2px;background:linear-gradient(#060d10,#203035);box-shadow:inset 0 2px 6px #000a,0 0 0 1px #040a0e}
+body.gs-theme .health-track i{height:100%;background:linear-gradient(#c1ecc8,#74bf90 43%,#367757);box-shadow:0 0 8px #a9ddaa55;border-radius:99px}
+body.gs-theme .zone-line{position:relative;display:flex;align-items:center;margin:13px 2px 21px;padding:17px 20px;min-height:88px;background:linear-gradient(115deg,#1a2c30,#0c1a1f 75%);border:1px solid #987449;border-radius:12px;box-shadow:inset 0 0 0 2px #0d161a,inset 0 1px #edce9555,0 10px 19px #0007}
+body.gs-theme .zone-line:after{content:"";position:absolute;left:50%;top:-15px;transform:translateX(-50%);width:55px;height:25px;background:var(--gs2-crest) center/contain no-repeat;pointer-events:none}
+body.gs-theme .zone-label{font:650 9px Georgia,serif;letter-spacing:.19em;color:#c0a77d}
+body.gs-theme .zone-button strong{font:500 clamp(17px,4vw,21px)/1.15 Georgia,serif;color:#f2dbc0}
+body.gs-theme .rotation-pill{font:600 12px Georgia,serif;letter-spacing:.08em;color:#ead1a7;background:linear-gradient(#2b3534,#111d22);border:1px solid #be925b;padding:9px 11px;border-radius:6px;box-shadow:inset 0 1px #f1ce9738}
+body.gs-theme .arena{position:relative;margin:12px 2px 22px;width:calc(100% - 4px);aspect-ratio:10/11;background:radial-gradient(ellipse 70% 65% at 52% 45%,#3a555654,transparent 76%),linear-gradient(155deg,#192f36,#09151c 75%);border:2px solid #a27e4e;border-radius:15px;box-shadow:inset 0 0 0 3px #0b171b,inset 0 0 0 4px #8e6c3c70,inset 0 0 45px #020709a8,0 14px 35px #0009;overflow:hidden}
+body.gs-theme .arena:after{content:"";position:absolute;inset:2px;border:15px solid transparent;border-image-source:var(--gs2-grand);border-image-slice:38;border-image-width:15px;pointer-events:none;z-index:8}
+body.gs-theme .arena .biome-slot{position:absolute;inset:2px;z-index:0;background-color:#0e1e24;background-size:cover;background-position:center;opacity:.75}
+body.gs-theme .arena .biome-slot.has-art{opacity:.8}
+body.gs-theme .arena .biome-slot:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#07121766 0%,#0a161922 35%,#07111655 72%,#071116d9 100%),radial-gradient(circle at 50% 38%,transparent 14%,#0610146b 95%)}
+body.gs-theme .biome-label{font:10px Georgia,serif;color:#a6a49d6b;letter-spacing:.13em}
+body.gs-theme .cast-stack{z-index:5;top:18px;left:17px;max-width:58%}
+body.gs-theme .cast-row{margin:0 0 8px;min-height:31px;font-size:11px;text-shadow:0 1px 2px #000c}
+body.gs-theme .cast-row strong{font:600 11px Georgia,serif;color:#f5e4cd;letter-spacing:0}
+body.gs-theme .cast-row .skill-icon{width:29px;height:29px;display:grid;place-items:center;border:1px solid #ba8a53;background:linear-gradient(#1f2930,#0c151a);border-radius:5px;box-shadow:inset 0 0 0 2px #0d1619,0 2px 4px #0009}
+body.gs-theme .cast-track{height:7px;border-radius:8px;background:linear-gradient(90deg,#1e2a2b,#10191d00);border:0;box-shadow:none}
+body.gs-theme .cast-track i{border-radius:8px;box-shadow:0 0 7px currentColor}
+body.gs-theme .cast-row:nth-child(5){display:none} /* four found examples + subdued attack, no sixth ability */
+body.gs-theme .effect-row{right:17px;top:18px;z-index:5;display:grid;gap:7px}
+body.gs-theme .effect-chip{border:1px solid #8b7255;border-radius:5px;background:linear-gradient(#182933,#0b161c);box-shadow:inset 0 1px #f7d7a522;font:600 10px Georgia,serif;min-height:24px}
+body.gs-theme .enemy-art-slot{background:radial-gradient(ellipse at 50% 65%,#51646621,transparent 72%);z-index:3}
+body.gs-theme .enemy-art-slot:not(.has-art){border:1px solid #8f7051;border-radius:11px;background:linear-gradient(165deg,#22333888,#0d1a1ddd);box-shadow:inset 0 0 0 3px #0b181b,inset 0 0 0 4px #94714644,0 10px 28px #0009}
+body.gs-theme .enemy-art-slot .art-label{font:600 10px Georgia,serif;letter-spacing:.19em;color:#c5af8e}
+body.gs-theme .enemy-emblem{color:#bd986b}
+body.gs-theme .arena-bottom{z-index:7;gap:8px}
+body.gs-theme .enemy-summary{border:1px solid #9e7b52;border-radius:10px;background:linear-gradient(#17272de0,#0b151ad9);box-shadow:inset 0 0 0 2px #111d20,0 8px 16px #000a;padding:10px 12px}
+body.gs-theme .enemy-summary-head strong{font:500 clamp(16px,4.4vw,20px) Georgia,serif;color:#f4d6ac}
+body.gs-theme .enemy-kind{font:600 9px Georgia,serif;letter-spacing:.13em;color:#d7cab1}
+body.gs-theme .enemy-health-numbers{font:10px Georgia,serif;letter-spacing:.075em;color:#dfcbb2}
+body.gs-theme .enemy-health-track{height:14px;background:linear-gradient(#090e13,#1b2a2d);border:1px solid #8f7054;padding:2px;border-radius:99px}
+body.gs-theme .enemy-health-track i{height:100%;background:linear-gradient(#ffc3a5,#e77a76 55%,#ad3841);border-radius:99px;box-shadow:0 0 7px #d9686566}
+body.gs-theme .dps-badge{border:1px solid #b18d5a;border-radius:8px;background:linear-gradient(135deg,#24383aee,#09161acc);box-shadow:inset 0 0 0 2px #112124,0 4px 9px #0009;color:#e8d0ac;padding:9px 6px}
+body.gs-theme .dps-badge span{font:600 9px Georgia,serif;letter-spacing:.13em}
+body.gs-theme .dps-badge strong{font:500 28px Georgia,serif;color:#9cd6b3}
+body.gs-theme .feed-card,body.gs-theme .details-card{background:linear-gradient(150deg,#192b30,#0b151a);border:1px solid #85613b;border-radius:10px;box-shadow:inset 0 0 0 2px #0a1419,0 9px 22px #0006;color:#eadbc5;margin-bottom:14px}
+body.gs-theme .feed-card h2,body.gs-theme .details-card h2{font:500 20px Georgia,serif;color:#e8cfaa}
+body.gs-theme .feed-card .feed-head{border-bottom:1px solid #6c553c}
+body.gs-theme .gs-feed__row{border-bottom:1px solid #90724d3d}
+body.gs-theme .gs-feed__row .event-icon{color:#e4bc83}
+body.gs-theme .details-button,body.gs-theme .reset-button,body.gs-theme .primary-button,body.gs-theme .secondary-button,body.gs-theme .view-loot{border:1px solid #a27a4e;background:linear-gradient(155deg,#473629,#16242a 45%,#0e191f);box-shadow:inset 0 1px #ebcf9f44,inset 0 0 0 2px #131a1b,0 4px 8px #0006;border-radius:6px;color:#f2debb;font:600 12px Georgia,serif}
+body.gs-theme .details-button:hover,body.gs-theme .primary-button:hover{filter:brightness(1.15)}
+body.gs-theme .metric{border:1px solid #564933;background:linear-gradient(#263238,#111c21);border-radius:7px}
+body.gs-theme .metric strong{color:#f0dbb5}
+body.gs-theme .damage-meter{background:#0b1519}
+body.gs-theme .bottom-nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(100%,480px);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;padding:9px 7px calc(7px + env(safe-area-inset-bottom));background:linear-gradient(#1b2d31,#0a1519);border:1px solid #997246;border-radius:10px 10px 0 0;box-shadow:0 -7px 24px #0009,inset 0 1px #f7cf8d5b;z-index:60}
+body.gs-theme .bottom-nav:before{content:"";position:absolute;left:50%;top:-13px;transform:translateX(-50%);width:42px;height:23px;background:var(--gs2-crest) center/contain no-repeat;pointer-events:none}
+body.gs-theme .nav-button{min-width:0;min-height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:linear-gradient(160deg,#223338,#0c171b);border:1px solid #705336;border-radius:5px;box-shadow:inset 0 1px #f4c69326;color:#e6d7bd;font:500 10px Georgia,serif}
+body.gs-theme .nav-button img{width:21px;height:21px}
+body.gs-theme .nav-button.active,body.gs-theme .nav-button[aria-current="page"]{border-color:#e0b47a;background:linear-gradient(#56432d,#192b2c);color:#ffebca;box-shadow:inset 0 0 12px #d6ab6366,0 0 8px #d0aa6255}
+body.gs-theme .scrim{background:#03080ac7}
+body.gs-theme .panel{border:1px solid #a07b4e;border-radius:12px;background:linear-gradient(145deg,#203139,#0d191e 70%);color:#edddc5;box-shadow:inset 0 0 0 2px #101b1e,0 18px 50px #000b}
+body.gs-theme .panel-head{border-bottom:1px solid #82613a;color:#e8d0a9}
+body.gs-theme .panel h2,body.gs-theme .panel h3{font-family:Georgia,serif;color:#edd5b0}
+body.gs-theme .enemy-option{background:linear-gradient(120deg,#1d2c30,#0a161b);border:1px solid #5d513e;border-radius:7px}
+body.gs-theme .enemy-option.chosen{border-color:#cf9e5a;background:#26312d}
+body.gs-theme .enemy-option-name{font-family:Georgia,serif}
+body.gs-theme .type-chip,body.gs-theme .weak-chip{border-color:#7b6244;background:#152328}
+body.gs-theme .gs-character{background:linear-gradient(150deg,#223239,#0c171c 43%,#091116);border-inline:1px solid #987447;box-shadow:0 0 0 200vmax #000c,0 15px 55px #000c}
+body.gs-theme .gs-character__header{background:linear-gradient(90deg,#273334,#111b20);border-bottom:1px solid #ad7f49}
+body.gs-theme .gs-character__header h1{font:500 23px Georgia,serif;color:#f3d9af}
+body.gs-theme .gs-character__eyebrow{color:#d2aa76}
+body.gs-theme .gs-character__tabs,body.gs-theme .gs-character__viewport{background:transparent}
+body.gs-theme .gs-character__tabs button{font:600 12px Georgia,serif;background:#1b272b;border-bottom:2px solid #6a5136;color:#c6b49a}
+body.gs-theme .gs-character__tabs button.active{background:linear-gradient(#59442b,#213036);color:#ffe1b3;border-color:#c59c65}
+body.gs-theme .gs-character__slot-visual{background:radial-gradient(circle at 50% 30%,#3e4d4d,#101b21 70%);border:1px solid #a48051;border-radius:8px;box-shadow:inset 0 0 0 2px #0c181e,inset 0 1px #e9bd7e38,0 5px 11px #0009}
+body.gs-theme .gs-character__slot[data-equipped="true"] .gs-character__slot-visual{border-color:#ddaf77;box-shadow:inset 0 0 0 2px #3d3626,0 0 11px #cea56b45}
+body.gs-theme .gs-character__gearscore{border:1px solid #bd9158;background:linear-gradient(#383529,#17262a);color:#e0c39a}
+body.gs-theme .gs-character__stats,body.gs-theme .gs-character__item-dialog,body.gs-theme .gs-character__detail-sheet{background:linear-gradient(#263333,#101b20 70%);border:1px solid #987146;box-shadow:inset 0 1px #edca8a30,0 15px 30px #0009}
+body.gs-theme .gs-character__attribute,body.gs-theme .gs-character__item-icon{background:#122127;border:1px solid #68523b}
+body.gs-theme .gs-character__detail-trigger{background:linear-gradient(#3f3a2d,#14252a);border:1px solid #bd945c;color:#efd4ac}
+body.gs-theme .gs-character__skills-placeholder{border:1px solid #957247;background:linear-gradient(#1c3133,#0b191d)}
+body.gs-theme .gs-character__skills-placeholder h2{color:#f1d4a8}
+body.gs-theme .gs-character__item-icon{border-radius:6px}
+@media(max-width:380px){body.gs-theme .app{padding-inline:9px}body.gs-theme .gs2-mast-title{font-size:21px}body.gs-theme .zone-line{padding:14px 12px}body.gs-theme .zone-button strong{font-size:17px}body.gs-theme .cast-stack{left:12px;max-width:61%}body.gs-theme .effect-row{right:10px}body.gs-theme .dps-badge strong{font-size:23px}body.gs-theme .nav-button{font-size:9px}}
+@media(prefers-reduced-motion:reduce){body.gs-theme *,body.gs-theme *:before,body.gs-theme *:after{transition:none!important;animation:none!important}}
