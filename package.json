@@ -1,0 +1,13 @@
+{
+  "name": "godscar-ui-preview",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mock-only Godscar UI review site",
+  "type": "module",
+  "scripts": {
+    "start": "node preview-server.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

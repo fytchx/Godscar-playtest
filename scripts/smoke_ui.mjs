@@ -74,6 +74,8 @@ try {
       const css = document.querySelector('link[href="assets/ui/godscar-ui.css"]');
       const reskin = document.querySelector('link[href="assets/ui/arcana-reskin.css"]');
       const hollow = document.querySelector('link[href="assets/ui/hollow-steel-integration.css"]');
+      const depth = document.querySelector('link[href="assets/ui/hollow-steel-depth.css"]');
+      const arenaFrame = document.querySelector('.arena');
       const slot = document.querySelector('.gs-character__slot-visual');
       const navButton = document.querySelector('.nav-button.gs-nav-item[aria-current="page"]');
       const panel = document.querySelector('.feed-card.gs-feed-shell');
@@ -88,6 +90,9 @@ try {
         cssLoaded: Boolean(css?.sheet),
         reskinLoaded: Boolean(reskin?.sheet),
         hollowLoaded: Boolean(hollow?.sheet),
+        depthLoaded: Boolean(depth?.sheet),
+        combatFrame: getComputedStyle(arenaFrame, '::after').borderImageSource,
+        darkCanvas: getComputedStyle(document.documentElement).getPropertyValue('--hs-night').trim(),
         themeColor:getComputedStyle(document.documentElement).getPropertyValue('--hs-sea').trim(),
         panelSvg:getComputedStyle(panel,'::before').borderImageSource,
         navSvg:getComputedStyle(navButton,'::before').borderImageSource,
@@ -106,8 +111,11 @@ try {
     assert.equal(state.navVisible, true, 'Missing bottom nav at '+width);
     assert.equal(state.reskinLoaded, true, 'Missing base redesign stylesheet at '+width);
     assert.equal(state.hollowLoaded, true, 'Missing Hollow Steel integration CSS at '+width);
+    assert.equal(state.depthLoaded, true, 'Missing darker Hollow Steel CSS at '+width);
+    assert.equal(state.darkCanvas, '#0A1115', 'Wrong dark tone at '+width);
+    assert.match(state.combatFrame,/GS-UI-CMP-001_combat-frame.svg/,'Missing etched combat frame at '+width);
     assert.equal(state.themeColor, '#79BFB3', 'Wrong theme accent at '+width);
-    assert.match(state.panelSvg, /GS-UI-CMP-001_panel-frame.svg/, 'Panel SVG not in use at '+width);
+    assert.match(state.panelSvg, /GS-UI-CMP-001_etched-frame.svg/, 'Etched panel SVG not in use at '+width);
     assert.match(state.navSvg, /GS-UI-CMP-008_nav-selected.svg/, 'Nav SVG not in use at '+width);
     assert.match(state.slotSvg, /GS-UI-CMP-010_slot/, 'Equipment well SVG not in use at '+width);
     assert.equal(state.iconSources, state.icons, 'Not all icons use Hollow Steel SVG files');

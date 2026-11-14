@@ -1,15 +1,20 @@
-name: Godscar Hollow Steel integrated Fight and Character smoke
+name: Godscar Hollow Steel depth UI mobile smoke
 
 on:
   push:
     branches:
       - ui/arcana-inspired-reskin
       - ui/hollow-steel-components-batch-01
+      - ui/hollow-steel-depth-preview
     paths:
       - .github/workflows/ui-smoke.yml
       - index.html
       - assets/ui/arcana-reskin.css
       - assets/ui/hollow-steel-integration.css
+      - assets/ui/hollow-steel-depth.css
+      - assets/ui/hollow-steel/depth/**
+      - preview-server.mjs
+      - package.json
       - assets/ui/hollow-steel/icons/**
       - assets/ui/hollow-steel/batch-01/**
       - assets/ui/arcana-preview-icons/**
@@ -41,6 +46,7 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid" || true' EXIT
           sleep 2
+          node --check preview-server.mjs
           node scripts/smoke_ui.mjs
       - uses: actions/upload-artifact@v4
         if: always()

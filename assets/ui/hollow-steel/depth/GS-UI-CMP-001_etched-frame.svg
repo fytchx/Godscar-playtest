@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" fill="none">
+<!-- GS-UI-CMP-001 dark etched border variant. True 9-slice transparent frame; scalable cards. -->
+<rect x="1.25" y="1.25" width="93.5" height="93.5" rx="15.5" stroke="#526D72" stroke-width="1.5" stroke-opacity=".78"/>
+<rect x="3.8" y="3.8" width="88.4" height="88.4" rx="13" stroke="#B1D3CA" stroke-width=".68" stroke-opacity=".25"/>
+<rect x="6.2" y="6.2" width="83.6" height="83.6" rx="10.5" stroke="#071216" stroke-width="1.3" stroke-opacity=".74"/>
+<g stroke="#93B7AF" stroke-width=".8" stroke-linecap="round" opacity=".36">
+ <path d="M20 3.8h14 M62 92.2h14"/>
+ <path d="M3.8 20v8 M92.2 68v8"/>
+</g>
+<g stroke="#79BFB3" stroke-width="1" stroke-linecap="round" stroke-opacity=".34">
+ <path d="M8 18V13 Q8 8 13 8H18"/>
+ <path d="M78 88h5q5 0 5-5v-5"/>
+</g>
+<g fill="#B3DED4" opacity=".24"><circle cx="11.5" cy="11.5" r=".8"/><circle cx="84.5" cy="84.5" r=".8"/></g>
+</svg>

@@ -1,0 +1,171 @@
+/* Godscar: Hollow Steel deep variant | 2026-11-13
+ * Applies *after* Hollow Steel integration. Five-color identity preserved;
+ * darker derivatives for surface hierarchy. Game rarity and damage colors untouched.
+ * Native CSS plus 9-slice SVG, no costly SVG turbulence filters or raster assets.
+ */
+:root {
+ --hs-night:#0A1115;--hs-deep:#111D23;--hs-slate-deep:#17262C;
+ --hs-lift:#223840;--hs-edge:#405C64;--hs-mist:#A4BDBB;
+ --hs-etch:url("./hollow-steel/depth/etched-grain.svg");
+ --hs-etched-border:url("./hollow-steel/depth/GS-UI-CMP-001_etched-frame.svg");
+ --hs-combat-border:url("./hollow-steel/depth/GS-UI-CMP-001_combat-frame.svg");
+ --hs-ink:var(--hs-night);--hs-slate:var(--hs-slate-deep);
+ --gs-a-bg:var(--hs-night);--gs-a-deep:#0C171C;--gs-a-surface:var(--hs-slate-deep);
+ --gs-a-surface2:var(--hs-lift);--gs-a-raise:#2A4349;
+ --gs-a-line:var(--hs-edge);--gs-a-line-soft:#2D464C;
+ --gs-a-shadow:0 12px 27px #020C11A6;
+ --ui-bg:var(--hs-night);--ui-surface:var(--hs-slate-deep);
+ --ui-raised:var(--hs-lift);--ui-recess:#111E24;
+ --page:var(--hs-night);--surface:var(--hs-slate-deep);
+ --surface-raised:var(--hs-lift);--surface-soft:#111E24;
+ --hs-panel:var(--hs-etched-border);
+}
+html {background:var(--hs-night)}
+body.gs-theme {
+ background:radial-gradient(ellipse 72% 31% at 50% -15%,#35575022,transparent 78%),#0A1115;
+}
+body.gs-theme .app {
+ background:linear-gradient(180deg,#101D23 0%,#0C171C 34%,#091317 100%);
+ border-inline:1px solid #2D464C;
+ box-shadow:0 0 50px #01080BD6;
+}
+body.gs-theme header {border-color:#2B444B}
+body.gs-theme .class-mark {
+ background:linear-gradient(155deg,#1D393B,#13292E);
+ border-color:#446D68;box-shadow:inset 0 1px 0 #E7FFF515;
+}
+body.gs-theme .healthline {border-color:#24434A}
+body.gs-theme .rotation-pill {
+ background:linear-gradient(#1E3738,#142A2E);border-color:#426B65;
+ box-shadow:inset 0 1px 0 #B2E0D512;
+}
+body.gs-theme .zone-line {padding-top:12px;padding-bottom:10px}
+/* Shared thin surface etching; second texture tile is visible only up close */
+body.gs-theme :is(.gs-panel,.gs-feed-shell,.gs-tooltip) {
+ background-image:var(--hs-etch),var(--hs-grain),linear-gradient(164deg,#1B2D33 0%,#15252B 59%,#101E24 100%);
+ background-size:96px 96px,64px 64px,100% 100%;
+ background-repeat:repeat,repeat,no-repeat;
+ border-color:#314B53;
+ box-shadow:inset 0 1px 0 #A2C9C10B,0 9px 22px #010A0E72;
+}
+body.gs-theme :is(.gs-panel,.gs-feed-shell,.gs-tooltip)::before {
+ border:12px solid transparent;
+ border-image-source:var(--hs-etched-border);
+ border-image-slice:19;
+ border-image-width:12px;
+ border-image-repeat:stretch;
+}
+/* Card dividers and supporting wells */
+body.gs-theme .feed-card.gs-feed-shell,
+body.gs-theme .details-card.gs-panel {border-color:#38545B;background-color:#14252A}
+body.gs-theme .gs-panel--recessed {
+ background-image:var(--hs-etch),linear-gradient(170deg,#16272E,#111F26);
+ background-size:96px 96px,100% 100%;
+}
+body.gs-theme .gs-character__stats,
+body.gs-theme .gs-character__attribute {
+ background-image:var(--hs-etch),linear-gradient(165deg,#1B3035,#15282E);
+ background-size:96px 96px,100% 100%;border-color:#3B565E;
+}
+body.gs-theme .gs-character__gearscore {background:#1C3638;border-color:#4B7971}
+/* Distinct combat frame: etched double perimeter, four alloy corner pins.
+ * Existing .arena::after is decorative and pointer-transparent. */
+body.gs-theme .arena {
+ border:2px solid #42646B;border-radius:20px;
+ background:radial-gradient(ellipse at 52% 42%,#263D3F 0%,#182C32 43%,#0D1C23 93%);
+ box-shadow:inset 0 0 0 1px #07161A,
+            inset 0 0 45px #061318A8,0 0 0 1px #0C181CB8,0 14px 28px #010A0DA8;
+}
+body.gs-theme .arena::before {
+ background:radial-gradient(ellipse at 51% 53%,transparent 20%,#0612177D 98%),
+ repeating-linear-gradient(166deg,transparent 0 48px,#D2E8DD05 49px 50px);
+}
+body.gs-theme .arena::after {
+ content:"";position:absolute;inset:2px;z-index:9;pointer-events:none;
+ border:20px solid transparent;
+ border-image-source:var(--hs-combat-border);
+ border-image-slice:23;
+ border-image-width:20px;
+ border-image-repeat:stretch;
+ border-radius:18px;
+ box-shadow:none;
+}
+body.gs-theme .cast-row {background:#102025D4;border-color:#34555D}
+body.gs-theme .enemy-summary {background:#0C1D23E8;border-color:#4F7771}
+body.gs-theme .dps-badge {background:#0D2227F2;border-color:#3F6D68}
+body.gs-theme .enemy-art-slot:not(.has-art) {
+ background:linear-gradient(160deg,#1D3339,#13262C);
+ border-color:#496B6A;
+}
+body.gs-theme .scene-vignette {
+ background:linear-gradient(90deg,#06131880,transparent 24%,transparent 76%,#06131880),
+ linear-gradient(0deg,#061217B0,transparent 33%,#07161B4D);
+}
+/* Tactile but not glossy. Native interaction retained. */
+body.gs-theme :is(.gs-button,.primary-button,.secondary-button,.close-button,.reset-button) {
+ background-image:var(--hs-etch),linear-gradient(168deg,#2B514B,#1E3F3B);
+ background-size:96px 96px,100% 100%;
+ border-color:#456E67;
+ box-shadow:inset 0 1px 0 #BADCD111,0 2px 0 #041215A8;
+}
+body.gs-theme :is(.gs-button--icon,.secondary-button,.close-button,.reset-button) {
+ background-image:var(--hs-etch),linear-gradient(166deg,#293F47,#1A3139);
+ background-size:96px 96px,100% 100%;border-color:#425E64;
+}
+body.gs-theme :is(.gs-button,.primary-button,.secondary-button,.close-button,.reset-button):hover:not(:disabled) {
+ background-image:var(--hs-etch),linear-gradient(165deg,#3A6A5F,#285248);
+ background-size:96px 96px,100% 100%;
+}
+body.gs-theme .gs-button--danger,
+body.gs-theme .gs-button--danger:hover:not(:disabled) {background:#432B32;border-color:#895A60}
+/* Sculpted small borders and corners on tabs, footer nav, modal */
+body.gs-theme :is(.gs-tab,.gs-character__tabs button,.gs-character__inventory-tabs button) {
+ background-image:var(--hs-etch),linear-gradient(#20353C,#15272E);
+ background-size:96px 96px,100% 100%;border-color:#3B575F;
+}
+body.gs-theme :is(.gs-tab[aria-selected="true"],.gs-character__tabs button.active,.gs-character__inventory-tabs button.active) {
+ background-image:var(--hs-etch),linear-gradient(#31564F,#23433E);
+ background-size:96px 96px,100% 100%;border-color:#5A8B81;
+}
+body.gs-theme .gs-navbar.bottom-nav {
+ background:linear-gradient(#14292F,#0C1C23);
+ border-color:#35535B;
+ box-shadow:0 -8px 28px #020D12BF;
+}
+body.gs-theme .nav-button.gs-nav-item {
+ background-image:var(--hs-etch),linear-gradient(#1F343B,#142A31);
+ background-size:96px 96px,100% 100%;border-color:#345159;
+}
+body.gs-theme .nav-button.gs-nav-item.active,
+body.gs-theme .nav-button.gs-nav-item[aria-current="page"] {
+ background-image:var(--hs-etch),linear-gradient(#2D514C,#203C3D);
+ background-size:96px 96px,100% 100%;border-color:#527E77;
+}
+/* Character sheets and modal body */
+body.gs-theme .gs-character {
+ background:linear-gradient(#14252C,#0D1B21 60%,#0A151B);
+ border-color:#35545C;
+}
+body.gs-theme .gs-character__header {
+ background:linear-gradient(140deg,#213A3F,#12262D);
+ border-color:#385A5E;
+}
+body.gs-theme .gs-character__tabs {background:#102127}
+body.gs-theme .panel.gs-panel.gs-dialog {
+ background-image:var(--hs-etch),linear-gradient(160deg,#20353B,#14252B);
+ background-size:96px 96px,100% 100%;border-color:#45686C;
+}
+body.gs-theme .gs-character__detail-sheet,
+body.gs-theme .gs-character__item-sheet {
+ background-image:var(--hs-etch),linear-gradient(165deg,#1C3036,#11232A);
+ background-size:96px 96px,100% 100%;border-color:#3F5F65;
+}
+body.gs-theme .gs-character__detail-trigger {
+ background-image:var(--hs-etch),linear-gradient(165deg,#2B554D,#1C423E);
+ background-size:96px 96px,100% 100%;border-color:#548B80;
+}
+body.gs-theme .recap-stat,body.gs-theme .loot-item,body.gs-theme .settings-note {
+ background:#172B31;border-color:#38565C;
+}
+body.gs-theme .gs-character__slot-visual {filter:brightness(.9)}
+body.gs-theme .gs-character__slot[data-equipped="true"] .gs-character__slot-visual {filter:none}
