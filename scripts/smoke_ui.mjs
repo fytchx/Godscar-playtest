@@ -73,6 +73,10 @@ try {
       const icons = [...document.querySelectorAll('img.gs-icon')];
       const css = document.querySelector('link[href="assets/ui/godscar-ui.css"]');
       const reskin = document.querySelector('link[href="assets/ui/arcana-reskin.css"]');
+      const hollow = document.querySelector('link[href="assets/ui/hollow-steel-integration.css"]');
+      const slot = document.querySelector('.gs-character__slot-visual');
+      const navButton = document.querySelector('.nav-button.gs-nav-item[aria-current="page"]');
+      const panel = document.querySelector('.feed-card.gs-feed-shell');
       const feed = document.querySelector('.feed-card.gs-feed-shell');
       const nav = document.querySelector('.bottom-nav.gs-navbar');
       const arena = document.querySelector('.arena');
@@ -83,6 +87,12 @@ try {
         loadedIcons: icons.filter(x => x.complete && x.naturalWidth > 0).length,
         cssLoaded: Boolean(css?.sheet),
         reskinLoaded: Boolean(reskin?.sheet),
+        hollowLoaded: Boolean(hollow?.sheet),
+        themeColor:getComputedStyle(document.documentElement).getPropertyValue('--hs-sea').trim(),
+        panelSvg:getComputedStyle(panel,'::before').borderImageSource,
+        navSvg:getComputedStyle(navButton,'::before').borderImageSource,
+        slotSvg:getComputedStyle(slot).backgroundImage,
+        iconSources:icons.filter(x=>x.src.includes('/assets/ui/hollow-steel/icons/')).length,
         navVisible: Boolean(nav && getComputedStyle(nav).display !== 'none'),
         feedRadius: getComputedStyle(feed).borderRadius,
         surface: getComputedStyle(feed).backgroundColor,
@@ -94,7 +104,13 @@ try {
     assert.equal(state.icons, state.loadedIcons, 'Broken icons at '+width);
     assert.equal(state.cssLoaded, true, 'Missing kit stylesheet at '+width);
     assert.equal(state.navVisible, true, 'Missing bottom nav at '+width);
-    assert.equal(state.reskinLoaded, true, 'Missing redesign stylesheet at '+width);
+    assert.equal(state.reskinLoaded, true, 'Missing base redesign stylesheet at '+width);
+    assert.equal(state.hollowLoaded, true, 'Missing Hollow Steel integration CSS at '+width);
+    assert.equal(state.themeColor, '#79BFB3', 'Wrong theme accent at '+width);
+    assert.match(state.panelSvg, /GS-UI-CMP-001_panel-frame.svg/, 'Panel SVG not in use at '+width);
+    assert.match(state.navSvg, /GS-UI-CMP-008_nav-selected.svg/, 'Nav SVG not in use at '+width);
+    assert.match(state.slotSvg, /GS-UI-CMP-010_slot/, 'Equipment well SVG not in use at '+width);
+    assert.equal(state.iconSources, state.icons, 'Not all icons use Hollow Steel SVG files');
     assert.notEqual(state.feedRadius, '0px', 'Missing Arcana-style card radius at '+width);
     assert.ok(state.arenaWidth > 250, 'Arena too narrow at '+width);
     assert.ok(state.buttons >= 8, 'Reusable buttons not applied');

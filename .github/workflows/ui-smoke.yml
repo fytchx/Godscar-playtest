@@ -1,13 +1,17 @@
-name: Godscar Arcana-inspired phone-width UI smoke
+name: Godscar Hollow Steel integrated Fight and Character smoke
 
 on:
   push:
     branches:
       - ui/arcana-inspired-reskin
+      - ui/hollow-steel-components-batch-01
     paths:
       - .github/workflows/ui-smoke.yml
       - index.html
       - assets/ui/arcana-reskin.css
+      - assets/ui/hollow-steel-integration.css
+      - assets/ui/hollow-steel/icons/**
+      - assets/ui/hollow-steel/batch-01/**
       - assets/ui/arcana-preview-icons/**
       - assets/ui/character.css
       - assets/ui/character.js
@@ -15,6 +19,7 @@ on:
   pull_request:
     branches:
       - main
+      - ui/arcana-inspired-reskin
   workflow_dispatch:
 
 permissions:

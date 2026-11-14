@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" aria-label="Subtle repeatable Hollow Steel texture">
+<!-- Independent seamless matte grain tile; repeat at actual CSS pixels, never scale a panel bitmap. -->
+<g fill="none" stroke="#C2DFDB" stroke-width=".65" stroke-linecap="round" opacity=".075">
+ <path d="M4 12h1 M23 44h1 M43 14h1 M59 39h1 M31 7h1 M13 56h1 M48 57h1"/>
+ <path d="M11 30l1-.6 M37 32l1-.6 M54 5l1-.6 M2 51l1-.6"/>
+</g>
+<g fill="#081319" opacity=".14"><rect x="17" y="20" width="1" height="1"/><rect x="51" y="25" width="1" height="1"/><rect x="36" y="61" width="1" height="1"/></g>
+</svg>
