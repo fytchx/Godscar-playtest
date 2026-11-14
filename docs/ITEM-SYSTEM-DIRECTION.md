@@ -23,8 +23,10 @@ Off-hand: shield, spell tome, quiver, or compatible 1H weapon for dual-wield.
 | Warrior | Protection / Savage / Fury | 1H shield; 1H/dual wield physical+bleed; 2H physical/fire |
 | Rogue | Subtlety / Assassin / Alchemist | Subtlety ranged bleed, Assassin fast 1H/dual, Alchemist 1H+tome poison |
 | Mage | Pyro / Frost / Lightning | staff fire, 1H tome/shield frost, staff/1H lightning |
-| Archer | Marksman / Ranger / Tracker | longbow precision, shortbow+quiver rapid, ranged marks/bleed; names tentative |
-| Shaman | Nature / Storm / Primal | 1H+tome/shield sustain, staff/1H lightning, 1H dual-wield physical/fire/lightning; Primal name tentative |
+| Archer | Marksman / Ranger / Tracker | longbow precision, shortbow+quiver rapid, ranged marks/bleed |
+| Shaman | Nature / Storm / Primal | 1H+tome/shield sustain, staff/1H lightning, 1H dual-wield physical/fire/lightning |
+
+**Owner-confirmed specialization names:** Archer's Marksman / Ranger / Tracker and Shaman's Nature / Storm / Primal are now final names for the current design pass. The specific specialization mechanics remain working direction rather than implemented gameplay.
 
 Spec trees modify existing weapon behaviors: equipment affinity, elements, survivability and capstone. No class autocast slots. Respecs allowed; changes may incur ordinary costs, never irreversible trap.
 
