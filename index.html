@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#10171b">
+<meta name="theme-color" content="#14110d">
 <title>Godscar · Home</title>
 <style>
 :root{
@@ -59,6 +59,12 @@ header{min-height:69px;padding:12px 2px 13px;display:grid;grid-template-columns:
  linear-gradient(177deg,#9eb6a313,transparent 37%,#070f1190 100%),
  repeating-linear-gradient(168deg,transparent 0 37px,#d8ded208 38px 39px);
 }
+.biome-slot.has-art{background-size:cover;background-position:center}
+.biome-slot.has-art .biome-label{display:none}
+.enemy-art-slot.has-art{width:52%;border:0;background:none;box-shadow:none}
+.enemy-art-slot.has-art .enemy-emblem,.enemy-art-slot.has-art .art-label{display:none}
+.enemy-image{display:none;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 8px 6px #0008)}
+.enemy-art-slot.has-art .enemy-image{display:block}
 .biome-slot{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
 .biome-label{position:absolute;right:10px;top:68px;border:1px solid #9aab9e55;border-radius:8px;background:#0d17198f;padding:5px 7px;color:#c4d0c6;font-size:7px;letter-spacing:.15em;font-weight:800}
 .scene-vignette{position:absolute;inset:0;background:linear-gradient(90deg,#08111344,transparent 24%,transparent 76%,#08111355),linear-gradient(0deg,#09111490,transparent 33%,#09111435)}
@@ -210,9 +216,309 @@ select,.text-input{width:100%;border:1px solid #43555a;border-radius:10px;paddin
 @media(min-width:600px){body{padding:14px 0}.app{border-radius:20px;overflow:hidden;min-height:calc(100vh - 28px);padding-bottom:100px}.bottom-nav{bottom:14px;border-radius:0 0 19px 19px}}
 @media(max-width:350px){.app{padding-left:10px;padding-right:10px}.cast-stack{width:55%}.enemy-summary strong{font-size:12px}.dps-badge{width:62px}.effect-chip{font-size:7px}.arena-bottom{left:7px;right:7px;gap:5px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* GODSCAR BRONZE / BASALT THEME
+   Fight-only presentation pass. CSS surfaces and framing, no game-data changes.
+   The underlying layout, source colors, art slots and interactivity stay intact. */
+:root {
+  --page:#0c0b09; --surface:#1a1815; --surface-raised:#27221c; --surface-soft:#141310;
+  --line:#67543a; --line-soft:#41382a; --text:#ede4d3; --muted:#b5a68e; --quiet:#827561;
+  --accent:#d1a76c; --accent-soft:#d1a76c28; --good:#a6c197; --danger:#d98f80;
+  --radius:9px; --shadow:0 18px 54px #000b;
+}
+html{background:#0c0b09}
+body{
+  background:
+    radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 0,transparent 78%),
+    repeating-linear-gradient(115deg,#fff1 0 1px,transparent 1px 78px),
+    #0c0b09;
+  color:var(--text);
+}
+.app{
+  background:
+    linear-gradient(90deg,#09090765,transparent 8%,transparent 92%,#09090765),
+    radial-gradient(ellipse 90% 360px at 50% -20%,#4b3c293c,transparent),
+    linear-gradient(180deg,#1c1915,#12120f 55%,#13110f);
+  border-inline:1px solid #4f3e29;
+  box-shadow:inset 1px 0 #ac88551e,inset -1px 0 #ac88551e,0 0 48px #000a;
+}
+header{
+  border-bottom:1px solid #4a3827;
+  background:linear-gradient(180deg,#cbaa7510,transparent 78%);
+}
+header:before{
+  content:"";position:absolute;left:0;right:0;bottom:3px;height:1px;
+  background:linear-gradient(90deg,transparent,#d0a66f50 22%,#d0a66f69 50%,#d0a66f50 78%,transparent);
+  pointer-events:none;
+}
+.class-mark{color:#d5b47d;filter:drop-shadow(0 0 8px #be8b4938)}
+.player-name{color:#f1e4cc;letter-spacing:.025em}
+.level-tag{color:#d5ae75}
+.class-name{color:#a69981}
+.settings-button,.icon-button,.close-button{
+  color:#d4b17c;border:1px solid #705b3b;border-radius:7px;
+  background:linear-gradient(145deg,#383022,#1a1814 72%);
+  box-shadow:inset 0 1px #dbb78320,inset 0 -2px #0008;
+}
+.settings-button:hover,.icon-button:hover,.close-button:hover{
+  border-color:#bc9458;background:linear-gradient(145deg,#493924,#211c16);
+}
+.xp-rail{height:3px;background:#2a241c;border-radius:0}
+.xp-rail i{background:linear-gradient(90deg,#7b5833,#e2bd7f);box-shadow:0 0 8px #bc8a4590}
+.healthline{padding-top:9px;padding-bottom:6px}
+.health-title{color:#9c9078}
+.health-value{color:#d7cdbb}
+.health-track{height:8px;background:#191b16;border:1px solid #665e42;box-shadow:inset 0 1px 3px #000c;border-radius:3px}
+.health-track i{background:linear-gradient(180deg,#b8ce91,#608a58 40%,#365f36);border-right:1px solid #d4ddb5;border-radius:1px}
+.zone-line{padding:12px 2px 10px}
+.zone-button .zone-label{color:#a59378}
+.zone-button strong{color:#ecddc1;text-shadow:0 1px 6px #0009}
+.chevron{color:#cdab78}
+.rotation-pill{
+  border:1px solid #665037;border-radius:4px;
+  color:#d8bf96;background:linear-gradient(135deg,#33291e,#1b1a17);
+  box-shadow:inset 0 1px #bea17820;letter-spacing:.12em;
+}
+.arena{
+  border:2px solid #6b5537;border-radius:8px;
+  background:radial-gradient(ellipse at 50% 43%,#4b5144,#292b29 45%,#151816);
+  box-shadow:
+    inset 0 0 0 1px #201a13,inset 0 0 48px #090a0bd0,
+    0 0 0 1px #251d15,0 10px 28px #000a;
+}
+.arena:after{
+  content:"";position:absolute;inset:3px;z-index:8;
+  border:1px solid #c7a16b45;border-radius:3px;
+  box-shadow:inset 0 0 0 1px #09080550;
+  pointer-events:none;
+}
+.arena:before{
+  background:radial-gradient(ellipse at 52% 58%,transparent 29%,#15100d7a 92%),
+    repeating-linear-gradient(168deg,transparent 0 48px,#e6c69006 49px 50px);
+}
+.scene-vignette{
+  background:linear-gradient(90deg,#100d0959,transparent 22%,transparent 78%,#100d0965),
+    linear-gradient(0deg,#0a0909a8,transparent 34%,#0a0a0b2d);
+}
+.biome-label{
+  background:#17130ed9;border:1px solid #8e764e94;color:#e0c7a3;
+  border-radius:3px;font-size:7px;
+}
+.cast-stack{top:12px;left:11px}
+.cast-row{
+  border-left:1px solid #ad895d6c;border-radius:2px;
+  background:linear-gradient(90deg,#17120edb,#16130ba4 65%,transparent);
+  padding-left:5px;
+}
+.cast-row strong{color:#f1e5d1;text-shadow:0 1px 3px #000}
+.cast-track{background:linear-gradient(90deg,#b9a48a4b,transparent)}
+.attack-row{border-top:1px solid #ad8e6a38;border-left-color:#776958}
+.attack-row strong{color:#ccbaa3}
+.effect-chip{
+  border-radius:4px;background:#15130ee0;
+  box-shadow:inset 0 1px #ffffff10,0 2px 6px #0008;
+}
+.enemy-art-slot:not(.has-art){
+  border-color:#bd9a6173;border-radius:7px;
+  background:linear-gradient(155deg,#ba965d15,#16130e5c 55%,#08090840);
+  color:#e0c5a0;
+}
+.enemy-art-slot:not(.has-art) .art-label{color:#d7bb93}
+.enemy-art-slot:not(.has-art) .enemy-emblem{color:#e3c697ae}
+.enemy-glow{background:radial-gradient(ellipse,#e7a86428,transparent 70%)}
+.enemy-summary,.dps-badge{
+  border:1px solid #8a6c45;border-radius:5px;
+  background:linear-gradient(180deg,#30271ee8,#131210f0);
+  box-shadow:inset 0 1px #ddba8028,0 4px 13px #0008;
+}
+.enemy-summary strong{color:#f6e7cc}
+.enemy-kind,.enemy-health-numbers{color:#c6b395}
+.enemy-health-track{height:7px;background:#181411;border:1px solid #5b4432;border-radius:2px}
+.enemy-health-track i{border-radius:0;background:linear-gradient(180deg,#e3ad71,#8e4f30)}
+.dps-badge span{color:#ba9f77}
+.dps-badge strong{color:#f0c488;text-shadow:0 0 10px #d69a4840}
+.feed-card,.details-card{
+  margin-top:11px;border:1px solid #6b5437;border-radius:7px;
+  background:linear-gradient(125deg,#2a241c 0,#181713 36%,#141311 100%);
+  box-shadow:inset 0 1px #ddb67a22,0 4px 16px #0005;
+}
+.feed-head,.details-head{border-bottom:1px solid #4d3c2a}
+.feed-head h2,.details-head h2,.damage-breakdown h3{color:#e8d4b0}
+.feed-live{color:#a7c493}
+.feed-list{border-top:1px solid #1e1b17;scrollbar-color:#7b6442 transparent}
+.event{border-bottom:1px solid #3e3428}
+.event-text{color:#d9cbb6}
+.event-time{color:#877964}
+.event-icon{border-radius:3px}
+.feed-foot,.damage-breakdown,.reset-row{border-color:#4b3c2a}
+.details-button,.secondary-button{
+  border:1px solid #78603f;border-radius:4px;
+  background:linear-gradient(180deg,#392f23,#221e18);color:#e4d1ae;
+  box-shadow:inset 0 1px #ecc58b25;
+}
+.details-button:hover,.secondary-button:hover{border-color:#bc935e;color:#fff0d2}
+.session-label,.metric small{color:#a99373}
+.metric{
+  border:1px solid #55432f;border-radius:4px;
+  background:linear-gradient(135deg,#252018,#151411);
+  box-shadow:inset 0 1px #deb97d16;
+}
+.metric strong{color:#f0dfc1}
+.metric em,.reset-row span{color:#96846d}
+.damage-meter{background:#3d3429;border-radius:2px}
+.damage-meter i{border-radius:0}
+.reset-button{border-radius:4px;background:#30201a;border:1px solid #925548;color:#e4ad9b}
+.bottom-nav{
+  border-top:1px solid #a07a48;
+  background:linear-gradient(180deg,#30271cf5,#14120ef8 43%,#100f0dfb);
+  box-shadow:0 -3px 20px #0009,inset 0 1px #dec08b2a;
+}
+.nav-button{
+  border:1px solid transparent;border-radius:5px;
+  color:#a29379;min-height:47px;
+}
+.nav-button.active{
+  color:#f0ca90;border-color:#705636;
+  background:linear-gradient(180deg,#6e513029,#30231645);
+  box-shadow:inset 0 1px #e0b67925;
+}
+.nav-button:hover{color:#f4d7a9;background:#b68a4320}
+.nav-button span{letter-spacing:.035em}
+.scrim{background:#080603cf;backdrop-filter:blur(5px)}
+.panel{
+  border:1px solid #a38151;border-radius:7px;
+  background:
+    radial-gradient(ellipse at 50% -15%,#8d66362a,transparent 60%),
+    linear-gradient(150deg,#30281e,#191713 38%,#14130f);
+  box-shadow:inset 0 0 0 1px #261d13,inset 0 2px #f0cb8640,0 28px 85px #000c;
+}
+.panel-head{border-bottom:1px solid #73593c;background:#b78c4a0b}
+.panel-head small,.zone-select-label{color:#b69c77}
+.panel-head h2,.recap-intro h2{color:#f1e1c5}
+.panel-help,.enemy-option-meta,.enemy-detail-line{color:#b7a992}
+select,.text-input{
+  border:1px solid #735e41;border-radius:4px;
+  background:#171510;color:#eee0c5;box-shadow:inset 0 1px 4px #0009;
+}
+.enemy-option,.recap-stat,.loot-item{
+  border:1px solid #594731;border-radius:5px;
+  background:linear-gradient(145deg,#28221a,#171510);
+}
+.enemy-option.chosen{
+  border-color:#c49a5d;background:linear-gradient(125deg,#4a382349,#201c16);
+  box-shadow:inset 3px 0 #c49a5d;
+}
+.enemy-option-name,.recap-section h3{color:#f0d8b5}
+.type-chip,.weak-chip{
+  border-radius:3px;background:#342d24;color:#d8c8ad;border:1px solid #67533c;
+}
+.weak-chip{color:#e7c58d;border-color:#8f6e43;background:#3c3020}
+.check-wrap input,.settings-toggle input,.filter-option input,.recap-footer input{accent-color:#c69a60}
+.recap-intro{border-bottom:1px solid #58442e;background:linear-gradient(180deg,#c99f6520,transparent)}
+.recap-intro .eyebrow{color:#e1bd86}
+.recap-intro p,.recap-stat small,.loot-item small,.item-preview p{color:#b8a88d}
+.recap-stat strong{color:#e8d7bd}
+.recap-section,.recap-footer{border-color:#5c4831}
+.loot-icon{
+  border-radius:4px;color:#dbb57c;border:1px solid #795e40;
+  background:linear-gradient(145deg,#4c3b27,#221d17);
+}
+.view-loot{color:#e2ba7a}
+.primary-button{
+  border-radius:4px;border:1px solid #d0a66b;
+  background:linear-gradient(180deg,#80613c,#47341f);
+  color:#fff0d1;box-shadow:inset 0 1px #f2d39e55;
+}
+.settings-note{
+  border:1px dashed #816a4a;border-radius:5px;
+  color:#c8b79b;background:#221d16;
+}
+.filter-option{border-color:#4b3d2c;color:#dfcfb6}
+.toast{
+  border-color:#a17b4c;border-radius:5px;
+  color:#f2ddba;background:#282116;box-shadow:0 8px 26px #000a;
+}
+button:focus-visible,select:focus-visible,input:focus-visible{
+  outline:2px solid #e6bd80;outline-offset:2px;
+}
+@media(min-width:600px){.app{border-radius:8px}.bottom-nav{border-radius:0 0 7px 7px}}
+@media(max-width:350px){
+ .arena{border-width:1px}
+ .cast-stack{left:7px;top:9px}
+ .enemy-summary,.dps-badge{padding:6px}
+}
+
 </style>
+
+<link rel="stylesheet" href="assets/ui/godscar-ui.css">
+<style id="gs-ui-integration">
+/* GS-UI-1.0 presentation adapter. This retains original Fight skeleton DOM/events. */
+body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 0,transparent 78%),#0c0b09}
+.gs-theme .feed-card.gs-feed-shell {padding:12px 12px 10px;border:0;border-radius:0;margin-top:12px}
+.gs-theme .feed-card.gs-feed-shell .feed-head {padding:0 0 8px;margin:0 0 5px}
+.gs-theme .feed-card.gs-feed-shell .feed-list.gs-feed__list {overflow:auto;max-height:240px}
+.gs-theme .feed-list .event.gs-feed__row {grid-template-columns:24px minmax(0,1fr) auto;gap:8px;padding:5px 0;min-height:34px}
+.gs-theme .feed-list .event.gs-feed__row .event-icon {border-color:#745638}
+.gs-theme .details-card.gs-panel {padding:14px;border:0;border-radius:0}
+.gs-theme .panel.gs-panel.gs-dialog {padding:0;border:0;border-radius:0;max-height:84dvh}
+.gs-theme .panel.gs-panel.gs-dialog .panel-body {position:relative;z-index:1}
+.gs-theme .panel.gs-panel.gs-dialog .panel-head {position:relative;z-index:1}
+.gs-theme .gs-button {font-size:10px;letter-spacing:.035em}
+.gs-theme .settings-button.gs-button--icon,.gs-theme .icon-button.gs-button--icon,.gs-theme .close-button.gs-button--icon{min-height:38px;width:38px;min-width:38px;padding:9px;border:0;border-radius:0}
+.gs-theme .icon-button.gs-button--icon,.gs-theme .close-button.gs-button--icon{min-height:33px;width:33px;min-width:33px;padding:7px}
+.gs-theme .settings-button .gs-icon,.gs-theme .icon-button .gs-icon,.gs-theme .close-button .gs-icon{width:19px;height:19px}
+.gs-theme .gs-navbar.bottom-nav {padding:3px 5px;gap:2px}
+.gs-theme .nav-button.gs-nav-item{min-height:52px;border-radius:0}
+.gs-theme .nav-button.gs-nav-item.active{background:linear-gradient(160deg,#5b3d27,#33251f);box-shadow:inset 0 0 0 1px #b57b44;color:#f3d9af}
+.gs-theme .nav-button.gs-nav-item .gs-icon{width:21px;height:21px}
+.gs-theme .gs-select {margin:3px 0 9px}
+.gs-theme .gs-select select {font-size:12px}
+.gs-theme .zone-button .gs-icon {display:inline-block;width:14px;height:14px}
+.gs-theme .xp-rail.gs-progress{position:absolute;left:0;right:0;bottom:0;height:5px;padding:0;border:0;clip-path:none;background:#302519}
+.gs-theme .xp-rail.gs-progress i{width:var(--value);height:100%;background:linear-gradient(90deg,#875c31,#e1bb7d)}
+.gs-theme .health-track.gs-progress{height:9px;padding:1px;border:1px solid #816343}
+.gs-theme .health-track.gs-progress i {height:100%;width:var(--value);background:linear-gradient(90deg,#466d41,#9bc58a)}
+.gs-theme .enemy-health-track.gs-progress{height:9px;padding:1px;border:1px solid #80573a}
+.gs-theme .enemy-health-track.gs-progress i{background:linear-gradient(90deg,#914029,#dfa165);height:100%}
+.gs-theme .cast-row{grid-template-columns:22px minmax(0,1fr);grid-template-rows:20px 3px;gap:3px 6px;padding:1px 4px 3px 2px;border-left-color:#a77950}
+.gs-theme .cast-row .skill-icon.gs-slot{width:21px;height:21px;aspect-ratio:1;grid-column:1;grid-row:1;--ui-cut:5px;font-size:11px;line-height:1}
+.gs-theme .cast-row strong{grid-column:2;grid-row:1;align-self:center}
+.gs-theme .cast-row .cast-track{grid-column:1 / -1;grid-row:2;height:3px;border:0;background:linear-gradient(90deg,#a7795045,#18161800);clip-path:polygon(0 0,calc(100% - 7px) 0,100% 50%,calc(100% - 7px) 100%,0 100%)}
+.gs-theme .cast-row .cast-track i{background:linear-gradient(90deg,var(--type),color-mix(in srgb,var(--type),white 25%))}
+.gs-theme .cast-row.attack-row{opacity:.77}
+.gs-theme .effect-chip.gs-chip{font-size:8px;padding:3px 5px;border-radius:2px;background:#181416db}
+.gs-theme .effect-chip.gs-chip.gs-chip--status{color:var(--source,var(--holy))}
+.gs-theme .recap-panel .recap-footer{position:relative;z-index:1}
+.gs-theme .gs-panel .rarity-rare{color:#79b8e5}
+.gs-theme .gs-panel .rarity-epic{color:#c08af1}
+.gs-theme .gs-panel .rarity-legendary{color:#e3bc6e}
+/* UI control polish: use the same small bronze checkbox throughout Fight panels. */
+.gs-theme .rotation-header{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:4px 2px 9px}
+.gs-theme .rotation-header strong{font:700 12px/1.2 Georgia,serif;color:#eedbbd}
+.gs-theme .rotation-header span{padding:5px 8px;white-space:nowrap;border:1px solid #856640;background:#30251b;color:#e0ba7e;font-size:9px;font-weight:750;letter-spacing:.04em}
+.gs-theme .panel-help{line-height:1.5}
+.gs-theme .enemy-options{gap:8px}
+.gs-theme .enemy-option .enemy-detail-line:last-child strong{color:#e0bd82}
+.gs-theme .check-wrap.gs-checkbox{min-height:36px;gap:7px;padding:0 2px;white-space:nowrap;font-size:9px;color:#e6d6b9;cursor:pointer}
+.gs-theme .check-wrap.gs-checkbox .gs-checkbox__mark{width:20px;height:20px}
+.gs-theme .check-wrap.gs-checkbox input,.gs-theme .filter-option.gs-checkbox input,.gs-theme .recap-footer .gs-checkbox input{width:1px;height:1px;margin:0}
+.gs-theme .filter-option.gs-checkbox{min-height:44px;gap:12px;padding:9px 3px;font-size:11px;font-weight:650}
+.gs-theme .filter-option.gs-checkbox > span:first-child{flex:1;min-width:0}
+.gs-theme .filter-option.gs-checkbox .gs-checkbox__mark{margin-left:auto}
+.gs-theme .recap-footer label.gs-checkbox{display:flex;align-items:center;min-height:40px;gap:8px;font-size:10px;line-height:1.25;cursor:pointer}
+.gs-theme .recap-footer label.gs-checkbox .gs-checkbox__mark{width:18px;height:18px}
+.gs-theme .feed-list .event.gs-feed__row{font-size:10px;line-height:1.35}
+.gs-theme .feed-list .event-time{font-variant-numeric:tabular-nums}
+@media(max-width:360px){
+ .gs-theme .cast-row{grid-template-columns:20px minmax(0,1fr)}
+ .gs-theme .cast-row .skill-icon.gs-slot{width:19px;height:19px}
+ .gs-theme .nav-button.gs-nav-item{min-height:49px}
+ .gs-theme .check-wrap.gs-checkbox{gap:5px;font-size:8px}
+}
+</style>
+<link rel="stylesheet" href="assets/ui/character.css">
 </head>
-<body>
+<body class="gs-theme">
 <div class="app">
   <header>
     <div class="identity">
@@ -226,20 +532,19 @@ select,.text-input{width:100%;border:1px solid #43555a;border-radius:10px;paddin
         <div class="class-name">Paladin</div>
       </div>
     </div>
-    <button class="settings-button" type="button" aria-label="Settings" onclick="openPanel('settingsPanel')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="m19.3 13.7 1.1.9-1.7 2.9-1.4-.5a7.9 7.9 0 0 1-1.6.9l-.3 1.5h-3.3l-.3-1.5a7.9 7.9 0 0 1-1.6-.9l-1.4.5-1.7-2.9 1.1-.9a7.8 7.8 0 0 1 0-1.8l-1.1-.9 1.7-2.9 1.4.5a7.9 7.9 0 0 1 1.6-.9l.3-1.5h3.3l.3 1.5a7.9 7.9 0 0 1 1.6.9l1.4-.5 1.7 2.9-1.1.9a7.8 7.8 0 0 1 0 1.8Z"/></svg>
+    <button class="settings-button gs-button gs-button--icon" type="button" aria-label="Settings" onclick="openPanel('settingsPanel')"><img class="gs-icon" src="assets/ui/icons/settings.svg" alt="" aria-hidden="true">
     </button>
-    <div class="xp-rail" aria-label="Experience progress"><i></i></div>
+    <div class="xp-rail gs-progress gs-progress--xp gs-progress--thin" style="--value:37%" aria-label="Experience progress"><i></i></div>
   </header>
   <section class="healthline" aria-label="Player health">
     <span class="health-title">HEALTH</span>
-    <div class="health-track"><i></i></div>
+    <div class="health-track gs-progress gs-progress--health gs-progress--thin" style="--value:86%"><i class="gs-progress__fill"></i></div>
     <span class="health-value">121 / 121</span>
   </section>
   <section class="zone-line">
     <button class="zone-button" type="button" onclick="openZonePanel()" aria-label="Open zone and enemy selection">
       <span><span class="zone-label">Current Zone</span><br><strong id="zoneTitle">Gallowsfen · The Sunken Road</strong></span>
-      <svg class="chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3.5 6 4.5 4.5L12.5 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <img class="chevron gs-icon" src="assets/ui/icons/chevron-down.svg" alt="" aria-hidden="true">
     </button>
     <div class="rotation-pill" id="rotationPill">1 OF 3</div>
   </section>
@@ -250,19 +555,20 @@ select,.text-input{width:100%;border:1px solid #43555a;border-radius:10px;paddin
         <span class="scene-vignette"></span>
       </div>
       <div class="cast-stack" aria-label="Automatic combat abilities">
-        <div class="cast-row fire" style="--cast-time:2.8s;--offset:-1.2s"><span class="skill-icon">✹</span><strong>Ember Brand</strong><span class="cast-track"><i style="--progress:68%"></i></span></div>
-        <div class="cast-row frost" style="--cast-time:3.6s;--offset:-2.0s"><span class="skill-icon">❄</span><strong>Rime Lash</strong><span class="cast-track"><i style="--progress:41%"></i></span></div>
-        <div class="cast-row holy" style="--cast-time:3.2s;--offset:-.7s"><span class="skill-icon">✦</span><strong>Radiant Verdict</strong><span class="cast-track"><i style="--progress:82%"></i></span></div>
-        <div class="cast-row poison" style="--cast-time:4s;--offset:-2.5s"><span class="skill-icon">✧</span><strong>Venom Thread</strong><span class="cast-track"><i style="--progress:24%"></i></span></div>
-        <div class="cast-row arcane" style="--cast-time:4.5s;--offset:-1.7s"><span class="skill-icon">◈</span><strong>Starfall Sigil</strong><span class="cast-track"><i style="--progress:56%"></i></span></div>
-        <div class="cast-row attack-row physical" style="--cast-time:1.9s;--offset:-.9s"><span class="skill-icon">⚔</span><strong>Mace Strike</strong><span class="cast-track"><i style="--progress:48%"></i></span></div>
+        <div class="cast-row fire gs-source--fire" style="--cast-time:2.8s;--offset:-1.2s"><span class="skill-icon gs-slot gs-slot--tiny">✹</span><strong>Ember Brand</strong><span class="cast-track"><i style="--progress:68%"></i></span></div>
+        <div class="cast-row frost gs-source--frost" style="--cast-time:3.6s;--offset:-2.0s"><span class="skill-icon gs-slot gs-slot--tiny">❄</span><strong>Rime Lash</strong><span class="cast-track"><i style="--progress:41%"></i></span></div>
+        <div class="cast-row holy gs-source--holy" style="--cast-time:3.2s;--offset:-.7s"><span class="skill-icon gs-slot gs-slot--tiny">✦</span><strong>Radiant Verdict</strong><span class="cast-track"><i style="--progress:82%"></i></span></div>
+        <div class="cast-row poison gs-source--poison" style="--cast-time:4s;--offset:-2.5s"><span class="skill-icon gs-slot gs-slot--tiny">✧</span><strong>Venom Thread</strong><span class="cast-track"><i style="--progress:24%"></i></span></div>
+        <div class="cast-row arcane gs-source--arcane" style="--cast-time:4.5s;--offset:-1.7s"><span class="skill-icon gs-slot gs-slot--tiny">◈</span><strong>Starfall Sigil</strong><span class="cast-track"><i style="--progress:56%"></i></span></div>
+        <div class="cast-row attack-row physical gs-source--physical" style="--cast-time:1.9s;--offset:-.9s"><span class="skill-icon gs-slot gs-slot--tiny">⚔</span><strong>Mace Strike</strong><span class="cast-track"><i style="--progress:48%"></i></span></div>
       </div>
       <div class="effect-row" aria-label="Active effects">
-        <span class="effect-chip fire"><span>✹</span>Burning</span>
-        <span class="effect-chip frost"><span>❄</span>Chilled</span>
+        <span class="effect-chip fire gs-chip gs-chip--status gs-source--fire"><span>✹</span>Burning</span>
+        <span class="effect-chip frost gs-chip gs-chip--status gs-source--frost"><span>❄</span>Chilled</span>
       </div>
       <div class="enemy-glow"></div>
       <div class="enemy-art-slot" id="enemyArt" aria-label="Full-body enemy art placeholder">
+        <img class="enemy-image" id="enemyImage" alt="" decoding="async">
         <div class="enemy-emblem"><svg viewBox="0 0 32 42" fill="none" aria-hidden="true"><path d="M16 2 5 8l2 17 9 14 9-14 2-17L16 2Z" stroke="currentColor" stroke-width="1.2"/><path d="M10 13h4m4 0h4M12 24l4 3 4-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
         <span class="art-label">FULL-BODY<br>ENEMY ART</span>
       </div>
@@ -271,22 +577,21 @@ select,.text-input{width:100%;border:1px solid #43555a;border-radius:10px;paddin
         <div class="enemy-summary">
           <div class="enemy-summary-head"><strong id="enemyName">Gravejaw Stalker</strong><span class="enemy-kind" id="enemyKind">BLIGHTED · BEAST</span></div>
           <div class="enemy-health-numbers"><span>ENEMY HEALTH</span><span id="enemyHealth">6,420 / 10,000</span></div>
-          <div class="enemy-health-track"><i id="enemyHealthFill"></i></div>
+          <div class="enemy-health-track gs-progress gs-progress--thin" style="--bar-color:#ab623d"><i class="gs-progress__fill" id="enemyHealthFill"></i></div>
         </div>
         <div class="dps-badge"><span>LIVE DPS</span><strong id="dps">1.2k</strong></div>
       </div>
     </section>
-    <section class="feed-card" aria-label="Live event feed">
-      <div class="feed-head">
+    <section class="feed-card gs-feed-shell" aria-label="Live event feed">
+      <div class="feed-head gs-feed__heading">
         <h2>Activity</h2><span class="feed-live"><i class="live-dot"></i>LIVE</span><span class="spacer"></span>
-        <button class="icon-button" type="button" aria-label="Feed options" onclick="openPanel('filterPanel')">
-          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M3 5h14M5.5 10h9M8 15h4"/><circle cx="6.5" cy="5" r="1.5" fill="#111b1f"/><circle cx="12" cy="10" r="1.5" fill="#111b1f"/></svg>
+        <button class="icon-button gs-button gs-button--icon" type="button" aria-label="Feed options" onclick="openPanel('filterPanel')"><img class="gs-icon" src="assets/ui/icons/filter.svg" alt="" aria-hidden="true">
         </button>
       </div>
-      <div class="feed-list" id="feedList" aria-live="polite"></div>
-      <div class="feed-foot"><button class="details-button" id="detailsButton" type="button" onclick="toggleDetails()">SESSION DETAILS <span id="detailsChevron">⌄</span></button></div>
+      <div class="feed-list gs-feed__list" id="feedList" aria-live="polite"></div>
+      <div class="feed-foot"><button class="details-button gs-button" id="detailsButton" type="button" onclick="toggleDetails()">SESSION DETAILS <span id="detailsChevron">⌄</span></button></div>
     </section>
-    <section class="details-card" id="detailsCard" hidden>
+    <section class="details-card gs-panel gs-panel--recessed" id="detailsCard" hidden>
       <div class="details-head"><div><h2>Session details</h2><div class="session-label">TRACKING SINCE SESSION START</div></div><span class="spacer"></span><span class="session-label" id="sessionTime">00:42:18</span></div>
       <div class="metric-grid">
         <div class="metric"><small>XP / hour</small><strong>48.6k</strong><em>+12.4k this session</em></div>
@@ -304,60 +609,134 @@ select,.text-input{width:100%;border:1px solid #43555a;border-radius:10px;paddin
         <div class="damage-row poison"><span class="damage-name">Poison</span><span class="damage-meter"><i style="--share:6%"></i></span><span class="damage-total">524k · 6%</span></div>
         <div class="damage-row bleed"><span class="damage-name">Bleed</span><span class="damage-meter"><i style="--share:4%"></i></span><span class="damage-total">350k · 4%</span></div>
       </div>
-      <div class="reset-row"><span>Start a new session count.</span><button class="reset-button" type="button" onclick="openPanel('resetPanel')">RESET SESSION</button></div>
+      <div class="reset-row"><span>Start a new session count.</span><button class="reset-button gs-button gs-button--danger" type="button" onclick="openPanel('resetPanel')">RESET SESSION</button></div>
     </section>
   </main>
 </div>
-<nav class="bottom-nav" aria-label="Main navigation">
-  <button class="nav-button active" type="button" aria-current="page" onclick="showToast('You are already home.')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1V10Z"/></svg><span>Home</span>
+<nav class="bottom-nav gs-navbar" aria-label="Main navigation">
+  <button class="nav-button gs-nav-item active" type="button" aria-current="page" onclick="closeCharacter()"><img class="gs-icon" src="assets/ui/icons/home.svg" alt="" aria-hidden="true"><span>Home</span>
   </button>
-  <button class="nav-button" type="button" onclick="showToast('Character screen will be built separately.')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M4 21c.5-4.2 3.2-6.5 8-6.5s7.5 2.3 8 6.5"/></svg><span>Character</span></button>
-  <button class="nav-button" type="button" onclick="showToast('Stash screen will be built separately.')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h16v12H4zM3 4h18v4H3zM9 12h6"/></svg><span>Stash</span></button>
-  <button class="nav-button" type="button" onclick="showToast('Forge screen will be built separately.')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 4 6 6M6 20l8-8m-1-9a6 6 0 0 0 7 7l-4 4-5-5-4 4a4 4 0 1 1-5-5l4-4a6 6 0 0 0 7 7"/></svg><span>Forge</span></button>
-  <button class="nav-button" type="button" onclick="showToast('Navigation screen is to be designed.')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.8 8.2-2.7 5.1-4.9 2.5 2.5-4.9 5.1-2.7Z"/></svg><span>Navigation</span></button>
+  <button class="nav-button gs-nav-item" type="button" id="characterNav" onclick="openCharacter()"><img class="gs-icon" src="assets/ui/icons/character.svg" alt="" aria-hidden="true"><span>Character</span></button>
+  <button class="nav-button gs-nav-item" type="button" onclick="showToast('Stash screen will be built separately.')"><img class="gs-icon" src="assets/ui/icons/stash.svg" alt="" aria-hidden="true"><span>Stash</span></button>
+  <button class="nav-button gs-nav-item" type="button" onclick="showToast('Forge screen will be built separately.')"><img class="gs-icon" src="assets/ui/icons/forge.svg" alt="" aria-hidden="true"><span>Forge</span></button>
+  <button class="nav-button gs-nav-item" type="button" onclick="showToast('Navigation screen is to be designed.')"><img class="gs-icon" src="assets/ui/icons/navigation.svg" alt="" aria-hidden="true"><span>Navigation</span></button>
 </nav>
+
+<section id="characterScreen" class="gs-character" aria-label="Character menu" aria-hidden="true" hidden>
+  <div class="gs-character__header">
+    <div><span class="gs-character__eyebrow">PALADIN · UI PREVIEW</span><h1>Character</h1></div>
+    <button type="button" class="gs-character__close" id="characterClose" aria-label="Close Character"><img src="assets/ui/icons/close.svg" alt=""></button>
+  </div>
+  <div class="gs-character__tabs" role="tablist" aria-label="Character sections">
+    <button type="button" role="tab" class="active" aria-selected="true" id="charTabEquipment" aria-controls="charEquipment" data-character-tab="equipment">Equipment</button>
+    <button type="button" role="tab" aria-selected="false" id="charTabInventory" aria-controls="charInventory" data-character-tab="inventory">Inventory</button>
+    <button type="button" role="tab" aria-selected="false" id="charTabSkills" aria-controls="charSkills" data-character-tab="skills">Skills</button>
+  </div>
+  <div class="gs-character__viewport" id="characterViewport">
+    <section class="gs-character__panel" role="tabpanel" id="charEquipment" aria-labelledby="charTabEquipment">
+      <div class="gs-character__equipment" id="characterEquipmentGrid" aria-label="Eleven equipment slots"></div>
+      <section class="gs-character__stats" aria-label="Character stats">
+        <div class="gs-character__section-label"><strong>CHARACTER STATS</strong><span>SAMPLE VALUES</span></div>
+        <div class="gs-character__attributes">
+          <div class="gs-character__attribute str"><strong>185</strong><span>STR</span></div>
+          <div class="gs-character__attribute int"><strong>126</strong><span>INT</span></div>
+          <div class="gs-character__attribute dex"><strong>92</strong><span>DEX</span></div>
+        </div>
+        <div class="gs-character__metrics">
+          <div><strong>3,820</strong><span>Max HP</span></div>
+          <div><strong>740</strong><span>Armor</span></div>
+          <div><strong>1.42/s</strong><span>Auto Attack Speed</span></div>
+        </div>
+        <button class="gs-character__detail-trigger" type="button" id="characterDetailsTrigger" aria-haspopup="dialog" aria-expanded="false">DETAILED STATS <span aria-hidden="true">⌃</span></button>
+      </section>
+    </section>
+    <section class="gs-character__panel" role="tabpanel" id="charInventory" aria-labelledby="charTabInventory" hidden>
+      <div class="gs-character__inventory-tabs" role="tablist" aria-label="Inventory contents">
+        <button type="button" role="tab" class="active" aria-selected="true" aria-controls="charItems" data-inventory-tab="items">Items</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="charMaterials" data-inventory-tab="materials">Materials</button>
+      </div>
+      <section role="tabpanel" id="charItems" aria-label="Items">
+        <div class="gs-character__inventory-heading"><strong>Collected Items</strong><span>8 / 30 · SAMPLE</span></div>
+        <div class="gs-character__item-grid" id="characterItemsList"></div>
+      </section>
+      <section role="tabpanel" id="charMaterials" aria-label="Materials" hidden>
+        <div class="gs-character__inventory-heading"><strong>Materials</strong><span>MOCK RESOURCES</span></div>
+        <div class="gs-character__material-list" id="characterMaterialsList"></div>
+      </section>
+    </section>
+    <section class="gs-character__panel" role="tabpanel" id="charSkills" aria-labelledby="charTabSkills" hidden>
+      <div class="gs-character__skills-placeholder"><span aria-hidden="true">✦</span><h2>Skills</h2><p>Automatic abilities and loadouts will be designed later.</p><small>NO SIMULATION CONNECTION</small></div>
+    </section>
+  </div>
+  <div class="gs-character__detail-layer" id="characterDetailsLayer" role="dialog" aria-modal="true" aria-labelledby="characterDetailsTitle" hidden>
+    <button type="button" id="characterDetailsDismiss" class="gs-character__outside-dismiss" aria-label="Tap outside to close detailed stats"><i aria-hidden="true"></i><span>Tap outside to close</span></button>
+    <div class="gs-character__detail-sheet">
+      <div class="gs-character__sheet-head"><div><small>CHARACTER</small><h2 id="characterDetailsTitle">Detailed Stats</h2></div><button type="button" id="characterDetailsClose" aria-label="Close detailed stats"><img src="assets/ui/icons/close.svg" alt=""></button></div>
+      <div class="gs-character__detail-content">
+        <h3>Primary Attributes</h3>
+        <div class="gs-character__detail-attributes"><span class="str"><b>185</b> STR</span><span class="int"><b>126</b> INT</span><span class="dex"><b>92</b> DEX</span></div>
+        <h3>Combat</h3><dl>
+          <div><dt>Max HP</dt><dd>3,820</dd></div><div><dt>Armor</dt><dd>740</dd></div><div><dt>Auto Attack Speed</dt><dd>1.42/s</dd></div>
+          <div><dt>Critical Chance</dt><dd>14.5%</dd></div><div><dt>Critical Damage</dt><dd>175%</dd></div><div><dt>HP Regeneration</dt><dd>38/s</dd></div>
+        </dl>
+        <h3>Resistances</h3><dl>
+          <div><dt>Fire</dt><dd>40%</dd></div><div><dt>Frost</dt><dd>25%</dd></div><div><dt>Lightning</dt><dd>15%</dd></div>
+          <div><dt>Shadow</dt><dd>20%</dd></div><div><dt>Holy</dt><dd>10%</dd></div>
+        </dl><p class="gs-character__preview-note">Sample values only. Nothing here reads game data.</p>
+      </div>
+    </div>
+  </div>
+  <div class="gs-character__item-layer" id="characterItemLayer" role="dialog" aria-modal="true" aria-labelledby="characterItemTitle" hidden>
+    <button type="button" id="characterItemDismiss" class="gs-character__item-scrim" aria-label="Close item details"></button>
+    <div class="gs-character__item-dialog">
+      <div class="gs-character__sheet-head"><div><small>ITEM PREVIEW</small><h2 id="characterItemTitle">Item</h2></div><button type="button" id="characterItemClose" aria-label="Close item"><img src="assets/ui/icons/close.svg" alt=""></button></div>
+      <div class="gs-character__item-body"><p id="characterItemSubtitle"></p><p id="characterItemStats"></p><small>Comparison and equipment actions are not connected yet.</small></div>
+    </div>
+  </div>
+</section>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <div class="scrim" id="zonePanel" role="dialog" aria-modal="true" aria-labelledby="zonePanelTitle" onclick="outsideClose(event,'zonePanel')">
-  <div class="panel">
-    <div class="panel-head"><div class="panel-head-copy"><small>HUNT SETTINGS</small><h2 id="zonePanelTitle">Zone &amp; enemies</h2></div><button class="close-button" aria-label="Close" onclick="closePanel('zonePanel')">×</button></div>
+  <div class="panel gs-panel gs-panel--recessed gs-dialog">
+    <div class="panel-head"><div class="panel-head-copy"><small>HUNT SETTINGS</small><h2 id="zonePanelTitle">Zone &amp; enemies</h2></div><button class="close-button gs-button gs-button--icon" aria-label="Close" onclick="closePanel('zonePanel')"><img class="gs-icon" src="assets/ui/icons/close.svg" alt="" aria-hidden="true"></button></div>
     <div class="panel-body">
       <label class="zone-select-label" for="zoneSelect">Browse a zone</label>
-      <select id="zoneSelect" onchange="browseZone(this.value)"></select>
-      <p class="panel-help">Changing zones here does not interrupt your current hunt. Select an enemy in another zone to move the rotation there. Choose up to four enemies from one zone.</p>
+      <div class="gs-select"><select id="zoneSelect" onchange="browseZone(this.value)"></select></div>
+      <p class="panel-help">Browsing zones won't interrupt combat. Selecting an enemy in another zone moves your hunt there. Choose one to four enemies.</p>
+      <div class="rotation-header"><strong>Hunt rotation</strong><span id="rotationCount" aria-live="polite">3 / 4 selected</span></div>
       <div class="enemy-options" id="enemyOptions"></div>
     </div>
   </div>
 </div>
 
 <div class="scrim" id="settingsPanel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" onclick="outsideClose(event,'settingsPanel')">
-  <div class="panel">
-    <div class="panel-head"><div class="panel-head-copy"><small>GAME OPTIONS</small><h2 id="settingsTitle">Settings</h2></div><button class="close-button" aria-label="Close" onclick="closePanel('settingsPanel')">×</button></div>
+  <div class="panel gs-panel gs-panel--recessed gs-dialog">
+    <div class="panel-head"><div class="panel-head-copy"><small>GAME OPTIONS</small><h2 id="settingsTitle">Settings</h2></div><button class="close-button gs-button gs-button--icon" aria-label="Close" onclick="closePanel('settingsPanel')"><img class="gs-icon" src="assets/ui/icons/close.svg" alt="" aria-hidden="true"></button></div>
     <div class="panel-body">
-      <div class="settings-toggle"><label for="recapSetting">Show launch recap</label><input id="recapSetting" type="checkbox" checked onchange="setRecapSetting(this.checked)"></div>
+      <div class="settings-toggle"><label for="recapSetting">Show launch recap</label><label class="gs-toggle"><input id="recapSetting" type="checkbox" checked onchange="setRecapSetting(this.checked)"><span class="gs-toggle__track" aria-hidden="true"></span></label></div>
       <div class="settings-note"><strong>Appearance</strong><br>Theme controls will be added later. The visual system is built to be restyled.</div>
     </div>
   </div>
 </div>
 
 <div class="scrim" id="filterPanel" role="dialog" aria-modal="true" aria-labelledby="filterTitle" onclick="outsideClose(event,'filterPanel')">
-  <div class="panel">
-    <div class="panel-head"><div class="panel-head-copy"><small>ACTIVITY FEED</small><h2 id="filterTitle">Feed options</h2></div><button class="close-button" aria-label="Close" onclick="closePanel('filterPanel')">×</button></div>
+  <div class="panel gs-panel gs-panel--recessed gs-dialog">
+    <div class="panel-head"><div class="panel-head-copy"><small>ACTIVITY FEED</small><h2 id="filterTitle">Feed options</h2></div><button class="close-button gs-button gs-button--icon" aria-label="Close" onclick="closePanel('filterPanel')"><img class="gs-icon" src="assets/ui/icons/close.svg" alt="" aria-hidden="true"></button></div>
     <div class="panel-body"><div class="filter-options" id="filterOptions"></div></div>
   </div>
 </div>
 
 <div class="scrim" id="resetPanel" role="dialog" aria-modal="true" aria-labelledby="resetTitle" onclick="outsideClose(event,'resetPanel')">
-  <div class="panel">
-    <div class="panel-head"><div class="panel-head-copy"><small>SESSION TRACKING</small><h2 id="resetTitle">Start a new count?</h2></div><button class="close-button" aria-label="Close" onclick="closePanel('resetPanel')">×</button></div>
+  <div class="panel gs-panel gs-panel--recessed gs-dialog">
+    <div class="panel-head"><div class="panel-head-copy"><small>SESSION TRACKING</small><h2 id="resetTitle">Start a new count?</h2></div><button class="close-button gs-button gs-button--icon" aria-label="Close" onclick="closePanel('resetPanel')"><img class="gs-icon" src="assets/ui/icons/close.svg" alt="" aria-hidden="true"></button></div>
     <div class="confirm-copy">This clears the current session totals and starts counting from zero.</div>
-    <div class="confirm-actions"><button class="secondary-button" onclick="closePanel('resetPanel')">Cancel</button><button class="reset-button" onclick="confirmReset()">RESET TOTALS</button></div>
+    <div class="confirm-actions"><button class="secondary-button gs-button" onclick="closePanel('resetPanel')">Cancel</button><button class="reset-button gs-button gs-button--danger" onclick="confirmReset()">RESET TOTALS</button></div>
   </div>
 </div>
 
 <div class="scrim" id="recapPanel" role="dialog" aria-modal="true" aria-labelledby="recapTitle" onclick="outsideClose(event,'recapPanel')">
-  <div class="panel recap-panel">
+  <div class="panel gs-panel gs-panel--recessed gs-dialog recap-panel">
     <div class="recap-intro"><span class="eyebrow">SESSION RECAP</span><h2 id="recapTitle">Welcome back, Player</h2><p>Here’s what happened while you were away.</p></div>
     <div class="recap-stats">
       <div class="recap-stat"><small>Experience</small><strong>+42.8k XP · +1 level</strong></div>
@@ -374,14 +753,14 @@ select,.text-input{width:100%;border:1px solid #43555a;border-radius:10px;paddin
       </div>
     </div>
     <div class="recap-section"><h3>Notable events</h3><div class="panel-help">Paladin reached level 2 · 1 death · rare crafting material found</div></div>
-    <div class="recap-footer"><label><input id="recapDisable" type="checkbox" onchange="setRecapSetting(!this.checked)">Don’t show this on launch</label><button class="primary-button" onclick="closePanel('recapPanel')">CLOSE</button></div>
+    <div class="recap-footer"><label class="gs-checkbox"><input id="recapDisable" type="checkbox" onchange="setRecapSetting(!this.checked)"><span class="gs-checkbox__mark" aria-hidden="true"></span>Don’t show this on launch</label><button class="primary-button gs-button gs-button--active" onclick="closePanel('recapPanel')">CLOSE</button></div>
   </div>
 </div>
 
 <div class="scrim" id="itemPanel" role="dialog" aria-modal="true" aria-labelledby="itemTitle" onclick="outsideClose(event,'itemPanel')">
-  <div class="panel">
-    <div class="panel-head"><div class="panel-head-copy"><small>ITEM DETAILS · STASH PREVIEW</small><h2 id="itemTitle">Dawnbreaker</h2></div><button class="close-button" aria-label="Close" onclick="closePanel('itemPanel')">×</button></div>
-    <div class="panel-body"><div class="item-preview"><div class="loot-icon" id="itemIcon">⚒</div><div><strong id="itemRarity">Legendary · Mace</strong><p>Selected in your future Stash screen. Its item-detail window will open there.</p></div></div><button class="secondary-button" style="width:100%" onclick="closePanel('itemPanel');showToast('Stash screen will be built separately.')">OPEN IN STASH</button></div>
+  <div class="panel gs-panel gs-panel--recessed gs-dialog">
+    <div class="panel-head"><div class="panel-head-copy"><small>ITEM DETAILS · STASH PREVIEW</small><h2 id="itemTitle">Dawnbreaker</h2></div><button class="close-button gs-button gs-button--icon" aria-label="Close" onclick="closePanel('itemPanel')"><img class="gs-icon" src="assets/ui/icons/close.svg" alt="" aria-hidden="true"></button></div>
+    <div class="panel-body"><div class="item-preview"><div class="loot-icon" id="itemIcon">⚒</div><div><strong id="itemRarity">Legendary · Mace</strong><p>Selected in your future Stash screen. Its item-detail window will open there.</p></div></div><button class="secondary-button gs-button" style="width:100%" onclick="closePanel('itemPanel');showToast('Stash screen will be built separately.')">OPEN IN STASH</button></div>
   </div>
 </div>
 
@@ -412,7 +791,7 @@ const zones={
 const zoneNames=Object.keys(zones);
 const enemies=Object.values(zones).flat();
 let selectedIds=["gravejaw","mirehexer","sallow"];
-let browseName=zoneNames[0],activeIndex=0,feedEvents=[],toastTimer=null,sessionStart=Date.now();
+let browseName=zoneNames[0],activeIndex=0,feedEvents=[],toastTimer=null,sessionStart=Date.now()-(42*60+18)*1000,mockKillCount=164;
 const filters={kill:true,item:true,material:true,level:true,death:true,damage:true,effect:true};
 const filterNames={kill:"Enemy kills",item:"Items looted",material:"Materials and currency",level:"Level-ups",death:"Deaths",damage:"Incoming damage",effect:"Status effects"};
 let recapEnabled=true;
@@ -429,10 +808,11 @@ function showToast(message){const n=document.getElementById("toast");n.textConte
 function setRecapSetting(show){recapEnabled=show;writePref("godscar-show-recap",show);const c=document.getElementById("recapDisable");const s=document.getElementById("recapSetting");if(c)c.checked=!show;if(s)s.checked=show}
 function drawZonePanel(){
  const select=document.getElementById("zoneSelect");
+ const count=document.getElementById("rotationCount");if(count)count.textContent=selectedIds.length+" / 4 selected";
  select.innerHTML=zoneNames.map(z=>'<option value="'+z+'" '+(z===browseName?'selected':'')+'>'+z+'</option>').join("");
  const rows=zones[browseName].map(e=>{
   const checked=selectedIds.includes(e.id),activeZone=activeEnemies()[0]?.zone;
-  return '<article class="enemy-option '+(checked?'chosen ':'')+(e.locked?'locked':'')+'"><div class="enemy-option-top"><div><div class="enemy-option-name">'+e.name+'</div><div class="enemy-option-meta">'+e.kind+'</div></div>'+(e.locked?'<span class="lock-mark">🔒 LOCKED</span>':'<label class="check-wrap"><input type="checkbox" '+(checked?'checked':'')+' onchange="toggleEnemy(\''+e.id+'\')"> '+(checked?'SELECTED':'SELECT')+'</label>')+'</div><div class="enemy-detail-line"><span class="type-chip">'+e.status+' · '+e.type+'</span><span class="weak-chip">Weak to '+e.weak.join(', ')+'</span></div><div class="enemy-detail-line">Potential drop: <strong>'+e.drop+'</strong>'+(activeZone&&activeZone!==browseName&&!checked?' · Select to move hunt here':'')+'</div></article>';
+  return '<article class="enemy-option '+(checked?'chosen ':'')+(e.locked?'locked':'')+'"><div class="enemy-option-top"><div><div class="enemy-option-name">'+e.name+'</div><div class="enemy-option-meta">'+e.kind+'</div></div>'+(e.locked?'<span class="lock-mark">🔒 LOCKED</span>':'<label class="check-wrap gs-checkbox"><input type="checkbox" aria-label="Hunt '+e.name+'" '+(checked?'checked':'')+' onchange="toggleEnemy(\''+e.id+'\')"><span class="gs-checkbox__mark" aria-hidden="true"></span><span>'+(checked?'SELECTED':'SELECT')+'</span></label>')+'</div><div class="enemy-detail-line"><span class="type-chip">'+e.status+' · '+e.type+'</span><span class="weak-chip">Weak to '+e.weak.join(', ')+'</span></div><div class="enemy-detail-line">Potential drop: <strong>'+e.drop+'</strong>'+(activeZone&&activeZone!==browseName&&!checked?' · Select to move hunt here':'')+'</div></article>';
  }).join("");
  document.getElementById("enemyOptions").innerHTML=rows;
 }
@@ -451,8 +831,17 @@ function toggleEnemy(id){
 function openZonePanel(){browseName=activeEnemies()[0]?.zone||zoneNames[0];openPanel("zonePanel")}
 function paintEnemy(){
  const e=currentEnemy(),list=activeEnemies();setText("zoneTitle",e.zone);setText("enemyName",e.name);setText("enemyKind",e.kind);setText("rotationPill",(activeIndex%Math.max(1,list.length)+1)+" OF "+list.length);
+ const art=document.getElementById("enemyArt"),image=document.getElementById("enemyImage");
+ const source=e.id==="gravejaw"?"assets/monsters/01_gallowfen/enemies/03_gravejaw_stalker.png":null;
+ art.classList.toggle("has-art",Boolean(source));
+ art.setAttribute("aria-label",source?e.name+" full-body illustration":"Full-body enemy art placeholder");
+ if(source){if(image.getAttribute("src")!==source)image.src=source;image.alt=e.name}else{image.removeAttribute("src");image.alt=""}
+ const biome=document.querySelector(".biome-slot"),hasBiome=e.zone===zoneNames[0];
+ biome.classList.toggle("has-art",hasBiome);
+ biome.style.backgroundImage=hasBiome?'url("assets/biomes/01_gallowfen_sunken_road.png")':"";
+ biome.setAttribute("aria-label",hasBiome?"Sunken Road biome illustration":"Biome background art placeholder");
  const hp=6420-Math.floor(Math.random()*260);setText("enemyHealth",hp.toLocaleString()+" / 10,000");const f=document.getElementById("enemyHealthFill");if(f)f.style.width=(hp/100)+"%";
- const kind=document.querySelector(".effect-row");if(kind){const colorMap={Fire:"fire",Frost:"frost",Poison:"poison",Bleed:"bleed",Holy:"holy",Shadow:"shadow"};kind.innerHTML='<span class="effect-chip '+(colorMap[e.type]||"holy")+'"><span>✦</span>'+e.status+'</span><span class="effect-chip frost"><span>❄</span>'+e.type+'</span>'}
+ const kind=document.querySelector(".effect-row");if(kind){const colorMap={Fire:"fire",Frost:"frost",Poison:"poison",Bleed:"bleed",Holy:"holy",Shadow:"shadow"};kind.innerHTML='<span class="effect-chip gs-chip gs-chip--status gs-source--'+(colorMap[e.type]||"holy")+'"><span>✦</span>'+e.status+'</span><span class="effect-chip frost gs-chip gs-chip--status gs-source--frost"><span>❄</span>'+e.type+'</span>'}
 }
 function addEvent(type,icon,text,colorClass,time){
  const item={type,icon,text,colorClass:colorClass||"",time:time||"now"};
@@ -460,19 +849,26 @@ function addEvent(type,icon,text,colorClass,time){
 }
 function renderFeed(){
  const list=document.getElementById("feedList");
- list.innerHTML=feedEvents.filter(e=>filters[e.type]).map(e=>'<div class="event '+e.type+'"><span class="event-icon">'+e.icon+'</span><span class="event-text">'+e.text+'</span><span class="event-time">'+e.time+'</span></div>').join("");
+ list.innerHTML=feedEvents.filter(e=>filters[e.type]).map(e=>'<div class="event gs-feed__row '+e.type+'"><span class="event-icon gs-event-icon">'+e.icon+'</span><span class="event-text gs-event-text">'+e.text+'</span><span class="event-time">'+e.time+'</span></div>').join("");
 }
 function drawFilterPanel(){
- document.getElementById("filterOptions").innerHTML=Object.keys(filterNames).map(k=>'<label class="filter-option">'+filterNames[k]+'<input type="checkbox" '+(filters[k]?'checked':'')+' onchange="filters[\''+k+'\']=this.checked;renderFeed()"></label>').join("");
+ document.getElementById("filterOptions").innerHTML=Object.keys(filterNames).map(k=>'<label class="filter-option gs-checkbox"><span>'+filterNames[k]+'</span><input type="checkbox" '+(filters[k]?'checked':'')+' onchange="filters[\''+k+'\']=this.checked;renderFeed()"><span class="gs-checkbox__mark" aria-hidden="true"></span></label>').join("");
 }
 function toggleDetails(){
  const box=document.getElementById("detailsCard"),button=document.getElementById("detailsButton");
  const show=box.hidden;box.hidden=!show;button.innerHTML=show?'HIDE DETAILS <span>⌃</span>':'SESSION DETAILS <span>⌄</span>';
 }
 function confirmReset(){
- sessionStart=Date.now();setText("killMetric","0");setText("sessionTime","00:00:00");
+ sessionStart=Date.now();mockKillCount=0;setText("killMetric","0");setText("sessionTime","00:00:00");
  document.querySelectorAll(".metric strong").forEach((n,i)=>{if(i!==1)n.textContent=i===4?"0":"0"});
  feedEvents=[];addEvent("level","✦","New session started.","");closePanel("resetPanel");showToast("Session totals reset.");
+}
+function updateSessionClock(){
+ const seconds=Math.max(0,Math.floor((Date.now()-sessionStart)/1000));
+ const hours=String(Math.floor(seconds/3600)).padStart(2,"0");
+ const minutes=String(Math.floor(seconds%3600/60)).padStart(2,"0");
+ const remain=String(seconds%60).padStart(2,"0");
+ setText("sessionTime",hours+":"+minutes+":"+remain);
 }
 function formatShort(n){return n>=1e9?(n/1e9).toFixed(1)+"b":n>=1e6?(n/1e6).toFixed(1)+"m":n>=1e3?(n/1e3).toFixed(1)+"k":String(n)}
 function openLootDetails(name,rarity,icon){
@@ -485,7 +881,7 @@ function showRecap(){
 function cycleFight(){
  const defeated=currentEnemy();
  activeIndex=(activeIndex+1)%Math.max(1,selectedIds.length);paintEnemy();
- const e=defeated;setText("killMetric",String(164+activeIndex));
+ const e=defeated;mockKillCount+=1;setText("killMetric",String(mockKillCount));
  addEvent("kill","⚔","Defeated <strong>"+e.name+"</strong>.", "","now");
  const types=["physical","fire","holy","frost","poison","bleed"];
  const type=types[Math.floor(Math.random()*types.length)];
@@ -509,8 +905,10 @@ feedEvents=[
  {type:"level",icon:"✦",text:"Reached <strong>Level 2</strong>.",time:"4m"},
  {type:"death",icon:"✕",text:"<strong>Player</strong> was defeated.",time:"6m"}
 ];
-renderFeed();paintEnemy();showRecap();
+renderFeed();paintEnemy();showRecap();updateSessionClock();
+setInterval(updateSessionClock,1000);
 setInterval(cycleFight,4200);
 </script>
+<script src="assets/ui/character.js"></script>
 </body>
 </html>

@@ -1,0 +1,143 @@
+/* Godscar reusable interface kit — GS-UI-1.0 working implementation
+   Visual references: approved Batch 0.1, Batch 1, text-free Batch 2,
+   slim cast/status bars and revised combat feed.
+   CSS/HTML components, not traced art. No game data or sim integration. */
+:root {
+  color-scheme: dark;
+  --ui-bg:#101012;
+  --ui-surface:#1d1a18;
+  --ui-raised:#25211f;
+  --ui-recess:#11100f;
+  --ui-frame-dark:#503a2c;
+  --ui-bronze:#a77950;
+  --ui-highlight:#e3b779;
+  --ui-ivory:#eadcc5;
+  --ui-muted:#ac9a84;
+  --ui-active:#d59451;
+  --ui-danger:#ab5745;
+  --ui-health:#668f64;
+  --ui-xp:#c79653;
+  --ui-fire:#ed884d;--ui-bleed:#bf5055;--ui-holy:#f2d17e;
+  --ui-frost:#84c8e8;--ui-arcane:#be82ff;--ui-shadow:#7650a3;
+  --ui-poison:#9de34d;--ui-physical:#b5ad95;
+  --ui-cut:12px;
+  --ui-font:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+.gs-theme {font:14px/1.45 var(--ui-font);color:var(--ui-ivory);background:var(--ui-bg)}
+.gs-theme *,.gs-theme *::before,.gs-theme *::after {box-sizing:border-box}
+.gs-theme button,.gs-theme select,.gs-theme input {font:inherit}
+.gs-theme button {cursor:pointer}
+.gs-theme button:disabled {cursor:not-allowed}
+.gs-theme :focus-visible {outline:2px solid var(--ui-highlight);outline-offset:2px}
+.gs-muted {color:var(--ui-muted)}
+.gs-heading {font:700 1.1rem/1.1 Georgia,serif;letter-spacing:.025em;margin:0;color:var(--ui-ivory)}
+.gs-overline {font:700 .64rem/1.2 var(--ui-font);letter-spacing:.11em;text-transform:uppercase;color:var(--ui-muted)}
+.gs-icon {width:20px;height:20px;display:inline-block;object-fit:contain;vertical-align:middle;flex:none}
+.gs-cut {clip-path:polygon(var(--ui-cut) 0,calc(100% - var(--ui-cut)) 0,100% var(--ui-cut),100% calc(100% - var(--ui-cut)),calc(100% - var(--ui-cut)) 100%,var(--ui-cut) 100%,0 calc(100% - var(--ui-cut)),0 var(--ui-cut))}
+/* Solid reusable frames; borders are drawn in CSS, not stretched raster imagery. */
+.gs-panel,.gs-button,.gs-tab,.gs-slot,.gs-tooltip,.gs-select,.gs-feed-shell {
+  --ui-cut:12px;position:relative;isolation:isolate;
+  background:linear-gradient(145deg,#efc58b 0%,#94603a 10%,#543623 29%,#aa774c 71%,#deb176 94%,#634129 100%);
+  clip-path:polygon(var(--ui-cut) 0,calc(100% - var(--ui-cut)) 0,100% var(--ui-cut),100% calc(100% - var(--ui-cut)),calc(100% - var(--ui-cut)) 100%,var(--ui-cut) 100%,0 calc(100% - var(--ui-cut)),0 var(--ui-cut));
+}
+.gs-panel::before,.gs-button::before,.gs-tab::before,.gs-slot::before,.gs-tooltip::before,.gs-select::before,.gs-feed-shell::before {
+  content:"";position:absolute;inset:2px;z-index:0;pointer-events:none;
+  background:linear-gradient(155deg,#2a2625 0%,#1b1919 37%,#181719 100%);
+  clip-path:polygon(calc(var(--ui-cut) - 1px) 0,calc(100% - var(--ui-cut) + 1px) 0,100% calc(var(--ui-cut) - 1px),100% calc(100% - var(--ui-cut) + 1px),calc(100% - var(--ui-cut) + 1px) 100%,calc(var(--ui-cut) - 1px) 100%,0 calc(100% - var(--ui-cut) + 1px),0 calc(var(--ui-cut) - 1px));
+}
+.gs-panel > *,.gs-button > *,.gs-tab > *,.gs-slot > *,.gs-tooltip > *,.gs-select > *,.gs-feed-shell > * {position:relative;z-index:1}
+.gs-panel {padding:17px;min-width:0}
+.gs-panel--recessed::before {background:radial-gradient(ellipse at 38% 24%,#292526 0%,#191719 58%,#141416 100%)}
+.gs-panel--soft {--ui-cut:9px}
+.gs-panel--soft::before {background:#1b191a}
+.gs-panel--crest::after {content:"";position:absolute;z-index:2;left:50%;top:0;width:13px;height:13px;transform:translate(-50%,-40%) rotate(45deg);border:2px solid var(--ui-highlight);background:linear-gradient(145deg,#e9b96d,#78502b);box-shadow:0 1px 3px #000}
+.gs-panel__header {padding-bottom:11px;margin-bottom:11px;border-bottom:1px solid #a7795060;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.gs-panel__body {min-width:0}
+.gs-button {--ui-cut:11px;min-height:44px;border:0;padding:9px 18px;color:var(--ui-ivory);font-weight:700;font-size:.85rem;background:linear-gradient(150deg,#dba66b,#9a6238 45%,#513727 100%)}
+.gs-button::before {background:linear-gradient(155deg,#2b2726,#1a1819)}
+.gs-button:hover:not(:disabled),.gs-button:focus-visible {filter:brightness(1.14)}
+.gs-button:active {filter:brightness(.92)}
+.gs-button[aria-pressed="true"],.gs-button--active {background:linear-gradient(140deg,#fac37c,#d58d40 35%,#985c2c 80%,#e8a15d)}
+.gs-button[aria-pressed="true"]::before,.gs-button--active::before {background:linear-gradient(150deg,#663f25,#412b22)}
+.gs-button--danger {background:linear-gradient(140deg,#c68070,#8c3f38,#4b2826)}
+.gs-button--danger::before {background:linear-gradient(145deg,#462829,#231718)}
+.gs-button:disabled {opacity:.43;filter:grayscale(.7)}
+.gs-button--icon {width:44px;min-width:44px;padding:10px;display:grid;place-items:center}
+.gs-tabs {display:flex;align-items:flex-end;gap:3px;min-width:0;border-bottom:1px solid #8d6640}
+.gs-tab {--ui-cut:10px;flex:1;min-width:0;min-height:44px;display:grid;place-items:center;padding:8px;border:0;color:var(--ui-muted);font-size:.75rem;font-weight:700;background:linear-gradient(150deg,#b48251,#714b31)}
+.gs-tab::before {background:#211e1d}
+.gs-tab[aria-selected="true"] {color:var(--ui-ivory);background:linear-gradient(135deg,#fac780,#cc8642,#80502e)}
+.gs-tab[aria-selected="true"]::before {background:linear-gradient(135deg,#75451f,#432b1d)}
+.gs-tab:disabled{opacity:.42}
+.gs-slot {--ui-cut:10px;display:grid;place-items:center;flex:none;width:52px;aspect-ratio:1;padding:5px;background:linear-gradient(140deg,#f0be77,#935d34 57%,#603d28)}
+.gs-slot::before {background:linear-gradient(145deg,#141315,#242023)}
+.gs-slot[data-selected="true"] {background:linear-gradient(140deg,#ffcf7e,#d78b39 55%,#b16b29);filter:drop-shadow(0 0 2px #e8a14e)}
+.gs-slot .gs-icon {width:60%;height:60%}
+.gs-slot--small {width:32px;--ui-cut:7px}
+.gs-slot--tiny {width:24px;--ui-cut:5px}
+.gs-tooltip {--ui-cut:12px;padding:14px;max-width:300px}
+.gs-tooltip::before{background:#1b191a}
+.gs-select {--ui-cut:10px;width:100%;min-height:44px;color:var(--ui-ivory)}
+.gs-select::before {background:#201d1d}
+.gs-select select {appearance:none;-webkit-appearance:none;position:relative;z-index:2;display:block;width:100%;border:0;background:transparent;color:inherit;padding:11px 37px 11px 13px;min-height:44px;cursor:pointer}
+.gs-select select option {background:#1d1a18;color:var(--ui-ivory)}
+.gs-select::after {content:"";position:absolute;z-index:1;right:16px;top:50%;width:8px;height:8px;transform:translateY(-70%) rotate(45deg);border-right:2px solid var(--ui-highlight);border-bottom:2px solid var(--ui-highlight);pointer-events:none}
+.gs-checkbox {display:inline-flex;gap:9px;align-items:center;min-height:44px;cursor:pointer;font-size:.83rem}
+.gs-checkbox input {position:absolute;opacity:0;width:1px;height:1px}
+.gs-checkbox__mark {width:21px;height:21px;display:grid;place-items:center;flex:none;clip-path:polygon(5px 0,calc(100% - 5px) 0,100% 5px,100% calc(100% - 5px),calc(100% - 5px) 100%,5px 100%,0 calc(100% - 5px),0 5px);background:linear-gradient(135deg,#dba468,#6f482d);position:relative}
+.gs-checkbox__mark::before {content:"";position:absolute;inset:2px;background:#1c191a;clip-path:inherit}
+.gs-checkbox input:checked + .gs-checkbox__mark::after {content:"";width:11px;height:6px;border-left:3px solid #ffc479;border-bottom:3px solid #ffc479;transform:translateY(-2px) rotate(-45deg);z-index:1}
+.gs-checkbox input:focus-visible + .gs-checkbox__mark{outline:2px solid var(--ui-highlight);outline-offset:2px}
+.gs-toggle {display:inline-flex;align-items:center;gap:9px;min-height:44px;cursor:pointer}
+.gs-toggle input {position:absolute;opacity:0;width:1px;height:1px}
+.gs-toggle__track {position:relative;width:49px;height:25px;flex:none;border:1px solid #8e6546;border-radius:15px;background:#171618;box-shadow:inset 0 1px 4px #0009}
+.gs-toggle__track::after {content:"";position:absolute;left:3px;top:3px;width:17px;height:17px;border-radius:50%;background:linear-gradient(#b7aaa0,#70655e);box-shadow:0 1px 3px #0009;transition:transform .18s,background .18s}
+.gs-toggle input:checked + .gs-toggle__track {background:#5e3d22;border-color:#dca360}
+.gs-toggle input:checked + .gs-toggle__track::after {transform:translateX(23px);background:linear-gradient(#f8d69c,#bf7e31)}
+.gs-toggle input:focus-visible + .gs-toggle__track{outline:2px solid var(--ui-highlight);outline-offset:2px}
+.gs-progress {--value:65%;--bar-color:var(--ui-health);height:14px;padding:3px;position:relative;isolation:isolate;background:#100f11;border:1px solid #8f6340;clip-path:polygon(7px 0,calc(100% - 7px) 0,100% 50%,calc(100% - 7px) 100%,7px 100%,0 50%)}
+.gs-progress__fill {display:block;height:100%;width:var(--value);background:var(--bar-color);clip-path:polygon(0 0,calc(100% - 5px) 0,100% 50%,calc(100% - 5px) 100%,0 100%);transition:width .3s}
+.gs-progress--health {--bar-color:var(--ui-health)}
+.gs-progress--xp {--bar-color:var(--ui-xp)}
+.gs-progress--thin{height:8px;padding:1px;border-color:#7e5c3a}
+.gs-source--fire{--source:var(--ui-fire)}.gs-source--bleed{--source:var(--ui-bleed)}
+.gs-source--holy{--source:var(--ui-holy)}.gs-source--frost{--source:var(--ui-frost)}
+.gs-source--arcane{--source:var(--ui-arcane)}.gs-source--shadow{--source:var(--ui-shadow)}
+.gs-source--poison{--source:var(--ui-poison)}.gs-source--physical{--source:var(--ui-physical)}
+/* Cast and status are deliberately quieter than menu frames. Icon slot can house dynamic spell art. */
+.gs-cast {--source:var(--ui-physical);--value:64%;display:flex;align-items:center;gap:0;min-width:0;height:34px}
+.gs-cast .gs-slot {width:34px;--ui-cut:7px;z-index:1}
+.gs-cast__track {height:11px;margin-left:-1px;position:relative;flex:1;min-width:0;padding:2px 2px 2px 0;background:linear-gradient(90deg,#191617 0,#151415d9 80%,#1211159e);border-top:1px solid #986e49;border-bottom:1px solid #725039;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 50%,calc(100% - 8px) 100%,0 100%)}
+.gs-cast__fill {display:block;height:100%;width:var(--value);background:var(--source);clip-path:polygon(0 0,calc(100% - 4px) 0,100% 50%,calc(100% - 4px) 100%,0 100%);transition:width .25s linear;opacity:.86}
+.gs-cast--quiet{opacity:.67}
+.gs-cast--mini {height:27px}
+.gs-cast--mini .gs-slot{width:26px;--ui-cut:6px}
+.gs-cast--mini .gs-cast__track{height:8px}
+.gs-chip {display:inline-flex;align-items:center;gap:6px;border:1px solid #79573c;background:#191618;padding:4px 7px;font-size:.67rem;color:var(--ui-ivory)}
+.gs-chip--status {border-color:color-mix(in srgb,var(--source),#4e4036 64%);color:var(--source)}
+.gs-feed-shell {--ui-cut:13px;padding:12px 12px 11px}
+.gs-feed-shell::before {background:linear-gradient(160deg,#252122,#151416)}
+.gs-feed__heading {margin-bottom:9px;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:1px 0 9px;border-bottom:1px solid #84604080}
+.gs-feed__list {min-height:90px;max-height:240px;overflow:auto;scrollbar-color:#8c633b #181617;scrollbar-width:thin}
+.gs-feed__row {display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:8px;align-items:center;min-height:37px;padding:4px 1px;border-bottom:1px solid #5e48354f;font-size:.72rem}
+.gs-feed__row:last-child{border-bottom:0}
+.gs-feed__row .gs-slot{--ui-cut:5px;width:23px}
+.gs-feed__row time{font-size:.65rem;color:var(--ui-muted);white-space:nowrap}
+.gs-feed__row .gs-event-icon {color:var(--source,var(--ui-bronze));font-size:.75rem;text-align:center}
+.gs-feed__row .gs-event-text{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.gs-feed__row .gs-event-text strong {color:var(--source,var(--ui-ivory))}
+.gs-dialog-backdrop {position:fixed;inset:0;background:#020202b9;z-index:90;display:none;place-items:center;padding:16px}
+.gs-dialog-backdrop[data-open="true"]{display:grid}
+.gs-dialog {width:min(100%,420px);max-height:84dvh;overflow:auto}
+.gs-dialog__header{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:11px}
+.gs-navbar {background:linear-gradient(170deg,#211b1b,#171517);border-top:1px solid #a77950;padding:4px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:3px}
+.gs-nav-item {color:var(--ui-muted);min-height:52px;border:0;background:transparent;display:grid;justify-items:center;align-content:center;gap:2px;font-size:.64rem;padding:4px 1px;position:relative}
+.gs-nav-item .gs-icon{width:19px;height:19px;opacity:.8}
+.gs-nav-item[aria-current="page"]{color:var(--ui-ivory);background:linear-gradient(160deg,#5b3d27,#33251f);box-shadow:inset 0 0 0 1px #b57b44}
+.gs-nav-item[aria-current="page"] .gs-icon{opacity:1}
+.gs-stack{display:grid;gap:10px}
+.gs-row{display:flex;align-items:center;gap:8px}
+.gs-flex{flex:1;min-width:0}
+@media (prefers-reduced-motion:reduce) {.gs-theme *, .gs-theme *::before, .gs-theme *::after {transition:none!important;animation:none!important}}
+/* Place inset face behind direct text nodes as well as element children. */
+.gs-tab::before{z-index:-1}
