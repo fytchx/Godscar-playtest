@@ -518,6 +518,7 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
 </style>
 <link rel="stylesheet" href="assets/ui/character.css">
 <link rel="stylesheet" href="assets/ui/godscar-premium-live.css">
+<link rel="stylesheet" href="assets/ui/menus-v2.css">
 </head>
 <body class="gs-theme">
 <div class="app">
@@ -616,8 +617,8 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
   </button>
   <button class="nav-button gs-nav-item" type="button" id="characterNav" onclick="openCharacter()"><img class="gs-icon" src="assets/ui/icons/character.svg" alt="" aria-hidden="true"><span>Character</span></button>
   <button class="nav-button gs-nav-item" type="button" id="stashNav" onclick="openStash()"><img class="gs-icon" src="assets/ui/icons/stash.svg" alt="" aria-hidden="true"><span>Stash</span></button>
-  <button class="nav-button gs-nav-item" type="button" onclick="showToast('Forge screen will be built separately.')"><img class="gs-icon" src="assets/ui/icons/forge.svg" alt="" aria-hidden="true"><span>Forge</span></button>
-  <button class="nav-button gs-nav-item" type="button" onclick="showToast('Navigation screen is to be designed.')"><img class="gs-icon" src="assets/ui/icons/navigation.svg" alt="" aria-hidden="true"><span>Navigation</span></button>
+  <button class="nav-button gs-nav-item" id="forgeNav" type="button" onclick="openForge()"><img class="gs-icon" src="assets/ui/icons/forge.svg" alt="" aria-hidden="true"><span>Forge</span></button>
+  <button class="nav-button gs-nav-item" id="navigationNav" type="button" onclick="openNavigation()"><img class="gs-icon" src="assets/ui/icons/navigation.svg" alt="" aria-hidden="true"><span>Navigation</span></button>
 </nav>
 
 <section id="characterScreen" class="gs-character" aria-label="Character menu" aria-hidden="true" hidden>
@@ -737,6 +738,107 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
     <section class="gs-character__panel" role="tabpanel" id="stashMaterials" aria-labelledby="stashTabMaterials" hidden>
       <div class="gs-character__inventory-heading"><strong>Materials</strong><span>MOCK RESOURCES</span></div>
       <div class="gs-character__material-list" id="stashMaterialsList"></div>
+    </section>
+  </div>
+</section>
+
+<section id="forgeScreen" class="gs-character gs-menu" aria-label="Forge menu" aria-hidden="true" hidden>
+  <div class="gs-character__header">
+    <div><span class="gs-character__eyebrow">CRAFTING · UI PREVIEW</span><h1>Forge</h1></div>
+    <button class="gs-character__close" id="forgeClose" type="button" aria-label="Close Forge"><img src="assets/ui/icons/close.svg" alt=""></button>
+  </div>
+  <div class="gs-character__viewport" id="forgeViewport">
+    <div class="gs-menu__intro"><strong>Equipment workshop</strong><span>Four operations · no materials consumed</span></div>
+    <div class="gs-menu__operation-grid" role="tablist" aria-label="Forge operations">
+      <button type="button" class="gs-menu__operation active" role="tab" data-forge-tab="salvage" aria-selected="true" aria-controls="forgeSalvage" id="forgeTabSalvage"><img src="assets/ui/icons/stash.svg" alt="" aria-hidden="true"><span><strong>Salvage</strong><small>Break down</small></span></button>
+      <button type="button" class="gs-menu__operation" role="tab" data-forge-tab="upgrade" aria-selected="false" aria-controls="forgeUpgrade" id="forgeTabUpgrade"><img src="assets/ui/icons/forge.svg" alt="" aria-hidden="true"><span><strong>Upgrade</strong><small>Improve gear</small></span></button>
+      <button type="button" class="gs-menu__operation" role="tab" data-forge-tab="reforge" aria-selected="false" aria-controls="forgeReforge" id="forgeTabReforge"><img src="assets/ui/icons/activity.svg" alt="" aria-hidden="true"><span><strong>Reforge</strong><small>Adjust affix</small></span></button>
+      <button type="button" class="gs-menu__operation" role="tab" data-forge-tab="imprint" aria-selected="false" aria-controls="forgeImprint" id="forgeTabImprint"><img src="assets/ui/icons/scroll.svg" alt="" aria-hidden="true"><span><strong>Imprint</strong><small>Weapon abilities</small></span></button>
+    </div>
+    <div class="gs-menu__details">
+      <section class="gs-menu__detail" role="tabpanel" id="forgeSalvage" aria-labelledby="forgeTabSalvage">
+        <div class="gs-menu__detail-heading"><small>DESIGN PREVIEW</small><h2>Salvage</h2></div>
+        <p>Convert unwanted equipment into crafting materials. Exact yields are not defined yet.</p>
+        <div class="gs-menu__empty-item"><span class="gs-menu__empty-glyph">◇</span><div><strong>Item slot</strong><small>Choose equipment later</small></div><span class="gs-menu__empty-arrow">+</span></div>
+        <p class="gs-menu__caution">Rare and more valuable loot must be protected from unintended salvage.</p>
+        <button class="gs-menu__pending" type="button" disabled>Salvage unavailable · UI preview</button>
+      </section>
+      <section class="gs-menu__detail" role="tabpanel" id="forgeUpgrade" aria-labelledby="forgeTabUpgrade" hidden>
+        <div class="gs-menu__detail-heading"><small>DESIGN PREVIEW</small><h2>Upgrade</h2></div>
+        <p>Improve selected equipment from +0 up to +5. The paper design has no upgrade failures.</p>
+        <div class="gs-menu__empty-item"><span class="gs-menu__empty-glyph">⌁</span><div><strong>Upgrade target</strong><small>Equipment and costs not connected</small></div><span class="gs-menu__progress-mini">+0 → +5</span></div>
+        <div class="gs-menu__resource-note"><span>Gold</span><span>Scar Shards</span><span>Targeted materials</span></div>
+        <button class="gs-menu__pending" type="button" disabled>Upgrade unavailable · UI preview</button>
+      </section>
+      <section class="gs-menu__detail" role="tabpanel" id="forgeReforge" aria-labelledby="forgeTabReforge" hidden>
+        <div class="gs-menu__detail-heading"><small>DESIGN PREVIEW</small><h2>Reforge</h2></div>
+        <p>Replace one ordinary item affix. A future comparison will let the player keep the old result.</p>
+        <div class="gs-menu__empty-item"><span class="gs-menu__empty-glyph">◇</span><div><strong>Reforge target</strong><small>No affix rolls or costs defined</small></div><span class="gs-menu__empty-arrow">↻</span></div>
+        <p class="gs-menu__caution">A preview must show both options before any change is committed.</p>
+        <button class="gs-menu__pending" type="button" disabled>Reforge unavailable · UI preview</button>
+      </section>
+      <section class="gs-menu__detail" role="tabpanel" id="forgeImprint" aria-labelledby="forgeTabImprint" hidden>
+        <div class="gs-menu__detail-heading"><small>DESIGN PREVIEW</small><h2>Imprint</h2></div>
+        <p>Weapons own automatic abilities. Found weapons have 1–3; crafting can add up to two more, for five total.</p>
+        <div class="gs-menu__empty-item"><span class="gs-menu__empty-glyph">✧</span><div><strong>Weapon + learned recipe</strong><small>Compatibility and recipe library pending</small></div><span class="gs-menu__empty-arrow">+</span></div>
+        <p class="gs-menu__caution">Recipes are permanently learned. Equipping an off-hand does not grant another ability rotation.</p>
+        <button class="gs-menu__pending" type="button" disabled>Imprint unavailable · UI preview</button>
+      </section>
+    </div>
+  </div>
+</section>
+
+<section id="navigationScreen" class="gs-character gs-menu gs-navigation" aria-label="Navigation menu" aria-hidden="true" hidden>
+  <div class="gs-character__header">
+    <div><span class="gs-character__eyebrow">WORLD PROGRESSION · UI PREVIEW</span><h1>Navigation</h1></div>
+    <button type="button" class="gs-character__close" id="navigationClose" aria-label="Close Navigation"><img src="assets/ui/icons/close.svg" alt=""></button>
+  </div>
+  <div class="gs-menu__nav-tabs" role="tablist" aria-label="World activities">
+      <button type="button" class="active" role="tab" data-navigation-tab="regions" id="navigationTabRegions" aria-selected="true" aria-controls="navigationRegions">Regions</button>
+      <button type="button" class="" role="tab" data-navigation-tab="hunting" id="navigationTabHunting" aria-selected="false" aria-controls="navigationHunting">Hunting</button>
+      <button type="button" class="" role="tab" data-navigation-tab="bosses" id="navigationTabBosses" aria-selected="false" aria-controls="navigationBosses">Bosses</button>
+      <button type="button" class="" role="tab" data-navigation-tab="dungeons" id="navigationTabDungeons" aria-selected="false" aria-controls="navigationDungeons">Dungeons</button>
+  </div>
+  <div class="gs-character__viewport" id="navigationViewport">
+    <section role="tabpanel" id="navigationRegions" aria-labelledby="navigationTabRegions">
+      <div class="gs-menu__intro"><strong>World regions</strong><span>Named regions from the current game direction</span></div>
+      <div class="gs-menu__region gs-menu__region--starting">
+        <div class="gs-menu__region-mark">I</div><div class="gs-menu__region-copy"><small>STARTING REGION · SOURCE ROSTER</small><h2>Fallfields</h2><p>Blighted farmland, targeted hunting and the Hollow Bellkeeper.</p></div>
+      </div>
+      <div class="gs-menu__region">
+        <div class="gs-menu__region-mark">II</div><div class="gs-menu__region-copy"><small>SECOND REGION · DETAILS PENDING</small><h2>Ashen Hollow</h2><p>The region name exists in the source. Its content and access rules are not finalized here.</p></div>
+      </div>
+      <div class="gs-menu__future"><span>◇</span><div><strong>Later regions</strong><small>Names, unlocks and layout not approved</small></div></div>
+      <button type="button" class="gs-menu__action" data-go-navigation="hunting">Explore hunt roster</button>
+    </section>
+    <section role="tabpanel" id="navigationHunting" aria-labelledby="navigationTabHunting" hidden>
+      <div class="gs-menu__intro"><strong>Fallfields hunting</strong><span>Source roster · selection is a future integration</span></div>
+      <div class="gs-menu__enemy-list">
+        <div><span class="gs-menu__tiny-mark">01</span><strong>Blighted Husk</strong><small>Farm target</small></div>
+        <div><span class="gs-menu__tiny-mark">02</span><strong>Carrion Swarm</strong><small>Farm target</small></div>
+        <div><span class="gs-menu__tiny-mark">03</span><strong>Grave Knight</strong><small>Farm target</small></div>
+        <div><span class="gs-menu__tiny-mark">04</span><strong>Hollow Wisp</strong><small>Planned fire-resistance challenge</small></div>
+      </div>
+      <p class="gs-menu__caution">The Fight screen currently uses separate mock enemies. This list does not change your active hunt.</p>
+      <button type="button" class="gs-menu__action" onclick="goHome()">Return to Fight preview</button>
+    </section>
+    <section role="tabpanel" id="navigationBosses" aria-labelledby="navigationTabBosses" hidden>
+      <div class="gs-menu__intro"><strong>Major bosses</strong><span>Targeted preparation · no active boss fights</span></div>
+      <div class="gs-menu__feature">
+        <span class="gs-menu__feature-icon">✦</span>
+        <div><small>FALLFIELDS · SOURCE-VERIFIED</small><h2>The Hollow Bellkeeper</h2><p>The planned damage-check boss. Actual thresholds, rewards, and access rules still need approval.</p></div>
+      </div>
+      <div class="gs-menu__future"><span>◇</span><div><strong>Additional bosses</strong><small>No finished roster or artwork assigned here</small></div></div>
+      <button class="gs-menu__pending" disabled type="button">Boss encounters not available yet</button>
+    </section>
+    <section role="tabpanel" id="navigationDungeons" aria-labelledby="navigationTabDungeons" hidden>
+      <div class="gs-menu__intro"><strong>Dungeons</strong><span>Proposed activity · no dungeon instances</span></div>
+      <div class="gs-menu__feature">
+        <span class="gs-menu__feature-icon">⌁</span><div><small>DESIGN OUTLINE</small><h2>Automatic expeditions</h2><p>Bounded encounters following the same combat rules, with focused equipment or material rewards.</p></div>
+      </div>
+      <div class="gs-menu__step-line"><span>Enter</span><span>Auto-fight</span><span>Reward</span></div>
+      <p class="gs-menu__caution">Dungeon names, lengths, unlocks, rewards and offline behavior are still undecided. These steps show the proposed flow only.</p>
+      <button class="gs-menu__pending" disabled type="button">Dungeons not available yet</button>
     </section>
   </div>
 </section>

@@ -3,8 +3,11 @@
 (function () {
   const $ = id => document.getElementById(id);
   const screen = $('characterScreen'), stash = $('stashScreen');
-  if (!screen || !stash) return;
-  const tabs = ['equipment','skills'], stashTabs = ['items','materials'];
+  const forge=$('forgeScreen'), navigation=$('navigationScreen');
+  if (!screen || !stash || !forge || !navigation) return;
+  const tabs=['equipment','skills'], stashTabs=['items','materials'];
+  const forgeTabs=['salvage','upgrade','reforge','imprint'];
+  const navigationTabs=['regions','hunting','bosses','dungeons'];
   const slotPaths = {
     Weapon:'<path d="M17 3 21 7 10 18 6 14Z M7 17l-4 4 M5 12l7 7"/>',
     Helmet:'<path d="M4 16v-4a8 8 0 0 1 16 0v4H4Z M3 16h18 M9 16v4m6-4v4"/>',
@@ -49,10 +52,10 @@
   $('stashMaterialsList').innerHTML=materials.map(m=>'<div class="gs-character__material"><span class="gs-character__material-icon" aria-hidden="true">'+m[2]+'</span><span class="gs-character__material-name">'+m[0]+'</span><strong class="gs-character__material-count">'+m[1]+'</strong></div>').join('');
 
   const homeNav=document.querySelector('.bottom-nav .nav-button:first-child');
-  const characterNav=$('characterNav'),stashNav=$('stashNav');
+  const characterNav=$('characterNav'),stashNav=$('stashNav'),forgeNav=$('forgeNav'),navigationNav=$('navigationNav');
   let lastFocus=null;
   function markNav(view){
-    [[homeNav,'home'],[characterNav,'character'],[stashNav,'stash']].forEach(([button,name])=>{
+    [[homeNav,'home'],[characterNav,'character'],[stashNav,'stash'],[forgeNav,'forge'],[navigationNav,'navigation']].forEach(([button,name])=>{
       if(!button)return;
       const active=view===name;
       button.classList.toggle('active',active);
@@ -77,6 +80,31 @@
       btn.tabIndex=active?0:-1;panel.hidden=!active;
     });
     $('stashViewport').scrollTop=0;
+  }
+
+  function selectForge(tab){
+    if(!forgeTabs.includes(tab))return;
+    forgeTabs.forEach(name=>{
+      const active=name===tab,label=name[0].toUpperCase()+name.slice(1);
+      const button=forge.querySelector('[data-forge-tab="'+name+'"]'),panel=$('forge'+label);
+      button.classList.toggle('active',active);
+      button.setAttribute('aria-selected',String(active));
+      button.tabIndex=active?0:-1;
+      panel.hidden=!active;
+    });
+    $('forgeViewport').scrollTop=0;
+  }
+  function selectNavigation(tab){
+    if(!navigationTabs.includes(tab))return;
+    navigationTabs.forEach(name=>{
+      const active=name===tab,label=name[0].toUpperCase()+name.slice(1);
+      const button=navigation.querySelector('[data-navigation-tab="'+name+'"]'),panel=$('navigation'+label);
+      button.classList.toggle('active',active);
+      button.setAttribute('aria-selected',String(active));
+      button.tabIndex=active?0:-1;
+      panel.hidden=!active;
+    });
+    $('navigationViewport').scrollTop=0;
   }
   function closeDetails(){
     $('characterDetailsLayer').hidden=true;
@@ -111,13 +139,21 @@
     if(stash.hidden)return;
     closeItem();stash.hidden=true;stash.setAttribute('aria-hidden','true');
   }
+  function hideForge(){
+    if(forge.hidden)return;
+    forge.hidden=true;forge.setAttribute('aria-hidden','true');
+  }
+  function hideNavigation(){
+    if(navigation.hidden)return;
+    navigation.hidden=true;navigation.setAttribute('aria-hidden','true');
+  }
   function restoreFocus(){
     if(lastFocus&&lastFocus.isConnected)lastFocus.focus({preventScroll:true});
     else if(homeNav)homeNav.focus({preventScroll:true});
   }
   window.openCharacter=function(){
     if(!screen.hidden)return;
-    lastFocus=document.activeElement;hideStash();
+    lastFocus=document.activeElement;hideStash();hideForge();hideNavigation();
     screen.hidden=false;screen.setAttribute('aria-hidden','false');
     document.body.classList.add('gs-character-open');
     markNav('character');selectMain('equipment');
@@ -129,7 +165,7 @@
   };
   window.openStash=function(tab='items'){
     if(!stash.hidden){selectStash(tab);return;}
-    lastFocus=document.activeElement;hideCharacter();
+    lastFocus=document.activeElement;hideCharacter();hideForge();hideNavigation();
     stash.hidden=false;stash.setAttribute('aria-hidden','false');
     markNav('stash');selectStash(tab);
     (tab==='materials'?$('stashTabMaterials'):$('stashTabItems')).focus({preventScroll:true});
@@ -138,12 +174,49 @@
     if(stash.hidden)return;
     hideStash();markNav('home');restoreFocus();
   };
+  window.openForge=function(tab='salvage'){
+    if(!forge.hidden){selectForge(tab);return;}
+    lastFocus=document.activeElement;
+    hideCharacter();hideStash();hideNavigation();
+    forge.hidden=false;forge.setAttribute('aria-hidden','false');
+    markNav('forge');selectForge(tab);
+    forge.querySelector('[data-forge-tab="'+tab+'"]').focus({preventScroll:true});
+  };
+  window.closeForge=function(){
+    if(forge.hidden)return;
+    hideForge();markNav('home');restoreFocus();
+  };
+  window.openNavigation=function(tab='regions'){
+    if(!navigation.hidden){selectNavigation(tab);return;}
+    lastFocus=document.activeElement;
+    hideCharacter();hideStash();hideForge();
+    navigation.hidden=false;navigation.setAttribute('aria-hidden','false');
+    markNav('navigation');selectNavigation(tab);
+    navigation.querySelector('[data-navigation-tab="'+tab+'"]').focus({preventScroll:true});
+  };
+  window.closeNavigation=function(){
+    if(navigation.hidden)return;
+    hideNavigation();markNav('home');restoreFocus();
+  };
   window.goHome=function(){
-    hideCharacter();hideStash();markNav('home');
+    hideCharacter();hideStash();hideForge();hideNavigation();markNav('home');
     if(homeNav)homeNav.focus({preventScroll:true});
   };
   $('characterClose').addEventListener('click',window.closeCharacter);
   $('stashClose').addEventListener('click',window.closeStash);
+  $('forgeClose').addEventListener('click',window.closeForge);
+  $('navigationClose').addEventListener('click',window.closeNavigation);
+  forge.querySelectorAll('[data-forge-tab]').forEach(button=>
+    button.addEventListener('click',()=>selectForge(button.dataset.forgeTab)));
+  navigation.querySelectorAll('[data-navigation-tab]').forEach(button=>
+    button.addEventListener('click',()=>selectNavigation(button.dataset.navigationTab)));
+  navigation.querySelectorAll('[data-go-navigation]').forEach(button=>
+    button.addEventListener('click',()=>{
+      const destination=button.dataset.goNavigation;
+      selectNavigation(destination);
+      const active=navigation.querySelector('[data-navigation-tab="'+destination+'"]');
+      if(active)active.focus({preventScroll:true});
+    }));
   screen.querySelectorAll('[data-character-tab]').forEach(button=>button.addEventListener('click',()=>selectMain(button.dataset.characterTab)));
   stash.querySelectorAll('[data-stash-tab]').forEach(button=>button.addEventListener('click',()=>selectStash(button.dataset.stashTab)));
   $('characterDetailsTrigger').addEventListener('click',openDetails);
@@ -160,10 +233,12 @@
     if(button){const item=items[Number(button.dataset.itemIndex)];if(item)showItem(item,item.slot);}
   });
   document.addEventListener('keydown',event=>{
-    if(event.key!=='Escape'||(screen.hidden&&stash.hidden))return;
+    if(event.key!=='Escape'||(screen.hidden&&stash.hidden&&forge.hidden&&navigation.hidden))return;
     if(!$('characterItemLayer').hidden)closeItem();
     else if(!screen.hidden&&!$('characterDetailsLayer').hidden)closeDetails();
     else if(!screen.hidden)window.closeCharacter();
-    else window.closeStash();
+    else if(!stash.hidden)window.closeStash();
+    else if(!forge.hidden)window.closeForge();
+    else window.closeNavigation();
   });
 })();
