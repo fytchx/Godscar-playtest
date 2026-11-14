@@ -1,0 +1,240 @@
+{
+  "batch": 1,
+  "name": "Menus, panels, header and recessed frames",
+  "status": "SOURCE_CREATED_AWAITING_PHONE_REVIEW",
+  "source": "Original custom SVG geometry authored from user visual direction; no reference images copied",
+  "files": [
+    {
+      "id": "GS-UI-CMP-001__panel-grand",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-grand.svg",
+      "use": "Full height menus",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-001__panel-standard",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-standard.svg",
+      "use": "Standard menu and Character panel",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-001__panel-compact",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-compact.svg",
+      "use": "Compact cards",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-001__panel-etched",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-etched.svg",
+      "use": "Lightweight content panels",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-001__panel-double-rim",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-double-rim.svg",
+      "use": "Emphasized modal",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-001__panel-hero",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-hero.svg",
+      "use": "Primary overview card",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-001__panel-sidebar",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-sidebar.svg",
+      "use": "Narrow navigation column",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-001__panel-landscape",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-landscape.svg",
+      "use": "Wide landscape card",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-001__panel-utility",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-utility.svg",
+      "use": "Quiet utility panel",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-001__panel-stats",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-stats.svg",
+      "use": "Stat overview frame",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-001__panel-list-row",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-list-row.svg",
+      "use": "List item row",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-001__panel-modal",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-modal.svg",
+      "use": "Full modal/dialog",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-011__panel-tooltip",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-011__panel-tooltip.svg",
+      "use": "Equipment tooltip",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-012__panel-bottom-sheet",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-012__panel-bottom-sheet.svg",
+      "use": "Character bottom sheet",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-013__panel-hunt-option",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-013__panel-hunt-option.svg",
+      "use": "Enemy choice row",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-014__panel-feed",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-014__panel-feed.svg",
+      "use": "Activity feed",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-015__panel-recap",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-015__panel-recap.svg",
+      "use": "Offline recap",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-018__panel-forge-tile",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-018__panel-forge-tile.svg",
+      "use": "Forge cards",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-020__panel-location",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-020__panel-location.svg",
+      "use": "Navigation location",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CMP-021__panel-dungeon",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-021__panel-dungeon.svg",
+      "use": "Dungeon reward",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CHR-001__frame-header-banner",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CHR-001__frame-header-banner.svg",
+      "use": "Wide header banner",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CHR-002__frame-header-strip",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CHR-002__frame-header-strip.svg",
+      "use": "Narrow section header",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CHR-003__frame-footer-strip",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CHR-003__frame-footer-strip.svg",
+      "use": "Section footer",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CHR-004__frame-subsection",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CHR-004__frame-subsection.svg",
+      "use": "Subsection strip",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CHR-005__inset-subtle",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CHR-005__inset-subtle.svg",
+      "use": "Recessed setting well",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CHR-006__inset-strong",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CHR-006__inset-strong.svg",
+      "use": "Deep equipment well",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CHR-007__inset-double",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CHR-007__inset-double.svg",
+      "use": "Nested recessed container",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CHR-B01-SURFACE-01",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/surface-matte.svg",
+      "use": "Tileable surface base",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    },
+    {
+      "id": "GS-UI-CHR-B01-SURFACE-02",
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/surface-recessed.svg",
+      "use": "Tileable inset well background",
+      "format": "SVG",
+      "export": "scalable",
+      "integration": "nine-slice border-image, recommended slice 22; surface SVGs tile at 64px"
+    }
+  ]
+}
