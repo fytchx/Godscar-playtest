@@ -72,6 +72,7 @@ try {
     const state = await page.evaluate(() => {
       const icons = [...document.querySelectorAll('img.gs-icon')];
       const css = document.querySelector('link[href="assets/ui/godscar-ui.css"]');
+      const reskin = document.querySelector('link[href="assets/ui/arcana-reskin.css"]');
       const feed = document.querySelector('.feed-card.gs-feed-shell');
       const nav = document.querySelector('.bottom-nav.gs-navbar');
       const arena = document.querySelector('.arena');
@@ -81,8 +82,10 @@ try {
         icons: icons.length,
         loadedIcons: icons.filter(x => x.complete && x.naturalWidth > 0).length,
         cssLoaded: Boolean(css?.sheet),
+        reskinLoaded: Boolean(reskin?.sheet),
         navVisible: Boolean(nav && getComputedStyle(nav).display !== 'none'),
-        feedFrame: getComputedStyle(feed).clipPath,
+        feedRadius: getComputedStyle(feed).borderRadius,
+        surface: getComputedStyle(feed).backgroundColor,
         arenaWidth: arena?.getBoundingClientRect().width || 0,
         buttons: [...document.querySelectorAll('.gs-button')].length,
       };
@@ -91,7 +94,8 @@ try {
     assert.equal(state.icons, state.loadedIcons, 'Broken icons at '+width);
     assert.equal(state.cssLoaded, true, 'Missing kit stylesheet at '+width);
     assert.equal(state.navVisible, true, 'Missing bottom nav at '+width);
-    assert.notEqual(state.feedFrame, 'none', 'Missing feed frame at '+width);
+    assert.equal(state.reskinLoaded, true, 'Missing redesign stylesheet at '+width);
+    assert.notEqual(state.feedRadius, '0px', 'Missing Arcana-style card radius at '+width);
     assert.ok(state.arenaWidth > 250, 'Arena too narrow at '+width);
     assert.ok(state.buttons >= 8, 'Reusable buttons not applied');
     assert.deepEqual(errors, [], 'Page errors at '+width);

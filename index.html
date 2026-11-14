@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#14110d">
+<meta name="theme-color" content="#0d1019">
 <title>Godscar · Home</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <style>
 :root{
   /* Replaceable visual tokens: keep layout and game-specific source colors independent. */
@@ -517,6 +518,8 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
 }
 </style>
 <link rel="stylesheet" href="assets/ui/character.css">
+<!-- Experimental visual layer only; remove this link to restore the approved GS-UI-1.0 styling. -->
+<link rel="stylesheet" href="assets/ui/arcana-reskin.css">
 </head>
 <body class="gs-theme">
 <div class="app">
@@ -532,7 +535,7 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
         <div class="class-name">Paladin</div>
       </div>
     </div>
-    <button class="settings-button gs-button gs-button--icon" type="button" aria-label="Settings" onclick="openPanel('settingsPanel')"><img class="gs-icon" src="assets/ui/icons/settings.svg" alt="" aria-hidden="true">
+    <button class="settings-button gs-button gs-button--icon" type="button" aria-label="Settings" onclick="openPanel('settingsPanel')"><img class="gs-icon" src="assets/ui/arcana-preview-icons/settings.svg" alt="" aria-hidden="true">
     </button>
     <div class="xp-rail gs-progress gs-progress--xp gs-progress--thin" style="--value:37%" aria-label="Experience progress"><i></i></div>
   </header>
@@ -544,7 +547,7 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
   <section class="zone-line">
     <button class="zone-button" type="button" onclick="openZonePanel()" aria-label="Open zone and enemy selection">
       <span><span class="zone-label">Current Zone</span><br><strong id="zoneTitle">Gallowsfen · The Sunken Road</strong></span>
-      <img class="chevron gs-icon" src="assets/ui/icons/chevron-down.svg" alt="" aria-hidden="true">
+      <img class="chevron gs-icon" src="assets/ui/arcana-preview-icons/chevron-down.svg" alt="" aria-hidden="true">
     </button>
     <div class="rotation-pill" id="rotationPill">1 OF 3</div>
   </section>
@@ -585,7 +588,7 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
     <section class="feed-card gs-feed-shell" aria-label="Live event feed">
       <div class="feed-head gs-feed__heading">
         <h2>Activity</h2><span class="feed-live"><i class="live-dot"></i>LIVE</span><span class="spacer"></span>
-        <button class="icon-button gs-button gs-button--icon" type="button" aria-label="Feed options" onclick="openPanel('filterPanel')"><img class="gs-icon" src="assets/ui/icons/filter.svg" alt="" aria-hidden="true">
+        <button class="icon-button gs-button gs-button--icon" type="button" aria-label="Feed options" onclick="openPanel('filterPanel')"><img class="gs-icon" src="assets/ui/arcana-preview-icons/filter.svg" alt="" aria-hidden="true">
         </button>
       </div>
       <div class="feed-list gs-feed__list" id="feedList" aria-live="polite"></div>
@@ -614,18 +617,18 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
   </main>
 </div>
 <nav class="bottom-nav gs-navbar" aria-label="Main navigation">
-  <button class="nav-button gs-nav-item active" type="button" aria-current="page" onclick="closeCharacter()"><img class="gs-icon" src="assets/ui/icons/home.svg" alt="" aria-hidden="true"><span>Home</span>
+  <button class="nav-button gs-nav-item active" type="button" aria-current="page" onclick="closeCharacter()"><img class="gs-icon" src="assets/ui/arcana-preview-icons/home.svg" alt="" aria-hidden="true"><span>Home</span>
   </button>
-  <button class="nav-button gs-nav-item" type="button" id="characterNav" onclick="openCharacter()"><img class="gs-icon" src="assets/ui/icons/character.svg" alt="" aria-hidden="true"><span>Character</span></button>
-  <button class="nav-button gs-nav-item" type="button" onclick="showToast('Stash screen will be built separately.')"><img class="gs-icon" src="assets/ui/icons/stash.svg" alt="" aria-hidden="true"><span>Stash</span></button>
-  <button class="nav-button gs-nav-item" type="button" onclick="showToast('Forge screen will be built separately.')"><img class="gs-icon" src="assets/ui/icons/forge.svg" alt="" aria-hidden="true"><span>Forge</span></button>
-  <button class="nav-button gs-nav-item" type="button" onclick="showToast('Navigation screen is to be designed.')"><img class="gs-icon" src="assets/ui/icons/navigation.svg" alt="" aria-hidden="true"><span>Navigation</span></button>
+  <button class="nav-button gs-nav-item" type="button" id="characterNav" onclick="openCharacter()"><img class="gs-icon" src="assets/ui/arcana-preview-icons/character.svg" alt="" aria-hidden="true"><span>Character</span></button>
+  <button class="nav-button gs-nav-item" type="button" onclick="showToast('Stash screen will be built separately.')"><img class="gs-icon" src="assets/ui/arcana-preview-icons/stash.svg" alt="" aria-hidden="true"><span>Stash</span></button>
+  <button class="nav-button gs-nav-item" type="button" onclick="showToast('Forge screen will be built separately.')"><img class="gs-icon" src="assets/ui/arcana-preview-icons/forge.svg" alt="" aria-hidden="true"><span>Forge</span></button>
+  <button class="nav-button gs-nav-item" type="button" onclick="showToast('Navigation screen is to be designed.')"><img class="gs-icon" src="assets/ui/arcana-preview-icons/navigation.svg" alt="" aria-hidden="true"><span>Navigation</span></button>
 </nav>
 
 <section id="characterScreen" class="gs-character" aria-label="Character menu" aria-hidden="true" hidden>
   <div class="gs-character__header">
     <div><span class="gs-character__eyebrow">PALADIN · UI PREVIEW</span><h1>Character</h1></div>
-    <button type="button" class="gs-character__close" id="characterClose" aria-label="Close Character"><img src="assets/ui/icons/close.svg" alt=""></button>
+    <button type="button" class="gs-character__close" id="characterClose" aria-label="Close Character"><img src="assets/ui/arcana-preview-icons/close.svg" alt=""></button>
   </div>
   <div class="gs-character__tabs" role="tablist" aria-label="Character sections">
     <button type="button" role="tab" class="active" aria-selected="true" id="charTabEquipment" aria-controls="charEquipment" data-character-tab="equipment">Equipment</button>
@@ -671,7 +674,7 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
   <div class="gs-character__detail-layer" id="characterDetailsLayer" role="dialog" aria-modal="true" aria-labelledby="characterDetailsTitle" hidden>
     <button type="button" id="characterDetailsDismiss" class="gs-character__outside-dismiss" aria-label="Tap outside to close detailed stats"><i aria-hidden="true"></i><span>Tap outside to close</span></button>
     <div class="gs-character__detail-sheet">
-      <div class="gs-character__sheet-head"><div><small>CHARACTER</small><h2 id="characterDetailsTitle">Detailed Stats</h2></div><button type="button" id="characterDetailsClose" aria-label="Close detailed stats"><img src="assets/ui/icons/close.svg" alt=""></button></div>
+      <div class="gs-character__sheet-head"><div><small>CHARACTER</small><h2 id="characterDetailsTitle">Detailed Stats</h2></div><button type="button" id="characterDetailsClose" aria-label="Close detailed stats"><img src="assets/ui/arcana-preview-icons/close.svg" alt=""></button></div>
       <div class="gs-character__detail-content">
         <h3>Primary Attributes</h3>
         <div class="gs-character__detail-attributes"><span class="str"><b>185</b> STR</span><span class="int"><b>126</b> INT</span><span class="dex"><b>92</b> DEX</span></div>
@@ -689,7 +692,7 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
   <div class="gs-character__item-layer" id="characterItemLayer" role="dialog" aria-modal="true" aria-labelledby="characterItemTitle" hidden>
     <button type="button" id="characterItemDismiss" class="gs-character__item-scrim" aria-label="Close item details"></button>
     <div class="gs-character__item-dialog">
-      <div class="gs-character__sheet-head"><div><small>ITEM PREVIEW</small><h2 id="characterItemTitle">Item</h2></div><button type="button" id="characterItemClose" aria-label="Close item"><img src="assets/ui/icons/close.svg" alt=""></button></div>
+      <div class="gs-character__sheet-head"><div><small>ITEM PREVIEW</small><h2 id="characterItemTitle">Item</h2></div><button type="button" id="characterItemClose" aria-label="Close item"><img src="assets/ui/arcana-preview-icons/close.svg" alt=""></button></div>
       <div class="gs-character__item-body"><p id="characterItemSubtitle"></p><p id="characterItemStats"></p><small>Comparison and equipment actions are not connected yet.</small></div>
     </div>
   </div>
@@ -699,7 +702,7 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
 
 <div class="scrim" id="zonePanel" role="dialog" aria-modal="true" aria-labelledby="zonePanelTitle" onclick="outsideClose(event,'zonePanel')">
   <div class="panel gs-panel gs-panel--recessed gs-dialog">
-    <div class="panel-head"><div class="panel-head-copy"><small>HUNT SETTINGS</small><h2 id="zonePanelTitle">Zone &amp; enemies</h2></div><button class="close-button gs-button gs-button--icon" aria-label="Close" onclick="closePanel('zonePanel')"><img class="gs-icon" src="assets/ui/icons/close.svg" alt="" aria-hidden="true"></button></div>
+    <div class="panel-head"><div class="panel-head-copy"><small>HUNT SETTINGS</small><h2 id="zonePanelTitle">Zone &amp; enemies</h2></div><button class="close-button gs-button gs-button--icon" aria-label="Close" onclick="closePanel('zonePanel')"><img class="gs-icon" src="assets/ui/arcana-preview-icons/close.svg" alt="" aria-hidden="true"></button></div>
     <div class="panel-body">
       <label class="zone-select-label" for="zoneSelect">Browse a zone</label>
       <div class="gs-select"><select id="zoneSelect" onchange="browseZone(this.value)"></select></div>
@@ -712,7 +715,7 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
 
 <div class="scrim" id="settingsPanel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" onclick="outsideClose(event,'settingsPanel')">
   <div class="panel gs-panel gs-panel--recessed gs-dialog">
-    <div class="panel-head"><div class="panel-head-copy"><small>GAME OPTIONS</small><h2 id="settingsTitle">Settings</h2></div><button class="close-button gs-button gs-button--icon" aria-label="Close" onclick="closePanel('settingsPanel')"><img class="gs-icon" src="assets/ui/icons/close.svg" alt="" aria-hidden="true"></button></div>
+    <div class="panel-head"><div class="panel-head-copy"><small>GAME OPTIONS</small><h2 id="settingsTitle">Settings</h2></div><button class="close-button gs-button gs-button--icon" aria-label="Close" onclick="closePanel('settingsPanel')"><img class="gs-icon" src="assets/ui/arcana-preview-icons/close.svg" alt="" aria-hidden="true"></button></div>
     <div class="panel-body">
       <div class="settings-toggle"><label for="recapSetting">Show launch recap</label><label class="gs-toggle"><input id="recapSetting" type="checkbox" checked onchange="setRecapSetting(this.checked)"><span class="gs-toggle__track" aria-hidden="true"></span></label></div>
       <div class="settings-note"><strong>Appearance</strong><br>Theme controls will be added later. The visual system is built to be restyled.</div>
@@ -722,14 +725,14 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
 
 <div class="scrim" id="filterPanel" role="dialog" aria-modal="true" aria-labelledby="filterTitle" onclick="outsideClose(event,'filterPanel')">
   <div class="panel gs-panel gs-panel--recessed gs-dialog">
-    <div class="panel-head"><div class="panel-head-copy"><small>ACTIVITY FEED</small><h2 id="filterTitle">Feed options</h2></div><button class="close-button gs-button gs-button--icon" aria-label="Close" onclick="closePanel('filterPanel')"><img class="gs-icon" src="assets/ui/icons/close.svg" alt="" aria-hidden="true"></button></div>
+    <div class="panel-head"><div class="panel-head-copy"><small>ACTIVITY FEED</small><h2 id="filterTitle">Feed options</h2></div><button class="close-button gs-button gs-button--icon" aria-label="Close" onclick="closePanel('filterPanel')"><img class="gs-icon" src="assets/ui/arcana-preview-icons/close.svg" alt="" aria-hidden="true"></button></div>
     <div class="panel-body"><div class="filter-options" id="filterOptions"></div></div>
   </div>
 </div>
 
 <div class="scrim" id="resetPanel" role="dialog" aria-modal="true" aria-labelledby="resetTitle" onclick="outsideClose(event,'resetPanel')">
   <div class="panel gs-panel gs-panel--recessed gs-dialog">
-    <div class="panel-head"><div class="panel-head-copy"><small>SESSION TRACKING</small><h2 id="resetTitle">Start a new count?</h2></div><button class="close-button gs-button gs-button--icon" aria-label="Close" onclick="closePanel('resetPanel')"><img class="gs-icon" src="assets/ui/icons/close.svg" alt="" aria-hidden="true"></button></div>
+    <div class="panel-head"><div class="panel-head-copy"><small>SESSION TRACKING</small><h2 id="resetTitle">Start a new count?</h2></div><button class="close-button gs-button gs-button--icon" aria-label="Close" onclick="closePanel('resetPanel')"><img class="gs-icon" src="assets/ui/arcana-preview-icons/close.svg" alt="" aria-hidden="true"></button></div>
     <div class="confirm-copy">This clears the current session totals and starts counting from zero.</div>
     <div class="confirm-actions"><button class="secondary-button gs-button" onclick="closePanel('resetPanel')">Cancel</button><button class="reset-button gs-button gs-button--danger" onclick="confirmReset()">RESET TOTALS</button></div>
   </div>
@@ -759,7 +762,7 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
 
 <div class="scrim" id="itemPanel" role="dialog" aria-modal="true" aria-labelledby="itemTitle" onclick="outsideClose(event,'itemPanel')">
   <div class="panel gs-panel gs-panel--recessed gs-dialog">
-    <div class="panel-head"><div class="panel-head-copy"><small>ITEM DETAILS · STASH PREVIEW</small><h2 id="itemTitle">Dawnbreaker</h2></div><button class="close-button gs-button gs-button--icon" aria-label="Close" onclick="closePanel('itemPanel')"><img class="gs-icon" src="assets/ui/icons/close.svg" alt="" aria-hidden="true"></button></div>
+    <div class="panel-head"><div class="panel-head-copy"><small>ITEM DETAILS · STASH PREVIEW</small><h2 id="itemTitle">Dawnbreaker</h2></div><button class="close-button gs-button gs-button--icon" aria-label="Close" onclick="closePanel('itemPanel')"><img class="gs-icon" src="assets/ui/arcana-preview-icons/close.svg" alt="" aria-hidden="true"></button></div>
     <div class="panel-body"><div class="item-preview"><div class="loot-icon" id="itemIcon">⚒</div><div><strong id="itemRarity">Legendary · Mace</strong><p>Selected in your future Stash screen. Its item-detail window will open there.</p></div></div><button class="secondary-button gs-button" style="width:100%" onclick="closePanel('itemPanel');showToast('Stash screen will be built separately.')">OPEN IN STASH</button></div>
   </div>
 </div>
