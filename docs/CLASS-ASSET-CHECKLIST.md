@@ -13,6 +13,7 @@ Classes do not own automatic weapon skills. A main-hand weapon carries 1–3 fou
 These are new slots in the asset pipeline. Proposed IDs begin `GS-CLS-`; no IDs in the existing 99-record manifest are overwritten or marked complete. Each is an independent 128×128-ish vector source, optimized to display at 24, 36, 48 and 64 CSS px. Color, rarity, locked/selected and frame treatment remain separate CSS/asset layers.
 
 | Class | Class icon (new proposed ID) | Three specialization sigils (new proposed IDs) |
+| --- | --- | --- |
 |---|---|---|
 | Paladin | `GS-CLS-ICO-001` | Avenger (`GS-CLS-SPEC-001`); Templar (`GS-CLS-SPEC-002`); Justicar (`GS-CLS-SPEC-003`) |
 | Warrior | `GS-CLS-ICO-002` | Protection (`GS-CLS-SPEC-004`); Savage (`GS-CLS-SPEC-005`); Fury (`GS-CLS-SPEC-006`) |
@@ -36,6 +37,7 @@ These are new slots in the asset pipeline. Proposed IDs begin `GS-CLS-`; no IDs 
 One shared implementation for all classes. These **10 records are reusable compositions**, not a request for ten distinct class illustrations or a new clone of the UI frame library. Proposed mapping to existing UI IDs:
 
 | New planning ID | Component | Reuse existing manifest chrome |
+| --- | --- | --- |
 |---|---|---|
 | `GS-CLS-UI-001` | Class selection tile composition | `GS-UI-CMP-001`, `GS-UI-CMP-002` |
 | `GS-CLS-UI-002` | Class header insignia housing | `GS-UI-CMP-001` |
