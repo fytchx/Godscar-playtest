@@ -693,7 +693,7 @@ const zones={
 const zoneNames=Object.keys(zones);
 const enemies=Object.values(zones).flat();
 let selectedIds=["gravejaw","mirehexer","sallow"];
-let browseName=zoneNames[0],activeIndex=0,feedEvents=[],toastTimer=null,sessionStart=Date.now();
+let browseName=zoneNames[0],activeIndex=0,feedEvents=[],toastTimer=null,sessionStart=Date.now()-(42*60+18)*1000,mockKillCount=164;
 const filters={kill:true,item:true,material:true,level:true,death:true,damage:true,effect:true};
 const filterNames={kill:"Enemy kills",item:"Items looted",material:"Materials and currency",level:"Level-ups",death:"Deaths",damage:"Incoming damage",effect:"Status effects"};
 let recapEnabled=true;
@@ -760,9 +760,16 @@ function toggleDetails(){
  const show=box.hidden;box.hidden=!show;button.innerHTML=show?'HIDE DETAILS <span>⌃</span>':'SESSION DETAILS <span>⌄</span>';
 }
 function confirmReset(){
- sessionStart=Date.now();setText("killMetric","0");setText("sessionTime","00:00:00");
+ sessionStart=Date.now();mockKillCount=0;setText("killMetric","0");setText("sessionTime","00:00:00");
  document.querySelectorAll(".metric strong").forEach((n,i)=>{if(i!==1)n.textContent=i===4?"0":"0"});
  feedEvents=[];addEvent("level","✦","New session started.","");closePanel("resetPanel");showToast("Session totals reset.");
+}
+function updateSessionClock(){
+ const seconds=Math.max(0,Math.floor((Date.now()-sessionStart)/1000));
+ const hours=String(Math.floor(seconds/3600)).padStart(2,"0");
+ const minutes=String(Math.floor(seconds%3600/60)).padStart(2,"0");
+ const remain=String(seconds%60).padStart(2,"0");
+ setText("sessionTime",hours+":"+minutes+":"+remain);
 }
 function formatShort(n){return n>=1e9?(n/1e9).toFixed(1)+"b":n>=1e6?(n/1e6).toFixed(1)+"m":n>=1e3?(n/1e3).toFixed(1)+"k":String(n)}
 function openLootDetails(name,rarity,icon){
@@ -775,7 +782,7 @@ function showRecap(){
 function cycleFight(){
  const defeated=currentEnemy();
  activeIndex=(activeIndex+1)%Math.max(1,selectedIds.length);paintEnemy();
- const e=defeated;setText("killMetric",String(164+activeIndex));
+ const e=defeated;mockKillCount+=1;setText("killMetric",String(mockKillCount));
  addEvent("kill","⚔","Defeated <strong>"+e.name+"</strong>.", "","now");
  const types=["physical","fire","holy","frost","poison","bleed"];
  const type=types[Math.floor(Math.random()*types.length)];
@@ -799,7 +806,8 @@ feedEvents=[
  {type:"level",icon:"✦",text:"Reached <strong>Level 2</strong>.",time:"4m"},
  {type:"death",icon:"✕",text:"<strong>Player</strong> was defeated.",time:"6m"}
 ];
-renderFeed();paintEnemy();showRecap();
+renderFeed();paintEnemy();showRecap();updateSessionClock();
+setInterval(updateSessionClock,1000);
 setInterval(cycleFight,4200);
 </script>
 </body>
