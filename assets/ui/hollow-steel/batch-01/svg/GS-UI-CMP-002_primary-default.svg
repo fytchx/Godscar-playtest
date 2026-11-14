@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="56" viewBox="0 0 96 56" fill="none" role="img" aria-label="primary button default">
+<!-- Source: Godscar Hollow Steel B01. Framing only; CSS supplies scalable surface fill. -->
+<rect x="1.25" y="1.25" width="93.5" height="53.5" rx="13" stroke="#6EAAA3" stroke-width="1.7" stroke-opacity="0.88"/>
+<rect x="3.2" y="3.2" width="89.6" height="49.6" rx="10" stroke="#A7C8C3" stroke-width=".72" stroke-opacity="0.21"/>
+<path d="M15 3.2 H81" stroke="#A7C8C3" stroke-width="1.1" stroke-linecap="round" stroke-opacity="0.22"/>
+<path d="M15 52.8 H81" stroke="#0B151B" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.7"/>
+<path d="M18 5.2 H37" stroke="#79BFB3" stroke-width=".9" stroke-linecap="round" stroke-opacity="0.16"/>
+<path d="M74 52 h4" stroke="#A7C8C3" stroke-width=".8" stroke-linecap="round" stroke-opacity="0.15"/>
+
+
+</svg>
