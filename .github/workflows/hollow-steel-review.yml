@@ -1,0 +1,42 @@
+name: Hollow Steel reusable SVG component review
+on:
+  push:
+    branches:
+      - ui/hollow-steel-components-batch-01
+    paths:
+      - .github/workflows/hollow-steel-review.yml
+      - assets/ui/hollow-steel/batch-01/**
+      - review/hollow-steel-batch-01.html
+      - scripts/smoke_hollow_steel.mjs
+      - docs/HOLLOW-STEEL-COMPONENTS-BATCH-01.md
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  render-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser driver
+        run: npm install --no-save --no-package-lock puppeteer-core
+      - name: Run mobile browser checks and capture component screenshots
+        run: |
+          python3 -m http.server 8080 >/tmp/godscar-hs-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          sleep 2
+          node scripts/smoke_hollow_steel.mjs
+      - name: Upload independent SVG components, CSS, and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: godscar-hollow-steel-batch-01
+          path: |
+            screenshots/hollow-steel-*.png
+            assets/ui/hollow-steel/batch-01/
+            review/hollow-steel-batch-01.html
+            docs/HOLLOW-STEEL-COMPONENTS-BATCH-01.md
+          if-no-files-found: ignore
