@@ -115,7 +115,7 @@ try {
     assert.equal(state.darkCanvas, '#0A1115', 'Wrong dark tone at '+width);
     assert.match(state.combatFrame,/GS-UI-CMP-001_combat-frame.svg/,'Missing etched combat frame at '+width);
     assert.equal(state.themeColor, '#79BFB3', 'Wrong theme accent at '+width);
-    assert.match(state.panelSvg, /GS-UI-CMP-001_panel-frame.svg/, 'Panel SVG not in use at '+width);
+    assert.match(state.panelSvg, /GS-UI-CMP-001_etched-frame.svg/, 'Etched panel SVG not in use at '+width);
     assert.match(state.navSvg, /GS-UI-CMP-008_nav-selected.svg/, 'Nav SVG not in use at '+width);
     assert.match(state.slotSvg, /GS-UI-CMP-010_slot/, 'Equipment well SVG not in use at '+width);
     assert.equal(state.iconSources, state.icons, 'Not all icons use Hollow Steel SVG files');
