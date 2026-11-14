@@ -1,0 +1,63 @@
+name: Godscar Gilded Chrome 156-SVG Library QA
+on:
+  push:
+    branches:
+      - ui/gilded-chrome-svg-library
+    paths:
+      - .github/workflows/gilded-chrome-qa.yml
+      - assets/ui/gilded-chrome/**
+      - review/gilded-chrome-gallery.html
+      - scripts/validate_gilded_chrome.py
+      - scripts/gilded_chrome_gallery_smoke.mjs
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-and-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate 156 independent SVG sources and 4 catalogs
+        run: python3 scripts/validate_gilded_chrome.py
+      - name: Install browser driver
+        run: npm install --no-save --no-package-lock puppeteer-core
+      - name: Check gallery at 390px and 1280px, capture each batch
+        run: |
+          PORT=8080 node preview-server.mjs >/tmp/chrome-ui.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          sleep 2
+          node scripts/gilded_chrome_gallery_smoke.mjs
+      - name: Create four individual batch ZIPs and complete source ZIP
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile, ZIP_DEFLATED
+          base=Path('assets/ui/gilded-chrome/v1')
+          out=Path('packages')
+          out.mkdir(exist_ok=True)
+          names=['panels','controls','combat','ornaments']
+          for i,name in enumerate(names,1):
+              d=base/f'batch-{i:02d}-{name}'
+              sources=list(d.glob('*.svg'))
+              sources.append(base/'catalog'/f'batch-{i:02d}.json')
+              with ZipFile(out/f'Godscar-Gilded-Chrome-{i:02d}-{name}.zip','w',ZIP_DEFLATED) as z:
+                  for f in sources:z.write(f)
+          with ZipFile(out/'Godscar-Gilded-Chrome-ALL-4-Batches.zip','w',ZIP_DEFLATED) as z:
+              for f in base.rglob('*'):
+                  if f.is_file():z.write(f)
+              for f in list(Path('review').glob('gilded-chrome*'))+list(Path('docs').glob('GILDED-CHROME*'))+list(Path('screenshots').glob('chrome-batch-*.png')):
+                  if f.is_file():z.write(f)
+          PY
+      - name: Upload ZIPs and screenshot gallery
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: godscar-gilded-chrome-156-svg-kit
+          path: |
+            packages/*.zip
+            screenshots/chrome-batch-*.png
+          if-no-files-found: ignore
