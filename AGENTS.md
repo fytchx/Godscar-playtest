@@ -1,39 +1,14 @@
-# Godscar Playtest AI instructions
+# Godscar current project instructions
+Read `docs/NEW-PROJECT-START-HERE.md` FIRST. This supersedes outdated branch instructions formerly present in this file.
 
-Read this file and `docs/FIGHT-SCREEN-DIRECTION.md` before making changes. The owner has already completed the Fight-screen interview and approved that spec; do not restart it or ask the same questions.
-
-## Source of truth
-
-- Work in repository `fytchx/Godscar-playtest`, branch `ui/fight-skeleton`.
-- Confirm the current repository and branch before editing. If you are on `main` or any other branch, stop and switch to `ui/fight-skeleton`.
-- The current visual baseline is the root `index.html` inherited from commit `1c3adf44f1d77cc9549f8cc9b024ec6276cd253e` (“Refine Fight art slot spacing”). Continue from the file on this branch; do not restore the old red UI or substitute a different version.
-- The owner’s approved screen direction is in `docs/FIGHT-SCREEN-DIRECTION.md`. It takes precedence over historical UI experiments and stale notes in other repositories.
-- The Railway review URL in the README is now connected to `ui/fight-skeleton` (switched November 13, 2026). Its first GS-UI-1.0 deployment succeeded at commit `4bbc93b25cd7aacd1bfb95505a559487fd440cd0`. Verify the latest Railway deployment SHA before saying any subsequent branch commit is live.
-
-## Current phase: Fight presentation and art
-
-- Build the approved Fight screen skeleton and its art direction first.
-- Use fake/sample values only. The owner has not approved simulation integration yet.
-- Do not wire or modify the simulation, bot harness, game rules, saves, or balance.
-- Work only on the Fight screen and its combat art slots. Leave Character, Stash, Forge, Navigation, and all other screens as their existing inactive stubs.
-- Preserve the portrait, compact phone-first layout, existing visual hierarchy, and restylable CSS tokens. Do not redesign the screen or bring back the previous red version.
-- Keep art slots clearly labeled until the owner approves actual assets. Do not fill them with generic AI art.
-- Continue one small, reviewable change at a time. Ask at most one necessary question at a time. After a change, stop for the owner’s visual review.
-
-## Future simulation and bot boundary
-
-The intended future bot/simulation reference is `fytchx/Godscar` at branch `slice/paladin-defense`, commit `4e04564d9a134c1f335971c2e52d540a0f5f73c6`. At that exact commit, `web/src/sim.js` declares `SIM_VERSION = 7` and the existing bot harness is `web/test/balance.js`.
-
-**This is a pinned reference, not permission to integrate it now.** Before any future bot run or UI connection, verify the full commit and inspect the actual simulation, harness, fixtures, and commands. Never substitute `main`, `preview/browser`, another UI preview, an old ZIP, or another simulator.
-
-There is a known documentation conflict at that Godscar reference: its `AGENTS.md` and `START-HERE.md` describe a different active UI direction and claim `SIM_VERSION=4`, while the actual `sim.js` at the pinned commit says version 7. Do not resolve that conflict by guessing or silently following the stale version claim. Stop before reporting bot results or wiring the UI until the owner has approved a reconciled source contract.
-
-## Scope and delivery
-
-- Do not modify `main`, `preview/browser`, or the separate `fytchx/Godscar` repository during the current visual phase.
-- Do not change other screens, add tests or reports, or perform bot testing unless the owner asks for that stage.
-- Push work to `ui/fight-skeleton`. If the owner requests a review URL, verify that the deployment contains the exact branch commit before sharing it.
-- Report plainly what changed and what was not verified. Never claim a test or deployment that was not actually performed.
-## Owner-approved Character menu extension (November 13, 2026)
-An explicit subsequent owner decision approves implementing **Character only** on the same `ui/fight-skeleton` branch with mock data. The previous "Fight-only, other tabs stubs" constraint remains in force for Stash, Forge and Navigation, but is superseded for Character. Character's approved 11-slot layout, Gearscore placement, STR/INT/DEX and stats overlay, Inventory Items/Materials, and deferred Skills tab are recorded in `docs/FIGHT-SCREEN-DIRECTION.md`. Do not wire the sim or change gameplay, and don't restore old Character mockups. Keep Fight untouched and review visually on a phone.
-
+- **Repo:** `fytchx/Godscar-playtest`, **branch:** `main` is the current Fight/Character skeleton and art-design baseline. Make focused branches/PRs for substantial work, review before merge.
+- Only current Fight skeleton is authoritative, originally approved at `1c3adf44f1d77cc9549f8cc9b024ec6276cd253e`; current branch includes later Character and GS-UI changes. Do not restore obsolete red UI, Godot build, old browser UI, or old lab screens.
+- `index.html` remains MOCK data only. Do NOT connect UI to simulation, gameplay logic, networking, or persistent saves without a separate owner approval.
+- The actual gameplay simulation/harness source is `fytchx/Godscar@slice/paladin-defense`, latest verified source `b02482ded4e118b0b2422677c39463d37dcc9f2d` (SIM_VERSION 8). A disconnected exact code copy is at `simulation/reference-sim-v8.js`. Do not infer current item/skill mechanics from that older simulator; it predates new design.
+- UI: Follow `docs/FIGHT-SCREEN-DIRECTION.md` for Fight + approved Character (11 slots; Equipment, Inventory with Items/Materials, Skills placeholder). Other bottom nav stubs remain stubs.
+- Itemization: Follow `docs/ITEM-SYSTEM-DIRECTION.md`: NO extra class auto attack, maximum five weapon-owned abilities total, 1–3 found in curated packages + up to two crafted.
+- World: Follow `docs/WORLD-PROGRESSION-DIRECTION.md`. Fallfields enemies and Bellkeeper verified from source; new region/dungeon designs are proposals, not implemented.
+- Assets: Use `docs/ASSET-MANIFEST.md` IDs. Preserve checked-in GS-UI-1.0 SVG/CSS; only create new graphics when their purpose/style/spec is clear. Full-body enemies and simple combat backdrops; phone-first readability; avoid generic or overly photoreal art. Keep editable source and proper independent exported assets.
+- Existing Railway preview service may track `ui/fight-skeleton` rather than `main`; do not change deploy config or deploy/publish without explicit owner consent.
+- No simulations or bot tests without explicit request; if run, report repo, branch, SHA, command, seed, fixture and results. No claims of tests or verified balance from design examples.
+- Always label VERIFIED data vs PROPOSED design vs UNDECIDED. Update docs for confirmed decisions and discoveries.
