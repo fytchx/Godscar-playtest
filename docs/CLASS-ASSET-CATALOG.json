@@ -109,16 +109,19 @@
       "class": "Paladin",
       "specialization": null,
       "name": "Paladin class emblem",
-      "status": "PLANNED",
+      "status": "SOURCE_CREATED_AWAITING_PHONE_REVIEW",
       "priority": "P0",
-      "sourceFile": null,
+      "sourceFile": "assets/classes/concept-02/svg/GS-CLS-ICO-001_paladin-emblem.svg",
       "use": [
         "class chooser",
         "Fight header/class mark",
         "Character header",
         "class summaries"
       ],
-      "export": "SVG editable master; CSS controls color and frame"
+      "export": "SVG editable master; CSS controls color and frame",
+      "symbolFile": "assets/classes/concept-02/svg/GS-CLS-ICO-001_paladin-symbol.svg",
+      "reference": "Owner-selected Concept 2, rune/sigil medallion style",
+      "productionApproval": "PENDING"
     },
     {
       "id": "GS-CLS-SPEC-001",
@@ -180,16 +183,19 @@
       "class": "Warrior",
       "specialization": null,
       "name": "Warrior class emblem",
-      "status": "PLANNED",
+      "status": "SOURCE_CREATED_AWAITING_PHONE_REVIEW",
       "priority": "P0",
-      "sourceFile": null,
+      "sourceFile": "assets/classes/concept-02/svg/GS-CLS-ICO-002_warrior-emblem.svg",
       "use": [
         "class chooser",
         "Fight header/class mark",
         "Character header",
         "class summaries"
       ],
-      "export": "SVG editable master; CSS controls color and frame"
+      "export": "SVG editable master; CSS controls color and frame",
+      "symbolFile": "assets/classes/concept-02/svg/GS-CLS-ICO-002_warrior-symbol.svg",
+      "reference": "Owner-selected Concept 2, rune/sigil medallion style",
+      "productionApproval": "PENDING"
     },
     {
       "id": "GS-CLS-SPEC-004",
@@ -251,16 +257,19 @@
       "class": "Rogue",
       "specialization": null,
       "name": "Rogue class emblem",
-      "status": "PLANNED",
+      "status": "SOURCE_CREATED_AWAITING_PHONE_REVIEW",
       "priority": "P0",
-      "sourceFile": null,
+      "sourceFile": "assets/classes/concept-02/svg/GS-CLS-ICO-003_rogue-emblem.svg",
       "use": [
         "class chooser",
         "Fight header/class mark",
         "Character header",
         "class summaries"
       ],
-      "export": "SVG editable master; CSS controls color and frame"
+      "export": "SVG editable master; CSS controls color and frame",
+      "symbolFile": "assets/classes/concept-02/svg/GS-CLS-ICO-003_rogue-symbol.svg",
+      "reference": "Owner-selected Concept 2, rune/sigil medallion style",
+      "productionApproval": "PENDING"
     },
     {
       "id": "GS-CLS-SPEC-007",
@@ -322,16 +331,19 @@
       "class": "Mage",
       "specialization": null,
       "name": "Mage class emblem",
-      "status": "PLANNED",
+      "status": "SOURCE_CREATED_AWAITING_PHONE_REVIEW",
       "priority": "P0",
-      "sourceFile": null,
+      "sourceFile": "assets/classes/concept-02/svg/GS-CLS-ICO-004_mage-emblem.svg",
       "use": [
         "class chooser",
         "Fight header/class mark",
         "Character header",
         "class summaries"
       ],
-      "export": "SVG editable master; CSS controls color and frame"
+      "export": "SVG editable master; CSS controls color and frame",
+      "symbolFile": "assets/classes/concept-02/svg/GS-CLS-ICO-004_mage-symbol.svg",
+      "reference": "Owner-selected Concept 2, rune/sigil medallion style",
+      "productionApproval": "PENDING"
     },
     {
       "id": "GS-CLS-SPEC-010",
@@ -393,16 +405,19 @@
       "class": "Archer",
       "specialization": null,
       "name": "Archer class emblem",
-      "status": "PLANNED",
+      "status": "SOURCE_CREATED_AWAITING_PHONE_REVIEW",
       "priority": "P0",
-      "sourceFile": null,
+      "sourceFile": "assets/classes/concept-02/svg/GS-CLS-ICO-005_archer-emblem.svg",
       "use": [
         "class chooser",
         "Fight header/class mark",
         "Character header",
         "class summaries"
       ],
-      "export": "SVG editable master; CSS controls color and frame"
+      "export": "SVG editable master; CSS controls color and frame",
+      "symbolFile": "assets/classes/concept-02/svg/GS-CLS-ICO-005_archer-symbol.svg",
+      "reference": "Owner-selected Concept 2, rune/sigil medallion style",
+      "productionApproval": "PENDING"
     },
     {
       "id": "GS-CLS-SPEC-013",
@@ -464,16 +479,19 @@
       "class": "Shaman",
       "specialization": null,
       "name": "Shaman class emblem",
-      "status": "PLANNED",
+      "status": "SOURCE_CREATED_AWAITING_PHONE_REVIEW",
       "priority": "P0",
-      "sourceFile": null,
+      "sourceFile": "assets/classes/concept-02/svg/GS-CLS-ICO-006_shaman-emblem.svg",
       "use": [
         "class chooser",
         "Fight header/class mark",
         "Character header",
         "class summaries"
       ],
-      "export": "SVG editable master; CSS controls color and frame"
+      "export": "SVG editable master; CSS controls color and frame",
+      "symbolFile": "assets/classes/concept-02/svg/GS-CLS-ICO-006_shaman-symbol.svg",
+      "reference": "Owner-selected Concept 2, rune/sigil medallion style",
+      "productionApproval": "PENDING"
     },
     {
       "id": "GS-CLS-SPEC-016",
