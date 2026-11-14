@@ -1,0 +1,50 @@
+name: Individual Art Production QA
+on:
+  push:
+    branches:
+      - art/individual-masters-production-v1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-and-export-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout isolated production branch
+        uses: actions/checkout@v4
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install image inspection dependency
+        run: python -m pip install 'Pillow>=11,<13'
+      - name: Validate export pipeline Python syntax
+        run: python -m py_compile scripts/art_asset_pipeline.py
+      - name: Verify every claimed completed master and export
+        run: python scripts/art_asset_pipeline.py audit
+      - name: Validate searchable gallery JS and manifest identities
+        shell: bash
+        run: |
+          node <<'JS'
+          const fs = require('node:fs');
+          const assert = require('node:assert/strict');
+          const data = JSON.parse(fs.readFileSync('assets/art-production/catalogue.json', 'utf8'));
+          const page = fs.readFileSync('review/art-production/index.html', 'utf8');
+          const code = page.match(/<script>([\s\S]+?)<\/script>/)?.[1];
+          assert(code, 'gallery must contain an inline script');
+          new Function(code);
+          const begin = code.indexOf('const entries=') + 'const entries='.length;
+          const end = code.indexOf(';\nconst rawBase=', begin);
+          assert(end >= begin, 'asset data must be embedded in gallery');
+          const galleryEntries = JSON.parse(code.slice(begin, end));
+          assert.equal(galleryEntries.length, data.entries.length, 'gallery out of sync');
+          assert.equal(new Set(data.entries.map(e => e.id)).size, data.entries.length, 'duplicate asset IDs');
+          for (const x of data.entries) {
+            assert(x.status !== 'APPROVED' || x.master, 'approved art lacks a master: '+x.id);
+          }
+          const finished = data.entries.filter(e => !!e.master).length;
+          console.log('PASS:', data.entries.length, 'inventory records,', finished, 'master paths');
+          if (!finished) console.log('Expected state: original artwork blocked; NO QA approval claims.');
+          JS
