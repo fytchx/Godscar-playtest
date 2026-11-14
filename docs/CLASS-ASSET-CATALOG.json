@@ -1,0 +1,635 @@
+{
+  "title": "Godscar class-related asset inventory",
+  "status": "PROPOSED_ASSET_SCOPE_NOT_PRODUCTION",
+  "base": "fytchx/Godscar-playtest@main",
+  "sources": [
+    "docs/NEW-PROJECT-START-HERE.md",
+    "docs/ITEM-SYSTEM-DIRECTION.md",
+    "docs/FIGHT-SCREEN-DIRECTION.md",
+    "docs/ASSET-MANIFEST.md"
+  ],
+  "counts": {
+    "classes": 6,
+    "specializations": 18,
+    "unique_class_and_spec_symbols": 24,
+    "shared_ui_compositions": 10,
+    "talent_passive_icons": "TBD after design",
+    "class_portraits": "OPTIONAL 6; not required for Fight"
+  },
+  "classes": [
+    {
+      "name": "Paladin",
+      "specs": [
+        "Avenger",
+        "Templar",
+        "Justicar"
+      ],
+      "affinity": "1H shield physical/holy; tome holy/fire; heavy 2H",
+      "status": [
+        "named",
+        "named",
+        "named"
+      ]
+    },
+    {
+      "name": "Warrior",
+      "specs": [
+        "Protection",
+        "Savage",
+        "Fury"
+      ],
+      "affinity": "1H shield; 1H/dual-wield physical+bleed; 2H physical/fire",
+      "status": [
+        "named",
+        "named",
+        "named"
+      ]
+    },
+    {
+      "name": "Rogue",
+      "specs": [
+        "Subtlety",
+        "Assassin",
+        "Alchemist"
+      ],
+      "affinity": "Ranged bleed; fast 1H/dual-wield; 1H+tome poison",
+      "status": [
+        "named",
+        "named",
+        "named"
+      ]
+    },
+    {
+      "name": "Mage",
+      "specs": [
+        "Pyro",
+        "Frost",
+        "Lightning"
+      ],
+      "affinity": "Staff fire; 1H+tome/shield frost; staff/1H lightning",
+      "status": [
+        "named",
+        "named",
+        "named"
+      ]
+    },
+    {
+      "name": "Archer",
+      "specs": [
+        "Marksman",
+        "Ranger",
+        "Tracker"
+      ],
+      "affinity": "Longbow precision; shortbow+quiver rapid; ranged marks/bleed",
+      "status": [
+        "tentative",
+        "tentative",
+        "tentative"
+      ]
+    },
+    {
+      "name": "Shaman",
+      "specs": [
+        "Nature",
+        "Storm",
+        "Primal"
+      ],
+      "affinity": "1H+tome/shield sustain; staff/1H lightning; 1H dual-wield physical/fire/lightning",
+      "status": [
+        "named",
+        "named",
+        "tentative"
+      ]
+    }
+  ],
+  "individualAssets": [
+    {
+      "id": "GS-CLS-ICO-001",
+      "type": "class-symbol",
+      "class": "Paladin",
+      "specialization": null,
+      "name": "Paladin class emblem",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "class chooser",
+        "Fight header/class mark",
+        "Character header",
+        "class summaries"
+      ],
+      "export": "SVG editable master; CSS controls color and frame"
+    },
+    {
+      "id": "GS-CLS-SPEC-001",
+      "type": "specialization-symbol",
+      "class": "Paladin",
+      "specialization": "Avenger",
+      "name": "Avenger specialization sigil",
+      "nameStatus": "named",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "specialization selector",
+        "Character Skills",
+        "spec header",
+        "future build summary"
+      ],
+      "export": "SVG editable master; CSS controls locked/active states"
+    },
+    {
+      "id": "GS-CLS-SPEC-002",
+      "type": "specialization-symbol",
+      "class": "Paladin",
+      "specialization": "Templar",
+      "name": "Templar specialization sigil",
+      "nameStatus": "named",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "specialization selector",
+        "Character Skills",
+        "spec header",
+        "future build summary"
+      ],
+      "export": "SVG editable master; CSS controls locked/active states"
+    },
+    {
+      "id": "GS-CLS-SPEC-003",
+      "type": "specialization-symbol",
+      "class": "Paladin",
+      "specialization": "Justicar",
+      "name": "Justicar specialization sigil",
+      "nameStatus": "named",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "specialization selector",
+        "Character Skills",
+        "spec header",
+        "future build summary"
+      ],
+      "export": "SVG editable master; CSS controls locked/active states"
+    },
+    {
+      "id": "GS-CLS-ICO-002",
+      "type": "class-symbol",
+      "class": "Warrior",
+      "specialization": null,
+      "name": "Warrior class emblem",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "class chooser",
+        "Fight header/class mark",
+        "Character header",
+        "class summaries"
+      ],
+      "export": "SVG editable master; CSS controls color and frame"
+    },
+    {
+      "id": "GS-CLS-SPEC-004",
+      "type": "specialization-symbol",
+      "class": "Warrior",
+      "specialization": "Protection",
+      "name": "Protection specialization sigil",
+      "nameStatus": "named",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "specialization selector",
+        "Character Skills",
+        "spec header",
+        "future build summary"
+      ],
+      "export": "SVG editable master; CSS controls locked/active states"
+    },
+    {
+      "id": "GS-CLS-SPEC-005",
+      "type": "specialization-symbol",
+      "class": "Warrior",
+      "specialization": "Savage",
+      "name": "Savage specialization sigil",
+      "nameStatus": "named",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "specialization selector",
+        "Character Skills",
+        "spec header",
+        "future build summary"
+      ],
+      "export": "SVG editable master; CSS controls locked/active states"
+    },
+    {
+      "id": "GS-CLS-SPEC-006",
+      "type": "specialization-symbol",
+      "class": "Warrior",
+      "specialization": "Fury",
+      "name": "Fury specialization sigil",
+      "nameStatus": "named",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "specialization selector",
+        "Character Skills",
+        "spec header",
+        "future build summary"
+      ],
+      "export": "SVG editable master; CSS controls locked/active states"
+    },
+    {
+      "id": "GS-CLS-ICO-003",
+      "type": "class-symbol",
+      "class": "Rogue",
+      "specialization": null,
+      "name": "Rogue class emblem",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "class chooser",
+        "Fight header/class mark",
+        "Character header",
+        "class summaries"
+      ],
+      "export": "SVG editable master; CSS controls color and frame"
+    },
+    {
+      "id": "GS-CLS-SPEC-007",
+      "type": "specialization-symbol",
+      "class": "Rogue",
+      "specialization": "Subtlety",
+      "name": "Subtlety specialization sigil",
+      "nameStatus": "named",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "specialization selector",
+        "Character Skills",
+        "spec header",
+        "future build summary"
+      ],
+      "export": "SVG editable master; CSS controls locked/active states"
+    },
+    {
+      "id": "GS-CLS-SPEC-008",
+      "type": "specialization-symbol",
+      "class": "Rogue",
+      "specialization": "Assassin",
+      "name": "Assassin specialization sigil",
+      "nameStatus": "named",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "specialization selector",
+        "Character Skills",
+        "spec header",
+        "future build summary"
+      ],
+      "export": "SVG editable master; CSS controls locked/active states"
+    },
+    {
+      "id": "GS-CLS-SPEC-009",
+      "type": "specialization-symbol",
+      "class": "Rogue",
+      "specialization": "Alchemist",
+      "name": "Alchemist specialization sigil",
+      "nameStatus": "named",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "specialization selector",
+        "Character Skills",
+        "spec header",
+        "future build summary"
+      ],
+      "export": "SVG editable master; CSS controls locked/active states"
+    },
+    {
+      "id": "GS-CLS-ICO-004",
+      "type": "class-symbol",
+      "class": "Mage",
+      "specialization": null,
+      "name": "Mage class emblem",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "class chooser",
+        "Fight header/class mark",
+        "Character header",
+        "class summaries"
+      ],
+      "export": "SVG editable master; CSS controls color and frame"
+    },
+    {
+      "id": "GS-CLS-SPEC-010",
+      "type": "specialization-symbol",
+      "class": "Mage",
+      "specialization": "Pyro",
+      "name": "Pyro specialization sigil",
+      "nameStatus": "named",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "specialization selector",
+        "Character Skills",
+        "spec header",
+        "future build summary"
+      ],
+      "export": "SVG editable master; CSS controls locked/active states"
+    },
+    {
+      "id": "GS-CLS-SPEC-011",
+      "type": "specialization-symbol",
+      "class": "Mage",
+      "specialization": "Frost",
+      "name": "Frost specialization sigil",
+      "nameStatus": "named",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "specialization selector",
+        "Character Skills",
+        "spec header",
+        "future build summary"
+      ],
+      "export": "SVG editable master; CSS controls locked/active states"
+    },
+    {
+      "id": "GS-CLS-SPEC-012",
+      "type": "specialization-symbol",
+      "class": "Mage",
+      "specialization": "Lightning",
+      "name": "Lightning specialization sigil",
+      "nameStatus": "named",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "specialization selector",
+        "Character Skills",
+        "spec header",
+        "future build summary"
+      ],
+      "export": "SVG editable master; CSS controls locked/active states"
+    },
+    {
+      "id": "GS-CLS-ICO-005",
+      "type": "class-symbol",
+      "class": "Archer",
+      "specialization": null,
+      "name": "Archer class emblem",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "class chooser",
+        "Fight header/class mark",
+        "Character header",
+        "class summaries"
+      ],
+      "export": "SVG editable master; CSS controls color and frame"
+    },
+    {
+      "id": "GS-CLS-SPEC-013",
+      "type": "specialization-symbol",
+      "class": "Archer",
+      "specialization": "Marksman",
+      "name": "Marksman specialization sigil",
+      "nameStatus": "tentative",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "specialization selector",
+        "Character Skills",
+        "spec header",
+        "future build summary"
+      ],
+      "export": "SVG editable master; CSS controls locked/active states"
+    },
+    {
+      "id": "GS-CLS-SPEC-014",
+      "type": "specialization-symbol",
+      "class": "Archer",
+      "specialization": "Ranger",
+      "name": "Ranger specialization sigil",
+      "nameStatus": "tentative",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "specialization selector",
+        "Character Skills",
+        "spec header",
+        "future build summary"
+      ],
+      "export": "SVG editable master; CSS controls locked/active states"
+    },
+    {
+      "id": "GS-CLS-SPEC-015",
+      "type": "specialization-symbol",
+      "class": "Archer",
+      "specialization": "Tracker",
+      "name": "Tracker specialization sigil",
+      "nameStatus": "tentative",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "specialization selector",
+        "Character Skills",
+        "spec header",
+        "future build summary"
+      ],
+      "export": "SVG editable master; CSS controls locked/active states"
+    },
+    {
+      "id": "GS-CLS-ICO-006",
+      "type": "class-symbol",
+      "class": "Shaman",
+      "specialization": null,
+      "name": "Shaman class emblem",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "class chooser",
+        "Fight header/class mark",
+        "Character header",
+        "class summaries"
+      ],
+      "export": "SVG editable master; CSS controls color and frame"
+    },
+    {
+      "id": "GS-CLS-SPEC-016",
+      "type": "specialization-symbol",
+      "class": "Shaman",
+      "specialization": "Nature",
+      "name": "Nature specialization sigil",
+      "nameStatus": "named",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "specialization selector",
+        "Character Skills",
+        "spec header",
+        "future build summary"
+      ],
+      "export": "SVG editable master; CSS controls locked/active states"
+    },
+    {
+      "id": "GS-CLS-SPEC-017",
+      "type": "specialization-symbol",
+      "class": "Shaman",
+      "specialization": "Storm",
+      "name": "Storm specialization sigil",
+      "nameStatus": "named",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "specialization selector",
+        "Character Skills",
+        "spec header",
+        "future build summary"
+      ],
+      "export": "SVG editable master; CSS controls locked/active states"
+    },
+    {
+      "id": "GS-CLS-SPEC-018",
+      "type": "specialization-symbol",
+      "class": "Shaman",
+      "specialization": "Primal",
+      "name": "Primal specialization sigil",
+      "nameStatus": "tentative",
+      "status": "PLANNED",
+      "priority": "P0",
+      "sourceFile": null,
+      "use": [
+        "specialization selector",
+        "Character Skills",
+        "spec header",
+        "future build summary"
+      ],
+      "export": "SVG editable master; CSS controls locked/active states"
+    }
+  ],
+  "sharedCompositions": [
+    {
+      "id": "GS-CLS-UI-001",
+      "asset": "Class selection tile composition",
+      "sources": [
+        "GS-UI-CMP-001",
+        "GS-UI-CMP-002"
+      ],
+      "note": "One reusable frame, class SVG swapped in; future class selection screen is unapproved."
+    },
+    {
+      "id": "GS-CLS-UI-002",
+      "asset": "Class header insignia housing",
+      "sources": [
+        "GS-UI-CMP-001"
+      ],
+      "note": "One reusable emblem surround; existing header class name remains plain text."
+    },
+    {
+      "id": "GS-CLS-UI-003",
+      "asset": "Specialization selector row/cards",
+      "sources": [
+        "GS-UI-CMP-009",
+        "GS-UI-CMP-001"
+      ],
+      "note": "One template used for all 18; locked/selected are CSS states."
+    },
+    {
+      "id": "GS-CLS-UI-004",
+      "asset": "Specialization-tree viewport/panel",
+      "sources": [
+        "GS-UI-CMP-001",
+        "GS-UI-CMP-019"
+      ],
+      "note": "One scrollable layout with shared dark-gold framing, no 18 custom backgrounds."
+    },
+    {
+      "id": "GS-CLS-UI-005",
+      "asset": "Talent nodes: ordinary/notable/capstone",
+      "sources": [
+        "GS-UI-CMP-019"
+      ],
+      "note": "A small set of reusable node frames with inactive/available/allocated states, not unique art per tree."
+    },
+    {
+      "id": "GS-CLS-UI-006",
+      "asset": "Tree connection lines and branch markers",
+      "sources": [
+        "GS-UI-CMP-019"
+      ],
+      "note": "Shared SVG/CSS connectors, muted/active visual states."
+    },
+    {
+      "id": "GS-CLS-UI-007",
+      "asset": "Talent-point counter and allocation feedback",
+      "sources": [
+        "GS-UI-CMP-022"
+      ],
+      "note": "Generic numerical counter / state indicator. No approved special currency."
+    },
+    {
+      "id": "GS-CLS-UI-008",
+      "asset": "Talent and specialization tooltip surface",
+      "sources": [
+        "GS-UI-CMP-011"
+      ],
+      "note": "Reuse existing tooltip frame; separate title and descriptions."
+    },
+    {
+      "id": "GS-CLS-UI-009",
+      "asset": "Specialization summary and reset controls",
+      "sources": [
+        "GS-UI-CMP-002",
+        "GS-UI-CMP-003",
+        "GS-UI-CMP-001"
+      ],
+      "note": "Reuse button/panel chrome; respec is allowed but cost/UX not yet specified."
+    },
+    {
+      "id": "GS-CLS-UI-010",
+      "asset": "Weapon affinity or element label chips",
+      "sources": [
+        "GS-UI-CMP-016"
+      ],
+      "note": "Use generic source/weapon tokens shared across classes; not 18 separate class-owned skills."
+    }
+  ],
+  "productionOrder": [
+    "Prototype 6 distinct class symbols",
+    "Review art at 24/36/48/64 CSS px",
+    "Produce 18 distinct specialization symbols after name signoff",
+    "Reuse shared UI chrome for classes/spec selection and eventual Skills tree",
+    "Commission individual passive/capstone images only after tree node data/effects are approved"
+  ],
+  "exclusions": [
+    "Class-owned automatic spell loadouts",
+    "Six separate sets of weapon-ability icons",
+    "Class-specific full-body hero sprites in Fight",
+    "Class-specific resource bars without mechanic approval",
+    "Unique class-bordered inventory items",
+    "Rarity sets per class"
+  ]
+}
