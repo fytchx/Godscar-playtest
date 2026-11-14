@@ -171,7 +171,7 @@ def cmd_gallery(_args):
                for e in data["entries"]]
     page = (page[:begin] + "const entries=" +
             json.dumps(minimal, ensure_ascii=False, separators=(",", ":")) +
-            page[end:])
+            ";" + page[end:])
     gallery.write_text(page, encoding="utf-8")
     print("Rebuilt gallery inventory:", len(minimal), "entries")
 
