@@ -1,0 +1,253 @@
+{
+  "batch": 2,
+  "name": "Buttons, tabs, dropdowns and navigation",
+  "status": "SOURCE_CREATED_AWAITING_PHONE_REVIEW",
+  "source": "Original vector geometry; user reference is inspiration only",
+  "files": [
+    {
+      "id": "GS-UI-CMP-002__button-primary-default",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-002__button-primary-default.svg",
+      "use": "Primary action, normal",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-002__button-primary-hover",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-002__button-primary-hover.svg",
+      "use": "Primary hover",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-002__button-primary-active",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-002__button-primary-active.svg",
+      "use": "Primary selected",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-002__button-primary-pressed",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-002__button-primary-pressed.svg",
+      "use": "Primary pressed",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-002__button-primary-disabled",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-002__button-primary-disabled.svg",
+      "use": "Primary disabled",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-003__button-secondary-default",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-003__button-secondary-default.svg",
+      "use": "Neutral button",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-003__button-secondary-hover",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-003__button-secondary-hover.svg",
+      "use": "Neutral hovered",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-003__button-secondary-active",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-003__button-secondary-active.svg",
+      "use": "Neutral selected",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-003__button-secondary-disabled",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-003__button-secondary-disabled.svg",
+      "use": "Neutral unavailable",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CHR-008__button-pill-default",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CHR-008__button-pill-default.svg",
+      "use": "Pill selection",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CHR-008__button-pill-hover",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CHR-008__button-pill-hover.svg",
+      "use": "Pill hover",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CHR-008__button-pill-active",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CHR-008__button-pill-active.svg",
+      "use": "Pill selected",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CHR-008__button-pill-disabled",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CHR-008__button-pill-disabled.svg",
+      "use": "Pill disabled",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CHR-009__button-icon-square",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CHR-009__button-icon-square.svg",
+      "use": "Square icon control frame",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CHR-009__button-icon-ornate",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CHR-009__button-icon-ornate.svg",
+      "use": "Decorative icon control frame",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CHR-009__button-icon-rounded",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CHR-009__button-icon-rounded.svg",
+      "use": "Rounded icon control frame",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CHR-009__button-icon-octagon",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CHR-009__button-icon-octagon.svg",
+      "use": "Octagonal icon control frame",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-017__dropdown-wide",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-017__dropdown-wide.svg",
+      "use": "Menu / wide dropdown frame",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-017__dropdown-medium",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-017__dropdown-medium.svg",
+      "use": "Medium dropdown frame",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-017__dropdown-small",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-017__dropdown-small.svg",
+      "use": "Compact dropdown",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-017__dropdown-split",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-017__dropdown-split.svg",
+      "use": "Split action control",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-008__nav-shell-5slot",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-008__nav-shell-5slot.svg",
+      "use": "Five destination footer nav",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-008__nav-shell-compact",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-008__nav-shell-compact.svg",
+      "use": "Compact row nav",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-008__nav-shell-floating",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-008__nav-shell-floating.svg",
+      "use": "Floating nav pill",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-008__nav-tile-default",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-008__nav-tile-default.svg",
+      "use": "Unselected nav tile",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-008__nav-tile-selected",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-008__nav-tile-selected.svg",
+      "use": "Selected nav tile",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-008__nav-tile-octagon",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-008__nav-tile-octagon.svg",
+      "use": "Octagonal nav tile",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-009__tab-standard-idle",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-009__tab-standard-idle.svg",
+      "use": "Inactive top tab",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-009__tab-standard-active",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-009__tab-standard-active.svg",
+      "use": "Selected top tab",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-009__tab-beveled-idle",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-009__tab-beveled-idle.svg",
+      "use": "Beveled top tab",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-009__tab-beveled-active",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-009__tab-beveled-active.svg",
+      "use": "Beveled selected tab",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-009__tab-arch-idle",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-009__tab-arch-idle.svg",
+      "use": "Rounded arch tab",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-009__tab-arch-active",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-009__tab-arch-active.svg",
+      "use": "Selected rounded tab",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-009__tab-scallop-idle",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-009__tab-scallop-idle.svg",
+      "use": "Curved tab variant",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    },
+    {
+      "id": "GS-UI-CMP-009__tab-scallop-active",
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-009__tab-scallop-active.svg",
+      "use": "Selected curved tab",
+      "format": "SVG",
+      "integration": "Nine-slice chrome with separate HTML label and glyph; no baked icons/text"
+    }
+  ]
+}
