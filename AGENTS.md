@@ -34,3 +34,6 @@ There is a known documentation conflict at that Godscar reference: its `AGENTS.m
 - Do not change other screens, add tests or reports, or perform bot testing unless the owner asks for that stage.
 - Push work to `ui/fight-skeleton`. If the owner requests a review URL, verify that the deployment contains the exact branch commit before sharing it.
 - Report plainly what changed and what was not verified. Never claim a test or deployment that was not actually performed.
+## Owner-approved Character menu extension (November 13, 2026)
+An explicit subsequent owner decision approves implementing **Character only** on the same `ui/fight-skeleton` branch with mock data. The previous "Fight-only, other tabs stubs" constraint remains in force for Stash, Forge and Navigation, but is superseded for Character. Character's approved 11-slot layout, Gearscore placement, STR/INT/DEX and stats overlay, Inventory Items/Materials, and deferred Skills tab are recorded in `docs/FIGHT-SCREEN-DIRECTION.md`. Do not wire the sim or change gameplay, and don't restore old Character mockups. Keep Fight untouched and review visually on a phone.
+

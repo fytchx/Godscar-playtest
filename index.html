@@ -516,6 +516,7 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
  .gs-theme .check-wrap.gs-checkbox{gap:5px;font-size:8px}
 }
 </style>
+<link rel="stylesheet" href="assets/ui/character.css">
 </head>
 <body class="gs-theme">
 <div class="app">
@@ -613,13 +614,87 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
   </main>
 </div>
 <nav class="bottom-nav gs-navbar" aria-label="Main navigation">
-  <button class="nav-button gs-nav-item active" type="button" aria-current="page" onclick="showToast('You are already home.')"><img class="gs-icon" src="assets/ui/icons/home.svg" alt="" aria-hidden="true"><span>Home</span>
+  <button class="nav-button gs-nav-item active" type="button" aria-current="page" onclick="closeCharacter()"><img class="gs-icon" src="assets/ui/icons/home.svg" alt="" aria-hidden="true"><span>Home</span>
   </button>
-  <button class="nav-button gs-nav-item" type="button" onclick="showToast('Character screen will be built separately.')"><img class="gs-icon" src="assets/ui/icons/character.svg" alt="" aria-hidden="true"><span>Character</span></button>
+  <button class="nav-button gs-nav-item" type="button" id="characterNav" onclick="openCharacter()"><img class="gs-icon" src="assets/ui/icons/character.svg" alt="" aria-hidden="true"><span>Character</span></button>
   <button class="nav-button gs-nav-item" type="button" onclick="showToast('Stash screen will be built separately.')"><img class="gs-icon" src="assets/ui/icons/stash.svg" alt="" aria-hidden="true"><span>Stash</span></button>
   <button class="nav-button gs-nav-item" type="button" onclick="showToast('Forge screen will be built separately.')"><img class="gs-icon" src="assets/ui/icons/forge.svg" alt="" aria-hidden="true"><span>Forge</span></button>
   <button class="nav-button gs-nav-item" type="button" onclick="showToast('Navigation screen is to be designed.')"><img class="gs-icon" src="assets/ui/icons/navigation.svg" alt="" aria-hidden="true"><span>Navigation</span></button>
 </nav>
+
+<section id="characterScreen" class="gs-character" aria-label="Character menu" aria-hidden="true" hidden>
+  <div class="gs-character__header">
+    <div><span class="gs-character__eyebrow">PALADIN · UI PREVIEW</span><h1>Character</h1></div>
+    <button type="button" class="gs-character__close" id="characterClose" aria-label="Close Character"><img src="assets/ui/icons/close.svg" alt=""></button>
+  </div>
+  <div class="gs-character__tabs" role="tablist" aria-label="Character sections">
+    <button type="button" role="tab" class="active" aria-selected="true" id="charTabEquipment" aria-controls="charEquipment" data-character-tab="equipment">Equipment</button>
+    <button type="button" role="tab" aria-selected="false" id="charTabInventory" aria-controls="charInventory" data-character-tab="inventory">Inventory</button>
+    <button type="button" role="tab" aria-selected="false" id="charTabSkills" aria-controls="charSkills" data-character-tab="skills">Skills</button>
+  </div>
+  <div class="gs-character__viewport" id="characterViewport">
+    <section class="gs-character__panel" role="tabpanel" id="charEquipment" aria-labelledby="charTabEquipment">
+      <div class="gs-character__equipment" id="characterEquipmentGrid" aria-label="Eleven equipment slots"></div>
+      <section class="gs-character__stats" aria-label="Character stats">
+        <div class="gs-character__section-label"><strong>CHARACTER STATS</strong><span>SAMPLE VALUES</span></div>
+        <div class="gs-character__attributes">
+          <div class="gs-character__attribute str"><strong>185</strong><span>STR</span></div>
+          <div class="gs-character__attribute int"><strong>126</strong><span>INT</span></div>
+          <div class="gs-character__attribute dex"><strong>92</strong><span>DEX</span></div>
+        </div>
+        <div class="gs-character__metrics">
+          <div><strong>3,820</strong><span>Max HP</span></div>
+          <div><strong>740</strong><span>Armor</span></div>
+          <div><strong>1.42/s</strong><span>Auto Attack Speed</span></div>
+        </div>
+        <button class="gs-character__detail-trigger" type="button" id="characterDetailsTrigger" aria-haspopup="dialog" aria-expanded="false">DETAILED STATS <span aria-hidden="true">⌃</span></button>
+      </section>
+    </section>
+    <section class="gs-character__panel" role="tabpanel" id="charInventory" aria-labelledby="charTabInventory" hidden>
+      <div class="gs-character__inventory-tabs" role="tablist" aria-label="Inventory contents">
+        <button type="button" role="tab" class="active" aria-selected="true" aria-controls="charItems" data-inventory-tab="items">Items</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="charMaterials" data-inventory-tab="materials">Materials</button>
+      </div>
+      <section role="tabpanel" id="charItems" aria-label="Items">
+        <div class="gs-character__inventory-heading"><strong>Collected Items</strong><span>8 / 30 · SAMPLE</span></div>
+        <div class="gs-character__item-grid" id="characterItemsList"></div>
+      </section>
+      <section role="tabpanel" id="charMaterials" aria-label="Materials" hidden>
+        <div class="gs-character__inventory-heading"><strong>Materials</strong><span>MOCK RESOURCES</span></div>
+        <div class="gs-character__material-list" id="characterMaterialsList"></div>
+      </section>
+    </section>
+    <section class="gs-character__panel" role="tabpanel" id="charSkills" aria-labelledby="charTabSkills" hidden>
+      <div class="gs-character__skills-placeholder"><span aria-hidden="true">✦</span><h2>Skills</h2><p>Automatic abilities and loadouts will be designed later.</p><small>NO SIMULATION CONNECTION</small></div>
+    </section>
+  </div>
+  <div class="gs-character__detail-layer" id="characterDetailsLayer" role="dialog" aria-modal="true" aria-labelledby="characterDetailsTitle" hidden>
+    <button type="button" id="characterDetailsDismiss" class="gs-character__outside-dismiss" aria-label="Tap outside to close detailed stats"><i aria-hidden="true"></i><span>Tap outside to close</span></button>
+    <div class="gs-character__detail-sheet">
+      <div class="gs-character__sheet-head"><div><small>CHARACTER</small><h2 id="characterDetailsTitle">Detailed Stats</h2></div><button type="button" id="characterDetailsClose" aria-label="Close detailed stats"><img src="assets/ui/icons/close.svg" alt=""></button></div>
+      <div class="gs-character__detail-content">
+        <h3>Primary Attributes</h3>
+        <div class="gs-character__detail-attributes"><span class="str"><b>185</b> STR</span><span class="int"><b>126</b> INT</span><span class="dex"><b>92</b> DEX</span></div>
+        <h3>Combat</h3><dl>
+          <div><dt>Max HP</dt><dd>3,820</dd></div><div><dt>Armor</dt><dd>740</dd></div><div><dt>Auto Attack Speed</dt><dd>1.42/s</dd></div>
+          <div><dt>Critical Chance</dt><dd>14.5%</dd></div><div><dt>Critical Damage</dt><dd>175%</dd></div><div><dt>HP Regeneration</dt><dd>38/s</dd></div>
+        </dl>
+        <h3>Resistances</h3><dl>
+          <div><dt>Fire</dt><dd>40%</dd></div><div><dt>Frost</dt><dd>25%</dd></div><div><dt>Lightning</dt><dd>15%</dd></div>
+          <div><dt>Shadow</dt><dd>20%</dd></div><div><dt>Holy</dt><dd>10%</dd></div>
+        </dl><p class="gs-character__preview-note">Sample values only. Nothing here reads game data.</p>
+      </div>
+    </div>
+  </div>
+  <div class="gs-character__item-layer" id="characterItemLayer" role="dialog" aria-modal="true" aria-labelledby="characterItemTitle" hidden>
+    <button type="button" id="characterItemDismiss" class="gs-character__item-scrim" aria-label="Close item details"></button>
+    <div class="gs-character__item-dialog">
+      <div class="gs-character__sheet-head"><div><small>ITEM PREVIEW</small><h2 id="characterItemTitle">Item</h2></div><button type="button" id="characterItemClose" aria-label="Close item"><img src="assets/ui/icons/close.svg" alt=""></button></div>
+      <div class="gs-character__item-body"><p id="characterItemSubtitle"></p><p id="characterItemStats"></p><small>Comparison and equipment actions are not connected yet.</small></div>
+    </div>
+  </div>
+</section>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <div class="scrim" id="zonePanel" role="dialog" aria-modal="true" aria-labelledby="zonePanelTitle" onclick="outsideClose(event,'zonePanel')">
@@ -834,5 +909,6 @@ renderFeed();paintEnemy();showRecap();updateSessionClock();
 setInterval(updateSessionClock,1000);
 setInterval(cycleFight,4200);
 </script>
+<script src="assets/ui/character.js"></script>
 </body>
 </html>

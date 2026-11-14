@@ -6,6 +6,10 @@ on:
       - ui/fight-skeleton
     paths:
       - .github/workflows/ui-smoke.yml
+      - index.html
+      - assets/ui/character.css
+      - assets/ui/character.js
+      - scripts/smoke_ui.mjs
   workflow_dispatch:
 
 permissions:

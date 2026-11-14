@@ -36,6 +36,39 @@ try {
     await page.waitForSelector('#filterPanel.open');
     await page.click('#filterPanel .close-button');
     await page.waitForSelector('#filterPanel:not(.open)');
+    // Character remains a mock-only overlay and must not replace the Fight arena.
+    await page.click('#characterNav');
+    await page.waitForSelector('#characterScreen:not([hidden])');
+    assert.equal(await page.$eval('#characterEquipmentGrid .gs-character__slot', nodes => nodes.length), 11);
+    assert.equal(await page.$eval('.gs-character__slot--helmet .gs-character__gearscore strong', node => node.textContent), '2,485');
+    const centered = await page.evaluate(() => {
+      const legs=document.querySelector('.gs-character__slot--legs').getBoundingClientRect();
+      const boots=document.querySelector('.gs-character__slot--boots').getBoundingClientRect();
+      const grid=document.querySelector('#characterEquipmentGrid').getBoundingClientRect();
+      return Math.abs((legs.left+boots.right)/2-(grid.left+grid.right)/2)<3;
+    });
+    assert.ok(centered, 'Legs and Boots must be centered');
+    await page.click('#characterDetailsTrigger');
+    await page.waitForSelector('#characterDetailsLayer:not([hidden])');
+    if(width===390)await page.screenshot({path:'screenshots/character-details-390.png'});
+    await page.click('#characterDetailsDismiss');
+    await page.waitForSelector('#characterDetailsLayer[hidden]');
+    if(width===390)await page.screenshot({path:'screenshots/character-equipment-390.png',fullPage:true});
+    await page.click('[data-character-tab="inventory"]');
+    await page.waitForSelector('#charInventory:not([hidden])');
+    assert.ok(await page.$eval('#characterItemsList .gs-character__item', nodes => nodes.length>=4));
+    await page.click('#characterItemsList [data-item-index="0"]');
+    await page.waitForSelector('#characterItemLayer:not([hidden])');
+    await page.click('#characterItemClose');
+    await page.waitForSelector('#characterItemLayer[hidden]');
+    await page.click('[data-inventory-tab="materials"]');
+    await page.waitForSelector('#charMaterials:not([hidden])');
+    assert.ok(await page.$eval('#characterMaterialsList .gs-character__material', nodes => nodes.length>=3));
+    await page.click('[data-character-tab="skills"]');
+    await page.waitForSelector('#charSkills:not([hidden])');
+    await page.click('.bottom-nav .nav-button:first-child');
+    await page.waitForSelector('#characterScreen[hidden]');
+    assert.ok(await page.$eval('.arena',node=>node.getBoundingClientRect().width)>250);
     const state = await page.evaluate(() => {
       const icons = [...document.querySelectorAll('img.gs-icon')];
       const css = document.querySelector('link[href="assets/ui/godscar-ui.css"]');

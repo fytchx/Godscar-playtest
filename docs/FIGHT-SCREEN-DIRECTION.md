@@ -54,3 +54,13 @@ Damage-source colors are distinct and restylable: physical is grayish/golden; bl
 The intended future reference identified so far is `fytchx/Godscar`, branch `slice/paladin-defense`, commit `4e04564d9a134c1f335971c2e52d540a0f5f73c6`. At that commit the simulation is `web/src/sim.js` with `SIM_VERSION = 7`, and the existing bot harness is `web/test/balance.js`.
 
 Before using it, verify the exact commit and inspect the sim, harness, fixtures, and commands. The docs on that same branch conflict with the code: `AGENTS.md` and `START-HERE.md` describe another UI direction and claim the preserved sim is version 4. Do not connect this Fight screen to any other version or accept bot results until that source discrepancy is reconciled with the owner. No integration or bot testing is approved in the current phase.
+
+## Owner-approved Character extension (November 13, 2026)
+The owner has separately approved building the Character menu on this Fight-skeleton branch, superseding the earlier Fight-only limit *for this Character menu*. The Fight screen itself must not be redesigned. Character opens as a screen overlay above still-running mock combat; Home closes it. Three top tabs: Equipment (default), Inventory, Skills (placeholder reserved for later). No hero model.
+Equipment has exactly 11 slots in this ordered 3-column layout:
+- Row 1: Weapon / Helmet / Off-hand. Weapon and Off-hand are taller. Gearscore is in a compact block ABOVE Helmet.
+- Row 2: Amulet / Chest / Gloves.
+- Row 3: Ring 1 / Belt / Ring 2.
+- Row 4: Legs / Boots, centered together.
+Stats are below the grid: STR (red), INT (blue), DEX (green), numeric values ABOVE abbreviations; one compact row for Max HP / Armor / Auto Attack Speed. Detailed Stats opens a bottom sheet that covers equipment, leaving an uncovered tappable strip at the top to dismiss it. The detailed sheet is scrollable. Gearscore has no approved formula and is a static sample number.
+Inventory opens to Items and has a secondary Materials tab; both sample-only. Skills has only a deferred placeholder. The bottom Stash button remains a stub, to be reconciled later; do not duplicate inventories. No equipment or material actions, storage, simulation data, saves, API calls, or deployments approved by this UI implementation decision.
