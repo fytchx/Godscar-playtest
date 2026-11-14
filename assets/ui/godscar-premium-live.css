@@ -111,3 +111,19 @@ body.gs-theme .gs2-class-grid{display:grid;grid-template-columns:repeat(3,minmax
 body.gs-theme .gs2-class-grid>div{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:8px 5px;border:1px solid #625039;border-radius:7px;background:radial-gradient(circle at 50% 15%,#2e3f40,#111c20 72%)}
 body.gs-theme .gs2-class-grid img{width:68px;height:68px;object-fit:contain;max-width:100%}
 body.gs-theme .gs2-class-grid span{font:600 11px Georgia,serif;color:#f1dcbd}
+
+/* Approved visual pack: actual background/textures, not mock placeholder CSS. */
+body.gs-theme .app{background-image:linear-gradient(180deg,#101d22fa,#0b161af9 43%,#071115),url("premium-chrome/v2/GS-UI-TEX-001_micro-grain.png");background-repeat:no-repeat,repeat;background-size:auto,80px 80px}
+body.gs-theme .gs2-mast{background-image:linear-gradient(90deg,#061116ed 18%,#10252bc5 75%,#0b1518b5),url("premium-chrome/v2/fallfields-fogroad-study.webp");background-position:center,76% 11%;background-size:auto,cover}
+body.gs-theme .arena .biome-slot.has-art{background-image:url("premium-chrome/v2/fallfields-fogroad-study.webp")!important;background-position:center 52%;background-size:cover}
+body.gs-theme .gs-character,body.gs-theme .panel{background-image:linear-gradient(160deg,#24333aeb,#0b171cf9 58%),url("premium-chrome/v2/GS-UI-TEX-001_micro-grain.png");background-repeat:no-repeat,repeat;background-size:auto,80px 80px}
+body.gs-theme .gs2-spec-library{margin:16px 0 22px;padding:14px 11px;border:1px solid #97744b;border-radius:10px;background:linear-gradient(155deg,#243337,#0a151b);box-shadow:inset 0 1px #edd2a138,0 10px 22px #0006}
+body.gs-theme .gs2-spec-library>h3{font:500 19px Georgia,serif;color:#efdbbd;margin:2px 2px 4px}
+body.gs-theme .gs2-spec-library>p{font-size:11px;color:#c6b39b;margin:0 2px 14px;line-height:1.5}
+body.gs-theme .gs2-spec-family{margin:0 0 12px}
+body.gs-theme .gs2-spec-family h4{font:600 11px Georgia,serif;color:#d5b385;letter-spacing:.15em;text-transform:uppercase;margin:0 0 7px;padding-bottom:5px;border-bottom:1px solid #785f434c}
+body.gs-theme .gs2-spec-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+body.gs-theme .gs2-spec-entry{min-width:0;display:flex;flex-direction:column;align-items:center;gap:5px;border:1px solid #594f3c;border-radius:8px;background:radial-gradient(circle at 50% 18%,#384744a8,#0c171c 75%);padding:9px 3px 8px}
+body.gs-theme .gs2-spec-entry img{width:min(100%,82px);height:auto;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 3px 5px #0008)}
+body.gs-theme .gs2-spec-entry span{font:600 11px Georgia,serif;color:#edddc8;white-space:nowrap}
+body.gs-theme .gs2-spec-entry small{font:600 8px system-ui,sans-serif;color:#bb9d70;text-transform:uppercase;letter-spacing:.05em}
