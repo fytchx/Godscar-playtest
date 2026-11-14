@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="Shaman class sigil only"><title>Shaman class sigil only</title><defs>
+<linearGradient id="goldRim" x1=".1" y1="0" x2=".91" y2="1"><stop offset="0" stop-color="#62422A"/><stop offset=".18" stop-color="#E2B777"/><stop offset=".35" stop-color="#F8DCAA"/><stop offset=".55" stop-color="#9D6A40"/><stop offset=".75" stop-color="#E4B77D"/><stop offset="1" stop-color="#563721"/></linearGradient>
+<linearGradient id="fineRim" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FBE8BB"/><stop offset=".5" stop-color="#B17E4D"/><stop offset="1" stop-color="#E0AC6B"/></linearGradient>
+<radialGradient id="well" cx=".5" cy=".36" r=".67"><stop stop-color="#192E31"/><stop offset=".52" stop-color="#111C23"/><stop offset=".86" stop-color="#0A1218"/><stop offset="1" stop-color="#060D11"/></radialGradient>
+<pattern id="pat" width="17" height="17" patternUnits="userSpaceOnUse"><path d="M4 10h2 M13 3l1-.4" stroke="#C3C8B9" stroke-width=".45" stroke-opacity=".055"/></pattern>
+</defs><defs><linearGradient id="inkAccent" x1="0" y1=".1" x2="1" y2="1"><stop stop-color="#82DCD2"/><stop offset=".5" stop-color="#82DCD2"/><stop offset="1" stop-color="#3C9E9B"/></linearGradient><linearGradient id="markGold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFF0C4"/><stop offset=".45" stop-color="#E8BD7E"/><stop offset="1" stop-color="#93613C"/></linearGradient></defs><g id="shaman-sigil"><g stroke-linejoin="round" stroke-linecap="round">
+<path d="M64 24Q75 39 67 50Q62 57 64 65Q71 72 79 71Q93 67 98 80Q103 94 87 98Q76 100 71 88Q68 82 64 82Q58 85 57 91Q54 103 41 101Q28 98 30 85Q32 75 44 73Q53 71 54 65Q54 60 47 56Q38 47 43 36Q49 25 64 24Z" fill="url(#inkAccent)" opacity=".15"/>
+<path d="M64 24C83 39 75 52 63 63C54 71 50 79 57 87C63 94 74 92 76 82" stroke="url(#inkAccent)" stroke-width="7.2" fill="none"/>
+<path d="M98 80C99 98 80 106 66 91C58 82 48 77 39 82C32 87 34 96 42 100" stroke="url(#inkAccent)" stroke-width="7.2" fill="none"/>
+<path d="M30 85C19 70 33 52 51 56C62 58 72 55 73 44C74 35 67 30 64 25" stroke="url(#inkAccent)" stroke-width="7.2" fill="none"/>
+<path d="M63 33Q74 47 62 61Q48 79 60 87M90 84Q83 96 68 85Q53 72 41 83M37 80Q30 69 48 63Q67 62 69 45" stroke="#E1FFF8" stroke-width="1.9" fill="none" opacity=".72"/>
+<circle cx="64" cy="65" r="5.5" fill="#16373C" stroke="#A4F1E0" stroke-width="2.2"/></g></g></svg>
