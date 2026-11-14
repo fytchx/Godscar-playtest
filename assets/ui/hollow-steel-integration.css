@@ -174,3 +174,40 @@ body.gs-theme .rotation-header span {background:#2C4547;border-color:#597D74;col
 body.gs-theme :is(.recap-stat,.loot-item,.settings-note) {background:#22383E;border-color:#46636B}
 body.gs-theme .toast {background:#2A444B;border-color:#5A8580;color:var(--hs-ivory)}
 @media(prefers-reduced-motion:reduce) {body.gs-theme :is(.gs-button,.gs-tab,.nav-button.gs-nav-item){transition:none}}
+
+/* Reconcile deeper sheets and detail actions still hardcoded in older purple CSS. */
+body.gs-theme .panel.gs-panel.gs-dialog {
+  background-image:var(--hs-grain),linear-gradient(165deg,#294047,#1B3037);
+  background-size:64px 64px,100% 100%;
+  border:1px solid #54736F;border-radius:16px;
+  box-shadow:inset 0 1px 0 #D2E8DD13,0 22px 56px #071116BF;
+}
+body.gs-theme .gs-character__detail-trigger {
+  position:relative;isolation:isolate;
+  background-image:var(--hs-grain),linear-gradient(160deg,#355E56,#274940);
+  background-size:64px 64px,100% 100%;
+  border:1px solid #6B9689;border-radius:10px;color:#DFEEE7;
+  box-shadow:inset 0 1px 0 #DAF4E619;
+}
+body.gs-theme .gs-character__detail-trigger::before {
+  content:"";position:absolute;inset:0;pointer-events:none;
+  border:10px solid transparent;border-image:var(--hs-primary) 16/10px stretch;
+}
+body.gs-theme .gs-character__detail-trigger:hover {
+  background-image:var(--hs-grain),linear-gradient(#427265,#305B50);
+}
+body.gs-theme .gs-character__detail-trigger:active {
+  background-image:var(--hs-grain),linear-gradient(#193B39,#27534B);
+}
+body.gs-theme .gs-character__detail-sheet,
+body.gs-theme .gs-character__item-sheet {
+  background-image:var(--hs-grain),linear-gradient(165deg,#223941,#192E35);
+  background-size:64px 64px,100% 100%;
+  border-color:#526E71;box-shadow:0 -20px 52px #071418BC;
+}
+body.gs-theme .gs-character__detail-attributes span {background:#21353B;border-color:#45646B}
+body.gs-theme .gs-character__close,
+body.gs-theme .gs-character__sheet-head button {
+  background:linear-gradient(155deg,#304C51,#192D35);
+  border:1px solid #4C6E71;color:var(--hs-ivory);
+}
