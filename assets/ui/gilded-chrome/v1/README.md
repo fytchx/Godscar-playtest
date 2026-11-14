@@ -8,4 +8,4 @@ Existing source manifest IDs GS-UI-CMP-* reused where appropriate. New GS-UI-CHR
 
 Use border-image nine-slice (slice=34 for 128x128 panels, ~20px border width) to protect resizable corners, keep center ornaments separate at fixed size, and apply material texture by a distinct CSS background layer. Proportional squares and standalone ornaments are regular img or background SVGs. See gilded-chrome.css for optional preview-only composition helpers. Concept labels suggesting mechanics do not approve gameplay mechanics.
 
-Open review/gilded-chrome-gallery.html using a local HTTP server (`npm start` from the repo root). The QA workflow validates XML and catalogs and renders 390px and desktop screenshots. Design still needs visual signoff in the actual phone UI before integration.
+Open review/gilded-chrome-gallery.html directly after extracting the full ZIP, including on Android: the catalog is embedded for offline file:// review. A local HTTP server (`npm start`) is optional. The QA workflow validates XML and catalogs and renders 390px and desktop screenshots. Design still needs visual signoff in the actual phone UI before integration.
