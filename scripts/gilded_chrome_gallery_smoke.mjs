@@ -18,6 +18,7 @@ try{
   for(const batch of ['1','2','3','4']){
    await page.click('[data-batch="'+batch+'"]');
    await page.waitForFunction(b=>document.querySelectorAll('.tile').length===({1:29,2:35,3:36,4:56}[b]),{},batch);
+   await page.waitForFunction(()=>[...document.querySelectorAll('.canvas img')].every(i=>i.complete&&i.naturalWidth>0),{timeout:20000});
    const state=await page.evaluate(()=>({
     count:document.querySelectorAll('.tile').length,
     overflow:document.documentElement.scrollWidth-window.innerWidth,

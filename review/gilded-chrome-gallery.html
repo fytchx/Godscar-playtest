@@ -51,7 +51,7 @@ footer{font-size:11px;color:#A0B1AB;border-top:1px solid #3D4B48;margin-top:22px
      if(/nav-tile|panel-compact/.test(file))frame.classList.add("square");
      frame.style.borderImageSource='url("'+src+'")';
      holder.append(frame);
-   }else{const image=document.createElement("img");image.loading="lazy";image.src=src;image.alt=item.use||item.id;holder.append(image)}
+   }else{const image=document.createElement("img");image.loading="eager";image.src=src;image.alt=item.use||item.id;holder.append(image)}
    const h=document.createElement("h2");h.textContent=item.id;
    const desc=document.createElement("p");desc.textContent=item.use;
    const link=document.createElement("a");link.href=src;link.download=file.split("/").pop();link.textContent="Open SVG";
