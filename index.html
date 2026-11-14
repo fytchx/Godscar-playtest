@@ -612,10 +612,10 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
   </main>
 </div>
 <nav class="bottom-nav gs-navbar" aria-label="Main navigation">
-  <button class="nav-button gs-nav-item active" type="button" aria-current="page" onclick="closeCharacter()"><img class="gs-icon" src="assets/ui/icons/home.svg" alt="" aria-hidden="true"><span>Home</span>
+  <button class="nav-button gs-nav-item active" type="button" aria-current="page" onclick="goHome()"><img class="gs-icon" src="assets/ui/icons/home.svg" alt="" aria-hidden="true"><span>Home</span>
   </button>
   <button class="nav-button gs-nav-item" type="button" id="characterNav" onclick="openCharacter()"><img class="gs-icon" src="assets/ui/icons/character.svg" alt="" aria-hidden="true"><span>Character</span></button>
-  <button class="nav-button gs-nav-item" type="button" onclick="showToast('Stash screen will be built separately.')"><img class="gs-icon" src="assets/ui/icons/stash.svg" alt="" aria-hidden="true"><span>Stash</span></button>
+  <button class="nav-button gs-nav-item" type="button" id="stashNav" onclick="openStash()"><img class="gs-icon" src="assets/ui/icons/stash.svg" alt="" aria-hidden="true"><span>Stash</span></button>
   <button class="nav-button gs-nav-item" type="button" onclick="showToast('Forge screen will be built separately.')"><img class="gs-icon" src="assets/ui/icons/forge.svg" alt="" aria-hidden="true"><span>Forge</span></button>
   <button class="nav-button gs-nav-item" type="button" onclick="showToast('Navigation screen is to be designed.')"><img class="gs-icon" src="assets/ui/icons/navigation.svg" alt="" aria-hidden="true"><span>Navigation</span></button>
 </nav>
@@ -627,7 +627,6 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
   </div>
   <div class="gs-character__tabs" role="tablist" aria-label="Character sections">
     <button type="button" role="tab" class="active" aria-selected="true" id="charTabEquipment" aria-controls="charEquipment" data-character-tab="equipment">Equipment</button>
-    <button type="button" role="tab" aria-selected="false" id="charTabInventory" aria-controls="charInventory" data-character-tab="inventory">Inventory</button>
     <button type="button" role="tab" aria-selected="false" id="charTabSkills" aria-controls="charSkills" data-character-tab="skills">Skills</button>
   </div>
   <div class="gs-character__viewport" id="characterViewport">
@@ -648,39 +647,50 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
         <button class="gs-character__detail-trigger" type="button" id="characterDetailsTrigger" aria-haspopup="dialog" aria-expanded="false">DETAILED STATS <span aria-hidden="true">⌃</span></button>
       </section>
     </section>
-    <section class="gs-character__panel" role="tabpanel" id="charInventory" aria-labelledby="charTabInventory" hidden>
-      <div class="gs-character__inventory-tabs" role="tablist" aria-label="Inventory contents">
-        <button type="button" role="tab" class="active" aria-selected="true" aria-controls="charItems" data-inventory-tab="items">Items</button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="charMaterials" data-inventory-tab="materials">Materials</button>
-      </div>
-      <section role="tabpanel" id="charItems" aria-label="Items">
-        <div class="gs-character__inventory-heading"><strong>Collected Items</strong><span>8 / 30 · SAMPLE</span></div>
-        <div class="gs-character__item-grid" id="characterItemsList"></div>
-      </section>
-      <section role="tabpanel" id="charMaterials" aria-label="Materials" hidden>
-        <div class="gs-character__inventory-heading"><strong>Materials</strong><span>MOCK RESOURCES</span></div>
-        <div class="gs-character__material-list" id="characterMaterialsList"></div>
-      </section>
-    </section>
     <section class="gs-character__panel" role="tabpanel" id="charSkills" aria-labelledby="charTabSkills" hidden>
-      <div class="gs-character__skills-placeholder"><span aria-hidden="true">✦</span><h2>Skills</h2><p>Weapon automatic abilities and specialization mechanics remain under design.</p><small>VISUAL ART PREVIEW · NO SIMULATION CONNECTION</small></div>
-      <section class="gs2-class-preview" aria-label="Class emblems art preview"><h3>Class emblems</h3><p>Artwork reference only. Class switching and specializations are not active here.</p><div class="gs2-class-grid">
-      <div><img src="assets/classes/concept-02/svg/GS-CLS-ICO-001_paladin-emblem.svg" alt=""><span>Paladin</span></div>
-      <div><img src="assets/classes/concept-02/svg/GS-CLS-ICO-002_warrior-emblem.svg" alt=""><span>Warrior</span></div>
-      <div><img src="assets/classes/concept-02/svg/GS-CLS-ICO-003_rogue-emblem.svg" alt=""><span>Rogue</span></div>
-      <div><img src="assets/classes/concept-02/svg/GS-CLS-ICO-004_mage-emblem.svg" alt=""><span>Mage</span></div>
-      <div><img src="assets/classes/concept-02/svg/GS-CLS-ICO-005_archer-emblem.svg" alt=""><span>Archer</span></div>
-      <div><img src="assets/classes/concept-02/svg/GS-CLS-ICO-006_shaman-emblem.svg" alt=""><span>Shaman</span></div>
-      </div></section>
-      <section class="gs2-avenger-hero" aria-label="Avenger illustration example"><img src="assets/classes/premium-specs/GS-CLS-SPEC-001_avenger-256.webp" alt="Radiant holy hammer, Avenger specialization" loading="lazy" decoding="async"><div><strong>Avenger</strong><span>Radiant Holy Hammer</span><p>Independently illustrated artwork master. Visual preview only, not a selected or activated specialization.</p></div></section>
-      <section class="gs2-spec-library" aria-label="Specialization artwork gallery"><h3>Specialization emblems</h3><p>Visual library only, not equipped abilities or finalized specialization mechanics. All six classes and 18 names are preserved.</p>
-<section class="gs2-spec-family" aria-label="Paladin specialization artwork"><h4>Paladin</h4><div class="gs2-spec-grid"><div class="gs2-spec-entry"><img src="assets/classes/premium-specs/GS-CLS-SPEC-001_paladin-avenger-128.webp" alt="Paladin Avenger emblem" loading="lazy" decoding="async"><span>Avenger</span><small>Avenger master</small></div><div class="gs2-spec-entry"><img src="assets/classes/premium-specs/GS-CLS-SPEC-002_paladin-templar-128.webp" alt="Paladin Templar emblem" loading="lazy" decoding="async"><span>Templar</span><small>Art study</small></div><div class="gs2-spec-entry"><img src="assets/classes/premium-specs/GS-CLS-SPEC-003_paladin-justicar-128.webp" alt="Paladin Justicar emblem" loading="lazy" decoding="async"><span>Justicar</span><small>Art study</small></div></div></section>
-<section class="gs2-spec-family" aria-label="Warrior specialization artwork"><h4>Warrior</h4><div class="gs2-spec-grid"><div class="gs2-spec-entry"><img src="assets/classes/premium-specs/GS-CLS-SPEC-004_warrior-protection-128.webp" alt="Warrior Protection emblem" loading="lazy" decoding="async"><span>Protection</span><small>Art study</small></div><div class="gs2-spec-entry"><img src="assets/classes/premium-specs/GS-CLS-SPEC-005_warrior-savage-128.webp" alt="Warrior Savage emblem" loading="lazy" decoding="async"><span>Savage</span><small>Art study</small></div><div class="gs2-spec-entry"><img src="assets/classes/premium-specs/GS-CLS-SPEC-006_warrior-fury-128.webp" alt="Warrior Fury emblem" loading="lazy" decoding="async"><span>Fury</span><small>Art study</small></div></div></section>
-<section class="gs2-spec-family" aria-label="Rogue specialization artwork"><h4>Rogue</h4><div class="gs2-spec-grid"><div class="gs2-spec-entry"><img src="assets/classes/premium-specs/GS-CLS-SPEC-007_rogue-subtlety-128.webp" alt="Rogue Subtlety emblem" loading="lazy" decoding="async"><span>Subtlety</span><small>Art study</small></div><div class="gs2-spec-entry"><img src="assets/classes/premium-specs/GS-CLS-SPEC-008_rogue-assassin-128.webp" alt="Rogue Assassin emblem" loading="lazy" decoding="async"><span>Assassin</span><small>Art study</small></div><div class="gs2-spec-entry"><img src="assets/classes/premium-specs/GS-CLS-SPEC-009_rogue-alchemist-128.webp" alt="Rogue Alchemist emblem" loading="lazy" decoding="async"><span>Alchemist</span><small>Art study</small></div></div></section>
-<section class="gs2-spec-family" aria-label="Mage specialization artwork"><h4>Mage</h4><div class="gs2-spec-grid"><div class="gs2-spec-entry"><img src="assets/classes/premium-specs/GS-CLS-SPEC-010_mage-pyro-128.webp" alt="Mage Pyro emblem" loading="lazy" decoding="async"><span>Pyro</span><small>Art study</small></div><div class="gs2-spec-entry"><img src="assets/classes/premium-specs/GS-CLS-SPEC-011_mage-frost-128.webp" alt="Mage Frost emblem" loading="lazy" decoding="async"><span>Frost</span><small>Art study</small></div><div class="gs2-spec-entry"><img src="assets/classes/premium-specs/GS-CLS-SPEC-012_mage-lightning-128.webp" alt="Mage Lightning emblem" loading="lazy" decoding="async"><span>Lightning</span><small>Art study</small></div></div></section>
-<section class="gs2-spec-family" aria-label="Archer specialization artwork"><h4>Archer</h4><div class="gs2-spec-grid"><div class="gs2-spec-entry"><img src="assets/classes/premium-specs/GS-CLS-SPEC-013_archer-marksman-128.webp" alt="Archer Marksman emblem" loading="lazy" decoding="async"><span>Marksman</span><small>Art study</small></div><div class="gs2-spec-entry"><img src="assets/classes/premium-specs/GS-CLS-SPEC-014_archer-ranger-128.webp" alt="Archer Ranger emblem" loading="lazy" decoding="async"><span>Ranger</span><small>Art study</small></div><div class="gs2-spec-entry"><img src="assets/classes/premium-specs/GS-CLS-SPEC-015_archer-tracker-128.webp" alt="Archer Tracker emblem" loading="lazy" decoding="async"><span>Tracker</span><small>Art study</small></div></div></section>
-<section class="gs2-spec-family" aria-label="Shaman specialization artwork"><h4>Shaman</h4><div class="gs2-spec-grid"><div class="gs2-spec-entry"><img src="assets/classes/premium-specs/GS-CLS-SPEC-016_shaman-nature-128.webp" alt="Shaman Nature emblem" loading="lazy" decoding="async"><span>Nature</span><small>Art study</small></div><div class="gs2-spec-entry"><img src="assets/classes/premium-specs/GS-CLS-SPEC-017_shaman-storm-128.webp" alt="Shaman Storm emblem" loading="lazy" decoding="async"><span>Storm</span><small>Art study</small></div><div class="gs2-spec-entry"><img src="assets/classes/premium-specs/GS-CLS-SPEC-018_shaman-primal-128.webp" alt="Shaman Primal emblem" loading="lazy" decoding="async"><span>Primal</span><small>Art study</small></div></div></section>
-      </section>
+      <div class="gs-spec-overview">
+        <h2>Paladin Specializations</h2>
+        <p>Three paths, side by side. Skill definitions and specialization choices will be added later.</p>
+      </div>
+      <div class="gs-spec-columns" aria-label="Paladin's three specialization trees">
+        <section class="gs-spec-column" aria-label="Avenger skills layout">
+          <div class="gs-spec-column__head">
+            <img src="assets/classes/premium-specs/GS-CLS-SPEC-001_paladin-avenger-128.webp" alt="Avenger emblem" width="128" height="128" decoding="async">
+            <h3>Avenger</h3>
+          </div>
+          <div class="gs-spec-column__path" aria-label="Skills not yet defined">
+            <div class="gs-spec-column__node" aria-hidden="true"><span>✧</span></div>
+            <div class="gs-spec-column__node" aria-hidden="true"><span>✧</span></div>
+            <div class="gs-spec-column__node" aria-hidden="true"><span>✧</span></div>
+            <span class="gs-spec-column__coming">Skills<br>pending</span>
+          </div>
+        </section>
+        <section class="gs-spec-column" aria-label="Templar skills layout">
+          <div class="gs-spec-column__head">
+            <img src="assets/classes/premium-specs/GS-CLS-SPEC-002_paladin-templar-128.webp" alt="Templar emblem" width="128" height="128" decoding="async">
+            <h3>Templar</h3>
+          </div>
+          <div class="gs-spec-column__path" aria-label="Skills not yet defined">
+            <div class="gs-spec-column__node" aria-hidden="true"><span>✧</span></div>
+            <div class="gs-spec-column__node" aria-hidden="true"><span>✧</span></div>
+            <div class="gs-spec-column__node" aria-hidden="true"><span>✧</span></div>
+            <span class="gs-spec-column__coming">Skills<br>pending</span>
+          </div>
+        </section>
+        <section class="gs-spec-column" aria-label="Justicar skills layout">
+          <div class="gs-spec-column__head">
+            <img src="assets/classes/premium-specs/GS-CLS-SPEC-003_paladin-justicar-128.webp" alt="Justicar emblem" width="128" height="128" decoding="async">
+            <h3>Justicar</h3>
+          </div>
+          <div class="gs-spec-column__path" aria-label="Skills not yet defined">
+            <div class="gs-spec-column__node" aria-hidden="true"><span>✧</span></div>
+            <div class="gs-spec-column__node" aria-hidden="true"><span>✧</span></div>
+            <div class="gs-spec-column__node" aria-hidden="true"><span>✧</span></div>
+            <span class="gs-spec-column__coming">Skills<br>pending</span>
+          </div>
+        </section>
+      </div>
+      <p class="gs-spec-disclaimer">Preview layout only · no skill points, allocations, or gameplay effects</p>
     </section>
   </div>
   <div class="gs-character__detail-layer" id="characterDetailsLayer" role="dialog" aria-modal="true" aria-labelledby="characterDetailsTitle" hidden>
@@ -707,6 +717,27 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
       <div class="gs-character__sheet-head"><div><small>ITEM PREVIEW</small><h2 id="characterItemTitle">Item</h2></div><button type="button" id="characterItemClose" aria-label="Close item"><img src="assets/ui/icons/close.svg" alt=""></button></div>
       <div class="gs-character__item-body"><p id="characterItemSubtitle"></p><p id="characterItemStats"></p><small>Comparison and equipment actions are not connected yet.</small></div>
     </div>
+  </div>
+</section>
+
+<section id="stashScreen" class="gs-character gs-stash" aria-label="Stash menu" aria-hidden="true" hidden>
+  <div class="gs-character__header">
+    <div><span class="gs-character__eyebrow">ITEM STORAGE · UI PREVIEW</span><h1>Stash</h1></div>
+    <button type="button" class="gs-character__close" id="stashClose" aria-label="Close Stash"><img src="assets/ui/icons/close.svg" alt=""></button>
+  </div>
+  <div class="gs-character__inventory-tabs gs-stash__tabs" role="tablist" aria-label="Stash contents">
+    <button type="button" role="tab" class="active" aria-selected="true" id="stashTabItems" aria-controls="stashItems" data-stash-tab="items">Items</button>
+    <button type="button" role="tab" aria-selected="false" id="stashTabMaterials" aria-controls="stashMaterials" data-stash-tab="materials">Materials</button>
+  </div>
+  <div class="gs-character__viewport" id="stashViewport">
+    <section class="gs-character__panel" role="tabpanel" id="stashItems" aria-labelledby="stashTabItems">
+      <div class="gs-character__inventory-heading"><strong>Collected Items</strong><span>8 / 30 · SAMPLE</span></div>
+      <div class="gs-character__item-grid" id="stashItemsList"></div>
+    </section>
+    <section class="gs-character__panel" role="tabpanel" id="stashMaterials" aria-labelledby="stashTabMaterials" hidden>
+      <div class="gs-character__inventory-heading"><strong>Materials</strong><span>MOCK RESOURCES</span></div>
+      <div class="gs-character__material-list" id="stashMaterialsList"></div>
+    </section>
   </div>
 </section>
 
@@ -760,7 +791,7 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
       <div class="recap-stat"><small>Currency</small><strong>+2.4k Gold</strong></div>
     </div>
     <div class="recap-section">
-      <div class="recap-section-head"><h3>Notable loot · top 3</h3><button class="view-loot" onclick="showToast('Stash screen will be built separately.')">VIEW ALL LOOT</button></div>
+      <div class="recap-section-head"><h3>Notable loot · top 3</h3><button class="view-loot" onclick="closePanel('recapPanel');openStash('items')">VIEW ALL LOOT</button></div>
       <div class="loot-list">
         <button class="loot-item" onclick="openLootDetails('Dawnbreaker','Legendary · Mace','✦')"><span class="loot-icon">⚒</span><span><strong class="rarity-legendary">Dawnbreaker</strong><small>Legendary · Mace · Gearscore #1</small></span><span class="level-tag">1</span></button>
         <button class="loot-item" onclick="openLootDetails('Gallowsguard','Epic · Chest Armor','⬡')"><span class="loot-icon">⬡</span><span><strong class="rarity-epic">Gallowsguard</strong><small>Epic · Chest Armor · Gearscore #2</small></span><span class="level-tag">2</span></button>
@@ -775,7 +806,7 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
 <div class="scrim" id="itemPanel" role="dialog" aria-modal="true" aria-labelledby="itemTitle" onclick="outsideClose(event,'itemPanel')">
   <div class="panel gs-panel gs-panel--recessed gs-dialog">
     <div class="panel-head"><div class="panel-head-copy"><small>ITEM DETAILS · STASH PREVIEW</small><h2 id="itemTitle">Dawnbreaker</h2></div><button class="close-button gs-button gs-button--icon" aria-label="Close" onclick="closePanel('itemPanel')"><img class="gs-icon" src="assets/ui/icons/close.svg" alt="" aria-hidden="true"></button></div>
-    <div class="panel-body"><div class="item-preview"><div class="loot-icon" id="itemIcon">⚒</div><div><strong id="itemRarity">Legendary · Mace</strong><p>Selected in your future Stash screen. Its item-detail window will open there.</p></div></div><button class="secondary-button gs-button" style="width:100%" onclick="closePanel('itemPanel');showToast('Stash screen will be built separately.')">OPEN IN STASH</button></div>
+    <div class="panel-body"><div class="item-preview"><div class="loot-icon" id="itemIcon">⚒</div><div><strong id="itemRarity">Legendary · Mace</strong><p>Selected in your future Stash screen. Its item-detail window will open there.</p></div></div><button class="secondary-button gs-button" style="width:100%" onclick="closePanel('itemPanel');openStash('items')">OPEN IN STASH</button></div>
   </div>
 </div>
 

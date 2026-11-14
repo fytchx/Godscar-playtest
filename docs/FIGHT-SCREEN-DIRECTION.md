@@ -64,3 +64,13 @@ Equipment has exactly 11 slots in this ordered 3-column layout:
 - Row 4: Legs / Boots, centered together.
 Stats are below the grid: STR (red), INT (blue), DEX (green), numeric values ABOVE abbreviations; one compact row for Max HP / Armor / Auto Attack Speed. Detailed Stats opens a bottom sheet that covers equipment, leaving an uncovered tappable strip at the top to dismiss it. The detailed sheet is scrollable. Gearscore has no approved formula and is a static sample number.
 Inventory opens to Items and has a secondary Materials tab; both sample-only. Skills has only a deferred placeholder. The bottom Stash button remains a stub, to be reconciled later; do not duplicate inventories. No equipment or material actions, storage, simulation data, saves, API calls, or deployments approved by this UI implementation decision.
+
+## Owner-approved menu split (November 14, 2026)
+This update supersedes the earlier Character Inventory tab / Stash-stub portion of this document:
+- **Character** has two top tabs: **Equipment** (default) and **Skills**. Preserve the existing approved 11-slot Equipment grid, stats, and detailed stats overlay.
+- **Stash** is now a working mock-only menu from the bottom taskbar, with **Items** and **Materials** tabs. Relocate the existing sample inventory and material lists here; do not duplicate them under Character. Reuse the shared item preview overlay for both equipped items and Stash items.
+- **Skills** shows the *current class* three specialization paths side-by-side, starting with Paladin: **Avenger**, **Templar**, **Justicar**. Under each path, provide only empty visual skill-node placeholders. The count/arrangement of empty nodes is exploratory UI spacing, not an approved skill count, skill tree, unlock order, resource, or gameplay rule. Leave labels, effects, allocation, and respec mechanics for later.
+- The existing six-class / 18-specialization art exports remain in the repository library; do not present all 18 as the player's active class skill tree.
+- Keep compact dark textured gold UI styling, portrait mobile legibility, and the five-item bottom nav order. Other bottom tasks remain stubs.
+- All data and interactions are previews only. No item transfers, equip actions, allocated skill points, persistent storage, simulation wiring, or game changes.
+- The review deployment tracks `ui/premium-live-integration` (not `main`); only the playtest UI review service may be updated by the separately approved preview workflow.
