@@ -1,0 +1,1967 @@
+{
+  "created": "2026-11-14",
+  "source": "art/godscar-master-asset-vault",
+  "assets_in_repository": 273,
+  "records": [
+    {
+      "path": "actualart1.zip",
+      "sha": "e1eaa05b3acebd45482fdb091cbcc81a8fd41f54",
+      "bytes": 11469728,
+      "type": "existing-archive",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "actualart2.zip",
+      "sha": "9bfe1d32b0d3a9324ff329f1189e930efe088caa",
+      "bytes": 12419544,
+      "type": "existing-archive",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "actualart3.zip",
+      "sha": "c3a4b0cca9c385f58fd13796caebd0d4c34f48ad",
+      "bytes": 15650039,
+      "type": "existing-archive",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/classes/concept-02/README.md",
+      "sha": "44e89b6189c569a1bdeb8756185f2468e8470203",
+      "bytes": 1814,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/classes/concept-02/review/index.html",
+      "sha": "c9fe7ae716149852a80be18eae9d7b7207a462ce",
+      "bytes": 2170,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/classes/concept-02/svg/GS-CLS-ICO-001_paladin-emblem.svg",
+      "sha": "145c246b15fcbdc25bfd91162ad5683759455e3f",
+      "bytes": 3569,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/classes/concept-02/svg/GS-CLS-ICO-001_paladin-symbol.svg",
+      "sha": "6e180cbd855911aeaca726de0fd26bf9393fd17f",
+      "bytes": 2186,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/classes/concept-02/svg/GS-CLS-ICO-002_warrior-emblem.svg",
+      "sha": "ae5054c594309aa09f51ed6f11034eb6c94d5af5",
+      "bytes": 3639,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/classes/concept-02/svg/GS-CLS-ICO-002_warrior-symbol.svg",
+      "sha": "554df01de0351a896982b8ffe0096d1dee53cbe2",
+      "bytes": 2256,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/classes/concept-02/svg/GS-CLS-ICO-003_rogue-emblem.svg",
+      "sha": "83edfe6879e2c3b6f373283b397f5391fd06e735",
+      "bytes": 3498,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/classes/concept-02/svg/GS-CLS-ICO-003_rogue-symbol.svg",
+      "sha": "9dd302d87e859a0fe2dbb423acefd43975b9d35e",
+      "bytes": 2115,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/classes/concept-02/svg/GS-CLS-ICO-004_mage-emblem.svg",
+      "sha": "cfce499ecbe357f8e006357150b2d859e44467bc",
+      "bytes": 3684,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/classes/concept-02/svg/GS-CLS-ICO-004_mage-symbol.svg",
+      "sha": "adb685155a08ea2582d97a5771959f9635167c2e",
+      "bytes": 2301,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/classes/concept-02/svg/GS-CLS-ICO-005_archer-emblem.svg",
+      "sha": "94921b2140af8169aa9c9a3b13a3effda98e4697",
+      "bytes": 3495,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/classes/concept-02/svg/GS-CLS-ICO-005_archer-symbol.svg",
+      "sha": "ae73a1a4e278fd805d1508afc2707fd7461e3c65",
+      "bytes": 2112,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/classes/concept-02/svg/GS-CLS-ICO-006_shaman-emblem.svg",
+      "sha": "0f6cd3521fead3d5f882a2e1daa3bf96fbef8b8e",
+      "bytes": 3806,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/classes/concept-02/svg/GS-CLS-ICO-006_shaman-symbol.svg",
+      "sha": "f5f6190bdcb6fd477f0e2a88034227ee5f411db8",
+      "bytes": 2423,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/classes/concept-02/svg/shared-medallion-frame.svg",
+      "sha": "4d104d23756fa1af4e6013f45c188b03a2215417",
+      "bytes": 2232,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-001_avenger-256.webp",
+      "sha": "1c9f92e279bdcf1384aba89033a900f9b78ed54b",
+      "bytes": 23788,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-001_paladin-avenger-128.webp",
+      "sha": "11afa471bebe9bf13b4bfc03cd1c114bd3eeb64d",
+      "bytes": 8806,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-002_paladin-templar-128.webp",
+      "sha": "1f01c56daffa008688457f94f9d3b00593b62c78",
+      "bytes": 8614,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-003_paladin-justicar-128.webp",
+      "sha": "5e3eac1e8e53c2189bf9dd315358c08371f88425",
+      "bytes": 9146,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-004_warrior-protection-128.webp",
+      "sha": "0a6170c5102a923b8fe1824d3f463a16b398af12",
+      "bytes": 9220,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-005_warrior-savage-128.webp",
+      "sha": "e16f6d6f605e87ce065ebe320282f363e48ddd55",
+      "bytes": 8866,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-006_warrior-fury-128.webp",
+      "sha": "e8aa4235fc61d0d45e07c5cf46ec6ae72f8fdeb4",
+      "bytes": 9282,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-007_rogue-subtlety-128.webp",
+      "sha": "921f51a46bb8690535373b481e2c9d63ade75342",
+      "bytes": 8658,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-008_rogue-assassin-128.webp",
+      "sha": "52dc0a98a48e603d54b129a93ea5c529023f8277",
+      "bytes": 8790,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-009_rogue-alchemist-128.webp",
+      "sha": "7cacd08eb527309cfd76afb040865b1a986a06be",
+      "bytes": 8956,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-010_mage-pyro-128.webp",
+      "sha": "a4a1ade67eab82cb0b5f7dbf92f420459e3d1dd1",
+      "bytes": 9316,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-011_mage-frost-128.webp",
+      "sha": "94cf1e56460f10937b2f5c4cdd48fe864fee75d7",
+      "bytes": 9470,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-012_mage-lightning-128.webp",
+      "sha": "511f33438a1446b707a53f4de8d63958d1e9e07e",
+      "bytes": 9380,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-013_archer-marksman-128.webp",
+      "sha": "734034539c9e81b2270991d53b563523ddbcbcc1",
+      "bytes": 9442,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-014_archer-ranger-128.webp",
+      "sha": "7ab2ea7da3892084aaecebd9c1f8c3a82f483e8b",
+      "bytes": 9244,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-015_archer-tracker-128.webp",
+      "sha": "3caf8424ea6666e0d9d99661ee4cc52f2c961bb2",
+      "bytes": 9404,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-016_shaman-nature-128.webp",
+      "sha": "f8d1621e975dfac373876eed5960c2af56856085",
+      "bytes": 9480,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-017_shaman-storm-128.webp",
+      "sha": "a5e2cefc47380e117f5ab874623c26c0371cd2cf",
+      "bytes": 9374,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/classes/premium-specs/GS-CLS-SPEC-018_shaman-primal-128.webp",
+      "sha": "5051fb7bfe977db761182ce3af7e6e66c4232bb8",
+      "bytes": 9404,
+      "type": "repository-asset",
+      "status": "review-art"
+    },
+    {
+      "path": "assets/ui/arcana-preview-icons/activity.svg",
+      "sha": "28929120ba6c3c2460fa537eef0ec43ba1b0c50b",
+      "bytes": 228,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/arcana-preview-icons/character.svg",
+      "sha": "43671bfadcd5e286bfa5b634396fb4e79a6aded7",
+      "bytes": 249,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/arcana-preview-icons/chevron-down.svg",
+      "sha": "fdfe13d8c6d663460ef55fca17a31df370fb0cfa",
+      "bytes": 206,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/arcana-preview-icons/close.svg",
+      "sha": "c02928c9e242a795bc600601a562bbfda5f6afa3",
+      "bytes": 214,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/arcana-preview-icons/eye.svg",
+      "sha": "03ecf568491d3d71642054ddad9c25b6ec5d36e6",
+      "bytes": 277,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/arcana-preview-icons/filter.svg",
+      "sha": "6b48d4bf52cb917f72926a8806a38cc046f9cf3b",
+      "bytes": 218,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/arcana-preview-icons/forge.svg",
+      "sha": "49dc3d5fee22bfa643baaaaf17945cc71388949a",
+      "bytes": 262,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/arcana-preview-icons/home.svg",
+      "sha": "2e2feba839f099bc3531a1347ce742d3fa977b38",
+      "bytes": 251,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/arcana-preview-icons/navigation.svg",
+      "sha": "063a40c902f6e1cfdf1882bf0e57264ca1b6b4c6",
+      "bytes": 273,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/arcana-preview-icons/scroll.svg",
+      "sha": "9b44d1ce686f3711cc0a733d0386ae50cdc7c4dc",
+      "bytes": 302,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/arcana-preview-icons/settings.svg",
+      "sha": "56e58535f244cc9c5d9670e29669c8efa201dc96",
+      "bytes": 353,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/arcana-preview-icons/stash.svg",
+      "sha": "aacfe53a7141657d97d53144cd81528d50e69019",
+      "bytes": 243,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/arcana-reskin.css",
+      "sha": "05ba0d21bec28260f601d14635ca11b62281b74a",
+      "bytes": 20910,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/ui/character.css",
+      "sha": "14d27299057a1024193b2978d58e076910c4807f",
+      "bytes": 11396,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/ui/character.js",
+      "sha": "cf83bd8d0f3fdfd9a3c69a5b27cd03abba85c0d8",
+      "bytes": 13625,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/README.md",
+      "sha": "ef49deb696f6ff53fdbdc87aaf646525db03338e",
+      "bytes": 1695,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CHR-001__frame-header-banner.svg",
+      "sha": "dc6fdddf8e2d23127c68fddb593a076557d019e9",
+      "bytes": 2173,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CHR-002__frame-header-strip.svg",
+      "sha": "077157ad8a3d8db2d7d00cfb7b25c2405e90bc5a",
+      "bytes": 2073,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CHR-003__frame-footer-strip.svg",
+      "sha": "e8059972f74c999d8e2b0d020978e3b2d14371cb",
+      "bytes": 2073,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CHR-004__frame-subsection.svg",
+      "sha": "47cb80d8a2b7242814ff4f5701d5e41827846e09",
+      "bytes": 2167,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CHR-005__inset-subtle.svg",
+      "sha": "3eaf2c0d0b60ce22e7ddc862bb069887fc66ccb4",
+      "bytes": 1367,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CHR-006__inset-strong.svg",
+      "sha": "583df1d50d0e28a555f5acc461411dd223e6ed3e",
+      "bytes": 2270,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CHR-007__inset-double.svg",
+      "sha": "b3a152f822b181926fe7863ee3c18312e65322c5",
+      "bytes": 2270,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-compact.svg",
+      "sha": "4fa874da4dccc0a349fe594cf0e2a32ce8c0ec8a",
+      "bytes": 2066,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-double-rim.svg",
+      "sha": "65cec46ba8ae067d5c1cccec24788904cd45e917",
+      "bytes": 2189,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-etched.svg",
+      "sha": "f958f6ea8251dac5b00a543f6b58936c9b08b127",
+      "bytes": 2063,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-grand.svg",
+      "sha": "f7b1013dc6a33d7fb1eed9aeaad0615960c0aa42",
+      "bytes": 2522,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-hero.svg",
+      "sha": "b73db794c9564cde7da73256fc2a06aac22b0276",
+      "bytes": 2637,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-landscape.svg",
+      "sha": "1515be0f36d4641da370b4944eb82ce81eb7ec8f",
+      "bytes": 2165,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-list-row.svg",
+      "sha": "ddbd6643489783200b9d9737281273c716f0edc8",
+      "bytes": 1260,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-modal.svg",
+      "sha": "3099956895b52d10281d7b429d065f026109c727",
+      "bytes": 2522,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-sidebar.svg",
+      "sha": "284a6988411c57a117da5652cf705733e9b0258e",
+      "bytes": 2063,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-standard.svg",
+      "sha": "347756bad8649abccb89c10c20fabd5269aa141f",
+      "bytes": 2068,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-stats.svg",
+      "sha": "643ab73176801fb2d28dfbffdf2c502130cd6592",
+      "bytes": 2268,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-001__panel-utility.svg",
+      "sha": "1354bb4d4b0411c1d43f72401ba0d6ac84469f38",
+      "bytes": 1258,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-011__panel-tooltip.svg",
+      "sha": "6788dbf7b95b64e42e5dd851b66a70ebc3a814cf",
+      "bytes": 2526,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-012__panel-bottom-sheet.svg",
+      "sha": "b727c4c79be1cf61a55119ce6358f828109577cf",
+      "bytes": 2076,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-013__panel-hunt-option.svg",
+      "sha": "755b572474142baab89f3e49ef2acaa5fe303ba3",
+      "bytes": 2169,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-014__panel-feed.svg",
+      "sha": "fe63349b42308f39876fc1f3ab6bc068fdd8289c",
+      "bytes": 1156,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-015__panel-recap.svg",
+      "sha": "6469610bdfe1c4e6043b5705fd94e0d6e1a250b4",
+      "bytes": 2639,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-018__panel-forge-tile.svg",
+      "sha": "223fd0013c0fcda0e67fcf4ebecd4974434d0127",
+      "bytes": 2167,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-020__panel-location.svg",
+      "sha": "d85af9d5392ba7d685be8ce6b682cce0a0722df8",
+      "bytes": 2528,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/GS-UI-CMP-021__panel-dungeon.svg",
+      "sha": "67a9db385d442b45c84a63f58d537f4ac330193d",
+      "bytes": 2643,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/surface-matte.svg",
+      "sha": "c2e39477c18acb6f27743c3f16b4bf1f2bcd43e3",
+      "bytes": 529,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-01-panels/surface-recessed.svg",
+      "sha": "dbd2d7da648e6939950277b7250004cb5ffd5cf2",
+      "bytes": 507,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CHR-008__button-pill-active.svg",
+      "sha": "a4d66cc2ba87cd15b51166693c0846fa1660db03",
+      "bytes": 1151,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CHR-008__button-pill-default.svg",
+      "sha": "2f5ae5680f68be23b2482d9f256748deb0e86c29",
+      "bytes": 1052,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CHR-008__button-pill-disabled.svg",
+      "sha": "966f553e4e182965be84293d890911886984b86e",
+      "bytes": 1055,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CHR-008__button-pill-hover.svg",
+      "sha": "9b74a8fc5bf1f21bcae5e78c0f2a7d2a8db8025e",
+      "bytes": 1126,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CHR-009__button-icon-octagon.svg",
+      "sha": "49cc2d506e09c9d7976c5dd2b89da6793650c53e",
+      "bytes": 1052,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CHR-009__button-icon-ornate.svg",
+      "sha": "4e867f1e7cee66383b79a8e3f5f28d40e815085c",
+      "bytes": 1229,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CHR-009__button-icon-rounded.svg",
+      "sha": "11d289b6c9b79405f5e08dea6bad38d8c1d0738d",
+      "bytes": 1047,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CHR-009__button-icon-square.svg",
+      "sha": "d38831c86d65133aeb95aaadee46e5e105ebe683",
+      "bytes": 1050,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-002__button-primary-active.svg",
+      "sha": "1deb1115b6c3280e08f45a01f4eec516ddb9ac03",
+      "bytes": 1354,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-002__button-primary-default.svg",
+      "sha": "f50aff909d73ac12e334f73963e9caace5000825",
+      "bytes": 1255,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-002__button-primary-disabled.svg",
+      "sha": "32f8a67ec6623ac5e799b539e06a7472116020ce",
+      "bytes": 1259,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-002__button-primary-hover.svg",
+      "sha": "e0f1755ce11f180e22d53b7fffe26b8378058f69",
+      "bytes": 1329,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-002__button-primary-pressed.svg",
+      "sha": "01f1d777fb96dc77b8f77423a7aee6c3379d0ca6",
+      "bytes": 1333,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-003__button-secondary-active.svg",
+      "sha": "cd770681d7456ca5ad98456062fa45f93b9abad9",
+      "bytes": 1172,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-003__button-secondary-default.svg",
+      "sha": "48c05e82e70dcbd02fe2a0518e30ce7c1d8d417c",
+      "bytes": 1073,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-003__button-secondary-disabled.svg",
+      "sha": "3d542a89703ca6f8feae6e82862f68889b6c188c",
+      "bytes": 1076,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-003__button-secondary-hover.svg",
+      "sha": "41f5664c864a403afbeb490bcf98680c310a2184",
+      "bytes": 1147,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-008__nav-shell-5slot.svg",
+      "sha": "e86bb727e0d271664ed0ab6322dfde2e7864ea5a",
+      "bytes": 1230,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-008__nav-shell-compact.svg",
+      "sha": "f1e4f829905d67c870d03e3f4c1e2d7827c69f2a",
+      "bytes": 1245,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-008__nav-shell-floating.svg",
+      "sha": "cc263536dac35036bd25c1b8546d60bac6333075",
+      "bytes": 1050,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-008__nav-tile-default.svg",
+      "sha": "fc66d4cb59cb508ebb51fe7b15329623a259fd09",
+      "bytes": 1046,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-008__nav-tile-octagon.svg",
+      "sha": "e36d813aa9bb245e29c60395f0532fdaf866658b",
+      "bytes": 1046,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-008__nav-tile-selected.svg",
+      "sha": "0e8ae7b5a296076c99fb73915a4d99ea0bf00220",
+      "bytes": 1148,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-009__tab-arch-active.svg",
+      "sha": "e3305b6af70862836bab93a1e6bd65462aea7649",
+      "bytes": 1254,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-009__tab-arch-idle.svg",
+      "sha": "1f1638d911a48be641e332112d23ea84bd7726f5",
+      "bytes": 1250,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-009__tab-beveled-active.svg",
+      "sha": "6e856bf1bcc3b29ef2581479b022b0f56862814c",
+      "bytes": 1230,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-009__tab-beveled-idle.svg",
+      "sha": "639611ca1d6da548d292dcedd3ed78e13cb4bcf3",
+      "bytes": 1226,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-009__tab-scallop-active.svg",
+      "sha": "fe6f1eabaec03b1182b43d64be1acc27d8f75889",
+      "bytes": 1326,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-009__tab-scallop-idle.svg",
+      "sha": "5eb173ae558bd672ffd518cf3bbe2391426bb472",
+      "bytes": 1322,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-009__tab-standard-active.svg",
+      "sha": "90e055766ecb36feece606baef6d9db1536b8005",
+      "bytes": 1232,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-009__tab-standard-idle.svg",
+      "sha": "0f9838982973502b1978777e73e0499faf24367b",
+      "bytes": 1228,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-017__dropdown-medium.svg",
+      "sha": "00169334ee1c148adbaeeab520307447eadc7073",
+      "bytes": 1318,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-017__dropdown-small.svg",
+      "sha": "81619f81232460e8b77373b246929378e46198db",
+      "bytes": 1129,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-017__dropdown-split.svg",
+      "sha": "cec3384a5733bf16aacc2a428c714212f8c9478c",
+      "bytes": 1130,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-02-controls/GS-UI-CMP-017__dropdown-wide.svg",
+      "sha": "844e40cd59cb1aa76d83cbb03ae428b47ae140c9",
+      "bytes": 1314,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-010__arena-emphasis.svg",
+      "sha": "22ebc70cee892f720104f27bf433f345beb79adb",
+      "bytes": 1161,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-010__arena-quiet.svg",
+      "sha": "b884d6bc28d84366a2d7b9740d35051125724453",
+      "bytes": 1009,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-010__arena-standard.svg",
+      "sha": "06a4e3a4c65da01d0079b0cfcdcd6c1e16bb51f6",
+      "bytes": 1271,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-011__enemy-info-card.svg",
+      "sha": "b9826e78d5089c951d53c19f6b25f4cdaf8d69a1",
+      "bytes": 841,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-012__player-status-card.svg",
+      "sha": "f2e49fbf3a32394142fd9df4b4c0b92b36b459a9",
+      "bytes": 847,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-013__zone-selector.svg",
+      "sha": "74666200e646bcf5d7092fc4807098835feb9365",
+      "bytes": 832,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-014__bar-resource.svg",
+      "sha": "730777e808481816517a0e47b173a181f1b10a71",
+      "bytes": 753,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-015__stat-strip-large.svg",
+      "sha": "1afc1eb13ec95315f6b567ac2ced70f1257abe24",
+      "bytes": 838,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-015__stat-strip-slim.svg",
+      "sha": "b7a04ece21595e9f9f72227c90c614434f435788",
+      "bytes": 749,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-016__label-plate-muted.svg",
+      "sha": "b483eadede65f8f216a08351b992b96e2bf9154a",
+      "bytes": 840,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-016__label-plate-small.svg",
+      "sha": "ff78a67920d4e2577878631470da3c27469b95a6",
+      "bytes": 840,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-016__label-plate-wide.svg",
+      "sha": "fa80d3161a00b7a1b27015309f5da62e1ff8d256",
+      "bytes": 838,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-017__loot-toast.svg",
+      "sha": "95436d66f15f20924365a4930ba8c700676fb2b0",
+      "bytes": 826,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-018__affix-tag.svg",
+      "sha": "73ce4375fe916c4b0b243b708d1eee9ad0c80df0",
+      "bytes": 824,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-018__damage-source-tag.svg",
+      "sha": "23e19a0c76b66a8b05b09e0897d7c9e5f5f74bb6",
+      "bytes": 840,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-019__count-badge.svg",
+      "sha": "65bccec9323c423a179b141392cbfdc99a3eac01",
+      "bytes": 911,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-019__dps-muted.svg",
+      "sha": "686abd9fa299afa00487bac49179b4bce98d7e5d",
+      "bytes": 908,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-019__dps-small.svg",
+      "sha": "2c65b4cc1673a4c2a926077f9b856fb96a29c92a",
+      "bytes": 908,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-020__damage-badge-basic.svg",
+      "sha": "0eb6c08996a10f19fdc7c5a8d64c4bd3a46df724",
+      "bytes": 805,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-020__damage-badge-crest.svg",
+      "sha": "9fd0a4abb272d85c78027d1a46cd64e763da6794",
+      "bytes": 817,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-020__damage-badge-critical.svg",
+      "sha": "5dd765e01db6d9aab91bd976c7e1af4e38fd916d",
+      "bytes": 998,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-020__damage-badge-scroll.svg",
+      "sha": "038f0977a07e9b686d44059adbca7550474fdba8",
+      "bytes": 936,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-020__damage-badge-wing.svg",
+      "sha": "3207d7175fc7949aa7a56f3fa75fbc46a52c9ef3",
+      "bytes": 788,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-004__bar-player-health.svg",
+      "sha": "6d2bef8dd63f6fd8c7bac454e523846d3fa30ac5",
+      "bytes": 763,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-005__bar-enemy-health.svg",
+      "sha": "8661343c449b1077bf32d1c960ee426ab58de58b",
+      "bytes": 761,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-006__bar-experience.svg",
+      "sha": "df4dd62ce58f9bccc8c7cd67fd00792a069e7529",
+      "bytes": 748,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-007__bar-autocast.svg",
+      "sha": "544510e75ce0ae803184459c0ac53dcc0789041b",
+      "bytes": 744,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-016__status-label-etched.svg",
+      "sha": "bea58c4de624c83cff0ffba48a4b5e12b4ef511f",
+      "bytes": 844,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-016__status-label-neutral.svg",
+      "sha": "aa95f4d52a9c24ea65e3b57a70f710c64214a96f",
+      "bytes": 846,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-019__skill-slot-augment.svg",
+      "sha": "15936a9e6b691f2562291514e57a3af78333bf2e",
+      "bytes": 981,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-019__skill-slot-cooldown.svg",
+      "sha": "c8ef502001d43856882334d7b4840b4388edf961",
+      "bytes": 1001,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-019__skill-slot-disabled.svg",
+      "sha": "4822c3cd32cf42f2dc98820204bbe40ec649eaba",
+      "bytes": 983,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-019__skill-slot-emphasis.svg",
+      "sha": "2dffc8378f0ef0dc42f3f280ce9a488503f64a93",
+      "bytes": 1149,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-019__skill-slot-ready.svg",
+      "sha": "1657f1e08c2dc045c066bde4640a7a60351d8e0d",
+      "bytes": 1096,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-019__skill-slot-standard.svg",
+      "sha": "d86b3689de7285a381970b15205426980b7b6f09",
+      "bytes": 1001,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-019__skill-slot-ultimate.svg",
+      "sha": "bffada4f608ca5c4a69f05c9b7de575492ef237d",
+      "bytes": 1131,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-CHR-024__rim-circle-ornate.svg",
+      "sha": "cb8cd5840ca3eb12568ed76050ef062cdfad9b58",
+      "bytes": 1570,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-CHR-024__rim-circle.svg",
+      "sha": "a7229a979dbe68b2d9e8bbc6533ed19f7973f36e",
+      "bytes": 688,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-CHR-024__rim-crest-ornate.svg",
+      "sha": "d3a5a18c432c74a0cf7493886a3f32c7e14a912f",
+      "bytes": 1748,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-CHR-024__rim-hexagon.svg",
+      "sha": "c18d1f2edd03fba56da79434e86ac054067ff01a",
+      "bytes": 762,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-CHR-024__rim-octagon-ornate.svg",
+      "sha": "09d308901e3b310c13adef9fda4cb81c57f71f5a",
+      "bytes": 1662,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-CHR-024__rim-octagon.svg",
+      "sha": "6f34955ef9d7f01bde0aa7f83e1f5fbbf1d1881a",
+      "bytes": 780,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-CHR-024__rim-ribbon.svg",
+      "sha": "ee4b02bf6f7f90e0adc0a90bec49efe86a3b78ab",
+      "bytes": 760,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-CHR-024__rim-shield.svg",
+      "sha": "6fa097a093d342c3863660727575e381fcece53b",
+      "bytes": 850,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-CHR-025__ribbon-curved.svg",
+      "sha": "e8d3ea2220e9c7faea51d6abbe194b6876b7d81f",
+      "bytes": 864,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-CHR-025__ribbon-plaque.svg",
+      "sha": "ed3a2ebbff6e7f34942134877d94191debf4b7f2",
+      "bytes": 789,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-CHR-025__ribbon-ribbon.svg",
+      "sha": "8150ecbed5bae31dbb56e1d7be4c7b71a8c08654",
+      "bytes": 771,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-CMP-010__slot-notch.svg",
+      "sha": "d676a142ed112ef256c0115ef46c542fe0c7a028",
+      "bytes": 875,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-CMP-010__slot-oct.svg",
+      "sha": "0b097c637584e93f6f7badbd5b2ef3f31962a3e7",
+      "bytes": 769,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-CMP-010__slot-ornate-selected.svg",
+      "sha": "1119425cc69937f2a993af3ab7ce65af4ccf8c00",
+      "bytes": 1043,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-CMP-010__slot-ornate.svg",
+      "sha": "d5124e7f1b9fa3b6dd08b340d58e8d473b0378fa",
+      "bytes": 916,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-CMP-010__slot-rounded.svg",
+      "sha": "bac6f6db355a6523579f5437508735e29cc4eb2e",
+      "bytes": 661,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-CMP-010__slot-square-disabled.svg",
+      "sha": "cbf61516703f437cfd2bdd6a9e777861830e4e8a",
+      "bytes": 793,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-CMP-010__slot-square.svg",
+      "sha": "b3a5c9ecf8009f0fd05b3161aa46326b6a3b675c",
+      "bytes": 775,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-003__crest-top-1.svg",
+      "sha": "ef0d676a38d403782e9ea4ae802bd13ce16394a1",
+      "bytes": 1022,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-004__crest-top-2.svg",
+      "sha": "c5816a45409f604f863c2de1b30cd718a3a4c886",
+      "bytes": 1043,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-005__crest-top-3.svg",
+      "sha": "fa93f168fc4714b20dfe7b738fb69883affadde1",
+      "bytes": 1022,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-006__crest-bottom-1.svg",
+      "sha": "431302fa23b8e5a6801c8f7f9840794c0d00ca73",
+      "bytes": 1025,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-007__crest-bottom-2.svg",
+      "sha": "051ff61c3387de71414eca34a569db640eec787d",
+      "bytes": 1046,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-008__crest-bottom-3.svg",
+      "sha": "ff78361808ad3507ca03a58094c8ed9fcc2387e7",
+      "bytes": 1025,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-009__corner-angular-tl.svg",
+      "sha": "5d8f80caf3616b288adb8661957bfc4d726f9d40",
+      "bytes": 942,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-010__corner-angular-tr.svg",
+      "sha": "01a65744f26116695d2f7692a4fba294f55ce024",
+      "bytes": 943,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-011__corner-angular-br.svg",
+      "sha": "e7f5dde137374fac17cfb57e2d7d6b37a9a3f72b",
+      "bytes": 944,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-012__corner-angular-bl.svg",
+      "sha": "5e2a76681140586191c611cb168a8180bb67b08f",
+      "bytes": 944,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-013__corner-rounded-tl.svg",
+      "sha": "d0df2370633f815a3a5db2d14f4d1b0e1930eb8d",
+      "bytes": 948,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-014__corner-rounded-tr.svg",
+      "sha": "359cf3d6c932b54ebd6ee6a4830f1cbac5b8af22",
+      "bytes": 949,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-015__corner-rounded-br.svg",
+      "sha": "22db1b95f2069b56d73c1f75c37fe9e5d424a995",
+      "bytes": 950,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-016__corner-rounded-bl.svg",
+      "sha": "64dafc7dc551867e435a4f90affbea08ae31072d",
+      "bytes": 950,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-017__corner-braced-tl.svg",
+      "sha": "b8ff4e1d9a23e627c3ec611d885b9845d121d594",
+      "bytes": 932,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-018__corner-braced-tr.svg",
+      "sha": "c030deca9fd69516dc3cabe2cc57af231f56e5ba",
+      "bytes": 933,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-019__corner-braced-br.svg",
+      "sha": "5e7601f46f93cc1d6bee27cfec5be537583818d7",
+      "bytes": 934,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-020__corner-braced-bl.svg",
+      "sha": "ba0371d2a8d43a46ed9968f9cb87e64519efaeca",
+      "bytes": 934,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-021__divider-diamond.svg",
+      "sha": "3839eee3673d0360a2fe9a0ea9478422c9605c59",
+      "bytes": 760,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-022__divider-triple.svg",
+      "sha": "1517f0c9b58ba7fcbd6d1cebad36d925399a1f38",
+      "bytes": 1192,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-023__divider-wave.svg",
+      "sha": "a80fa91ec44cb176d1d3be8572eadc7c2cd05310",
+      "bytes": 805,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-024__divider-double.svg",
+      "sha": "6642314f914cbd53ed632dd489b6e40704982bc2",
+      "bytes": 776,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-025__divider-slender.svg",
+      "sha": "be440409cec60e58046c202c4ea3358b83c7da10",
+      "bytes": 759,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-026__divider-star.svg",
+      "sha": "8ca92df63dda4c8855a32cba1e4339829383cfed",
+      "bytes": 852,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-027__divider-petals.svg",
+      "sha": "dd9ace9859ee4523f2c31b21bc92de23d7587161",
+      "bytes": 848,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-028__divider-dash.svg",
+      "sha": "9cd2986d7625990bdd1152b97f05d9c35f8e55a9",
+      "bytes": 775,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-029__divider-trim.svg",
+      "sha": "82dc329c4a1a4a53f3596d514343047e547b2972",
+      "bytes": 750,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-030__divider-etched.svg",
+      "sha": "a097b65c1dcea0869c448a03ebfe4b691bf420bf",
+      "bytes": 802,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-031__edge-fragment-01.svg",
+      "sha": "a1ec8cbd42fa5019c0beb16832721f3b2b65c799",
+      "bytes": 690,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-032__edge-fragment-02.svg",
+      "sha": "99bb4ee932956d2d35edc1b13293034d4d4bcfcb",
+      "bytes": 700,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-033__edge-fragment-03.svg",
+      "sha": "523384b0cdc7e5b0c643be0a112c1bbb186bcc6f",
+      "bytes": 880,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-034__edge-fragment-04.svg",
+      "sha": "37f571117bf15bcbe3840093b5db181da4960baf",
+      "bytes": 664,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-035__edge-fragment-05.svg",
+      "sha": "4f4fad21814a2bc894666c4d579c0f2c00f856c6",
+      "bytes": 698,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-036__edge-fragment-06.svg",
+      "sha": "b761ef659894d1deb58cb455a911e718bf25b2f0",
+      "bytes": 892,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-037__edge-fragment-07.svg",
+      "sha": "4125a0a99e542cff40f24f9467007f598b5af72e",
+      "bytes": 700,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-038__edge-fragment-08.svg",
+      "sha": "cd362855e7a15cb9ac68fe8a3fc92e26c394ed15",
+      "bytes": 678,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-039__edge-fragment-09.svg",
+      "sha": "15fbfb400d2de71474be5acda577838f638ac11f",
+      "bytes": 866,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/batch-04-ornaments/GS-UI-ORN-040__edge-fragment-10.svg",
+      "sha": "5fe65f3bc47b73a71bb618f522727743aeef220d",
+      "bytes": 698,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/catalog/batch-01.json",
+      "sha": "44a5f524061b74c1df083cb7c02a98d999fb963f",
+      "bytes": 9909,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/catalog/batch-02.json",
+      "sha": "a749d17b1a192b2b9ee69c6dbb9ee9f91ec63065",
+      "bytes": 11334,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/catalog/batch-03.json",
+      "sha": "2881f5ce2ad4a8f474ec1baaaab0dc87e4bb6fd0",
+      "bytes": 11535,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/catalog/batch-04.json",
+      "sha": "deeb501d7d26c391eaeb2db50b71160ff74df859",
+      "bytes": 19762,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/ui/gilded-chrome/v1/gilded-chrome.css",
+      "sha": "59c5747c472e54801683671392eee9722bd7d193",
+      "bytes": 1037,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/ui/godscar-premium-live.css",
+      "sha": "4de7350f3dab6e36de1a8b0b9417f12374220216",
+      "bytes": 29306,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/ui/godscar-ui.css",
+      "sha": "74079a8ceb0864c4f8aa3aeb6b8afaaa048b103a",
+      "bytes": 12789,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/ui/hollow-steel-depth.css",
+      "sha": "a860bf4a734b93fc5200e2e0ade5376abe54237c",
+      "bytes": 7815,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/ui/hollow-steel-integration.css",
+      "sha": "4d6945347eae65c0d9adb51bc99ced071f31cea5",
+      "bytes": 14427,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/ui/hollow-steel/batch-01/components.css",
+      "sha": "c7e5637c07ad7241e6804bb5fa1e4e2860198ecc",
+      "bytes": 8063,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/ui/hollow-steel/batch-01/svg/GS-UI-CMP-001_panel-frame.svg",
+      "sha": "ee3f970947ab6c209c287c6423c1d18a430e0f76",
+      "bytes": 880,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/batch-01/svg/GS-UI-CMP-002_primary-default.svg",
+      "sha": "f94b93a213a9876d331be0d96b3311355f21228b",
+      "bytes": 897,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/batch-01/svg/GS-UI-CMP-002_primary-hover.svg",
+      "sha": "ae4770840696fd43c321923bf13a50b407208575",
+      "bytes": 1009,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/batch-01/svg/GS-UI-CMP-002_primary-pressed.svg",
+      "sha": "f5a188ca5aa0d52214a83e9da2243d68f613db80",
+      "bytes": 897,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/batch-01/svg/GS-UI-CMP-003_button-disabled.svg",
+      "sha": "d06da59e549805074e04dc20bc30f8705113e238",
+      "bytes": 890,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/batch-01/svg/GS-UI-CMP-003_secondary-default.svg",
+      "sha": "6c8f613ee7d8052a108ebb030883a41e8a14e24c",
+      "bytes": 891,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/batch-01/svg/GS-UI-CMP-008_nav-idle.svg",
+      "sha": "b59da892b3f5dfa1fabcafd0e201eae1933812c3",
+      "bytes": 993,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/batch-01/svg/GS-UI-CMP-008_nav-selected.svg",
+      "sha": "1481fa9685cf704259d3ac1ffc6c86cb3dce9402",
+      "bytes": 1111,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/batch-01/svg/GS-UI-CMP-009_tab-idle.svg",
+      "sha": "99e395175cfc3b93c9e26a7e4821dc67adf64d6a",
+      "bytes": 985,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/batch-01/svg/GS-UI-CMP-009_tab-selected.svg",
+      "sha": "64d6a2d9689fa81d59a64d32e60b8135b24aae1e",
+      "bytes": 1103,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/batch-01/svg/GS-UI-CMP-010_slot-empty.svg",
+      "sha": "ced08f21054e22eed393c96bc96b1c543c0c6af7",
+      "bytes": 1342,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/batch-01/svg/GS-UI-CMP-010_slot-selected.svg",
+      "sha": "e98dd2e18e11e337fbed65321abd0e7e5a92211b",
+      "bytes": 1454,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/batch-01/svg/surface-grain.svg",
+      "sha": "44ccedc90a9d3ad701ad1b0727eaaa2181aa4b8a",
+      "bytes": 639,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/depth/GS-UI-CMP-001_combat-frame.svg",
+      "sha": "92740e453b239836b07fe24d229298213e70c5e6",
+      "bytes": 1206,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/depth/GS-UI-CMP-001_etched-frame.svg",
+      "sha": "54df9c6ef4358112755d4fd5d5e9e3500bf4696a",
+      "bytes": 971,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/depth/etched-grain.svg",
+      "sha": "ed5f08328ce221de839df95e06a69847e8dc3fe8",
+      "bytes": 603,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/icons/activity.svg",
+      "sha": "f7a241a21e3fe63c21a050a228e663132d1c9208",
+      "bytes": 228,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/icons/character.svg",
+      "sha": "e1ec69dd805f2c6cd7f55b51f032ac1be5372ee5",
+      "bytes": 249,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/icons/chevron-down.svg",
+      "sha": "16d0d9a774bc9a8c042b03f0b4115196de285e69",
+      "bytes": 206,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/icons/close.svg",
+      "sha": "704eab070be6776f7452995d23cb8d0c901a66bb",
+      "bytes": 214,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/icons/eye.svg",
+      "sha": "e2b316d2caa89d82ad51766ec014b525d2248df4",
+      "bytes": 277,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/icons/filter.svg",
+      "sha": "288749b4569888155ac55fd5fa7809311bb79a8a",
+      "bytes": 218,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/icons/forge.svg",
+      "sha": "639edd08de7e5a6aabdd24c854c8d2155935b623",
+      "bytes": 262,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/icons/home.svg",
+      "sha": "2f14646684a1ba00552cd8051829dca508646529",
+      "bytes": 251,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/icons/navigation.svg",
+      "sha": "3ce2f4dcb049e72fa1bf0b700ecde02bf5e2ace0",
+      "bytes": 273,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/icons/scroll.svg",
+      "sha": "3b4483426edd95dd9c517180298b4016f065f56d",
+      "bytes": 302,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/icons/settings.svg",
+      "sha": "cba344b4a935a2601e5397e9364ad36e616f4e62",
+      "bytes": 353,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/hollow-steel/icons/stash.svg",
+      "sha": "3f9f927e990494ff88af5ae90d92d1f7dd491783",
+      "bytes": 243,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/icons/activity.svg",
+      "sha": "be47b86c5a678ca205fbeda1326639c4c2c866da",
+      "bytes": 228,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/icons/character.svg",
+      "sha": "e1a24044cc3c0f6b0f4bba0afda42390d7d1910a",
+      "bytes": 282,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/icons/chevron-down.svg",
+      "sha": "b265feb5d787a467f024019d784840d951602eec",
+      "bytes": 222,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/icons/close.svg",
+      "sha": "767afc2c0428bd241414c8fe63bc8ab919610d7f",
+      "bytes": 223,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/icons/eye.svg",
+      "sha": "b1974d5e77970848a23440db1948168a1059c3de",
+      "bytes": 282,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/icons/filter.svg",
+      "sha": "005a0b57999d82077644828dc31c60c6fcc0ec62",
+      "bytes": 227,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/icons/forge.svg",
+      "sha": "5e13d11725a058dd5117cdc8bcca1250500f334f",
+      "bytes": 262,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/icons/home.svg",
+      "sha": "afd8eec599aeb51d8d8396f8786c6c796b3890bb",
+      "bytes": 236,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/icons/navigation.svg",
+      "sha": "75adf135bcba0023693e2739ceafde0d2b9c0954",
+      "bytes": 253,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/icons/scroll.svg",
+      "sha": "ed20b133bf58e8e8066a384f631975ca5337b447",
+      "bytes": 229,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/icons/settings.svg",
+      "sha": "ce424ace22454ecc027184e246e250886378825f",
+      "bytes": 470,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/icons/stash.svg",
+      "sha": "99453e5bf47234aa6a947bd629e5f051446182af",
+      "bytes": 275,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/menus-v2.css",
+      "sha": "73275837527e4c3fa442176c8ebb17bedc4975c4",
+      "bytes": 11538,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/ui/ornaments/corner.svg",
+      "sha": "cb5bba6f86b6996459f72a58a9849e1561fdcce2",
+      "bytes": 281,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/ornaments/diamond.svg",
+      "sha": "3ead4518c1f36696f86e3cc2f68e233e5d7967ac",
+      "bytes": 279,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/premium-chrome/v2/GS-UI-CMP-001_panel-compact.svg",
+      "sha": "23605fc797f9dddc4af060535fa550892ae89ec4",
+      "bytes": 1976,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/premium-chrome/v2/GS-UI-CMP-001_panel-grand.svg",
+      "sha": "620156e37d5a8103d26e262f15ed9d28b7e6a1de",
+      "bytes": 2159,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/premium-chrome/v2/GS-UI-CMP-001_panel-standard.svg",
+      "sha": "1e3ccce65dd1d99da2e8c345485bcc95eec1bde2",
+      "bytes": 2162,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/premium-chrome/v2/GS-UI-CMP-002_button-primary.svg",
+      "sha": "39e1cb23e0e4f528e68bff93dfa441351b959d79",
+      "bytes": 1954,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/premium-chrome/v2/GS-UI-CMP-003_button-secondary.svg",
+      "sha": "ef0e3493f056ea63fc241f03c8df64a32b3ab97d",
+      "bytes": 1956,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/premium-chrome/v2/GS-UI-CMP-005_enemy-bar-frame.svg",
+      "sha": "43cab29e83d68c0e01b96543809a0d93a00bdb92",
+      "bytes": 1108,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/premium-chrome/v2/GS-UI-CMP-008_nav-tile.svg",
+      "sha": "7ead89841d7a77a26ae0496e41d3d6e328882049",
+      "bytes": 1957,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/premium-chrome/v2/GS-UI-CMP-010_equipment-slot.svg",
+      "sha": "80ec6dca651dc75ea436eca1f468d1fd9160ea12",
+      "bytes": 1976,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/premium-chrome/v2/GS-UI-CMP-011_tooltip-frame.svg",
+      "sha": "2ea6a8ecefe669b3ec3f2baac9c5a9fcef6b9891",
+      "bytes": 1976,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/premium-chrome/v2/GS-UI-ORN-003_gilded-divider.svg",
+      "sha": "837bb441fdb75af8d9f79e1e1b96bc14c5316ec8",
+      "bytes": 435,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/premium-chrome/v2/GS-UI-ORN-004_corner-flourish.svg",
+      "sha": "82e5d2b43e76ad8054b9ee33d8e7571413e56141",
+      "bytes": 557,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/premium-chrome/v2/GS-UI-ORN-005_cardinal-crest.svg",
+      "sha": "0a49562eccba97efab343edbe658a971bc85960c",
+      "bytes": 446,
+      "type": "repository-asset",
+      "status": "svg-source"
+    },
+    {
+      "path": "assets/ui/premium-chrome/v2/GS-UI-TEX-001_micro-grain.png",
+      "sha": "b9346eddd4a2ba4e53e223d386129ed415e2d0b8",
+      "bytes": 6781,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "assets/ui/premium-chrome/v2/fallfields-fogroad-study.webp",
+      "sha": "16ae9e5d0d031fedc6d1d294ca3ba73cb4359c86",
+      "bytes": 9644,
+      "type": "repository-asset",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "gallery/asset-index.js",
+      "sha": "0ff7cdb340d1d66835c65b2cacd39a865ba11685",
+      "bytes": 62335,
+      "type": "gallery-source",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "gallery/asset-index.json",
+      "sha": "530196f7497c597e7f4421b50ceb8a3896c55998",
+      "bytes": 80250,
+      "type": "gallery-source",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "gallery/gallery.css",
+      "sha": "5299bda015a098ceb154e0a4d1c1741e66e88318",
+      "bytes": 13086,
+      "type": "gallery-source",
+      "status": "checked-in-existing"
+    },
+    {
+      "path": "gallery/gallery.js",
+      "sha": "1fe7da6e71996ae74dddfaac19457fcd85898fa0",
+      "bytes": 8130,
+      "type": "gallery-source",
+      "status": "checked-in-existing"
+    }
+  ]
+}
