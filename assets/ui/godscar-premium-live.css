@@ -102,3 +102,12 @@ body.gs-theme .gs-character__skills-placeholder h2{color:#f1d4a8}
 body.gs-theme .gs-character__item-icon{border-radius:6px}
 @media(max-width:380px){body.gs-theme .app{padding-inline:9px}body.gs-theme .gs2-mast-title{font-size:21px}body.gs-theme .zone-line{padding:14px 12px}body.gs-theme .zone-button strong{font-size:17px}body.gs-theme .cast-stack{left:12px;max-width:61%}body.gs-theme .effect-row{right:10px}body.gs-theme .dps-badge strong{font-size:23px}body.gs-theme .nav-button{font-size:9px}}
 @media(prefers-reduced-motion:reduce){body.gs-theme *,body.gs-theme *:before,body.gs-theme *:after{transition:none!important;animation:none!important}}
+
+/* Art-preview-only class gallery. Existing Skills mechanics remain stubbed. */
+body.gs-theme .gs2-class-preview{padding:14px;margin:14px 0;border:1px solid #917048;border-radius:10px;background:linear-gradient(160deg,#233337,#0a171c 73%);box-shadow:inset 0 1px #eed0a137,0 6px 18px #0008}
+body.gs-theme .gs2-class-preview h3{font:500 18px Georgia,serif;margin:1px 0 5px;color:#f1d6ac}
+body.gs-theme .gs2-class-preview p{font-size:10px;color:#bcaa92;line-height:1.45;margin:0 0 12px}
+body.gs-theme .gs2-class-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+body.gs-theme .gs2-class-grid>div{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:8px 5px;border:1px solid #625039;border-radius:7px;background:radial-gradient(circle at 50% 15%,#2e3f40,#111c20 72%)}
+body.gs-theme .gs2-class-grid img{width:68px;height:68px;object-fit:contain;max-width:100%}
+body.gs-theme .gs2-class-grid span{font:600 11px Georgia,serif;color:#f1dcbd}
