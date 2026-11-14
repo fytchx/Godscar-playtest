@@ -1,0 +1,18 @@
+/* Isolated Godscar Gilded Chrome v1 composition helpers, NOT auto-applied to the game UI */
+:root{
+ --chrome-bg:#091116;--chrome-surface:#111E23;--chrome-raise:#182A2F;
+ --chrome-gold:#B7864E;--chrome-light:#F2D19B;
+ --chrome-frame:url("./batch-01-panels/GS-UI-CMP-001__panel-standard.svg");
+ --chrome-combat:url("./batch-03-combat/GS-UI-CHR-010__arena-standard.svg");
+ --chrome-primary:url("./batch-02-controls/GS-UI-CMP-002__button-primary-default.svg");
+ --chrome-tile:url("./batch-01-panels/surface-matte.svg");
+}
+.gs-chrome-frame{
+ border:20px solid transparent;border-image-source:var(--chrome-frame);
+ border-image-slice:34;border-image-width:20px;border-image-repeat:stretch;
+ background:var(--chrome-tile) repeat 0 0/64px 64px;color:#E9D8BB;
+ background-clip:padding-box;
+}
+.gs-chrome-frame[data-frame="combat"]{--chrome-frame:var(--chrome-combat)}
+.gs-chrome-button{--chrome-frame:var(--chrome-primary);border-width:14px;border-image-width:14px}
+.gs-chrome-crest{width:56px;height:24px;object-fit:contain;pointer-events:none}
