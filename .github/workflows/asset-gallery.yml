@@ -1,0 +1,44 @@
+name: Godscar SVG asset gallery validation
+on:
+  push:
+    branches:
+      - art/godscar-asset-gallery
+    paths:
+      - gallery/**
+      - index.html
+      - scripts/validate_asset_gallery.py
+      - scripts/smoke_asset_gallery.mjs
+      - .github/workflows/asset-gallery.yml
+      - assets/classes/concept-02/**
+      - assets/ui/gilded-chrome/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-and-render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Check all 223 original SVG paths and XML files
+        run: python3 scripts/validate_asset_gallery.py
+      - name: Install headless-browser driver
+        run: npm install --no-save --no-package-lock puppeteer-core
+      - name: Check gallery on phone and desktop and capture screenshots
+        run: |
+          PORT=8080 node preview-server.mjs >/tmp/godscar-gallery-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          sleep 2
+          node scripts/smoke_asset_gallery.mjs
+      - name: Upload review screenshots and catalog
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: godscar-asset-gallery-review
+          path: |
+            screenshots/asset-gallery-*.png
+            gallery/asset-index.json
+          if-no-files-found: ignore
