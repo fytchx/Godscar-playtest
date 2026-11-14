@@ -2,10 +2,9 @@
 // Character UI skeleton. Sample values only. No sim imports, gameplay writes, or saving.
 (function () {
   const $ = id => document.getElementById(id);
-  const screen = $('characterScreen');
-  if (!screen) return;
-  const tabs = ['equipment','inventory','skills'];
-  const inventoryTabs = ['items','materials'];
+  const screen = $('characterScreen'), stash = $('stashScreen');
+  if (!screen || !stash) return;
+  const tabs = ['equipment','skills'], stashTabs = ['items','materials'];
   const slotPaths = {
     Weapon:'<path d="M17 3 21 7 10 18 6 14Z M7 17l-4 4 M5 12l7 7"/>',
     Helmet:'<path d="M4 16v-4a8 8 0 0 1 16 0v4H4Z M3 16h18 M9 16v4m6-4v4"/>',
@@ -45,32 +44,39 @@
     {name:'Warden Belt',slot:'Belt',rarity:'rare',stats:'+40 Max HP'},
     {name:'Travel Boots',slot:'Boots',rarity:'common',stats:'+8 Armor'}
   ];
-  $('characterItemsList').innerHTML=items.map((item,i)=>'<button type="button" class="gs-character__item" data-item-index="'+i+'" data-rarity="'+item.rarity+'" aria-label="Inspect '+item.name+'"><span class="gs-character__item-icon">'+icon(item.slot)+'</span><span class="gs-character__item-name">'+item.name+'</span></button>').join('');
+  $('stashItemsList').innerHTML=items.map((item,i)=>'<button type="button" class="gs-character__item" data-item-index="'+i+'" data-rarity="'+item.rarity+'" aria-label="Inspect '+item.name+'"><span class="gs-character__item-icon">'+icon(item.slot)+'</span><span class="gs-character__item-name">'+item.name+'</span></button>').join('');
   const materials=[['Scar Shards','146','◇'],['Ember Essence','8','✹'],['Dawn Essence','5','✦'],['Grave Resin','32','◆'],['Witchglass Dust','17','✧']];
-  $('characterMaterialsList').innerHTML=materials.map(m=>'<div class="gs-character__material"><span class="gs-character__material-icon" aria-hidden="true">'+m[2]+'</span><span class="gs-character__material-name">'+m[0]+'</span><strong class="gs-character__material-count">'+m[1]+'</strong></div>').join('');
+  $('stashMaterialsList').innerHTML=materials.map(m=>'<div class="gs-character__material"><span class="gs-character__material-icon" aria-hidden="true">'+m[2]+'</span><span class="gs-character__material-name">'+m[0]+'</span><strong class="gs-character__material-count">'+m[1]+'</strong></div>').join('');
+
   const homeNav=document.querySelector('.bottom-nav .nav-button:first-child');
-  const characterNav=$('characterNav');
+  const characterNav=$('characterNav'),stashNav=$('stashNav');
   let lastFocus=null;
-  function markNav(active) {
-    if(homeNav) {homeNav.classList.toggle('active',!active);if(active)homeNav.removeAttribute('aria-current');else homeNav.setAttribute('aria-current','page')}
-    if(characterNav) {characterNav.classList.toggle('active',active);if(active)characterNav.setAttribute('aria-current','page');else characterNav.removeAttribute('aria-current')}
+  function markNav(view){
+    [[homeNav,'home'],[characterNav,'character'],[stashNav,'stash']].forEach(([button,name])=>{
+      if(!button)return;
+      const active=view===name;
+      button.classList.toggle('active',active);
+      if(active)button.setAttribute('aria-current','page');
+      else button.removeAttribute('aria-current');
+    });
   }
-  function selectMain(tab) {
+  function selectMain(tab){
     if(!tabs.includes(tab))return;
-    for(const name of tabs){
-      const active=name===tab,button=screen.querySelector('[data-character-tab="'+name+'"]'),panel=$('char'+name[0].toUpperCase()+name.slice(1));
-      button.classList.toggle('active',active);button.setAttribute('aria-selected',String(active));button.tabIndex=active?0:-1;panel.hidden=!active;
-    }
-    if(tab==='inventory')selectInventory('items');
+    tabs.forEach(name=>{
+      const active=name===tab,btn=screen.querySelector('[data-character-tab="'+name+'"]'),panel=$('char'+name[0].toUpperCase()+name.slice(1));
+      btn.classList.toggle('active',active);btn.setAttribute('aria-selected',String(active));
+      btn.tabIndex=active?0:-1;panel.hidden=!active;
+    });
     $('characterViewport').scrollTop=0;
   }
-  function selectInventory(tab) {
-    if(!inventoryTabs.includes(tab))return;
-    for(const name of inventoryTabs) {
-      const active=name===tab,button=screen.querySelector('[data-inventory-tab="'+name+'"]'),panel=$('char'+name[0].toUpperCase()+name.slice(1));
-      button.classList.toggle('active',active);button.setAttribute('aria-selected',String(active));button.tabIndex=active?0:-1;panel.hidden=!active;
-    }
-    $('characterViewport').scrollTop=0;
+  function selectStash(tab){
+    if(!stashTabs.includes(tab))return;
+    stashTabs.forEach(name=>{
+      const active=name===tab,btn=stash.querySelector('[data-stash-tab="'+name+'"]'),panel=$('stash'+name[0].toUpperCase()+name.slice(1));
+      btn.classList.toggle('active',active);btn.setAttribute('aria-selected',String(active));
+      btn.tabIndex=active?0:-1;panel.hidden=!active;
+    });
+    $('stashViewport').scrollTop=0;
   }
   function closeDetails(){
     $('characterDetailsLayer').hidden=true;
@@ -82,49 +88,82 @@
     $('characterDetailsTrigger').setAttribute('aria-expanded','true');
     $('characterDetailsClose').focus({preventScroll:true});
   }
+
   function closeItem(){ $('characterItemLayer').hidden=true; }
   function showItem(item,slot){
     $('characterItemTitle').textContent=item?item.name:slot;
     $('characterItemSubtitle').textContent=item?item.rarity.toUpperCase()+' · '+slot:'EMPTY EQUIPMENT SLOT';
     $('characterItemStats').textContent=item?item.stats:'Nothing equipped in this slot.';
+    // One shared item detail dialog; attach it to whichever overlay is visible.
+    (screen.hidden?stash:screen).appendChild($('characterItemLayer'));
     $('characterItemLayer').hidden=false;
     $('characterItemClose').focus({preventScroll:true});
   }
+  function hideCharacter(){
+    if(screen.hidden)return;
+    closeItem();
+    $('characterDetailsLayer').hidden=true;
+    $('characterDetailsTrigger').setAttribute('aria-expanded','false');
+    screen.hidden=true;screen.setAttribute('aria-hidden','true');
+    document.body.classList.remove('gs-character-open');
+  }
+  function hideStash(){
+    if(stash.hidden)return;
+    closeItem();stash.hidden=true;stash.setAttribute('aria-hidden','true');
+  }
+  function restoreFocus(){
+    if(lastFocus&&lastFocus.isConnected)lastFocus.focus({preventScroll:true});
+    else if(homeNav)homeNav.focus({preventScroll:true});
+  }
   window.openCharacter=function(){
     if(!screen.hidden)return;
-    lastFocus=document.activeElement;
+    lastFocus=document.activeElement;hideStash();
     screen.hidden=false;screen.setAttribute('aria-hidden','false');
     document.body.classList.add('gs-character-open');
-    markNav(true);selectMain('equipment');
+    markNav('character');selectMain('equipment');
     $('charTabEquipment').focus({preventScroll:true});
   };
   window.closeCharacter=function(){
     if(screen.hidden)return;
-    closeItem();
-    if(!$('characterDetailsLayer').hidden)closeDetails();
-    screen.hidden=true;screen.setAttribute('aria-hidden','true');
-    document.body.classList.remove('gs-character-open');
-    markNav(false);
-    if(lastFocus&&lastFocus.isConnected)lastFocus.focus({preventScroll:true});
+    hideCharacter();markNav('home');restoreFocus();
+  };
+  window.openStash=function(tab='items'){
+    if(!stash.hidden){selectStash(tab);return;}
+    lastFocus=document.activeElement;hideCharacter();
+    stash.hidden=false;stash.setAttribute('aria-hidden','false');
+    markNav('stash');selectStash(tab);
+    (tab==='materials'?$('stashTabMaterials'):$('stashTabItems')).focus({preventScroll:true});
+  };
+  window.closeStash=function(){
+    if(stash.hidden)return;
+    hideStash();markNav('home');restoreFocus();
+  };
+  window.goHome=function(){
+    hideCharacter();hideStash();markNav('home');
+    if(homeNav)homeNav.focus({preventScroll:true});
   };
   $('characterClose').addEventListener('click',window.closeCharacter);
+  $('stashClose').addEventListener('click',window.closeStash);
   screen.querySelectorAll('[data-character-tab]').forEach(button=>button.addEventListener('click',()=>selectMain(button.dataset.characterTab)));
-  screen.querySelectorAll('[data-inventory-tab]').forEach(button=>button.addEventListener('click',()=>selectInventory(button.dataset.inventoryTab)));
+  stash.querySelectorAll('[data-stash-tab]').forEach(button=>button.addEventListener('click',()=>selectStash(button.dataset.stashTab)));
   $('characterDetailsTrigger').addEventListener('click',openDetails);
   $('characterDetailsClose').addEventListener('click',closeDetails);
   $('characterDetailsDismiss').addEventListener('click',closeDetails);
   $('characterItemClose').addEventListener('click',closeItem);
   $('characterItemDismiss').addEventListener('click',closeItem);
   $('characterEquipmentGrid').addEventListener('click',event=>{
-    const button=event.target.closest('[data-slot]');if(button)showItem(equipped[button.dataset.slot],button.dataset.slot);
+    const button=event.target.closest('[data-slot]');
+    if(button)showItem(equipped[button.dataset.slot],button.dataset.slot);
   });
-  $('characterItemsList').addEventListener('click',event=>{
-    const button=event.target.closest('[data-item-index]');if(button){const item=items[Number(button.dataset.itemIndex)];if(item)showItem(item,item.slot)}
+  $('stashItemsList').addEventListener('click',event=>{
+    const button=event.target.closest('[data-item-index]');
+    if(button){const item=items[Number(button.dataset.itemIndex)];if(item)showItem(item,item.slot);}
   });
   document.addEventListener('keydown',event=>{
-    if(screen.hidden||event.key!=='Escape')return;
+    if(event.key!=='Escape'||(screen.hidden&&stash.hidden))return;
     if(!$('characterItemLayer').hidden)closeItem();
-    else if(!$('characterDetailsLayer').hidden)closeDetails();
-    else window.closeCharacter();
+    else if(!screen.hidden&&!$('characterDetailsLayer').hidden)closeDetails();
+    else if(!screen.hidden)window.closeCharacter();
+    else window.closeStash();
   });
 })();
