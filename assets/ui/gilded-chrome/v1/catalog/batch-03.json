@@ -1,0 +1,331 @@
+{
+  "batch": 3,
+  "name": "Combat, status, bars and floating badges",
+  "status": "SOURCE_CREATED_AWAITING_PHONE_REVIEW",
+  "files": [
+    {
+      "id": "GS-UI-CHR-010__arena-standard",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-010__arena-standard.svg",
+      "use": "Combat frame normal",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-010__arena-emphasis",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-010__arena-emphasis.svg",
+      "use": "Emphasized battle frame",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-010__arena-quiet",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-010__arena-quiet.svg",
+      "use": "Low ornament arena",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CMP-019__skill-slot-standard",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-019__skill-slot-standard.svg",
+      "use": "Skill container normal",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CMP-019__skill-slot-emphasis",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-019__skill-slot-emphasis.svg",
+      "use": "Skill emphasized",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CMP-019__skill-slot-cooldown",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-019__skill-slot-cooldown.svg",
+      "use": "Skill cooldown",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CMP-019__skill-slot-ready",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-019__skill-slot-ready.svg",
+      "use": "Skill ready",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CMP-019__skill-slot-disabled",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-019__skill-slot-disabled.svg",
+      "use": "Skill disabled",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CMP-019__skill-slot-ultimate",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-019__skill-slot-ultimate.svg",
+      "use": "Important skill slot",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CMP-019__skill-slot-augment",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-019__skill-slot-augment.svg",
+      "use": "Augment slot",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-011__enemy-info-card",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-011__enemy-info-card.svg",
+      "use": "Enemy name/type/health region",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-012__player-status-card",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-012__player-status-card.svg",
+      "use": "Player status row",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-013__zone-selector",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-013__zone-selector.svg",
+      "use": "Zone hunt control",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CMP-004__bar-player-health",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-004__bar-player-health.svg",
+      "use": "Player health shell",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CMP-005__bar-enemy-health",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-005__bar-enemy-health.svg",
+      "use": "Enemy health shell",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CMP-006__bar-experience",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-006__bar-experience.svg",
+      "use": "XP shell",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CMP-007__bar-autocast",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-007__bar-autocast.svg",
+      "use": "Autocast shell",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-014__bar-resource",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-014__bar-resource.svg",
+      "use": "Future resource bar chrome only",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-015__stat-strip-large",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-015__stat-strip-large.svg",
+      "use": "Stat strip",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-015__stat-strip-slim",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-015__stat-strip-slim.svg",
+      "use": "Narrow stat strip",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CMP-016__status-label-neutral",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-016__status-label-neutral.svg",
+      "use": "Status tag neutral",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CMP-016__status-label-etched",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CMP-016__status-label-etched.svg",
+      "use": "Status tag steel",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-016__label-plate-wide",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-016__label-plate-wide.svg",
+      "use": "Wide label plate",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-016__label-plate-small",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-016__label-plate-small.svg",
+      "use": "Small label plate",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-016__label-plate-muted",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-016__label-plate-muted.svg",
+      "use": "Muted label plate",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-017__loot-toast",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-017__loot-toast.svg",
+      "use": "Loot notification",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-018__damage-source-tag",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-018__damage-source-tag.svg",
+      "use": "Source tag",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-018__affix-tag",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-018__affix-tag.svg",
+      "use": "Affix tag",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-019__count-badge",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-019__count-badge.svg",
+      "use": "DPS / count badge",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-019__dps-small",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-019__dps-small.svg",
+      "use": "Small DPS badge",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-019__dps-muted",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-019__dps-muted.svg",
+      "use": "Secondary count badge",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-020__damage-badge-basic",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-020__damage-badge-basic.svg",
+      "use": "Damage number frame",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-020__damage-badge-wing",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-020__damage-badge-wing.svg",
+      "use": "Impact damage badge",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-020__damage-badge-scroll",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-020__damage-badge-scroll.svg",
+      "use": "Decorative number badge",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-020__damage-badge-crest",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-020__damage-badge-crest.svg",
+      "use": "Critical badge",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    },
+    {
+      "id": "GS-UI-CHR-020__damage-badge-critical",
+      "path": "assets/ui/gilded-chrome/v1/batch-03-combat/GS-UI-CHR-020__damage-badge-critical.svg",
+      "use": "Major critical hit badge",
+      "source": "new original SVG",
+      "status": "review",
+      "production": false,
+      "render": "scalable frame only"
+    }
+  ]
+}
