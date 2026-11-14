@@ -39,3 +39,12 @@ A **single downloadable consolidated master package** containing those chat-gene
 Future final masters should be committed to a dedicated `assets/production/` path with stable ID, actual pixel size and alpha QA, plus individual optimized exports. Update this index and `docs/ASSET-MANIFEST.md` carefully. Preserve all existing IDs and do not promote proposal names/mechanics into established gameplay.
 
 This consolidation creates **a library branch, not a deployment or gameplay integration**. The main branch, simulation and Railway service remain unchanged.
+## Persistent one-place Library copy
+
+The complete conversation-produced master archive and its searchable gallery have also been uploaded to the user's personal ChatGPT Library folder **`/Godscar/Asset Vault`**:
+- `Godscar_ALL_ASSETS_Master_Vault.zip` (full chat-source archive including latest corrected concepts, one HQ independent master, original atlases, later posters as references, old broken v1 isolated as legacy)
+- `Godscar_Master_Vault_Previews.zip` (light mobile preview)
+- `Godscar_Master_Asset_Gallery.html` (self-contained local previews plus online links to this GitHub branch)
+- `Godscar_Master_Asset_Manifest.csv` and `Godscar_Master_Asset_Vault_README.md`
+
+**Source boundary:** Library has the chat-generated binary exports; this GitHub vault branch stores the *existing checked-in* UI and class assets. The Library master ZIP points here for those GitHub files, not an offline binary duplication of them. No false production approval or gameplay implementation is implied.
