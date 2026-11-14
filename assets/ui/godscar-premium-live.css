@@ -44,7 +44,7 @@ body.gs-theme .cast-row strong{font:600 11px Georgia,serif;color:#f5e4cd;letter-
 body.gs-theme .cast-row .skill-icon{width:29px;height:29px;display:grid;place-items:center;border:1px solid #ba8a53;background:linear-gradient(#1f2930,#0c151a);border-radius:5px;box-shadow:inset 0 0 0 2px #0d1619,0 2px 4px #0009}
 body.gs-theme .cast-track{height:7px;border-radius:8px;background:linear-gradient(90deg,#1e2a2b,#10191d00);border:0;box-shadow:none}
 body.gs-theme .cast-track i{border-radius:8px;box-shadow:0 0 7px currentColor}
-body.gs-theme .cast-row:nth-child(5){display:none} /* four found examples + subdued attack, no sixth ability */
+/* Five mock cast rows: four illustrative weapon skills + subdued attack. No hidden rows. */
 body.gs-theme .effect-row{right:17px;top:18px;z-index:5;display:grid;gap:7px}
 body.gs-theme .effect-chip{border:1px solid #8b7255;border-radius:5px;background:linear-gradient(#182933,#0b161c);box-shadow:inset 0 1px #f7d7a522;font:600 10px Georgia,serif;min-height:24px}
 body.gs-theme .enemy-art-slot{background:radial-gradient(ellipse at 50% 65%,#51646621,transparent 72%);z-index:3}
@@ -127,3 +127,22 @@ body.gs-theme .gs2-spec-entry{min-width:0;display:flex;flex-direction:column;ali
 body.gs-theme .gs2-spec-entry img{width:min(100%,82px);height:auto;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 3px 5px #0008)}
 body.gs-theme .gs2-spec-entry span{font:600 11px Georgia,serif;color:#edddc8;white-space:nowrap}
 body.gs-theme .gs2-spec-entry small{font:600 8px system-ui,sans-serif;color:#bb9d70;text-transform:uppercase;letter-spacing:.05em}
+
+/* Real SVG frame layers for common production components. Source geometry is stored separately. */
+body.gs-theme .zone-line:before,body.gs-theme .enemy-summary:before,body.gs-theme .dps-badge:before,
+body.gs-theme .gs-character__stats:before,body.gs-theme .gs-character__skills-placeholder:before{
+ content:"";position:absolute;inset:0;pointer-events:none;background:var(--gs2-compact) center/100% 100% no-repeat;opacity:.4;z-index:1}
+body.gs-theme .zone-line>* ,body.gs-theme .enemy-summary>* ,body.gs-theme .dps-badge>*{position:relative;z-index:2}
+body.gs-theme .enemy-summary,body.gs-theme .dps-badge,body.gs-theme .gs-character__stats,body.gs-theme .gs-character__skills-placeholder{position:relative}
+body.gs-theme .nav-button{position:relative;background-image:linear-gradient(155deg,#263a3e9c,#0a151bde),url("premium-chrome/v2/GS-UI-CMP-008_nav-tile.svg");background-size:100% 100%;background-position:center}
+body.gs-theme .nav-button.active{background-image:linear-gradient(155deg,#52412b87,#15282b9e),url("premium-chrome/v2/GS-UI-CMP-008_nav-tile.svg")}
+body.gs-theme .details-button,body.gs-theme .primary-button,body.gs-theme .secondary-button,body.gs-theme .view-loot{
+ background-image:linear-gradient(155deg,#2e2a2644,#111f25a8),url("premium-chrome/v2/GS-UI-CMP-002_button-primary.svg");background-size:100% 100%;background-position:center}
+body.gs-theme .secondary-button{background-image:linear-gradient(155deg,#18252e59,#0d1a2199),url("premium-chrome/v2/GS-UI-CMP-003_button-secondary.svg")}
+body.gs-theme .gs-character__slot-visual{background-image:radial-gradient(circle at 50% 35%,#34434b70,#111d23c4 70%),url("premium-chrome/v2/GS-UI-CMP-010_equipment-slot.svg");background-size:100% 100%}
+body.gs-theme .gs2-avenger-hero{display:flex;align-items:center;gap:12px;padding:12px;margin:14px 0;border:1px solid #b18b5c;border-radius:11px;background:radial-gradient(ellipse at 12% 45%,#5b4b2988,#122227 65%);box-shadow:inset 0 1px #ffdd9c33,0 7px 18px #0007}
+body.gs-theme .gs2-avenger-hero img{width:100px;height:100px;object-fit:contain;flex:none;filter:drop-shadow(0 3px 9px #e1b25233)}
+body.gs-theme .gs2-avenger-hero strong{display:block;font:500 19px Georgia,serif;color:#ffe2aa}
+body.gs-theme .gs2-avenger-hero span{display:block;font:500 11px Georgia,serif;color:#efc581;margin-top:4px}
+body.gs-theme .gs2-avenger-hero p{margin:7px 0 0;font-size:10px;line-height:1.4;color:#c1b39d}
+@media(max-width:360px){body.gs-theme .gs2-avenger-hero img{height:83px;width:83px}body.gs-theme .gs2-avenger-hero strong{font-size:17px}}
