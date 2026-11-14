@@ -1,6 +1,7 @@
 # Godscar UI: Arcana-inspired redesign (review proposal)
 
 **Status:** PROPOSED / NOT YET APPROVED. The approved baseline remains on main.
+**Latest owner decision (2026-11-13):** Hollow Steel is the APPROVED UI palette. See `docs/UI-PALETTE-HOLLOW-STEEL.md`. The branch's violet colors are an OLD exploratory implementation, not the selected palette; recoloring and mobile review are next.
 **Branch:** ui/arcana-inspired-reskin.
 **Scope:** Reusable interface visual language across the existing mock Fight and Character screens. No simulation, no gameplay, no deployment.
 
