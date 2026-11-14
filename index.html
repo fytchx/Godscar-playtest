@@ -492,7 +492,29 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
 .gs-theme .gs-panel .rarity-rare{color:#79b8e5}
 .gs-theme .gs-panel .rarity-epic{color:#c08af1}
 .gs-theme .gs-panel .rarity-legendary{color:#e3bc6e}
-@media(max-width:360px){.gs-theme .cast-row{grid-template-columns:20px minmax(0,1fr)}.gs-theme .cast-row .skill-icon.gs-slot{width:19px;height:19px}.gs-theme .nav-button.gs-nav-item{min-height:49px}}
+/* UI control polish: use the same small bronze checkbox throughout Fight panels. */
+.gs-theme .rotation-header{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:4px 2px 9px}
+.gs-theme .rotation-header strong{font:700 12px/1.2 Georgia,serif;color:#eedbbd}
+.gs-theme .rotation-header span{padding:5px 8px;white-space:nowrap;border:1px solid #856640;background:#30251b;color:#e0ba7e;font-size:9px;font-weight:750;letter-spacing:.04em}
+.gs-theme .panel-help{line-height:1.5}
+.gs-theme .enemy-options{gap:8px}
+.gs-theme .enemy-option .enemy-detail-line:last-child strong{color:#e0bd82}
+.gs-theme .check-wrap.gs-checkbox{min-height:36px;gap:7px;padding:0 2px;white-space:nowrap;font-size:9px;color:#e6d6b9;cursor:pointer}
+.gs-theme .check-wrap.gs-checkbox .gs-checkbox__mark{width:20px;height:20px}
+.gs-theme .check-wrap.gs-checkbox input,.gs-theme .filter-option.gs-checkbox input,.gs-theme .recap-footer .gs-checkbox input{width:1px;height:1px;margin:0}
+.gs-theme .filter-option.gs-checkbox{min-height:44px;gap:12px;padding:9px 3px;font-size:11px;font-weight:650}
+.gs-theme .filter-option.gs-checkbox > span:first-child{flex:1;min-width:0}
+.gs-theme .filter-option.gs-checkbox .gs-checkbox__mark{margin-left:auto}
+.gs-theme .recap-footer label.gs-checkbox{display:flex;align-items:center;min-height:40px;gap:8px;font-size:10px;line-height:1.25;cursor:pointer}
+.gs-theme .recap-footer label.gs-checkbox .gs-checkbox__mark{width:18px;height:18px}
+.gs-theme .feed-list .event.gs-feed__row{font-size:10px;line-height:1.35}
+.gs-theme .feed-list .event-time{font-variant-numeric:tabular-nums}
+@media(max-width:360px){
+ .gs-theme .cast-row{grid-template-columns:20px minmax(0,1fr)}
+ .gs-theme .cast-row .skill-icon.gs-slot{width:19px;height:19px}
+ .gs-theme .nav-button.gs-nav-item{min-height:49px}
+ .gs-theme .check-wrap.gs-checkbox{gap:5px;font-size:8px}
+}
 </style>
 </head>
 <body class="gs-theme">
@@ -606,7 +628,8 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
     <div class="panel-body">
       <label class="zone-select-label" for="zoneSelect">Browse a zone</label>
       <div class="gs-select"><select id="zoneSelect" onchange="browseZone(this.value)"></select></div>
-      <p class="panel-help">Changing zones here does not interrupt your current hunt. Select an enemy in another zone to move the rotation there. Choose up to four enemies from one zone.</p>
+      <p class="panel-help">Browsing zones won't interrupt combat. Selecting an enemy in another zone moves your hunt there. Choose one to four enemies.</p>
+      <div class="rotation-header"><strong>Hunt rotation</strong><span id="rotationCount" aria-live="polite">3 / 4 selected</span></div>
       <div class="enemy-options" id="enemyOptions"></div>
     </div>
   </div>
@@ -655,7 +678,7 @@ body.gs-theme {background:radial-gradient(ellipse 90% 48% at 50% -12%,#57442a62 
       </div>
     </div>
     <div class="recap-section"><h3>Notable events</h3><div class="panel-help">Paladin reached level 2 · 1 death · rare crafting material found</div></div>
-    <div class="recap-footer"><label><input id="recapDisable" type="checkbox" onchange="setRecapSetting(!this.checked)">Don’t show this on launch</label><button class="primary-button gs-button gs-button--active" onclick="closePanel('recapPanel')">CLOSE</button></div>
+    <div class="recap-footer"><label class="gs-checkbox"><input id="recapDisable" type="checkbox" onchange="setRecapSetting(!this.checked)"><span class="gs-checkbox__mark" aria-hidden="true"></span>Don’t show this on launch</label><button class="primary-button gs-button gs-button--active" onclick="closePanel('recapPanel')">CLOSE</button></div>
   </div>
 </div>
 
@@ -710,10 +733,11 @@ function showToast(message){const n=document.getElementById("toast");n.textConte
 function setRecapSetting(show){recapEnabled=show;writePref("godscar-show-recap",show);const c=document.getElementById("recapDisable");const s=document.getElementById("recapSetting");if(c)c.checked=!show;if(s)s.checked=show}
 function drawZonePanel(){
  const select=document.getElementById("zoneSelect");
+ const count=document.getElementById("rotationCount");if(count)count.textContent=selectedIds.length+" / 4 selected";
  select.innerHTML=zoneNames.map(z=>'<option value="'+z+'" '+(z===browseName?'selected':'')+'>'+z+'</option>').join("");
  const rows=zones[browseName].map(e=>{
   const checked=selectedIds.includes(e.id),activeZone=activeEnemies()[0]?.zone;
-  return '<article class="enemy-option '+(checked?'chosen ':'')+(e.locked?'locked':'')+'"><div class="enemy-option-top"><div><div class="enemy-option-name">'+e.name+'</div><div class="enemy-option-meta">'+e.kind+'</div></div>'+(e.locked?'<span class="lock-mark">🔒 LOCKED</span>':'<label class="check-wrap"><input type="checkbox" '+(checked?'checked':'')+' onchange="toggleEnemy(\''+e.id+'\')"> '+(checked?'SELECTED':'SELECT')+'</label>')+'</div><div class="enemy-detail-line"><span class="type-chip">'+e.status+' · '+e.type+'</span><span class="weak-chip">Weak to '+e.weak.join(', ')+'</span></div><div class="enemy-detail-line">Potential drop: <strong>'+e.drop+'</strong>'+(activeZone&&activeZone!==browseName&&!checked?' · Select to move hunt here':'')+'</div></article>';
+  return '<article class="enemy-option '+(checked?'chosen ':'')+(e.locked?'locked':'')+'"><div class="enemy-option-top"><div><div class="enemy-option-name">'+e.name+'</div><div class="enemy-option-meta">'+e.kind+'</div></div>'+(e.locked?'<span class="lock-mark">🔒 LOCKED</span>':'<label class="check-wrap gs-checkbox"><input type="checkbox" aria-label="Hunt '+e.name+'" '+(checked?'checked':'')+' onchange="toggleEnemy(\''+e.id+'\')"><span class="gs-checkbox__mark" aria-hidden="true"></span><span>'+(checked?'SELECTED':'SELECT')+'</span></label>')+'</div><div class="enemy-detail-line"><span class="type-chip">'+e.status+' · '+e.type+'</span><span class="weak-chip">Weak to '+e.weak.join(', ')+'</span></div><div class="enemy-detail-line">Potential drop: <strong>'+e.drop+'</strong>'+(activeZone&&activeZone!==browseName&&!checked?' · Select to move hunt here':'')+'</div></article>';
  }).join("");
  document.getElementById("enemyOptions").innerHTML=rows;
 }
@@ -753,7 +777,7 @@ function renderFeed(){
  list.innerHTML=feedEvents.filter(e=>filters[e.type]).map(e=>'<div class="event gs-feed__row '+e.type+'"><span class="event-icon gs-event-icon">'+e.icon+'</span><span class="event-text gs-event-text">'+e.text+'</span><span class="event-time">'+e.time+'</span></div>').join("");
 }
 function drawFilterPanel(){
- document.getElementById("filterOptions").innerHTML=Object.keys(filterNames).map(k=>'<label class="filter-option">'+filterNames[k]+'<input type="checkbox" '+(filters[k]?'checked':'')+' onchange="filters[\''+k+'\']=this.checked;renderFeed()"></label>').join("");
+ document.getElementById("filterOptions").innerHTML=Object.keys(filterNames).map(k=>'<label class="filter-option gs-checkbox"><span>'+filterNames[k]+'</span><input type="checkbox" '+(filters[k]?'checked':'')+' onchange="filters[\''+k+'\']=this.checked;renderFeed()"><span class="gs-checkbox__mark" aria-hidden="true"></span></label>').join("");
 }
 function toggleDetails(){
  const box=document.getElementById("detailsCard"),button=document.getElementById("detailsButton");
