@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#11191D"><title>Godscar | Hollow Steel | SVG Batch 01</title>
+<link rel="stylesheet" href="../assets/ui/hollow-steel/batch-01/components.css"></head>
+<body>
+<main class="hs-sheet">
+<header class="hs-head"><div><div class="hs-overline">Godscar / Asset Workshop</div><div class="hs-brand">HOLLOW STEEL</div></div><div class="hs-mark" aria-hidden="true">◇</div></header>
+<section class="hs-hero"><div class="hs-overline">Component study · 01</div><h1>Quietly forged.</h1>
+<p class="hs-lead">Refined SVG edges, understated texture and tactile surfaces. Actual scalable components, not flattened mockups. The approved palette; proposed material treatment.</p>
+<div class="hs-swatches">
+<div class="hs-swatch"><b style="background:#11191D"></b><span>Ink</span></div>
+<div class="hs-swatch"><b style="background:#203039"></b><span>Slate</span></div>
+<div class="hs-swatch"><b style="background:#344750"></b><span>Steel</span></div>
+<div class="hs-swatch"><b style="background:#79BFB3"></b><span>Sea glass</span></div>
+<div class="hs-swatch"><b style="background:#E9ECE5"></b><span>Ivory</span></div></div></section>
+<section class="hs-section">
+<div class="hs-title"><h2>Panel / modal frame</h2><code>CMP-001</code></div>
+<article class="hs-panel" id="panel">
+<div class="hs-panel__top"><b>HUNT CONTROL</b><button class="hs-x" type="button" aria-label="Close demo">×</button></div>
+<h3>Fallfields</h3><p>Select up to four enemies for automatic rotation.</p><div class="hs-line"></div>
+<div class="hs-enemy"><span class="hs-enemy-icon">✧</span><span class="hs-enemy-copy"><strong>Hollow Wisp</strong><small>Fire damage · resistance check</small></span><span class="hs-check"></span></div>
+<div class="hs-enemy"><span class="hs-enemy-icon">◇</span><span class="hs-enemy-copy"><strong>Grave Knight</strong><small>Physical damage</small></span><span class="hs-check off"></span></div>
+<div class="hs-line"></div><div class="hs-panel__foot"><span>Selected: <strong>1 / 4</strong></span><span>Immediate rotation</span></div>
+</article>
+<label class="hs-resize">Resize the same SVG <span><input id="width" type="range" min="265" max="480" step="5" value="385"><output id="wout">385px</output></span></label>
+<p class="hs-note">Nine-slice corners stay crisp. The micrograin repeats at a fixed 64px scale.</p>
+</section>
+<section class="hs-section"><div class="hs-title"><h2>Buttons &amp; states</h2><code>CMP-002 / 003</code></div>
+<div class="hs-buttons">
+<button class="hs-btn">Default</button><button class="hs-btn hover">Hover</button><button class="hs-btn pressed">Pressed</button>
+<button class="hs-btn secondary">Secondary</button><button class="hs-btn" disabled>Disabled</button><button class="hs-btn">Apply hunt</button>
+</div><p class="hs-note">Each state has a separate vector edge, while text and interaction stay native HTML.</p></section>
+<section class="hs-section"><div class="hs-title"><h2>Tabs</h2><code>CMP-009</code></div>
+<div class="hs-tabs" role="tablist"><button class="hs-tab" type="button" role="tab" aria-selected="true">Equipment</button><button class="hs-tab" type="button" role="tab" aria-selected="false">Inventory</button><button class="hs-tab" type="button" role="tab" aria-selected="false">Skills</button></div>
+<div class="hs-tabtext" id="tabtext"><strong>Equipment</strong> · A quiet sea-glass selection.</div></section>
+<section class="hs-section"><div class="hs-title"><h2>Equipment wells</h2><code>CMP-010</code></div>
+<div class="hs-slots">
+<div class="hs-sample"><button class="hs-slot" type="button" style="--s:48px" aria-label="48 pixel slot"><svg viewBox="0 0 24 24"><path d="M12 2 4 7v8l8 7 8-7V7Z"/></svg></button><small>48px</small></div>
+<div class="hs-sample"><button class="hs-slot" type="button" style="--s:64px" aria-pressed="true" aria-label="64 pixel selected slot"><svg viewBox="0 0 24 24"><path d="m18 2 3 3-10 10-3-3zM7 15l-4 5 5-4M5 12l7 7"/></svg><i class="hs-rarity"></i></button><small>64px selected</small></div>
+<div class="hs-sample"><button class="hs-slot" type="button" style="--s:84px" aria-label="84 pixel slot"><svg viewBox="0 0 24 24"><path d="M4 8c0-4 3-6 8-6s8 2 8 6v11H4Z M8 19v3m8-3v3"/></svg><i class="hs-rarity legendary"></i></button><small>84px</small></div>
+</div><p class="hs-note">The well scales; icon and rarity color are separate layers.</p></section>
+<section class="hs-section"><div class="hs-title"><h2>Bottom navigation state</h2><code>CMP-008</code></div>
+<nav class="hs-nav" aria-label="Example navigation">
+<button class="hs-navbtn" aria-current="page" type="button"><svg viewBox="0 0 24 24"><path d="m3 11 9-7 9 7v9h-6v-6H9v6H3z"/></svg>Home</button>
+<button class="hs-navbtn" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M5 21v-3c0-3 3-5 7-5s7 2 7 5v3Z"/></svg>Character</button>
+<button class="hs-navbtn" type="button"><svg viewBox="0 0 24 24"><path d="M5 16h14M8 16l2 5h4l2-5M7 8h10m-8 0v3c0 4 6 4 6 0V8M12 3v5"/></svg>Forge</button>
+</nav><p class="hs-note">Interactive example of individual nav item states. Approved game navigation still has five items.</p></section>
+<footer class="hs-footer"><b>REVIEW ONLY</b> · Palette approved, surface depth not approved. All interface parts come from reusable SVG assets. No gameplay or simulation wiring.</footer>
+</main>
+<script>
+(()=>{const p=document.getElementById('panel'),r=document.getElementById('width'),o=document.getElementById('wout');
+const f=()=>{const w=Math.min(Number(r.value),document.querySelector('.hs-sheet').clientWidth-32);p.style.maxWidth=w+'px';o.value=Math.round(w)+'px'};r.addEventListener('input',f);f();
+document.querySelectorAll('.hs-tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.hs-tab').forEach(t=>t.setAttribute('aria-selected',t===b?'true':'false'));document.getElementById('tabtext').textContent=b.textContent+' · Same SVG edge, different content.'}));
+document.querySelectorAll('.hs-navbtn').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.hs-navbtn').forEach(t=>t.removeAttribute('aria-current'));b.setAttribute('aria-current','page')}));
+})();
+</script></body></html>
