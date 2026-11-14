@@ -1,0 +1,149 @@
+/* GODSCAR | Menu foundation pass: compact, reusable chrome for Character, Stash, Forge, Navigation.
+   Only CSS and mock UI presentation. This sheet loads after premium skin and keeps its palette. */
+body.gs-theme .gs-character__header { padding:9px 12px 8px; min-height:56px; }
+body.gs-theme .gs-character__header h1 { font-size:20px; }
+body.gs-theme .gs-character__eyebrow { font-size:8px; letter-spacing:.12em; }
+body.gs-theme .gs-character__close { width:34px;height:34px;flex:none; }
+body.gs-theme .gs-character__viewport { padding:9px 11px 16px; }
+body.gs-theme #characterScreen .gs-character__tabs,
+body.gs-theme .gs-stash__tabs { padding-top:5px;gap:4px; }
+body.gs-theme #characterScreen .gs-character__tabs button,
+body.gs-theme .gs-stash__tabs button { min-height:38px; }
+body.gs-theme .gs-character__equipment { gap:6px 7px;margin-bottom:9px; }
+body.gs-theme .gs-character__slot { gap:2px; }
+body.gs-theme .gs-character__slot-visual { height:55px; }
+body.gs-theme .gs-character__slot--weapon .gs-character__slot-visual,
+body.gs-theme .gs-character__slot--offhand .gs-character__slot-visual { height:99px; }
+body.gs-theme .gs-character__slot--helmet .gs-character__slot-visual { height:65px; }
+body.gs-theme .gs-character__gearscore { height:30px; }
+body.gs-theme .gs-character__gearscore strong { font-size:15px; }
+body.gs-theme .gs-character__slot-label { min-height:15px;font-size:9px; }
+body.gs-theme .gs-character__stats { padding:8px 9px; }
+body.gs-theme .gs-character__attributes { margin:6px 0;gap:4px; }
+body.gs-theme .gs-character__attribute { min-height:49px; }
+body.gs-theme .gs-character__attribute strong { font-size:19px; }
+body.gs-theme .gs-character__metrics { padding:6px 0; }
+body.gs-theme .gs-character__detail-trigger { min-height:38px;margin-top:7px; }
+body.gs-theme .gs-stash .gs-character__item-grid { gap:7px 6px; }
+body.gs-theme .gs-stash .gs-character__item-icon { border-radius:7px; }
+body.gs-theme .gs-stash .gs-character__item-name { font-size:10px;line-height:1.25; }
+body.gs-theme .gs-stash .gs-character__material-list { gap:6px; }
+body.gs-theme .gs-stash .gs-character__material { min-height:47px;padding:6px 9px;gap:8px; }
+body.gs-theme .gs-stash .gs-character__material-icon { width:31px;height:31px;flex:none; }
+body.gs-theme .gs-spec-overview { margin-bottom:9px;padding-bottom:7px; }
+body.gs-theme .gs-spec-overview h2 { font-size:17px; }
+body.gs-theme .gs-spec-overview p { font-size:10px; }
+body.gs-theme .gs-spec-columns { gap:6px; }
+body.gs-theme .gs-spec-column__head { min-height:102px;padding:8px 3px 7px;gap:5px; }
+body.gs-theme .gs-spec-column__head img { width:63px;height:63px; }
+body.gs-theme .gs-spec-column__head h3 { font-size:12px; }
+body.gs-theme .gs-spec-column__path { padding:12px 3px 11px;gap:11px; }
+body.gs-theme .gs-spec-column__node { width:min(100%,43px); }
+body.gs-theme .gs-spec-column__node span { font-size:20px; }
+body.gs-theme .gs-spec-column__coming { font-size:9px; }
+body.gs-theme .gs-spec-disclaimer { font-size:10px;margin-top:10px; }
+
+/* Shared Forge / Navigation shell. No baked image sheets and no additional artwork needed. */
+body.gs-theme .gs-menu { background:
+  radial-gradient(ellipse at 50% -10%,#34484c6b,transparent 60%),
+  linear-gradient(180deg,#17282e,#0b181e 48%,#091318);
+}
+body.gs-theme .gs-menu__intro { display:flex;flex-direction:column;gap:3px;margin:3px 0 12px; }
+body.gs-theme .gs-menu__intro strong { font:600 17px/1.2 Georgia,serif;color:#efd3ac; }
+body.gs-theme .gs-menu__intro span { font:10px/1.45 system-ui,sans-serif;color:#b4aa9a; }
+body.gs-theme .gs-menu__operation-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0 0 13px; }
+body.gs-theme .gs-menu__operation { min-width:0;min-height:68px;display:flex;align-items:center;gap:9px;text-align:left;
+  border:1px solid #69553c;border-radius:8px;padding:9px;background:linear-gradient(145deg,#22343b,#0d1a20 75%);
+  box-shadow:inset 0 1px #f4cf9130,0 4px 10px #0005;color:#d6c4a8;cursor:pointer; }
+body.gs-theme .gs-menu__operation img { width:23px;height:23px;flex:none;object-fit:contain;opacity:.86; }
+body.gs-theme .gs-menu__operation span { display:flex;flex-direction:column;gap:3px;min-width:0; }
+body.gs-theme .gs-menu__operation strong { font:600 14px/1.1 Georgia,serif;color:#efddbd; }
+body.gs-theme .gs-menu__operation small { font:9px/1.25 system-ui,sans-serif;color:#b7a48d; }
+body.gs-theme .gs-menu__operation.active { border-color:#d1a16c;background:linear-gradient(150deg,#513e2d,#18292f 75%);
+  box-shadow:inset 0 0 0 1px #ad83484f,inset 0 1px #efcd9959,0 3px 12px #0008; }
+body.gs-theme .gs-menu__operation.active strong { color:#ffe1b6; }
+body.gs-theme .gs-menu__detail { min-height:280px;padding:13px 12px 14px;border:1px solid #896844;border-radius:9px;
+  background:linear-gradient(160deg,#1e3036,#101e24 48%,#0b181e);box-shadow:inset 0 1px #e8bd8240,0 8px 20px #0006; }
+body.gs-theme .gs-menu__detail-heading small { display:block;color:#d4ad75;font:700 9px system-ui,sans-serif;letter-spacing:.12em; }
+body.gs-theme .gs-menu__detail-heading h2 { margin:3px 0 9px;font:500 20px Georgia,serif;color:#f6dbb7; }
+body.gs-theme .gs-menu__detail p { margin:0 0 11px;color:#cfc5b4;font:11px/1.55 system-ui,sans-serif; }
+body.gs-theme .gs-menu__empty-item { display:flex;align-items:center;gap:10px;min-height:62px;margin:10px 0;
+  padding:10px;border:1px solid #69533a;border-radius:7px;background:linear-gradient(#233137,#121f25); }
+body.gs-theme .gs-menu__empty-glyph { flex:none;width:39px;height:39px;display:grid;place-items:center;
+  border:1px solid #755b3d;border-radius:7px;background:#0c171c;color:#d8b67f;font-size:22px; }
+body.gs-theme .gs-menu__empty-item>div { min-width:0;flex:1;display:flex;flex-direction:column;gap:3px; }
+body.gs-theme .gs-menu__empty-item strong { color:#ecd3ad;font:600 12px Georgia,serif; }
+body.gs-theme .gs-menu__empty-item small { color:#afa392;font:10px/1.35 system-ui,sans-serif; }
+body.gs-theme .gs-menu__empty-arrow,body.gs-theme .gs-menu__progress-mini { color:#d1ad7b;font-size:12px;flex:none; }
+body.gs-theme .gs-menu__resource-note { display:flex;gap:5px;flex-wrap:wrap;margin:8px 0 11px; }
+body.gs-theme .gs-menu__resource-note span { padding:4px 7px;border:1px solid #574a3a;border-radius:4px;
+  color:#c6b9a8;font-size:10px;background:#111d21; }
+body.gs-theme .gs-menu__caution { margin:10px 0;color:#b9a88f;font:10px/1.5 system-ui,sans-serif; }
+body.gs-theme .gs-menu__pending,body.gs-theme .gs-menu__action {
+  display:flex;align-items:center;justify-content:center;width:100%;min-height:42px;max-width:100%;
+  padding:8px 10px;margin:13px 0 0;border-radius:6px;font:600 12px Georgia,serif;
+  border:1px solid #b68b54;color:#f3d7ae;background:linear-gradient(135deg,#47382b,#16262c 72%);
+  box-shadow:inset 0 1px #ffdfa447; }
+body.gs-theme .gs-menu__pending:disabled { opacity:.54;cursor:not-allowed;box-shadow:none; }
+body.gs-theme .gs-menu__action { cursor:pointer; }
+body.gs-theme .gs-menu__action:hover { filter:brightness(1.12); }
+body.gs-theme .gs-menu__operation:focus-visible,body.gs-theme .gs-menu__nav-tabs button:focus-visible,
+body.gs-theme .gs-menu__action:focus-visible { outline:2px solid #efd2a0;outline-offset:2px; }
+
+/* World route: tabs, region rails, enemy roster and planning-only activity panels. */
+body.gs-theme .gs-menu__nav-tabs { flex:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:3px;padding:6px 9px 0;border-bottom:1px solid #624b35;background:#111e24; }
+body.gs-theme .gs-menu__nav-tabs button { min-width:0;min-height:42px;padding:5px 2px;border:1px solid #5a4636;
+  border-bottom:2px solid #654c33;border-radius:6px 6px 0 0;background:#1c292e;color:#c9b49a;
+  font:600 11px Georgia,serif;cursor:pointer; }
+body.gs-theme .gs-menu__nav-tabs button.active { border-color:#bd925c;border-bottom-color:#edd0a0;
+  background:linear-gradient(#493b2c,#22333a);color:#ffe2b6; }
+body.gs-theme .gs-menu__region { display:flex;align-items:stretch;gap:10px;padding:12px 11px;margin:0 0 10px;
+  border:1px solid #69563e;border-radius:8px;background:linear-gradient(135deg,#21343b,#0d1b21 80%);
+  box-shadow:inset 0 1px #ffdda52c; }
+body.gs-theme .gs-menu__region--starting { border-color:#b1895a; }
+body.gs-theme .gs-menu__region-mark { align-self:flex-start;display:grid;place-items:center;flex:none;
+  width:36px;height:40px;border:1px solid #9c774e;color:#ecd0a7;font:600 17px Georgia,serif;
+  background:linear-gradient(#34362e,#17262b);clip-path:polygon(50% 0,93% 24%,93% 76%,50% 100%,7% 76%,7% 24%); }
+body.gs-theme .gs-menu__region-copy { min-width:0;flex:1; }
+body.gs-theme .gs-menu__region-copy small,body.gs-theme .gs-menu__feature small { display:block;
+  margin:0 0 4px;color:#d2ab77;font:700 9px system-ui,sans-serif;letter-spacing:.07em; }
+body.gs-theme .gs-menu__region-copy h2,body.gs-theme .gs-menu__feature h2 { margin:0 0 5px;
+  color:#f2d9b6;font:500 18px/1.15 Georgia,serif; }
+body.gs-theme .gs-menu__region-copy p,body.gs-theme .gs-menu__feature p {
+  margin:0;font:11px/1.5 system-ui,sans-serif;color:#bdb5a5; }
+body.gs-theme .gs-menu__future { display:flex;align-items:center;gap:10px;padding:11px 12px;
+  border:1px dashed #6e5a44;border-radius:7px;background:#16232a;margin:10px 0; }
+body.gs-theme .gs-menu__future>span { color:#ad8c67;font:23px Georgia,serif; }
+body.gs-theme .gs-menu__future div { display:flex;flex-direction:column;gap:4px; }
+body.gs-theme .gs-menu__future strong { color:#d9c4a5;font:600 12px Georgia,serif; }
+body.gs-theme .gs-menu__future small { color:#a99e90;font:10px/1.4 system-ui,sans-serif; }
+body.gs-theme .gs-menu__enemy-list { display:grid;gap:7px; }
+body.gs-theme .gs-menu__enemy-list>div { display:grid;grid-template-columns:27px minmax(0,1fr);
+  align-items:center;gap:3px 10px;padding:10px;border:1px solid #65543f;border-radius:6px;
+  background:linear-gradient(110deg,#203138,#101e24); }
+body.gs-theme .gs-menu__tiny-mark { grid-row:span 2;color:#d6ad79;font:600 12px Georgia,serif; }
+body.gs-theme .gs-menu__enemy-list strong { min-width:0;color:#e6d0b0;font:600 13px Georgia,serif; }
+body.gs-theme .gs-menu__enemy-list small { grid-column:2;color:#ada495;font-size:10px; }
+body.gs-theme .gs-menu__feature { display:flex;gap:12px;padding:13px 12px;margin:0 0 11px;
+  border:1px solid #94734c;border-radius:8px;background:linear-gradient(#25363a,#111f24);
+  box-shadow:inset 0 1px #e9be8340; }
+body.gs-theme .gs-menu__feature-icon { flex:none;display:grid;place-items:center;
+  width:48px;height:48px;border:1px solid #886841;border-radius:9px;
+  background:#111e23;color:#dbb581;font:24px Georgia,serif; }
+body.gs-theme .gs-menu__step-line { display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:10px 0 12px; }
+body.gs-theme .gs-menu__step-line span { text-align:center;padding:10px 3px;border:1px solid #73573a;
+  border-radius:5px;background:#1c2b30;color:#ddc39d;font:600 11px Georgia,serif; }
+@media(max-width:360px) {
+  body.gs-theme .gs-character__viewport { padding-inline:8px; }
+  body.gs-theme .gs-menu__operation-grid { gap:6px; }
+  body.gs-theme .gs-menu__operation { gap:6px;padding:7px; }
+  body.gs-theme .gs-menu__operation strong { font-size:12px; }
+  body.gs-theme .gs-menu__operation small { font-size:8px; }
+  body.gs-theme .gs-menu__nav-tabs { padding-inline:6px;gap:2px; }
+  body.gs-theme .gs-menu__nav-tabs button { font-size:10px; }
+  body.gs-theme .gs-spec-column__head img { width:58px;height:58px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  body.gs-theme .gs-menu * { transition:none!important;animation:none!important; }
+}
