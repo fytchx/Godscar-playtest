@@ -2,10 +2,10 @@
 
 **Status:** WORKING ROADMAP / owner review pending. This is a release plan, **not approval to change gameplay, connect the simulator, or deploy**.
 **Prepared:** 2026-11-15.
-**Current UI/design repository:** \`fytchx/Godscar-playtest\`, \`main\` at \`caaaff2a3efa08b66d9041937464d4c5e16a04ad\`.
-**Simulation source:** \`fytchx/Godscar\`, \`slice/paladin-defense\` at \`b02482ded4e118b0b2422677c39463d37dcc9f2d\` (SIM_VERSION 8); linked Playtest copy \`simulation/reference-sim-v8.js\` is **disconnected**.
+**Current UI/design repository:** `fytchx/Godscar-playtest`, `main` at `caaaff2a3efa08b66d9041937464d4c5e16a04ad`.
+**Simulation source:** `fytchx/Godscar`, `slice/paladin-defense` at `b02482ded4e118b0b2422677c39463d37dcc9f2d` (SIM_VERSION 8); linked Playtest copy `simulation/reference-sim-v8.js` is **disconnected**.
 
-> **Important platform discrepancy (requires decision at milestone 0.1):** Playtest \`main\` was changed after the November 13 handoff and now contains a Kotlin/Jetpack Compose Android mock UI; the former root browser \`index.html\` is absent. \`docs/FIGHT-SCREEN-DIRECTION.md\` and \`docs/NEW-PROJECT-START-HERE.md\` still document the browser Fight skeleton as the current direction. Do not silently treat either as the new owner-approved product. Resolve the shipping platform and preserve the exact approved visual baseline before implementing functionality. Do not port both clients in parallel by default.
+> **Important platform discrepancy (requires decision at milestone 0.1):** Playtest `main` was changed after the November 13 handoff and now contains a Kotlin/Jetpack Compose Android mock UI; the former root browser `index.html` is absent. `docs/FIGHT-SCREEN-DIRECTION.md` and `docs/NEW-PROJECT-START-HERE.md` still document the browser Fight skeleton as the current direction. Do not silently treat either as the new owner-approved product. Resolve the shipping platform and preserve the exact approved visual baseline before implementing functionality. Do not port both clients in parallel by default.
 
 ## 1. Product promise
 
@@ -55,9 +55,9 @@ Multiplayer, trading, guilds, raids, PvP, monetization/pay-to-win, a native clie
 ## 3. Where we actually stand now (verified versus not)
 
 **Verified in repository as of the above commit:**
-- Fight/Character design and assets manifest are present in \`docs/\`; manifest contains **99 ID-tagged asset records** with distinct status labels, including checked-in legacy GS-UI source paths and proposed Fallfields work.
-- The current \`main\` has an Android Kotlin/Compose mock presentation and project files; browser \`index.html\` is **not present at root**. The accepted browser skeleton remains in Git history. Treat platform status as unresolved.
-- A disconnected \`SIM_VERSION=8\` JS reference exists in Playtest; canonical gameplay and bot harness live in the *other* \`fytchx/Godscar\` repo on \`slice/paladin-defense\`. Existing simulation has **older item/skill rules**, not our newly designed weapon package system.
+- Fight/Character design and assets manifest are present in `docs/`; manifest contains **99 ID-tagged asset records** with distinct status labels, including checked-in legacy GS-UI source paths and proposed Fallfields work.
+- The current `main` has an Android Kotlin/Compose mock presentation and project files; browser `index.html` is **not present at root**. The accepted browser skeleton remains in Git history. Treat platform status as unresolved.
+- A disconnected `SIM_VERSION=8` JS reference exists in Playtest; canonical gameplay and bot harness live in the *other* `fytchx/Godscar` repo on `slice/paladin-defense`. Existing simulation has **older item/skill rules**, not our newly designed weapon package system.
 - Fallfields names grounded in older simulation: Blighted Husk, Carrion Swarm, Grave Knight, Hollow Wisp; boss Hollow Bellkeeper. Wisp fire-resistance and Bellkeeper DPS are the **two planned progression walls**. Husk/Knight are not current boss/wall targets.
 - Other established place: Ashen Hollow, with historical Woundwarden boss. Third-region names, new dungeon bosses and content are proposals only.
 
@@ -65,7 +65,7 @@ Multiplayer, trading, guilds, raids, PvP, monetization/pay-to-win, a native clie
 
 ## 4. Milestone sequence with acceptance gates
 
-The labels \`0.1\` through \`1.0\` denote **feature gates**, not dates or promises. Work can overlap in separate art/design branches, but each gate has a clear demonstration and test requirement.
+The labels `0.1` through `1.0` denote **feature gates**, not dates or promises. Work can overlap in separate art/design branches, but each gate has a clear demonstration and test requirement.
 
 ### 0.1 — Source-of-truth and technical direction (NEXT)
 
@@ -73,7 +73,7 @@ The labels \`0.1\` through \`1.0\` denote **feature gates**, not dates or promis
 
 - [ ] **GS-RD-001:** Owner decides shipping priority: browser or native Android; existing repo's Android port and older browser skeleton are compared **without rewriting either** before approval.
 - [ ] **GS-RD-002:** Choose final home for product UI and source. Preserve the exact approved Fight + Character presentation and its art/export specification.
-- [ ] **GS-RD-003:** Reconcile \`AGENTS.md\`, \`README.md\`, UI docs and the current GitHub tree. Clearly document \`main\` branch, canonical simulator branch and safe PR workflow.
+- [ ] **GS-RD-003:** Reconcile `AGENTS.md`, `README.md`, UI docs and the current GitHub tree. Clearly document `main` branch, canonical simulator branch and safe PR workflow.
 - [ ] **GS-RD-004:** Reconfirm new weapon model (5 TOTAL) and approve basic compatibility rules for 1H/2H, dual-wield, quiver, shield and tome.
 - [ ] **GS-RD-005:** Publish the proposed release content budget and explicit cut list. Track open gameplay/branding decisions in one decisions log.
 - [ ] **GS-RD-006:** Define the asset acceptance template: ID, usage, size, transparent export, source, reviewed state and actual integrated path.
@@ -87,7 +87,7 @@ The labels \`0.1\` through \`1.0\` denote **feature gates**, not dates or promis
 
 - [ ] **GS-RD-010:** Audit existing GS-UI reusable CSS/SVG components; retain useful ones, revise weak pieces rather than regenerating everything.
 - [ ] **GS-RD-011:** Finalize component families for panels, button states, bars, dialogs, filters, item frames, tooltips, equipment slots, navigation, bottom sheets and Forge/Skills shells.
-- [ ] **GS-RD-012:** Use \`docs/ASSET-MANIFEST.md\` stable IDs; mark existing assets by verified files, not assumed references; expand IDs only for approved requirements.
+- [ ] **GS-RD-012:** Use `docs/ASSET-MANIFEST.md` stable IDs; mark existing assets by verified files, not assumed references; expand IDs only for approved requirements.
 - [ ] **GS-RD-013:** Produce one fully production-ready benchmark kit: panel, button, HP bar, Fallfields battlefield backdrop and Hollow Wisp art, including reusable source and mobile optimized export.
 - [ ] **GS-RD-014:** Produce approved Fallfields environment backgrounds, 4 enemy illustrations, Bellkeeper, impact effects, status symbols, starting gear icons and material icons.
 - [ ] **GS-RD-015:** Implement visual shells for Character, Inventory/Stash, Skills, Forge and Navigation under the chosen platform with **mock data only**.
@@ -211,7 +211,7 @@ The labels \`0.1\` through \`1.0\` denote **feature gates**, not dates or promis
 
 ## 5. Dependency map (what must come before what)
 
-\`\`\`mermaid
+```mermaid
 flowchart TD
   A[0.1 Platform and source truth] --> B[0.2 UI and art pipeline]
   A --> C[0.3 Simulation and ability model]
@@ -225,7 +225,7 @@ flowchart TD
   G --> H[0.8 Dungeons and endgame]
   H --> I[0.9 Beta and QA]
   I --> J[1.0 Release]
-\`\`\`
+```
 
 Parallel-safe activities before the simulation link is approved: asset production, design specs, icon exploration, mock-data UI shells, enemy and ability data tables, test fixture design and docs. The actual simulator-to-screen connection requires a **distinct owner sign-off**, even if other milestones are ready.
 
@@ -275,15 +275,15 @@ Historical 20–30 minute first-wall goal remains **not yet met consistently** i
 
 ## 9. Work tracking and reviews
 
-**Task ID format:** \`GS-RD-###\` above, separate from \`GS-FF-ENV-###\` / \`GS-UI-CMP-###\` stable art asset IDs. These are *proposed tasks*, not completed work.
+**Task ID format:** `GS-RD-###` above, separate from `GS-FF-ENV-###` / `GS-UI-CMP-###` stable art asset IDs. These are *proposed tasks*, not completed work.
 
-For each task track: status \`Backlog → Specified → In progress → Review → Tested → Approved\`, owner decision required, dependencies, branch + exact commit, links to asset IDs, acceptance screenshot/fixture/test, and known unresolved issues.
+For each task track: status `Backlog → Specified → In progress → Review → Tested → Approved`, owner decision required, dependencies, branch + exact commit, links to asset IDs, acceptance screenshot/fixture/test, and known unresolved issues.
 
 Do not count a milestone done because a feature is visible in a static mock. Label it DESIGN, UI MOCK, SIMULATED, TESTED, or RELEASED with proof. Scope approval and deployment approval are separate.
 
 ### Immediate ordered next work
 
-1. Decide whether the Kotlin Android port (current \`main\`) replaces the earlier browser-first Fight target, or whether browser remains the shipping product. No engine wiring until resolved.
+1. Decide whether the Kotlin Android port (current `main`) replaces the earlier browser-first Fight target, or whether browser remains the shipping product. No engine wiring until resolved.
 2. Approve or modify the proposed 1.0 content budget (6/18 classes, 3 regions, 3 dungeons, 20 archetypes target).
 3. Finalize **Fallfields gameplay content sheet**: enemy mechanics, Wisp/Bellkeeper rewards, materials and item/weapon archetype sources.
 4. Audit and approve the first 6 manifest assets; produce **one** benchmark environment and enemy with correct export/scale.
