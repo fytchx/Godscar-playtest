@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Godscar" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/godscar_page</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+    <color name="godscar_page">#0C0B09</color>
+</resources>

@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Godscar</string>
+    <string name="player_default_name">Player</string>
+    <string name="player_class_paladin">Paladin</string>
+    <string name="health_label">HEALTH</string>
+    <string name="current_zone_label">CURRENT ZONE</string>
+    <string name="biome_placeholder">BIOME BACKGROUND ART</string>
+    <string name="enemy_placeholder">FULL-BODY\nENEMY ART</string>
+    <string name="enemy_health_label">ENEMY HEALTH</string>
+    <string name="live_dps_label">LIVE DPS</string>
+    <string name="activity_title">Activity</string>
+    <string name="activity_live">LIVE</string>
+    <string name="session_details_show">SESSION DETAILS</string>
+    <string name="session_details_hide">HIDE DETAILS</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_character">Character</string>
+    <string name="nav_stash">Stash</string>
+    <string name="nav_forge">Forge</string>
+    <string name="nav_navigation">Navigation</string>
+    <string name="stub_stash">Stash screen will be built separately.</string>
+    <string name="stub_forge">Forge screen will be built separately.</string>
+    <string name="stub_navigation">Navigation screen is to be designed.</string>
+    <string name="character_eyebrow">PALADIN · UI PREVIEW</string>
+    <string name="character_title">Character</string>
+    <string name="tab_equipment">Equipment</string>
+    <string name="tab_inventory">Inventory</string>
+    <string name="tab_skills">Skills</string>
+    <string name="tab_items">Items</string>
+    <string name="tab_materials">Materials</string>
+    <string name="skills_placeholder_body">Automatic abilities and loadouts will be designed later.</string>
+    <string name="skills_placeholder_tag">NO SIMULATION CONNECTION</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_show_recap">Show launch recap</string>
+    <string name="settings_appearance_note">Theme controls will be added later. The visual system is built to be restyled.</string>
+</resources>
